@@ -9,7 +9,7 @@ const Marque = () => {
         .then(data=>setMarqueText(data.text))
     },[])
 
-    // console.log("Marque: ",marqueText);
+    console.log("Marque: ",marqueText);
 
     return (
         <div className='bg-[#E3E3E3] p-2 rounded-md m-5'>
