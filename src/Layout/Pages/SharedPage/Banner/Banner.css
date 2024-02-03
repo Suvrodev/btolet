@@ -1,0 +1,35 @@
+
+
+   .Banner{
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    box-shadow: 10px 15px 25px black;
+    height: 350px;
+    width: 100%;
+}
+.yesSwiper{
+    width:90%;
+    height: 90%;
+    background-color: red;
+    margin: auto
+}
+.swiper {
+    width: 90%;
+    height: 100%;
+    background-color: green !important;
+  }
+
+@media only screen and (max-width: 576px) {
+    .Banner{
+        margin: 0px;
+        height: 350px;
+        width: 100%;
+    }
+    .yesSwiper{
+        width: 350px;
+        height: 100%;
+        background-color: red;
+    }
+    
+}
