@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@egjs/react-flicking": "^4.11.2",
+    "@react-oauth/google": "^0.12.1",
+    "jwt-decode": "^4.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.3",
     "pure-react-carousel": "^1.30.1",

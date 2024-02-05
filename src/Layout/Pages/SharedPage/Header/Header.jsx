@@ -22,8 +22,8 @@ const Header = () => {
   
   
       const NavItems=<div className='lg:flex items-center justify-center text-white'>
-          <li onClick={()=>handleHide()}><NavLink className={({isActive})=> isActive? 'text-green-600 font-extrabold':''}  to='/home'>Home</NavLink ></li>
-          <li onClick={()=>handleHide()}><NavLink className={({isActive})=> isActive? 'text-green-600 font-extrabold':''}  to='/buy'>Buy</NavLink ></li>
+          <li onClick={()=>handleHide()}><NavLink className={({isActive})=> isActive? 'text-green-600 rb_rg font-extrabold ':'rb_rg'}  to='/home'>Home</NavLink ></li>
+          <li onClick={()=>handleHide()}><NavLink className={({isActive})=> isActive? 'text-green-600 rb_rg font-extrabold ':'rb_rg'}  to='/buy'>Buy</NavLink ></li>
      </div>
 
     return (

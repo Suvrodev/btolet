@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BuyCard from '../BuyCard/BuyCard';
+import { Link } from 'react-router-dom';
 
 const Buy = () => {
 
@@ -40,7 +41,11 @@ const Buy = () => {
 
     return (
         <div>
-           <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
+          <div className='flex justify-between my-4'>
+            <button className='btn btn-primary'>Filter</button>
+            <Link to={'/buypost'}> <button className='btn btn-success'>Post</button> </Link>
+          </div>
+           <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
                {
                  buys.map((buy,idx)=><BuyCard
                  key={idx}

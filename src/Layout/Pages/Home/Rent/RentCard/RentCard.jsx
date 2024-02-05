@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { FaBath, FaBed, FaBeer, FaChartArea, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaShare, FaWhatsapp } from "react-icons/fa";
+import { FaBath, FaBed, FaChartArea, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaShare, FaWhatsapp } from 'react-icons/fa';
 
-
-import locationImage from '../../../../assets/downloadedIcon/location.svg'
-import shareImage from '../../../../assets/downloadedIcon/share.svg'
-
-const BuyCard = ({buy}) => {
-    console.log(buy);
-    const {image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category}=buy
+const RentCard = ({r}) => {
+    console.log("Rent: ",r);
+    const {image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category}=r
 
     const [timeAgo, setTimeAgo] = useState('');
     useEffect(() => {
@@ -48,10 +44,6 @@ const BuyCard = ({buy}) => {
 
     return (
         <div className='flex flex-col relative border  rounded-md'>
-          
-
-           
-
             <div className='relative'>
               <img className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
 
@@ -70,7 +62,7 @@ const BuyCard = ({buy}) => {
        
             <div className='py-5 px-4'>
                <p className='roboto font-bold text-xl'>{category}</p>
-                {   {price}? <p className='text-4xl font-bold text-white'> ৳ {price} </p>: <span className='text-xl font-bold'>Price on Call</span>}
+                {   {rent}? <p className='text-4xl font-bold text-white'> ৳ {rent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
                     <FaMapMarkerAlt />
                     <p>{location}</p>
@@ -84,7 +76,7 @@ const BuyCard = ({buy}) => {
                     <FaBath/> {bed}
                 </div>
                 <div className='flex items-center  gap-2'>
-                      <FaChartArea /> {size}
+                      <FaChartArea /> {roomsize}
                 </div>
 
             </div>
@@ -106,4 +98,4 @@ const BuyCard = ({buy}) => {
     );
 };
 
-export default BuyCard;
+export default RentCard;

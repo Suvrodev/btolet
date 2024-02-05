@@ -4,11 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './Routes/Routes.jsx'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
  <div className=' max-w-7xl mx-auto'>
-    <React.StrictMode>
-       <RouterProvider router={router} />
-    </React.StrictMode>
+   <GoogleOAuthProvider clientId="596632056529-a0nbk62oc8bn501v5k6uvuoc6tpckli7.apps.googleusercontent.com">
+      <React.StrictMode>
+         <RouterProvider router={router} />
+      </React.StrictMode>
+   </GoogleOAuthProvider>
  </div>
 )

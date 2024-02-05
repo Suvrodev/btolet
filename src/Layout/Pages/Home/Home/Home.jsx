@@ -1,10 +1,13 @@
 import React from 'react';
-import Rent from '../Rent/Rent';
+import Rent from '../Rent/Rent/Rent';
+import Marque from '../../SharedPage/Marque/Marque';
+import Banner from '../../SharedPage/Banner/Banner';
 
 const Home = () => {
     return (
         <div>
-            Home
+            <Marque></Marque>
+            <Banner></Banner>
             <Rent></Rent>
         </div>
     );
