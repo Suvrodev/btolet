@@ -3,8 +3,8 @@ import GoogleMapReact from 'google-map-react';
 
 const BuyMap = ({geolat,geolon}) => {
 
-    console.log("geolat: ",geolat);
-    console.log("geolon: ",geolon);
+    // console.log("geolat: ",geolat);
+    // console.log("geolon: ",geolon);
 
     let defaultProps = {
         center: {

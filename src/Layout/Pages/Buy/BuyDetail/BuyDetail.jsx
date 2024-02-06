@@ -175,11 +175,11 @@ const BuyDetail = () => {
     let mLat,mLon;
     // let a= 22.8182591
     // let b= 89.5519609
-    console.log("geolat: ",  geolat);
-    console.log("geolon: ", geolon);
+    // console.log("geolat: ",  geolat);
+    // console.log("geolon: ", geolon);
 
-    console.log("Type of geolat: ",  typeof(geolat));
-    console.log("Type of geolon: ", typeof(geolon));
+    // console.log("Type of geolat: ",  typeof(geolat));
+    // console.log("Type of geolon: ", typeof(geolon));
 
     //  mLat=  parseFloat(geolat) 
     //  mLon=  parseFloat(geolon) 
@@ -190,6 +190,19 @@ const BuyDetail = () => {
 
     // console.log("Type of mLat: ",typeof(mLat));
     // console.log("Type of mLon: ",typeof(mLon));
+
+    console.log("Land Type: ",land_type);
+    console.log("Land Type Datatype: ",typeof(land_type));
+
+    // let dataArray = land_type
+
+    // if (dataString) {
+    //     try {
+    //         dataArray = JSON.parse(dataString);
+    //     } catch (error) {
+    //         console.error('Error parsing JSON:', error);
+    //     }
+    // }
 
   
     
@@ -259,7 +272,10 @@ const BuyDetail = () => {
                 <div className='text-xl font-bold'>
                     {price? <span className='font-bold '>Take : <span className=''>{price}</span> </span> :'Price On Call'}
                 </div>
-                <div>
+                <div className=' flex gap-4 items-center'>
+                  <button className=' btn btn-success'>Call</button>  
+                  <button className=' btn btn-success'>Whatsapp</button>  
+                  <button className=' btn btn-success'>Message</button>  
                   <FaShare/>
                 </div>
             </div>
@@ -282,135 +298,165 @@ const BuyDetail = () => {
 
 
             {/* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */}
-            <div className='box'>
-            {/* flex flex-col gap-4 */}
-                <div className='itemBox1'>
-                     {/* w-[40px] h-[40px] bg-gray-400 rounded-full flex items-center justify-center */}
-                    <div className='iconDiv'>
-                        <FaBed/>
+            {
+                category==='House' &&
+                <div className='box'>
+                {/* flex flex-col gap-4 */}
+              
+                    <div className='itemBox1'>
+                         {/* w-[40px] h-[40px] bg-gray-400 rounded-full flex items-center justify-center */}
+                        <div className='iconDiv'>
+                            <FaBed/>
+                        </div>
+                        {/* flex flex-col items-center justify-center w-[40px] h-[40px] */}
+                        <div className='itemBox2'>
+                            <p>Beds</p>
+                            <p>{bed}</p>
+                        </div>
                     </div>
-                    {/* flex flex-col items-center justify-center w-[40px] h-[40px] */}
-                    <div className='itemBox2'>
-                        <p>Beds</p>
-                        <p>{bed}</p>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Bath</p>
+                            <p>{bath}</p>
+                        </div>
                     </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
+                    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Kitchen</p>
+                            <p>{kitchen}</p>
+                        </div>
                     </div>
-                    <div className='itemBox2'>
-                        <p>Bath</p>
-                        <p>{bath}</p>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Dining</p>
+                            <p>{dining}</p>
+                        </div>
                     </div>
-                </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Drawing</p>
+                            <p>{drawing}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Balcony</p>
+                            <p>{balcony}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Size</p>
+                            <p>{size}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Facing</p>
+                            <p>{facing}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Total Floor</p>
+                            <p>{total_floor}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Floor No</p>
+                            <p>{floornumber}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Total Unit</p>
+                            <p>{total_unit}</p>
+                        </div>
+                    </div>
+    
+                    <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>EMI</p>
+                            <p>{emi}</p>
+                        </div>
+                    </div>
                 
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Kitchen</p>
-                        <p>{kitchen}</p>
-                    </div>
                 </div>
 
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
+            }
+          
+
+            {
+                category==='Land' &&
+                <div className='box'>
+                      <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>{area}</p>
+                            <p>{measurement}</p>
+                        </div>
                     </div>
-                    <div className='itemBox2'>
-                        <p>Dining</p>
-                        <p>{dining}</p>
+                      <div className='itemBox1'>
+                        <div className='iconDiv'>
+                            <FaBath/>
+                        </div>
+                        <div className='itemBox2'>
+                            <p>Road Size</p>
+                            <p>{road_size}</p>
+                        </div>
                     </div>
                 </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Drawing</p>
-                        <p>{drawing}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Balcony</p>
-                        <p>{balcony}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Size</p>
-                        <p>{size}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Facing</p>
-                        <p>{facing}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Total Floor</p>
-                        <p>{total_floor}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Floor No</p>
-                        <p>{floornumber}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>Total Unit</p>
-                        <p>{total_unit}</p>
-                    </div>
-                </div>
-
-                <div className='itemBox1'>
-                    <div className='iconDiv'>
-                        <FaBath/>
-                    </div>
-                    <div className='itemBox2'>
-                        <p>EMI</p>
-                        <p>{emi}</p>
-                    </div>
-                </div>
-            
-            </div>
+            }
 
 
 
-            <div className='flex gap-10'>
+            <div className='flex gap-10 text-xl'>
                 <div className='w-[60%]'>
                     <div>
 

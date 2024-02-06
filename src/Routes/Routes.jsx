@@ -10,6 +10,7 @@ import BuyPost from "../Layout/Pages/Buy/BuyPost/BuyPost/BuyPost";
 import Login from "../Layout/Pages/UserResponsibility/Login/Login";
 import RentDetail from "../Layout/Pages/Home/Rent/RentDetail/RentDetail";
 import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
+import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
 
 
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
             element: <Home></Home>
         },
         {
+          path: '/login',
+          element: <Login></Login>
+        },
+        {
             path: '/buy',
             element: <Buy></Buy>
         },
@@ -33,18 +38,19 @@ import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
           path: '/buypost',
           element: <BuyPost></BuyPost>
         },
+       
         {
-          path: '/login',
-          element: <Login></Login>
+          path: '/buydetail/:id',
+          element: <BuyDetail></BuyDetail>
+        },
+        {
+          path: '/rentpost',
+          element: <RentPost></RentPost>
         },
         {
           path: 'rentdetail/:id',
           element: <RentDetail></RentDetail>
         },
-        {
-          path: '/buydetail/:id',
-          element: <BuyDetail></BuyDetail>
-        }
       ]
     },
   ]);

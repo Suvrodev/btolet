@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Marque from '../../../SharedPage/Marque/Marque';
 import Banner from '../../../SharedPage/Banner/Banner';
 import RentCard from '../RentCard/RentCard';
+import { Link } from 'react-router-dom';
 
 const Rent = () => {
 
@@ -44,7 +45,13 @@ const Rent = () => {
    
     return (
         <div className='my-4'>
-          <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1>
+          <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1
+          >
+          <div className='flex justify-between my-4'>
+            <button className='btn btn-primary'>Filter</button>
+            <Link to={'/rentpost'}> <button className='btn btn-success'>Post</button> </Link>
+          </div>
+
             <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
                 {
                   rents.map((rent,idx)=> <RentCard key={idx} r={rent} ></RentCard> )
