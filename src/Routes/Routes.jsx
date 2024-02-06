@@ -8,6 +8,8 @@ import Main from "../Layout/Main/Main";
 import Buy from "../Layout/Pages/Buy/Buy/Buy";
 import BuyPost from "../Layout/Pages/Buy/BuyPost/BuyPost/BuyPost";
 import Login from "../Layout/Pages/UserResponsibility/Login/Login";
+import RentDetail from "../Layout/Pages/Home/Rent/RentDetail/RentDetail";
+import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
 
 
   const router = createBrowserRouter([
@@ -34,6 +36,14 @@ import Login from "../Layout/Pages/UserResponsibility/Login/Login";
         {
           path: '/login',
           element: <Login></Login>
+        },
+        {
+          path: 'rentdetail/:id',
+          element: <RentDetail></RentDetail>
+        },
+        {
+          path: '/buydetail/:id',
+          element: <BuyDetail></BuyDetail>
         }
       ]
     },

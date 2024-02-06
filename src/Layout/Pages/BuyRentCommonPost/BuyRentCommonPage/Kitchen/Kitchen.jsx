@@ -15,7 +15,7 @@ const Kitchen = () => {
     return (
         <div>
             <h1 className='my-2'>Kitchen</h1>
-            <div className="w-full">
+            <div className="w-full text-white">
                 <select 
                     value={selectedKitchen} 
                     onChange={handleKitchenChange}

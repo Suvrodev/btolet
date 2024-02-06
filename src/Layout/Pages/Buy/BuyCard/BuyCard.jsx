@@ -4,10 +4,13 @@ import { FaBath, FaBed, FaBeer, FaChartArea, FaLayerGroup, FaMailBulk, FaMapMark
 
 import locationImage from '../../../../assets/downloadedIcon/location.svg'
 import shareImage from '../../../../assets/downloadedIcon/share.svg'
+import { useNavigate } from 'react-router-dom';
 
 const BuyCard = ({buy}) => {
-    console.log(buy);
-    const {image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category}=buy
+    // console.log(buy);
+    const {pid,image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category,geolat,geolon}=buy
+
+    const naviagte=useNavigate()
 
     const [timeAgo, setTimeAgo] = useState('');
     useEffect(() => {
@@ -46,6 +49,15 @@ const BuyCard = ({buy}) => {
           }
       }
 
+
+      const goinDetail=(pid,lat,lon)=>{
+       
+          console.log("Lattitudde: ",lat);
+          console.log("Longitude: ",lon);
+          naviagte(`/buydetail/${pid}`,{ state: { lat, lon } })
+      }
+
+
     return (
         <div className='flex flex-col relative border  rounded-md'>
           
@@ -53,27 +65,27 @@ const BuyCard = ({buy}) => {
            
 
             <div className='relative'>
-              <img className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
+              <img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                  <FaShare onClick={handleshare}/>
+                  <FaShare onClick={handleshare} className='text-white'/>
                </p>
             </div >
 
                 <div className='absolute bottom-2 right-10'>
                     <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
-                        <span>{total_image}</span> <FaLayerGroup/>
+                        <span className='text-white'>{total_image}</span> <FaLayerGroup className='text-white'/>
                     </p>
                 </div>
             </div>
        
             <div className='py-5 px-4'>
                <p className='roboto font-bold text-xl'>{category}</p>
-                {   {price}? <p className='text-4xl font-bold text-white'> ৳ {price} </p>: <span className='text-xl font-bold'>Price on Call</span>}
+                {   {price}? <p className='text-4xl font-bold text-black'> ৳ {price} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
                     <FaMapMarkerAlt />
-                    <p>{location}</p>
+                    <span>{location}</span>
                 </p>
             </div>
             <div className='p-5 flex gap-3'>
@@ -99,7 +111,7 @@ const BuyCard = ({buy}) => {
                 <div className='flex items-center justify-center gap-2'>
                     <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
                     <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <FaMailBulk /> </button>
-                    <button onClick={() => window.location.href = 'https://api.whatsapp.com/send?phone=' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'> <FaWhatsapp /> </button>
+                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + '8801518748081&text=Hi%20User', '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><FaWhatsapp /></button>
                 </div>
             </div>
         </div>

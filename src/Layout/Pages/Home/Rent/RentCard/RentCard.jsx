@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FaBath, FaBed, FaChartArea, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaShare, FaWhatsapp } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const RentCard = ({r}) => {
-    console.log("Rent: ",r);
-    const {image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category}=r
+    // console.log("Rent: ",r);
+    const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category}=r
+
+    const naviagte=useNavigate()
 
     const [timeAgo, setTimeAgo] = useState('');
     useEffect(() => {
@@ -42,30 +45,35 @@ const RentCard = ({r}) => {
           }
       }
 
+
+      const goinDetail=(post_id)=>{
+        naviagte(`/rentdetail/${post_id}`)
+      }
+
     return (
-        <div className='flex flex-col relative border  rounded-md'>
+        <div className='flex flex-col relative border  rounded-md' >
             <div className='relative'>
-              <img className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
+              <img onClick={()=>goinDetail(post_id)} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                  <FaShare onClick={handleshare}/>
+                  <FaShare onClick={handleshare} className='text-white'/>
                </p>
             </div >
 
                 <div className='absolute bottom-2 right-10'>
                     <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
-                        <span>{total_image}</span> <FaLayerGroup/>
+                        <span className='text-white'>{total_image}</span> <FaLayerGroup className='text-white'/>
                     </p>
                 </div>
             </div>
        
             <div className='py-5 px-4'>
                <p className='roboto font-bold text-xl'>{category}</p>
-                {   {rent}? <p className='text-4xl font-bold text-white'> ৳ {rent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
+                {   {rent}? <p className='text-4xl font-bold text-black'> ৳ {rent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
                     <FaMapMarkerAlt />
-                    <p>{location}</p>
+                    <span>{location}</span>
                 </p>
             </div>
             <div className='p-5 flex gap-3'>
@@ -81,7 +89,7 @@ const RentCard = ({r}) => {
 
             </div>
 
-            <div className='h-[1px] w-full bg-white'> </div>
+            <div className='h-[1px] w-full bg-black'> </div>
 
             <div className='py-5 px-2 flex gap-2 justify-around'>
                 <div className='flex gap-2 items-center'>
@@ -91,7 +99,7 @@ const RentCard = ({r}) => {
                 <div className='flex items-center justify-center gap-2'>
                     <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
                     <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <FaMailBulk /> </button>
-                    <button onClick={() => window.location.href = 'https://api.whatsapp.com/send?phone=' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'> <FaWhatsapp /> </button>
+                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + phone, '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><FaWhatsapp /></button>
                 </div>
             </div>
         </div>

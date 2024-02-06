@@ -38,7 +38,7 @@ const BuyPost = () => {
     return (
         <div>
            <h1 className='text-2xl font-bold roboto'>Category</h1>
-                <div className='flex gap-5 my-4'>
+                <div className='flex gap-5 my-4 justify-center'>
                     {categories.map((category, index) => (
                             <button
                                 key={index}

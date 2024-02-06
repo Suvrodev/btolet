@@ -11,7 +11,7 @@ const Fatching = () => {
     return (
         <div>
                 <h1 className='my-2'>Faching</h1>
-            <div className="w-full">
+            <div className="w-full text-white">
                 <select 
                     value={selectedFaching} 
                     onChange={handleFachingChange}

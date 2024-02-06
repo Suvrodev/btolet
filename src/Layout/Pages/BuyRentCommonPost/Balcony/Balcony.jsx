@@ -12,7 +12,7 @@ const Balcony = () => {
     return (
              <div className=''>
                     <h1 className='my-2'>Balcony</h1>
-                    <div className="w-full">
+                    <div className="w-full text-white">
                         <select 
                             value={selectedBalcony} 
                             onChange={handleBalconyChange}
