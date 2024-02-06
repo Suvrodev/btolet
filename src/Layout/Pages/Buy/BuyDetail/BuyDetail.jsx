@@ -4,7 +4,7 @@ import './BuyDetail.css'
 import { useLocation, useParams } from 'react-router-dom';
 
 import locationColorImage from '../../../../assets/icons/home/map.svg'
-import { FaBath, FaBed, FaShare } from 'react-icons/fa';
+import { FaBath, FaBed, FaCheckCircle, FaShare } from 'react-icons/fa';
 import YouTube from 'react-youtube';
 import getYouTubeID from 'get-youtube-id';
 
@@ -13,6 +13,7 @@ import noImage from '../../../../assets/Image/NoImage.jpg'
 import BuySlider from './BuySlider/BuySlider';
 import BuyDescription from './BuyDescription/BuyDescription';
 import BuyMap from './BuyMap/BuyMap';
+import chekImage from '../../../../assets/icons/property/check.svg'
 
 const BuyDetail = () => {
     const {id}=useParams()
@@ -236,6 +237,9 @@ const BuyDetail = () => {
         }
        
     }
+
+
+    console.log("Amenities: ",amenities);
    
 
     return (
@@ -456,12 +460,15 @@ const BuyDetail = () => {
 
 
 
-            <div className='flex gap-10 text-xl'>
+            <div className='flex gap-10 my-4 '>
                 <div className='w-[60%]'>
-                    <div>
-
+                    <h1 className='text-xl font-bold'>Amenities: </h1>
+                    <div className='grid grid-cols-2'>
                         {
-                           
+                           amenities.map((a,idx) => <div key={idx} className='flex items-center gap-2'>
+                             <p><FaCheckCircle className=' text-green-600' /></p>
+                             <p>{a}</p>
+                            </div> )
                         }
 
                     </div>
@@ -469,6 +476,7 @@ const BuyDetail = () => {
                 </div>
 
                 <div className='w-[40%]'>
+                    <h1 className='text-xl font-bold'>Details: </h1>
                     <div className='w-[350px] grid grid-cols-2'>
                         <p>Type</p>
                         <p>{category}</p>

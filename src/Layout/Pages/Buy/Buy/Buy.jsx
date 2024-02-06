@@ -25,8 +25,9 @@ const Buy = () => {
   
       let lattitude=coordinates.latitude
       let longitude=coordinates.longitude
-    //   console.log(lattitude);
-    //   console.log(longitude);
+      
+      console.log("Lattitude: ",lattitude);
+      console.log("Longitude:",longitude);
 
 
       const [buys,setBuys]=useState([])
@@ -36,7 +37,7 @@ const Buy = () => {
           .then(data=>setBuys(data))
       },[])
   
-    //   console.log("Buy Data: ",buys);
+      console.log("Buy Data: ",buys);
 
 
     return (

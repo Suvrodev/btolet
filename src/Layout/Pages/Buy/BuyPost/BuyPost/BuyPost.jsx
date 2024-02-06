@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import HomeFlat from '../HomeFlat/HomeFlat';
 import Land from '../Land/Land';
 import BuyCommonPost from '../../../BuyRentCommonPost/BuyCommonPost/BuyCommonPost';
+import ShortAddress from '../../../BuyRentCommonPost/ShortAddress/ShortAddress';
+import Description from '../../../BuyRentCommonPost/Description/Description';
+import YourDetails from '../../../BuyRentCommonPost/Your Details/YourDetails';
 
 const BuyPost = () => {
     
@@ -52,6 +55,10 @@ const BuyPost = () => {
                 {
                     componentToRender
                 }
+
+                <ShortAddress></ShortAddress>
+                <Description></Description>
+                <YourDetails></YourDetails>
 
                {/* <BuyCommonPost></BuyCommonPost> */}
         </div>
