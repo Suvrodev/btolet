@@ -1,37 +1,43 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const BuyMap = ({lat,lon}) => {
+const BuyMap = ({geolat,geolon}) => {
 
-    console.log("Lat: ",lat);
-    console.log("Lon: ",lon);
+    console.log("geolat: ",geolat);
+    console.log("geolon: ",geolon);
 
-    const defaultProps = {
+    let defaultProps = {
         center: {
-          lat: 22.8023633,
-          lng: 89.55443
+          lat: 0,
+          lng: 0
         },
         zoom: 11
     };
 
-    if (!lat) {
-        if(!defaultProps){
-            return <span className="loading loading-spinner text-error"></span>;
-        }
-       
+    if(geolat){
+        defaultProps = {
+            center: {
+              lat: parseFloat(geolat),
+              lng: parseFloat(geolon)
+            },
+            zoom: 11
+        };
+    }
+    else{
+        return <span className="loading loading-spinner text-error"></span>;
     }
 
     return (
-        <div>
+        <div className='w-full h-[390px]'>
              {
-                lat ?
-                    <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyBvMWY8-16dqG7km0DEHFFKh39sD7tSw0g" }}
-                    defaultCenter={defaultProps.center}
-                    defaultZoom={defaultProps.zoom}
-                    text="My Marker"
-                    >
-                    </GoogleMapReact>:
+                geolat ?
+                <GoogleMapReact
+                bootstrapURLKeys={{ key: "AIzaSyBvMWY8-16dqG7km0DEHFFKh39sD7tSw0g" }}
+                defaultCenter={defaultProps.center}
+                defaultZoom={defaultProps.zoom}
+                text="My Marker"
+                >
+                </GoogleMapReact>:
                 <span className="loading loading-spinner text-error"></span>
             }
         </div>

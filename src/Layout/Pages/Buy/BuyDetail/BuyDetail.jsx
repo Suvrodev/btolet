@@ -178,15 +178,18 @@ const BuyDetail = () => {
     console.log("geolat: ",  geolat);
     console.log("geolon: ", geolon);
 
-     mLat=  parseFloat(geolat) 
-     mLon=  parseFloat(geolon) 
+    console.log("Type of geolat: ",  typeof(geolat));
+    console.log("Type of geolon: ", typeof(geolon));
 
-    console.log("mLat: ",  mLat);
-    console.log("mLon: ", mLon);
+    //  mLat=  parseFloat(geolat) 
+    //  mLon=  parseFloat(geolon) 
+
+    // console.log("mLat: ",  mLat);
+    // console.log("mLon: ", mLon);
 
 
-    console.log("Type of mLat: ",typeof(mLat));
-    console.log("Type of mLon: ",typeof(mLon));
+    // console.log("Type of mLat: ",typeof(mLat));
+    // console.log("Type of mLon: ",typeof(mLon));
 
   
     
@@ -201,8 +204,8 @@ const BuyDetail = () => {
     if(geolat){
         defaultProps = {
             center: {
-              lat: mLat,
-              lng: mLon
+              lat: parseFloat(geolat),
+              lng: parseFloat(geolon)
             },
             zoom: 11
         };
@@ -450,14 +453,12 @@ const BuyDetail = () => {
 
                 <div className=' w-[50%] h-[390px]'>
 
-                    This is Map
-    
-               
-                  
 
-                     {/* <BuyMap lat={lat} lon={lon}></BuyMap> */}
-                     {
-                       lat ?
+    
+            
+                  
+                     {/* {
+                        geolat ?
                         <GoogleMapReact
                         bootstrapURLKeys={{ key: "AIzaSyBvMWY8-16dqG7km0DEHFFKh39sD7tSw0g" }}
                         defaultCenter={defaultProps.center}
@@ -467,7 +468,10 @@ const BuyDetail = () => {
                         </GoogleMapReact>:
                         <span className="loading loading-spinner text-error"></span>
 
-                     }
+                     } */}
+
+
+                     <BuyMap geolat={geolat} geolon={geolon} ></BuyMap>
                 
                    
 
