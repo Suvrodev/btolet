@@ -15,6 +15,10 @@ import BuyDescription from './BuyDescription/BuyDescription';
 import BuyMap from './BuyMap/BuyMap';
 import chekImage from '../../../../assets/icons/property/check.svg'
 
+import BuyDetailsHomeData from './BuyDetailsHomeData/BuyDetailsHomeData';
+import BuyDetailsLandData from './BuyDetailsLandData/BuyDetailsLandData';
+import ContactButtons from './ContactButtons/ContactButtons';
+
 const BuyDetail = () => {
     const {id}=useParams()
     const currentLocation = useLocation(); // Get the location object
@@ -40,6 +44,8 @@ const BuyDetail = () => {
     const {pid,uid,amenities,area,balcony,bath,bed,category,description,dining,drawing,emi,facing,floor_plan,floornumber,geolat,geolon,image1,image2,image3,
         image4,image5,image6,image7,image8,image9,image10,image11,image12,kitchen,land_type,location,locationfull,measurement,name,ownertype,payment,price,
         procondition,road_size,sellfrom,shortaddress,size,status,time,top_ads,total_floor,total_unit,phone,wapp,yt_video}=allData
+
+        
 
       
 
@@ -74,8 +80,16 @@ const BuyDetail = () => {
       
           return () => clearInterval(interval);
         }, [time]);
+         ////Time End
+
+        //  console.log("Kochu Time: ",time);
+        //  console.log("Kochu Different: ",difference);
 
 
+
+
+
+        ////Sell From start
         let sellfrom_=new Date(sellfrom);
         const options = {
             day: 'numeric',
@@ -83,7 +97,8 @@ const BuyDetail = () => {
             year: 'numeric'
           };
          sellfrom_ = sellfrom_.toLocaleDateString('en-US', options);
-         ////Time End
+          ////Sell From start
+        
 
 
 
@@ -130,7 +145,7 @@ const BuyDetail = () => {
         //  console.log("Type of Images: ",typeof(imagesForSlider));
         //  console.log("Length of Image: ",imagesForSlider.length);
 
-        ///Set Image for Slider Start
+        ///Set Image for Slider End
 
 
 
@@ -144,8 +159,8 @@ const BuyDetail = () => {
     ///Youtube Video start
     
     const opts = {
-        height: '390',
-        width: '640',
+        height: '250',
+        width: '600',
         playerVars: {
           // https://developers.google.com/youtube/player_parameters
           autoplay: 0,
@@ -169,43 +184,6 @@ const BuyDetail = () => {
 
 
   ///Map Start
-
-    
-
-   
-    let mLat,mLon;
-    // let a= 22.8182591
-    // let b= 89.5519609
-    // console.log("geolat: ",  geolat);
-    // console.log("geolon: ", geolon);
-
-    // console.log("Type of geolat: ",  typeof(geolat));
-    // console.log("Type of geolon: ", typeof(geolon));
-
-    //  mLat=  parseFloat(geolat) 
-    //  mLon=  parseFloat(geolon) 
-
-    // console.log("mLat: ",  mLat);
-    // console.log("mLon: ", mLon);
-
-
-    // console.log("Type of mLat: ",typeof(mLat));
-    // console.log("Type of mLon: ",typeof(mLon));
-
-    console.log("Land Type: ",land_type);
-    console.log("Land Type Datatype: ",typeof(land_type));
-
-    // let dataArray = land_type
-
-    // if (dataString) {
-    //     try {
-    //         dataArray = JSON.parse(dataString);
-    //     } catch (error) {
-    //         console.error('Error parsing JSON:', error);
-    //     }
-    // }
-
-  
     
     let defaultProps = {
         center: {
@@ -231,58 +209,126 @@ const BuyDetail = () => {
     ///Map End
 
 
+   
+
+
+ 
+
+
+    ///////Important feature start
+    let bedBathImportant=[]
+    let roadSizeSotangso=[]
+    ///Bed Bath Start
+    if(bed){
+        bedBathImportant.push(bed)
+    }
+    if(bath){
+        bedBathImportant.push(bath)
+    }
+    if(kitchen){
+        bedBathImportant.push(kitchen)
+    }
+    if(dining){
+        bedBathImportant.push(dining)
+    }
+    if(drawing){
+        bedBathImportant.push(drawing)
+    }
+    if(balcony){
+        bedBathImportant.push(balcony)
+    }
+    if(size){
+        bedBathImportant.push(size)
+    }
+    if(facing){
+        bedBathImportant.push(facing)
+    }
+    if(total_floor){
+        bedBathImportant.push(total_floor)
+    }
+    if(floornumber){
+        bedBathImportant.push(floornumber)
+    }
+    if(total_unit){
+        bedBathImportant.push(total_unit)
+    }
+    if(emi){
+        bedBathImportant.push(emi)
+    }
+//    console.log("BedBath Important: ",bedBathImportant);
+    ///Bed Bath end
+
+
+    ///Road Size start
+    if(measurement){
+        roadSizeSotangso.push(measurement)
+    }
+    if(road_size){
+        roadSizeSotangso.push(road_size)
+    }
+    ///Road Size end
+
+    // console.log("roadSizeSotangso Important: ",roadSizeSotangso);
+
+    ///////Important feature end
+
+
+
+    //Loading Start
     if (!allData) {
         if(!defaultProps){
             return <span className="loading loading-spinner text-error"></span>;
         }
        
     }
-
-
-    console.log("Amenities: ",amenities);
+    //Loading End
    
 
     return (
         <div>
             Buy Detail: {id}
 
-            <div className='flex gap-4'>
-                <div className='w-[60%]'>
-                  {/* <img className='w-full h-[450px]'  src={`data:image/png;base64,${image1}`} alt="" /> */}
-                  <BuySlider imagesForSlider={imagesForSlider}></BuySlider>
+            <div className='flex gap-4 w-full h-[500px] '>
+                <div className='w-[60%] h-full'>
+                      {/* <img className='w-full h-[450px]'  src={`data:image/png;base64,${image1}`} alt="" /> */}
+                     <BuySlider imagesForSlider={imagesForSlider}></BuySlider>
                 </div>
-                <div className='w-[40%] h-[450px] flex flex-col '>
+                <div className='w-[40%] h-full flex flex-col bg-green-600 '>
                    
+                   {
+                    floor_plan &&
                     <div className='relative h-[50%] bg-red-500'>
-                       {
+                        {
                         floor_plan?
-                         <>
-                             <h1 className='absolute middle font-bold text-xl text-black bg-white p-2 rounded-md opacity-30'>Floor Plan</h1>
-                             <img className='w-full h-full'  src={`data:image/png;base64,${floor_plan}`} alt="" />
-                         </>:
-                         <> 
+                        <>
+                            <h1 className='absolute middle font-bold text-xl text-black bg-white p-2 rounded-md opacity-30'>Floor Plan</h1>
+                            <img className='w-full h-full'  src={`data:image/png;base64,${floor_plan}`} alt="" />
+                        </>:
+                        <> 
                             <img className='w-full h-full' src={noImage} alt="" />
-                         </>
-                       }
+                        </>
+                        }
                     </div>
+                   }
 
-                    <div className='h-[50%] bg-green-500'>
-                        Map
+                    <div className={` ${floor_plan?'h-[50%]':'h-full'} `}>
+                      <BuyMap geolat={geolat} geolon={geolon} ></BuyMap>
                     </div>
                 </div>
             </div>
 
             <div className='flex justify-between items-center my-4'>
-                <div className='text-xl font-bold'>
+                 <div className='text-xl font-bold'>
                     {price? <span className='font-bold '>Take : <span className=''>{price}</span> </span> :'Price On Call'}
                 </div>
-                <div className=' flex gap-4 items-center'>
-                  <button className=' btn btn-success'>Call</button>  
-                  <button className=' btn btn-success'>Whatsapp</button>  
-                  <button className=' btn btn-success'>Message</button>  
-                  <FaShare/>
+
+                <div className='flex gap-4 items-center'>
+                    <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
+                    <FaShare/>
                 </div>
             </div>
+
+           {/* <TkAndShare phone={phone} wapp={wapp} price={price}></TkAndShare> */}
 
 
 
@@ -302,189 +348,79 @@ const BuyDetail = () => {
 
 
             {/* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */}
-            {
-                category==='House' &&
-                <div className='box'>
-                {/* flex flex-col gap-4 */}
-              
-                    <div className='itemBox1'>
-                         {/* w-[40px] h-[40px] bg-gray-400 rounded-full flex items-center justify-center */}
-                        <div className='iconDiv'>
-                            <FaBed/>
-                        </div>
-                        {/* flex flex-col items-center justify-center w-[40px] h-[40px] */}
-                        <div className='itemBox2'>
-                            <p>Beds</p>
-                            <p>{bed}</p>
-                        </div>
+           <div className='flex  gap-20'>
+                <div className='w-[50%]'>
+                {
+                     (category === 'House' || category === 'Flat') ? (
+                    <div className='box'>
+                        {
+                            bedBathImportant.map((b,idx)=> <BuyDetailsHomeData key={idx} b={b} num={idx}></BuyDetailsHomeData> )
+                        }
+                      
                     </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Bath</p>
-                            <p>{bath}</p>
-                        </div>
-                    </div>
+                    ):(
+                      <div className='box2'>
+                        {
+                            roadSizeSotangso.map((b,idx)=> <BuyDetailsLandData key={idx} b={b} num={idx} area={area}></BuyDetailsLandData> )
+                        }
+                      
+                      </div>
+                    )
                     
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Kitchen</p>
-                            <p>{kitchen}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Dining</p>
-                            <p>{dining}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Drawing</p>
-                            <p>{drawing}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Balcony</p>
-                            <p>{balcony}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Size</p>
-                            <p>{size}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Facing</p>
-                            <p>{facing}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Total Floor</p>
-                            <p>{total_floor}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Floor No</p>
-                            <p>{floornumber}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Total Unit</p>
-                            <p>{total_unit}</p>
-                        </div>
-                    </div>
-    
-                    <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>EMI</p>
-                            <p>{emi}</p>
-                        </div>
-                    </div>
-                
+                }
                 </div>
 
-            }
+                <div className='w-[50%]  p-5 flex flex-col gap-4'>
+                     <div>
+                        <h1 className='text-xl font-bold mb-5'>Amenities: </h1>
+                        <div className='grid grid-cols-2'>
+                            {
+                            amenities.map((a,idx) => <div key={idx} className='flex items-center gap-2'>
+                                <p><FaCheckCircle className=' text-green-600' /></p>
+                                <p>{a}</p>
+                                </div> )
+                            }
+
+                        </div>
+                     </div>
+                     <div className={land_type.length<1?'hidden':''}>
+                        <h1 className='font-bold'>Land Type:</h1>
+                        <div className='flex gap-4 my-4'>
+                            {
+                                land_type.map((lt,idx)=> <p key={idx} className='border-2 border-blue-500 p-2 rounded-md'>{lt}</p> )
+                            }
+                        </div>
+                     </div>
+                </div>
+           </div>
           
 
-            {
-                category==='Land' &&
-                <div className='box'>
-                      <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
+           
+
+
+            <div className='flex gap-10 my-10  justify-end '>
+                <div className='w-[30%]'>
+                     <h1 className='text-xl font-bold'>Details: </h1>
+                     {
+                        name && 
+                        <div className='w-[350px] grid grid-cols-2'>
+                            <p>Name</p>
+                            <p>{name}</p>
                         </div>
-                        <div className='itemBox2'>
-                            <p>{area}</p>
-                            <p>{measurement}</p>
-                        </div>
-                    </div>
-                      <div className='itemBox1'>
-                        <div className='iconDiv'>
-                            <FaBath/>
-                        </div>
-                        <div className='itemBox2'>
-                            <p>Road Size</p>
-                            <p>{road_size}</p>
-                        </div>
-                    </div>
-                </div>
-            }
-
-
-
-            <div className='flex gap-10 my-4 '>
-                <div className='w-[60%]'>
-                    <h1 className='text-xl font-bold'>Amenities: </h1>
-                    <div className='grid grid-cols-2'>
-                        {
-                           amenities.map((a,idx) => <div key={idx} className='flex items-center gap-2'>
-                             <p><FaCheckCircle className=' text-green-600' /></p>
-                             <p>{a}</p>
-                            </div> )
-                        }
-
-                    </div>
-
-                </div>
-
-                <div className='w-[40%]'>
-                    <h1 className='text-xl font-bold'>Details: </h1>
+                     }
+                   
                     <div className='w-[350px] grid grid-cols-2'>
                         <p>Type</p>
                         <p>{category}</p>
                     </div>
-                    <div className='w-[350px] grid grid-cols-2'>
-                        <p>condition</p>
-                        <p>{procondition}</p>
-                    </div>
+                    {
+                        procondition &&
+                        <div className='w-[350px] grid grid-cols-2'>
+                            <p>condition</p>
+                            <p>{procondition}</p>
+                        </div>
+                    }
+                    
                     <div className='w-[350px] grid grid-cols-2'>
                         <p>Available from</p>
                         <p>{sellfrom_}</p>
@@ -493,44 +429,17 @@ const BuyDetail = () => {
                         <p>Position By</p>
                         <p>{ownertype}</p>
                     </div>
-              </div>
-            </div>
 
+                </div>
 
-            <div className='my-4 flex gap-4'>
-                <div className='w-[50%]'>
+                <div className='w-[70%] flex justify-end '>
                      {
                         ytId &&
                         <YouTube videoId={ytId} opts={opts}  />
                      }
-                </div>
-
-                <div className=' w-[50%] h-[390px]'>
-
-
-    
-            
-                  
-                     {/* {
-                        geolat ?
-                        <GoogleMapReact
-                        bootstrapURLKeys={{ key: "AIzaSyBvMWY8-16dqG7km0DEHFFKh39sD7tSw0g" }}
-                        defaultCenter={defaultProps.center}
-                        defaultZoom={defaultProps.zoom}
-                        text="My Marker"
-                        >
-                        </GoogleMapReact>:
-                        <span className="loading loading-spinner text-error"></span>
-
-                     } */}
-
-
-                     <BuyMap geolat={geolat} geolon={geolon} ></BuyMap>
-                
-                   
-
-                </div>
+              </div>
             </div>
+
 
             <div>
                 <BuyDescription description={description}></BuyDescription>

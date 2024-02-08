@@ -8,7 +8,21 @@
     grid-template-columns: repeat(6,1fr);
     grid-row-gap: 30px;
     place-items: center;
-    width: fit-content;
+    /* width: fit-content; */
+
+}
+
+.box2{
+    /* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */
+    margin: 4px 0 4px 0;
+    border: 2px solid gray;
+    border-radius: 15px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-row-gap: 30px;
+    place-items: center;
+    /* width: fit-content; */
 
 }
 .itemBox1{

@@ -58,6 +58,9 @@ const BuyCard = ({buy}) => {
       }
 
 
+     
+
+
     return (
         <div className='flex flex-col relative border  rounded-md'>
           

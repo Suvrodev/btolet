@@ -86,6 +86,7 @@ const HomeFlat = () => {
             </div>
 
 
+             {/* Drawing Dining Start */}
             <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
                     <Drawing></Drawing>
@@ -94,11 +95,12 @@ const HomeFlat = () => {
                     <Dining></Dining>
                 </div>
             </div>
+             {/* Drawing Dining End */}
 
           
 
 
-            {/* Dining Kitchen Start */}
+            {/* Balcony Kitchen Start */}
             <div className='flex flex-col md:flex-row gap-10'>
                <div className='w-full md:w-[50%]'>
                  <Balcony></Balcony>
@@ -107,7 +109,7 @@ const HomeFlat = () => {
                  <Kitchen></Kitchen>
                </div>
             </div>
-            {/* Dining Kitchen Start */}
+            {/* Balcony Kitchen Start */}
 
 
              {/* Faching Date Start */}

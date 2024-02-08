@@ -28,7 +28,7 @@ const BuyMap = ({geolat,geolon}) => {
     }
 
     return (
-        <div className='w-full h-[390px]'>
+        <div className='w-full h-full'>
              {
                 geolat ?
                 <GoogleMapReact

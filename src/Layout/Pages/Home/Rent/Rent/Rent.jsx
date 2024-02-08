@@ -29,8 +29,8 @@ const Rent = () => {
 
     let lattitude=coordinates.latitude
     let longitude=coordinates.longitude
-    console.log(lattitude);6
-    console.log(longitude);
+    // console.log("Lattitude: ",lattitude);
+    // console.log("Longitude: ",longitude);
 
 
     const [rents,setRents]=useState([])

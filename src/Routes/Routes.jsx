@@ -11,6 +11,7 @@ import Login from "../Layout/Pages/UserResponsibility/Login/Login";
 import RentDetail from "../Layout/Pages/Home/Rent/RentDetail/RentDetail";
 import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
 import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
+import UpdateUser from "../Layout/Pages/UserResponsibility/UpdateUser/UpdateUser";
 
 
   const router = createBrowserRouter([
@@ -51,6 +52,10 @@ import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
           path: 'rentdetail/:id',
           element: <RentDetail></RentDetail>
         },
+        {
+          path: '/updateuser',
+          element: <UpdateUser></UpdateUser>
+        }
       ]
     },
   ]);
