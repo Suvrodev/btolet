@@ -12,6 +12,7 @@ import RentDetail from "../Layout/Pages/Home/Rent/RentDetail/RentDetail";
 import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
 import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
 import UpdateUser from "../Layout/Pages/UserResponsibility/UpdateUser/UpdateUser";
+import UpdateProfile from "../Layout/Pages/UserResponsibility/UpdateProfile/UpdateProfile";
 
 
   const router = createBrowserRouter([
@@ -55,6 +56,10 @@ import UpdateUser from "../Layout/Pages/UserResponsibility/UpdateUser/UpdateUser
         {
           path: '/updateuser',
           element: <UpdateUser></UpdateUser>
+        },
+        {
+          path: '/updateprofile',
+          element: <UpdateProfile></UpdateProfile>
         }
       ]
     },
