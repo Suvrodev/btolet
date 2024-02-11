@@ -1,44 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { FaBath, FaBed, FaBeer, FaChartArea, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaShare, FaWhatsapp } from "react-icons/fa";
+import React, { useContext, useEffect, useState } from 'react';
+import { FaBath, FaBed, FaBeer, FaChartArea, FaHeart, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaRegHeart, FaShare, FaWhatsapp } from "react-icons/fa";
 
 
 import locationImage from '../../../../assets/downloadedIcon/location.svg'
 import shareImage from '../../../../assets/downloadedIcon/share.svg'
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../Providers/AuthProvider';
+import calculateTimeAgo from '../../../../Function/TimeAgo';
 
 const BuyCard = ({buy}) => {
-    // console.log(buy);
+
+   const {uId,successfullMessage}=useContext(AuthContext)
+    console.log(buy);
     const {pid,image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category,geolat,geolon}=buy
 
     const naviagte=useNavigate()
 
-    const [timeAgo, setTimeAgo] = useState('');
-    useEffect(() => {
-        const calculateTimeAgo = () => {
-          const currentTime = new Date();
-          const pastTime = new Date(time);
-          const timeDifference = currentTime - pastTime;
+     const [timeAgo, setTimeAgo] = useState('');
+    // useEffect(() => {
+    //     const calculateTimeAgo = () => {
+    //       const currentTime = new Date();
+    //       const pastTime = new Date(time);
+    //       const timeDifference = currentTime - pastTime;
           
-          const seconds = Math.floor(timeDifference / 1000);
-          const minutes = Math.floor(seconds / 60);
-          const hours = Math.floor(minutes / 60);
-          const days = Math.floor(hours / 24);
+    //       const seconds = Math.floor(timeDifference / 1000);
+    //       const minutes = Math.floor(seconds / 60);
+    //       const hours = Math.floor(minutes / 60);
+    //       const days = Math.floor(hours / 24);
           
-          if (days > 0) {
-            setTimeAgo(`${days} day${days === 1 ? '' : 's'} ago`);
-          } else if (hours > 0) {
-            setTimeAgo(`${hours} hour${hours === 1 ? '' : 's'} ago`);
-          } else if (minutes > 0) {
-            setTimeAgo(`${minutes} minute${minutes === 1 ? '' : 's'} ago`);
-          } else {
-            setTimeAgo(`${seconds} second${seconds === 1 ? '' : 's'} ago`);
-          }
-        };
+    //       if (days > 0) {
+    //         setTimeAgo(`${days} day${days === 1 ? '' : 's'} ago`);
+    //       } else if (hours > 0) {
+    //         setTimeAgo(`${hours} hour${hours === 1 ? '' : 's'} ago`);
+    //       } else if (minutes > 0) {
+    //         setTimeAgo(`${minutes} minute${minutes === 1 ? '' : 's'} ago`);
+    //       } else {
+    //         setTimeAgo(`${seconds} second${seconds === 1 ? '' : 's'} ago`);
+    //       }
+    //     };
     
-        const interval = setInterval(calculateTimeAgo, 1000);
+    //     const interval = setInterval(calculateTimeAgo, 1000);
     
-        return () => clearInterval(interval);
-      }, [time]);
+    //     return () => clearInterval(interval);
+    //   }, [time]);
+
+    useEffect(()=>{
+      setTimeAgo(calculateTimeAgo(time))
+    },[time])
+
+
 
       const handleshare=async()=>{
         try {
@@ -50,6 +60,10 @@ const BuyCard = ({buy}) => {
       }
 
 
+
+    
+
+
       const goinDetail=(pid,lat,lon)=>{
        
           console.log("Lattitudde: ",lat);
@@ -58,23 +72,97 @@ const BuyCard = ({buy}) => {
       }
 
 
+
+      const saveInfo={
+        "uid": uId,
+        "pid":pid,
+        "status":true
+      }
+
+      const unSaveInfo={
+          "uid": uId,
+          "pid":pid,
+          "status":false
+      }
+
+
+      const [save,setSave]=useState(false)
+      const handleSave=()=>{
+        console.log("Blue chilo Save korbo");
+
+        if(uId){
+          fetch(`http://154.26.135.41:3800/api/pro/save/post`,{
+            method: 'POST',
+              headers: {
+                  'content-type':'application/json'
+              },
+              body: JSON.stringify(saveInfo)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+               if(data){
+                successfullMessage("Saved Successfully")
+               }
+            })
+        }
+        setSave(!save)
+      }
+     
+
+      const handleUnSave=()=>{
+        console.log("Red Chilo UnSave korbo");
+        if(uId){
+          fetch(`http://154.26.135.41:3800/api/pro/save/post`,{
+            method: 'POST',
+              headers: {
+                  'content-type':'application/json'
+              },
+              body: JSON.stringify(unSaveInfo)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+               if(data){
+                successfullMessage("Saved Successfully")
+               }
+            })
+        }
+          setSave(!save)
+      }
+
+
      
 
 
     return (
-        <div className='flex flex-col relative border  rounded-md'>
+        <div className='flex flex-col relative border  rounded-md h-[550px]'>
           
 
            
-
+            {/* Image Box Start */}
             <div className='relative'>
               <img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
+
+
+              {/* Save UnSave Delete Start */}
+              <div className='absolute top-5 right-[60px] '>
+               <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                  {
+                    save==true ?
+                    <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
+                    <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
+                   
+                  }
+                  
+               </p>
+             </div >
+              {/* Save UnSave Delete End */}
+
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
                   <FaShare onClick={handleshare} className='text-white'/>
                </p>
-            </div >
+             </div >
 
                 <div className='absolute bottom-2 right-10'>
                     <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
@@ -82,27 +170,41 @@ const BuyCard = ({buy}) => {
                     </p>
                 </div>
             </div>
+            {/* Image Box End */}
+
        
-            <div className='py-5 px-4'>
+            <div className='py-5 px-4 bg-red-600 h-[250px]'>
                <p className='roboto font-bold text-xl'>{category}</p>
-                {   {price}? <p className='text-4xl font-bold text-black'> ৳ {price} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
+                 {price!=0? <p className='text-4xl font-bold text-black'> ৳ {price} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
                     <FaMapMarkerAlt />
                     <span>{location}</span>
                 </p>
             </div>
-            <div className='p-5 flex gap-3'>
-                <div className='flex items-center  gap-2 roboto'>
-                    <FaBed/> {bed}
-                </div>
-                <div className='flex items-center  gap-2'>
-                    <FaBath/> {bed}
-                </div>
-                <div className='flex items-center  gap-2'>
-                      <FaChartArea /> {size}
-                </div>
 
+            <div className='h-50px] bg-yellow-300'>
+              {
+                category=='Flat' || category=='House'?
+                <div>
+                    <div className='p-5 flex gap-3'>
+                        <div className='flex items-center  gap-2 roboto'>
+                            <FaBed/> {bed}
+                        </div>
+                        <div className='flex items-center  gap-2'>
+                            <FaBath/> {bed}
+                        </div>
+                        <div className='flex items-center  gap-2'>
+                              <FaChartArea /> {size}
+                        </div>
+                    </div>
+                </div>:
+                <div className='flex gap-2 p-4'>
+                  <p>{measurement}</p>
+                  <p>{area}</p>
+                </div>
+              }
             </div>
+          
 
             <div className='h-[1px] w-full bg-white'> </div>
 

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
+    "axios": "^1.6.7",
     "get-youtube-id": "^1.0.1",
     "google-map-react": "^2.2.1",
     "jwt-decode": "^4.0.0",
@@ -28,6 +29,8 @@
     "react-img-zoom-afork": "^0.1.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.22.0",
+    "react-slider": "^2.0.6",
+    "react-tabs": "^6.0.2",
     "react-youtube": "^10.1.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.10.5",

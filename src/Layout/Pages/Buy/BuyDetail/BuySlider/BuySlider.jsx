@@ -16,7 +16,7 @@ import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 const BuySlider = ({imagesForSlider}) => {
     // console.log("All Images: ",imagesForSlider);
     return (
-        <div className='h-full'>
+        <div className='h-full'>                     
            <Swiper
                 spaceBetween={30}
                 effect={'fade'}

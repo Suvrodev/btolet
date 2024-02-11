@@ -11,8 +11,11 @@ import Login from "../Layout/Pages/UserResponsibility/Login/Login";
 import RentDetail from "../Layout/Pages/Home/Rent/RentDetail/RentDetail";
 import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
 import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
-import UpdateUser from "../Layout/Pages/UserResponsibility/UpdateUser/UpdateUser";
 import UpdateProfile from "../Layout/Pages/UserResponsibility/UpdateProfile/UpdateProfile";
+import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
+import Filter from "../Layout/Pages/Home/Filter/Filter";
+import SavedPost from "../Layout/Pages/UserResponsibility/SavedPost/SavedPost/SavedPost";
+import MyPost from "../Layout/Pages/UserResponsibility/MyPost/MyPost/MyPost";
 
 
   const router = createBrowserRouter([
@@ -54,12 +57,24 @@ import UpdateProfile from "../Layout/Pages/UserResponsibility/UpdateProfile/Upda
           element: <RentDetail></RentDetail>
         },
         {
-          path: '/updateuser',
-          element: <UpdateUser></UpdateUser>
+          path: '/check',
+          element: <Checki></Checki>
         },
         {
           path: '/updateprofile',
           element: <UpdateProfile></UpdateProfile>
+        },
+        {
+          path:'/savedpost',
+          element: <SavedPost></SavedPost>
+        },
+        {
+          path: '/mypost',
+          element: <MyPost></MyPost>
+        },
+        {
+          path: '/filter',
+          element: <Filter></Filter>
         }
       ]
     },

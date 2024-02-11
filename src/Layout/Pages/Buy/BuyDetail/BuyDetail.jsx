@@ -18,6 +18,7 @@ import chekImage from '../../../../assets/icons/property/check.svg'
 import BuyDetailsHomeData from './BuyDetailsHomeData/BuyDetailsHomeData';
 import BuyDetailsLandData from './BuyDetailsLandData/BuyDetailsLandData';
 import ContactButtons from './ContactButtons/ContactButtons';
+import BuyCard from '../BuyCard/BuyCard';
 
 const BuyDetail = () => {
     const {id}=useParams()
@@ -84,6 +85,34 @@ const BuyDetail = () => {
 
         //  console.log("Kochu Time: ",time);
         //  console.log("Kochu Different: ",difference);
+
+
+          ////Buy More Post Start
+        const rentMorePostInfo={
+            postid:pid,
+            category: category,
+            page:1,
+            geolat,
+            geolon
+        }
+        const [moreBuyPost,setMoreBuyPost]=useState([])
+        useEffect(()=>{
+            if(geolat && geolon){
+            fetch(`http://154.26.135.41:3800/api/pro/more/post`,{
+                method: 'POST',
+                headers: {
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify(rentMorePostInfo)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    setMoreBuyPost(data)
+                })
+            }
+        },[geolat,geolon])
+        console.log("More Buy: ",moreBuyPost);
+        ////Buy More Post End
 
 
 
@@ -297,15 +326,15 @@ const BuyDetail = () => {
                    
                    {
                     floor_plan &&
-                    <div className='relative h-[50%] bg-red-500'>
+                    <div className='relative h-[50%] bg-red-500 z-10'>
                         {
                         floor_plan?
                         <>
                             <h1 className='absolute middle font-bold text-xl text-black bg-white p-2 rounded-md opacity-30'>Floor Plan</h1>
-                            <img className='w-full h-full'  src={`data:image/png;base64,${floor_plan}`} alt="" />
+                            <img className='w-full h-full phaseImage z-20'  src={`data:image/png;base64,${floor_plan}`} alt="" />
                         </>:
                         <> 
-                            <img className='w-full h-full' src={noImage} alt="" />
+                            <img className='w-full h-full phaseImage z-20' src={noImage} alt="" />
                         </>
                         }
                     </div>
@@ -443,6 +472,16 @@ const BuyDetail = () => {
 
             <div>
                 <BuyDescription description={description}></BuyDescription>
+            </div>
+
+            <div>
+              <h1 className='text-2xl font-bold'>More Post</h1>
+              <div className='grid  grid-cols-4 gap-5'>
+                  {
+                    moreBuyPost &&
+                    moreBuyPost.map((buy,idx)=> <BuyCard key={idx} buy={buy}></BuyCard> )
+                  }
+              </div>
             </div>
            
         </div>

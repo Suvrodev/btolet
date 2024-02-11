@@ -7,6 +7,7 @@ import locationColorImage from '../../../../../assets/icons/home/map.svg'
 import RentDetailsNumber from './RentDetailsNumber/RentDetailsNumber';
 import BuyDescription from '../../../Buy/BuyDetail/BuyDescription/BuyDescription';
 import ContactButtons from '../../../Buy/BuyDetail/ContactButtons/ContactButtons';
+import RentCard from '../RentCard/RentCard';
 
 
 const RentDetail = () => {
@@ -61,7 +62,40 @@ const RentDetail = () => {
        ////Time End
 
     //    console.log("Kochu Time: ",time);
-    //    console.log("Kochu Different: ",difference);   
+    //    console.log("Kochu Different: ",difference);  
+    
+    
+
+     ////More Post Rent Start
+     const rentMorePostInfo={
+      postid:post_id,
+      category: category,
+      page:1,
+      geolat,
+      geolon
+    }
+    const [moreRentPost,setMoreRentPost]=useState([])
+    useEffect(()=>{
+      if(geolat && geolon){
+        fetch(`http://154.26.135.41:3800/api/tolet/more/post`,{
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(rentMorePostInfo)
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            setMoreRentPost(data)
+          })
+      }
+    },[geolat,geolon])
+    console.log("More rent: ",moreRentPost);
+    ////More Post Rent End
+
+
+
+
 
       ///Set Image for Slider Start
       let imagesForSlider=[];
@@ -244,7 +278,11 @@ const RentDetail = () => {
   //    console.log(" Important: ",bedBathImportant);
       ///Bed Bath end
 
-      console.log("Fasalities Type: ",typeof(fasalitis));
+      // console.log("Fasalities Type: ",typeof(fasalitis));
+
+
+     
+      
 
 
     if (!allData) {
@@ -258,6 +296,7 @@ const RentDetail = () => {
     return (
         <div>
             Rent Detail: {id}
+            <h1 className='text-2xl font-bold text-center mb-4'>Rent Page</h1>
             <div className='flex gap-4 w-full h-[500px] '>
                     <div className='w-[60%] h-full'>
                         {/* <img className='w-full h-[450px]'  src={`data:image/png;base64,${image1}`} alt="" /> */}
@@ -305,6 +344,17 @@ const RentDetail = () => {
 
             <div>
                 <BuyDescription description={description}></BuyDescription>
+            </div>
+
+
+            <div>
+              <h1 className='text-2xl font-bold'>More Post</h1>
+              <div className='grid  grid-cols-4 gap-5'>
+                  {
+                    moreRentPost &&
+                    moreRentPost.map((r,idx)=> <RentCard key={idx} r={r}></RentCard> )
+                  }
+              </div>
             </div>
            
 

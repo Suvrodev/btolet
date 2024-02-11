@@ -37,7 +37,7 @@ const Header = () => {
             <div className='hidden  w-full h-[75px] border-4 p-5 md:flex items-center justify-end '>
                     <div className='w-[70%] flex justify-start items-center gap-10'>
                         <div className='flex gap-5 items-center '>
-                          <img className='w-[50px] h-[50px]' src={headerLogo} alt="" />
+                          <Link to='/'><img className='w-[50px] h-[50px]' src={headerLogo} alt="" /></Link>
                           <h1 className='h-[50px] text-4xl font-bold my-auto'>B2Let</h1>
                         </div>
                         <div className='text-lg flex gap-5 items-center'>
@@ -55,8 +55,8 @@ const Header = () => {
                             <div className={`w-[250px] border-2 absolute top-14 right-0 bg-green-500 rounded-md p-5 z-10 ${profileBox?'':'hidden'}`}>
                               <div className='flex flex-col gap-4'>
                                   <Link to='/updateprofile'>Profile</Link>
-                                  <Link to=''>Saved</Link>
-                                  <Link to=''>My Post</Link>
+                                  <Link to='/savedpost'>Saved</Link>
+                                  <Link to='/mypost'>My Post</Link>
                                   <Link to=''>FeedBack</Link>
                                   <p className='h-[1px] bg-black mt-4 mb-2'></p>
                                   <Link to=''>Terms And Condition</Link>

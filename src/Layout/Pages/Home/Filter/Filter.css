@@ -1,0 +1,36 @@
+.horizontal-slider{
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 500px;
+    height: 20px;
+    border: 1px solid gray;
+    background-color: purple;
+    border-radius: 10px;
+}
+.horizontal-slider .example-track{
+    top: -1px;
+    height: 20px;
+    border-radius: 10px;
+
+}
+.horizontal-slider .example-track-0{
+   background-color: purple;
+}
+.horizontal-slider .example-track-1{
+    background-color: red;
+}
+
+.horizontal-slider .example-thumb{
+    top: 1;
+    width: 50px;
+    height: 48px;
+    line-height: 38px;
+    font-size: 0.9em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: 5px solid silver;
+    box-sizing: border-box;
+    margin-top: -50px;
+}
