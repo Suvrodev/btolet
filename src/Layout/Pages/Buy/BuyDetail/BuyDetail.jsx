@@ -449,15 +449,32 @@ const BuyDetail = () => {
                             <p>{procondition}</p>
                         </div>
                     }
+                   
+                    {
+                        sellfrom_ &&
+                        <div className='w-[350px] grid grid-cols-2'>
+                            <p>Available from</p>
+                            <p>{sellfrom_}</p>
+                        </div>
+                    }
                     
-                    <div className='w-[350px] grid grid-cols-2'>
-                        <p>Available from</p>
-                        <p>{sellfrom_}</p>
-                    </div>
-                    <div className='w-[350px] grid grid-cols-2'>
-                        <p>Position By</p>
-                        <p>{ownertype}</p>
-                    </div>
+
+                    {
+                        shortaddress &&
+                        <div className='w-[350px] grid grid-cols-2'>
+                            <p>Short Address</p>
+                            <p>{shortaddress}</p>
+                        </div>
+                    }
+
+                    {
+                        ownertype &&
+                        <div className='w-[350px] grid grid-cols-2'>
+                            <p>Position By</p>
+                            <p>{ownertype}</p>
+                         </div>
+                    }
+                   
 
                 </div>
 

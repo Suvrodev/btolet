@@ -10,12 +10,11 @@ const GarageType = () => {
     };
     return (
         <div>
-            <h1 className='my-2'>Garage Type</h1>
             <div className="w-full text-white">
                 <select 
                     value={selectedgarageType} 
                     onChange={handleGarageTypeChange}
-                    className=" w-[80%] p-2 border rounded shadow-sm"
+                    className=" w-full  input input-bordered"
                 >
                     <option value="" disabled>Select</option>
                     {garageTypes.map((option, index) => (

@@ -11,7 +11,6 @@ const EMI = () => {
 
     return (
         <div>
-             <h1>EMI</h1>
           <div className='flex gap-5 my-5'>
                   {emis.map((emi, index) => (
                           <button

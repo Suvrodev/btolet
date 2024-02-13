@@ -11,7 +11,6 @@ const Drawing = () => {
 
     return (
         <div>
-            <h1>Drawing*</h1>
              <div className='flex gap-5 my-5'>
                     {drawings.map((drawing, index) => (
                             <button

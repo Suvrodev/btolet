@@ -24,31 +24,6 @@ const HomeFlat = () => {
 
    
 
-
-   
-
-
-   
-
-
-    // Dining Start
-
-   
-    // Dining Start
-
-
-  
-
-    ///Fachings Start
-   
-    ///Fachings End
-
-
-    ///Date Start
-  
-    ///Date End
-
-
     ///Price Start
     const [priceBox,setPriceBox]=useState(false)
     const prices=["Price","Price On Call"]
@@ -72,15 +47,23 @@ const HomeFlat = () => {
     return (
         <div className='my-6'>
             <div className='flex flex-col md:flex-row gap-10'>
-                <div className='w-full md:w-full md:w-[50%]'> <PropertyName></PropertyName></div>
-                <div className='w-full md:w-full md:w-[50%]'><PropertyTypes></PropertyTypes></div>
+                <div className='w-full md:w-full '>
+                      <h1>Property Name</h1>
+                     <PropertyName></PropertyName>
+                </div>
+                <div className='w-full md:w-full'>
+                   <h1>Property Type</h1>
+                    <PropertyTypes></PropertyTypes>
+                </div>
             </div>
 
             <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
+                    <h1>Bedroom</h1>
                      <BedRooms></BedRooms>
                 </div>
                 <div className='w-full md:w-[50%]'>
+                     <h1>Bathroom</h1>
                     <BathRoom></BathRoom>
                 </div>
             </div>
@@ -89,9 +72,11 @@ const HomeFlat = () => {
              {/* Drawing Dining Start */}
             <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
+                   <h1>Drawing</h1>
                     <Drawing></Drawing>
                 </div>
                 <div className='w-full md:w-[50%]'>
+                     <h1>Dining</h1>
                     <Dining></Dining>
                 </div>
             </div>
@@ -103,9 +88,11 @@ const HomeFlat = () => {
             {/* Balcony Kitchen Start */}
             <div className='flex flex-col md:flex-row gap-10'>
                <div className='w-full md:w-[50%]'>
+                <h1>Balcony</h1>
                  <Balcony></Balcony>
                </div>
                <div className='w-full md:w-[50%]'>
+                <h1>Kitchen</h1>
                  <Kitchen></Kitchen>
                </div>
             </div>
@@ -115,11 +102,12 @@ const HomeFlat = () => {
              {/* Faching Date Start */}
              <div className='flex flex-col md:flex-row gap-10'>
                  <div className='w-full md:w-[50%]'>
+                     <h1>Faching</h1>
                      <Fatching></Fatching>
                  </div>
                 
                 <div className='w-full md:w-[50%]'>
-                    <h1 className='my-2'>Rent From</h1>
+                    <h1 className=''>Rent From</h1>
                     <Date></Date>
                 </div>
             </div>
@@ -129,10 +117,12 @@ const HomeFlat = () => {
              {/*Total floor Floor Number Start */}
              <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
+                    <h1>Total Floor</h1>
                    <TotalFloor></TotalFloor>
                 </div>
               
                <div className='w-full md:w-[50%]'>
+                  <h1>Floor Number:</h1>
                   <FloorNumber></FloorNumber>
                </div>
             </div>
@@ -142,11 +132,13 @@ const HomeFlat = () => {
             <div className='flex flex-col md:flex-row gap-10'>
     
                 <div className='w-full md:w-[50%]'>
+                    <h1>Floor Size</h1>
                     <TotalSize></TotalSize>
                 </div>
            
 
                 <div className='w-full md:w-[50%]'>
+                    <h1>Total Unit</h1>
                     <TotalUnit></TotalUnit>
                 </div>
     
@@ -161,6 +153,7 @@ const HomeFlat = () => {
              </div>
 
              <div className='w-full md:w-[50%]'>
+                 <h1>EMI</h1>
                   <EMI></EMI>
              </div>
         </div>

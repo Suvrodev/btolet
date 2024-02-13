@@ -14,7 +14,6 @@ const BedRooms = () => {
 
     return (
         <div>
-             <h1>Bedroom*</h1>
             <div className='flex gap-5 my-5'>
                     {bedrooms.map((bedroom, index) => (
                             <button

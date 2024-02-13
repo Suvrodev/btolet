@@ -14,12 +14,11 @@ const Kitchen = () => {
 
     return (
         <div>
-            <h1 className='my-2'>Kitchen</h1>
             <div className="w-full text-white">
                 <select 
                     value={selectedKitchen} 
                     onChange={handleKitchenChange}
-                    className=" w-[80%] p-2 border rounded shadow-sm"
+                    className=" w-full p-2 input input-bordered"
                 >
                     <option value="" disabled>Select</option>
                     {kitchens.map((option, index) => (

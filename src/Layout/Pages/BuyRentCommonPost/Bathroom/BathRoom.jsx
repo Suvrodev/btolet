@@ -13,7 +13,6 @@ const BathRoom = () => {
 
     return (
         <div>
-             <h1>Bathroom*</h1>
              <div className='flex gap-5 my-5'>
                     {bathrooms.map((bathroom, index) => (
                             <button

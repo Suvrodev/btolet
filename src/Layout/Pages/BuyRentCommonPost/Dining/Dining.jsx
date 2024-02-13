@@ -13,7 +13,6 @@ const Dining = () => {
     return (
    
     <div>
-        <h1>Dining*</h1>
         <div className='flex gap-5 my-5'>
                 {dinings.map((dining, index) => (
                         <button

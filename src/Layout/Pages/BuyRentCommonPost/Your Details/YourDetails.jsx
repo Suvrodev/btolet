@@ -19,9 +19,11 @@ const YourDetails = () => {
         <div>
             <p>Your Details</p>
             <p className='w-full h-[1px] bg-gray-400 my-2'></p>
+
+
             <div className='flex gap-5 items-center'>
-                <div className='w-5/12 flex  items-center bg-red-500 gap-4'>
-                    <div className='w-full md:w-[50%] bg-yellow-400 flex items-center justify-end'>
+                <div className='w-[50%] flex  items-center bg-red-500 gap-4'>
+                    <div className='w-full md:w-[50%] flex items-center justify-end'>
                         <img className='w-[180px] h-[200px] rounded-full' src={anImage} alt="" />
                     </div>
                     <div className='w-full md:w-[50%] flex flex-col gap-4 justify-center bg-green-600'>
@@ -30,7 +32,7 @@ const YourDetails = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='w-[50%] bg-green-600'>
                     <div>
                         {
                            y &&

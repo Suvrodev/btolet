@@ -10,12 +10,11 @@ const Fatching = () => {
 
     return (
         <div>
-                <h1 className='my-2'>Faching</h1>
             <div className="w-full text-white">
                 <select 
                     value={selectedFaching} 
                     onChange={handleFachingChange}
-                    className=" w-[80%] p-2 border rounded shadow-sm"
+                    className=" w-full p-2 input input-bordered"
                 >
                     <option value="" disabled>Select</option>
                     {Fachings.map((option, index) => (

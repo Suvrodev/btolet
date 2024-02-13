@@ -11,7 +11,7 @@ const Date = () => {
 
     return (
         <div className="w-full">
-            <input className='input input-bordered w-[80%] text-white' type="date"  value={selectedDate} onChange={handleDateChange} name="" id="" />
+            <input className='input input-bordered w-full text-white' type="date"  value={selectedDate} onChange={handleDateChange} name="" id="" />
         </div>
     );
 };

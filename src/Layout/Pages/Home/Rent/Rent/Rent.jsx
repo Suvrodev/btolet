@@ -41,7 +41,7 @@ const Rent = () => {
     const [rents,setRents]=useState([])
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
-        fetch(`http://154.26.135.41:3800/api/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`)
+        fetch(`http://154.26.135.41:3800/api/web/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`)
         .then(res=>res.json())
         .then(data=>{
             // const newData=[...rents,...data]

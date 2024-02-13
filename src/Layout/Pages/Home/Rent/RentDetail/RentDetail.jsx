@@ -8,6 +8,7 @@ import RentDetailsNumber from './RentDetailsNumber/RentDetailsNumber';
 import BuyDescription from '../../../Buy/BuyDetail/BuyDescription/BuyDescription';
 import ContactButtons from '../../../Buy/BuyDetail/ContactButtons/ContactButtons';
 import RentCard from '../RentCard/RentCard';
+import { FaBath, FaBed, FaCarAlt, FaChartArea, FaHouseDamage, FaMotorcycle } from 'react-icons/fa';
 
 
 const RentDetail = () => {
@@ -281,6 +282,38 @@ const RentDetail = () => {
       // console.log("Fasalities Type: ",typeof(fasalitis));
 
 
+
+      //////Kelma Start
+      let iconDiv;
+      if(category.includes('Only Garage')){
+          // console.log("Post id: ",post_id," Only Garage: yes");
+          if(garagetype=="Bike"){
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaMotorcycle /> Bike Garage</div>
+            console.log("Garage Type: ",garagetype);
+          }
+          if(garagetype=="Car"){
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaCarAlt /> Car Garage </div>
+            console.log("Garage Type: ",garagetype);
+          }
+          if(garagetype=="Garage"){
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaHouseDamage />Garage  </div>
+            console.log("Garage Type: ",garagetype);
+          }
+      }else{
+          console.log("Post id: ",post_id," Only Garage: No");
+          if(category.includes('Office') || category.includes('Shop')){
+             iconDiv=<div className='p-5 h-[45px]  bg-orange-400'>  </div>
+          }else{
+             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  bg-orange-400'>
+               <div className='flex items-center gap-2'><FaBath/> {bath}</div>
+               <div className='flex items-center gap-2'><FaBed/> {bed}</div>
+               <div className='flex items-center gap-2'><FaChartArea/> {roomsize} ft<sup>2</sup></div>
+             </div>
+          }
+      }
+      //////Kelma End
+
+
      
       
 
@@ -312,12 +345,23 @@ const RentDetail = () => {
 
             <div className='my-4 flex justify-between'>
                 <div className='text-2xl font-bold'>৳ {rent}</div>
+
+             
+
+
                 <div>
                     <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
                 </div>
             </div>
 
             <div className='w-full h-[1px] bg-black my-4'></div>
+
+            <div>
+                 {/* Celma start */}
+                 {iconDiv}
+                {/* Celma End */}
+
+            </div>
 
             <div className='flex justify-between items-center'>
                 <div className='my-4 flex items-center gap-10'>

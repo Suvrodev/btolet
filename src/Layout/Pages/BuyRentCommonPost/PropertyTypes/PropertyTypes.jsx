@@ -15,7 +15,7 @@ const PropertyTypes = () => {
     return (
         <div>
               {/* Property Type Start */}
-           <div className='flex gap-5 my-5'>
+           <div className='flex gap-5'>
                     {propertiesType.map((property, index) => (
                             <button
                                 key={index}

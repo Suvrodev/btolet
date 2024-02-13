@@ -130,7 +130,6 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                   handleRefresh()
                   successfullMessage("Deleted Successfully")
                 }
-               
               }) 
 
             }
