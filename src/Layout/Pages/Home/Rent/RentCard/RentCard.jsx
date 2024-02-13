@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import GarageType from '../RentPost/GarageType/GarageType';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../../Function/TimeAgo';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const RentCard = ({r,savedRent,forRent,myPostRent}) => {
+const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
      const {uId,successfullMessage}=useContext(AuthContext)
     console.log("Rent: ",r);
     const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category,garagetype}=r
@@ -13,32 +15,7 @@ const RentCard = ({r,savedRent,forRent,myPostRent}) => {
     const naviagte=useNavigate()
 
     const [timeAgo, setTimeAgo] = useState('');
-    // useEffect(() => {
-    //     const calculateTimeAgo = () => {
-    //       const currentTime = new Date();
-    //       const pastTime = new Date(time);
-    //       const timeDifference = currentTime - pastTime;
-          
-    //       const seconds = Math.floor(timeDifference / 1000);
-    //       const minutes = Math.floor(seconds / 60);
-    //       const hours = Math.floor(minutes / 60);
-    //       const days = Math.floor(hours / 24);
-          
-    //       if (days > 0) {
-    //         setTimeAgo(`${days} day${days === 1 ? '' : 's'} ago`);
-    //       } else if (hours > 0) {
-    //         setTimeAgo(`${hours} hour${hours === 1 ? '' : 's'} ago`);
-    //       } else if (minutes > 0) {
-    //         setTimeAgo(`${minutes} minute${minutes === 1 ? '' : 's'} ago`);
-    //       } else {
-    //         setTimeAgo(`${seconds} second${seconds === 1 ? '' : 's'} ago`);
-    //       }
-    //     };
-    
-    //     const interval = setInterval(calculateTimeAgo, 1000);
-    
-    //     return () => clearInterval(interval);
-    //   }, [time]);
+   
     useEffect(()=>{
       setTimeAgo(calculateTimeAgo(time))
     },[time])
@@ -158,15 +135,47 @@ const RentCard = ({r,savedRent,forRent,myPostRent}) => {
             .then(res=>res.json())
             .then(data=>{
                if(data){
-                successfullMessage("Saved Successfully")
+                successfullMessage("UnSaved Successfully")
+                handleRefresh()
                }
             })
         }
           setSave(!save)
       }
 
+      const deleteInfo={
+        "uid": uId,
+        "post_id":post_id
+      }
+
       const handleDelte=()=>{
-        
+        //  console.log("Delete");
+         if(uId){
+
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+               
+              axios.delete(`http://154.26.135.41:3800/api/tolet/user/mypost/delete?uid=${uId}&post_id=${post_id}`)
+              .then(res=>{
+                console.log("Delete Res: ",res.data);
+                if(res.data){
+                  handleRefresh()
+                  successfullMessage("Deleted Successfully")
+                }
+               
+              }) 
+
+            }
+          });
+          }
       }
       ////Save And Unsave and Delete end
 
@@ -181,7 +190,7 @@ const RentCard = ({r,savedRent,forRent,myPostRent}) => {
             <div className='relative bg-yellow-400'>
               <img onClick={()=>goinDetail(post_id)} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
 
-            {/* Save UnSave Delete Start */}
+            {/* For Saved Start */}
               {
                 savedRent &&
                 <div className='absolute top-5 right-[60px] '>
@@ -190,9 +199,9 @@ const RentCard = ({r,savedRent,forRent,myPostRent}) => {
                 </p>
               </div >
               }
-             {/* Save UnSave Delete End */}
+             {/* For Saved End */}
 
-               {/* Save UnSave Delete Start */}
+               {/* Save UnSave  Start */}
                {  forRent &&
                   <div className='absolute top-5 right-[60px] '>
                   <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
@@ -206,10 +215,10 @@ const RentCard = ({r,savedRent,forRent,myPostRent}) => {
                   </p>
                 </div >
                 }
-              {/* Save UnSave Delete End */}
+              {/* Save UnSave  End */}
 
 
-               {/* Save UnSave Delete Start */}
+               {/* For Delete Start */}
                {  myPostRent &&
                   <div className='absolute top-5 right-[60px] '>
                   <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
@@ -218,7 +227,9 @@ const RentCard = ({r,savedRent,forRent,myPostRent}) => {
                   </p>
                 </div >
                 }
-              {/* Save UnSave Delete End */}
+              {/* For Delete End */}
+
+
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>

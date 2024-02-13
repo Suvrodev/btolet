@@ -165,6 +165,7 @@ const Buy = () => {
                  buys.map((buy,idx)=><BuyCard
                  key={idx}
                  buy={buy}
+                 forBuy={'forBuy'}
                  ></BuyCard>)
                }
            </div>

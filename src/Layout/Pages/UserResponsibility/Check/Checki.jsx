@@ -4,6 +4,9 @@ import "./Checki.css";
 
 import Image from "../../../../assets/Image/Suvrodev.jpg";
 
+import { FiHeart } from "react-icons/fi";
+
+
 const Checki = () => {
 
     const [data, setData] = useState(1);
@@ -63,6 +66,12 @@ const Checki = () => {
 
 
             <button onClick={handleIncrease} className="btn btn-warning">Increase</button>
+
+            <div>
+                <h1>Feather Icon: </h1>
+                <FiHeart />
+
+            </div>
       </div>
 
   );

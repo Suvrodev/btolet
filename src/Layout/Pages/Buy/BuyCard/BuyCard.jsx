@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FaBath, FaBed, FaBeer, FaChartArea, FaHeart, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaRegHeart, FaShare, FaWhatsapp } from "react-icons/fa";
+import { FaBath, FaBed, FaBeer, FaChartArea, FaHeart, FaLayerGroup, FaMailBulk, FaMapMarkerAlt, FaPhoneAlt, FaRegHeart, FaShare, FaTrash, FaWhatsapp } from "react-icons/fa";
 
 
 import locationImage from '../../../../assets/downloadedIcon/location.svg'
@@ -7,8 +7,10 @@ import shareImage from '../../../../assets/downloadedIcon/share.svg'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../Function/TimeAgo';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const BuyCard = ({buy}) => {
+const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
    const {uId,successfullMessage}=useContext(AuthContext)
     console.log(buy);
@@ -17,36 +19,14 @@ const BuyCard = ({buy}) => {
     const naviagte=useNavigate()
 
      const [timeAgo, setTimeAgo] = useState('');
-    // useEffect(() => {
-    //     const calculateTimeAgo = () => {
-    //       const currentTime = new Date();
-    //       const pastTime = new Date(time);
-    //       const timeDifference = currentTime - pastTime;
-          
-    //       const seconds = Math.floor(timeDifference / 1000);
-    //       const minutes = Math.floor(seconds / 60);
-    //       const hours = Math.floor(minutes / 60);
-    //       const days = Math.floor(hours / 24);
-          
-    //       if (days > 0) {
-    //         setTimeAgo(`${days} day${days === 1 ? '' : 's'} ago`);
-    //       } else if (hours > 0) {
-    //         setTimeAgo(`${hours} hour${hours === 1 ? '' : 's'} ago`);
-    //       } else if (minutes > 0) {
-    //         setTimeAgo(`${minutes} minute${minutes === 1 ? '' : 's'} ago`);
-    //       } else {
-    //         setTimeAgo(`${seconds} second${seconds === 1 ? '' : 's'} ago`);
-    //       }
-    //     };
-    
-    //     const interval = setInterval(calculateTimeAgo, 1000);
-    
-    //     return () => clearInterval(interval);
-    //   }, [time]);
-
     useEffect(()=>{
       setTimeAgo(calculateTimeAgo(time))
     },[time])
+
+    // Convert the rent to Bangladeshi Taka style start
+    const formattePrice = price.toLocaleString('en-US');
+    // const formattePrice = "Ammount";
+    // Convert the rent to Bangladeshi Taka style end
 
 
 
@@ -122,12 +102,48 @@ const BuyCard = ({buy}) => {
             .then(res=>res.json())
             .then(data=>{
                if(data){
-                successfullMessage("Saved Successfully")
+                successfullMessage("UnSaved Successfully")
+                handleRefresh()
                }
             })
         }
           setSave(!save)
       }
+
+      const handleDelte =()=>{
+        if(uId){
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+               
+              axios.delete(`http://154.26.135.41:3800/api/pro/user/mypost/delete?uid=${uId}&post_id=${pid}`)
+              .then(res=>{
+                console.log("Delete Res: ",res.data);
+                if(res.data){
+                  handleRefresh()
+                  successfullMessage("Deleted Successfully")
+                }
+               
+              }) 
+
+            }
+          });
+          }
+      }
+
+
+
+      console.log("savedBuy: ",savedBuy);
+      console.log('forBuy',forBuy);
+      console.log("myPostBuy",myPostBuy);
+
 
 
      
@@ -143,19 +159,44 @@ const BuyCard = ({buy}) => {
               <img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
 
 
-              {/* Save UnSave Delete Start */}
-              <div className='absolute top-5 right-[60px] '>
-               <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                  {
-                    save==true ?
+              {/* For Saved Start */}
+              {
+                savedBuy &&
+                <div className='absolute top-5 right-[60px] '>
+                 <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
                     <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
-                    <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
-                   
-                  }
-                  
-               </p>
-             </div >
-              {/* Save UnSave Delete End */}
+                </p>
+              </div >
+              }
+             {/* For Saved End */}
+
+               {/* Save UnSave  Start */}
+               {  forBuy &&
+                  <div className='absolute top-5 right-[60px] '>
+                  <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                      {
+                        save==true ?
+                        <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
+                        <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
+                      
+                      }
+                      
+                  </p>
+                </div >
+                }
+              {/* Save UnSave  End */}
+
+
+               {/* For Delete Start */}
+               {  myPostBuy &&
+                  <div className='absolute top-5 right-[60px] '>
+                  <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                      
+                        <FaTrash  onClick={handleDelte} className='text-red-700 '/> 
+                  </p>
+                </div >
+                }
+              {/* For Delete End */}
 
 
               <div className='absolute top-5 right-5 '>
@@ -175,7 +216,7 @@ const BuyCard = ({buy}) => {
        
             <div className='py-5 px-4 bg-red-600 h-[250px]'>
                <p className='roboto font-bold text-xl'>{category}</p>
-                 {price!=0? <p className='text-4xl font-bold text-black'> ৳ {price} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
+                 {price!=0? <p className='text-4xl font-bold text-black'> ৳ {formattePrice} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
                     <FaMapMarkerAlt />
                     <span>{location}</span>
