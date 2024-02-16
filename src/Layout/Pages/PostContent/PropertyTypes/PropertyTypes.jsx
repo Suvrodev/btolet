@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { FaCheck, FaCheckCircle, FaCircle } from 'react-icons/fa';
 
 const PropertyTypes = () => {
 
@@ -22,9 +23,11 @@ const PropertyTypes = () => {
                                             <button
                                 key={index}
                                 onClick={() => handlePropertyType(index)}
-                                className={`btn    ${selectedTypeProperty===property?'btn-primary':'btn-outline btn-info'}`}
+                                className={`btn  btn-outline  ${selectedTypeProperty===property?'border-blue-500':''}`}
                                 >
-                                {property}
+                                {/* {property} */}
+                                <span className='flex items-center gap-2 text-black'> {selectedTypeProperty===property?<FaCheck  className='text-blue-600' />:'' }  {property} </span>
+
                                 </button>
                         ))}
                 </div>

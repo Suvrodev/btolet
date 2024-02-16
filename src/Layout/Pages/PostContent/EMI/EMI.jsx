@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { FaCheck } from 'react-icons/fa';
 
 const EMI = () => {
 
@@ -18,9 +19,10 @@ const EMI = () => {
                           <button
                               key={index}
                               onClick={() => handleEmiChange(index)}
-                              className={`btn    ${selectedEmi===emi?'btn-primary':'btn-outline btn-info'}`}
+                              className={`btn  btn-outline  ${selectedEmi===emi?'border-blue-500':' '}`}
                               >
-                          {emi}
+                          {/* {emi} */}
+                          <span className='flex items-center gap-2 text-black'> {selectedEmi===emi?<FaCheck  className='text-blue-600' />:'' }  {emi} </span>
                           </button>
                       ))}
               </div>

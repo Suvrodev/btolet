@@ -21,6 +21,7 @@ import { AuthContext } from "../../../../../../Providers/AuthProvider";
 import Facilities from "../../../../PostContent/Facilities/Facilities";
 import OneImagePage from "../../../../PostContent/OneImagePage/OneImagePage";
 import MultiImagePage from "../../../../PostContent/MultiImagePAge/MultiImagePage";
+import { FaCheckCircle, FaPlus } from "react-icons/fa";
 
 const RentPost = () => {
 
@@ -46,7 +47,18 @@ const RentPost = () => {
 
   const [selectedRentCategory, setSelectedRentCategory] = useState([]);
 
-  const handleCheckboxChange = (category) => {
+  // const handleCheckboxChange = (category) => {
+  //   if (selectedRentCategory.includes(category)) {
+  //     setSelectedRentCategory(
+  //       selectedRentCategory.filter((item) => item !== category)
+  //     );
+  //   } else {
+  //     setSelectedRentCategory([...selectedRentCategory, category]);
+  //   }
+  // };
+
+  ////Next
+  const handleButtonClick = (category) => {
     if (selectedRentCategory.includes(category)) {
       setSelectedRentCategory(
         selectedRentCategory.filter((item) => item !== category)
@@ -55,6 +67,7 @@ const RentPost = () => {
       setSelectedRentCategory([...selectedRentCategory, category]);
     }
   };
+
   console.log("Selected Category: ", selectedRentCategory);
 
   const checkShop = selectedRentCategory.find((s) => s == "Shop");
@@ -336,36 +349,52 @@ const RentPost = () => {
  */
 
 
-const {propertyName,rentTkValue,shortAddress,description,selectedDate,selectedBathroom,selectedBedRoom,selectedDrawing,selectedDining,selectedBalcony,
-       selectedKitchen,floorNumber,selectedFaching,totalSize,maintenance,selectedgarageType,selectedFacilities,imageSrc,images,
-       name,phone,wapp}=useContext(AuthContext)
+const {currentUser,propertyName,selectedTypeProperty,selectedBedRoom,selectedBathroom,selectedDrawing,selectedDining,selectedBalcony,
+  selectedKitchen,selectedFaching,selectedDate,totalFloor,floorNumber,totalSize,totalUnit,price,selectedEmi,selectedAmenities,ytLink,
+  imageSrc,images,name,phone,wapp,shortAddress,description,selectedYouAres,selectedLPTypeItems,selectedAreas,measurement,roadSize,address,
+  selectPhoneCountryCode,selectWappCountryCode, priceMode, rentTkValue,setRentTkValue,
+  setErrorRentTkValue,errorRentCategory,setErrorRentCategory,
+  lattitude,longitude,
+ }=useContext(AuthContext)
 
   
 
 
   const handleRentPost=()=>{
-    console.log("Property Name: ",propertyName);
-    console.log("Garage rent: ",rentTkValue);
-    console.log("Short Address: ",shortAddress);
-    console.log("Description: ",description);
-    console.log("Date :",selectedDate);
-    console.log("Selected Bathroom: ",selectedBathroom);
-    console.log("Selected Bedroom: ",selectedBedRoom);
-    console.log("Selected Drawing: ",selectedDrawing);
-    console.log("Selected Dining: ",selectedDining);
-    console.log("Selected Balcony: ",selectedBalcony);
-    console.log("Selected Kitchen: ",selectedKitchen);
-    console.log("Floor Number: ",floorNumber);
-    console.log("Faching: ",selectedFaching);
-    console.log("Total size/Room Size: ",totalSize);
-    console.log("Maintenance: ",maintenance);
-    console.log("Garage Type: ",selectedgarageType);
-    console.log("Facilities ",selectedFacilities);
-    console.log("Selected Images ",images);
+    // console.log("Property Name: ",propertyName);
+    // console.log("Garage rent: ",rentTkValue);
+    // console.log("Short Address: ",shortAddress);
+    // console.log("Description: ",description);
+    // console.log("Date :",selectedDate);
+    // console.log("Selected Bathroom: ",selectedBathroom);
+    // console.log("Selected Bedroom: ",selectedBedRoom);
+    // console.log("Selected Drawing: ",selectedDrawing);
+    // console.log("Selected Dining: ",selectedDining);
+    // console.log("Selected Balcony: ",selectedBalcony);
+    // console.log("Selected Kitchen: ",selectedKitchen);
+    // console.log("Floor Number: ",floorNumber);
+    // console.log("Faching: ",selectedFaching);
+    // console.log("Total size/Room Size: ",totalSize);
+    // console.log("Maintenance: ",maintenance);
+    // console.log("Garage Type: ",selectedgarageType);
+    // console.log("Facilities ",selectedFacilities);
+    // console.log("Selected Images ",images);
 
-    console.log("Name: ",name);
-    console.log("Phone: ",phone);
-    console.log("Whatsapp: ",wapp);
+    // console.log("Name: ",name);
+    // console.log("Phone: ",phone);
+    // console.log("Whatsapp: ",wapp);
+    
+    if(selectedRentCategory.length==0){
+      setErrorRentCategory(true)
+    }else{
+      setErrorRentCategory(false)
+    }
+
+    if(!rentTkValue){
+      setErrorRentTkValue(true)
+    }else{
+      setErrorRentTkValue(false)
+    }
    
   }
 
@@ -393,8 +422,8 @@ const {propertyName,rentTkValue,shortAddress,description,selectedDate,selectedBa
       {/* Rent Category start */}
       <h1 className="my-5">Rent Category</h1>
 
-      {/* grid grid-cols-2 md:grid-cols-4 */}
-      <div className="max-w-screen-lg mx-auto flex flex-wrap  gap-4">
+     
+      {/* <div className="max-w-screen-lg mx-auto flex flex-wrap  gap-4">
         {rentCategories.map((rentCategory, index) => (
           <div key={index} className="flex items-center border p-5 rounded-md">
             <input
@@ -409,8 +438,24 @@ const {propertyName,rentTkValue,shortAddress,description,selectedDate,selectedBa
             </label>
           </div>
         ))}
+       
+      </div> */}
+      {/* Next */}
+      <div className="max-w-screen-lg mx-auto flex flex-wrap gap-4 ">
+        {rentCategories.map((rentCategory, index) => (
+          <div key={index} className="flex items-center  p-5 rounded-md">
+            <button
+              onClick={() => handleButtonClick(rentCategory)}
+              className={`flex items-center btn btn-outline ${selectedRentCategory.includes(rentCategory)?'border-blue-600 border-2':''} ${errorRentCategory?'errorBorder':''}`}
+              // style={{ backgroundColor: selectedRentCategory.includes(rentCategory) ? 'green' : 'transparent', border: 'none', cursor: 'pointer' }}
+            >
+              {selectedRentCategory.includes(rentCategory) ? <FaCheckCircle className="text-blue-500" /> : <FaPlus />}
+              <span className="ml-2">{rentCategory}</span>
+            </button>
+          </div>
+        ))}
         <div className="mt-4 md:col-span-4">
-          {/* Selected facilities: {selectedRentCategory.join(', ')} */}
+          {/* Selected categories: {selectedRentCategory.join(', ')} */}
         </div>
       </div>
       {/* Rent Category end */}

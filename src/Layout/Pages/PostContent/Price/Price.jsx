@@ -1,20 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { FaCheck } from 'react-icons/fa';
 
 const Price = () => {
 
-    const {setPrice,errorPrice}=useContext(AuthContext)
+    const {setPrice,errorPrice,  priceMode,setPriceMode}=useContext(AuthContext)
 
-    const [priceBox,setPriceBox]=useState(false)
+    const [priceBox,setPriceBox]=useState(true)
     const prices=["Price","Price On Call"]
-    const [selectedPrice, setSelectedPrice] = useState(null);
+    const [selectedPrice, setSelectedPrice] = useState('Price');
     const handlePriceChange = (index) => {
         setSelectedPrice(prices[index]);
         console.log("Selected Price: ", prices[index]);
         if(prices[index]==="Price"){
             setPriceBox(true)
+            setPriceMode(true)
         }else{
             setPriceBox(false)
+            setPriceMode(false)
         }
     };
 
@@ -31,9 +34,10 @@ const Price = () => {
                     <button
                         key={index}
                         onClick={() => handlePriceChange(index)}
-                        className={`btn ${selectedPrice === price ? 'btn-primary' : 'btn-outline btn-info'}`}
+                        className={`btn btn-outline ${selectedPrice === price ? 'border-blue-500' : ''}`}
                     >
-                        {price}
+                        {/* {price} */}
+                        <span className='flex items-center gap-2 text-black'> {selectedPrice===price?<FaCheck  className='text-blue-600' />:'' }  {price} </span>
                     </button>
                 ))}
             </div>

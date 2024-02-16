@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const uid=localStorage.getItem('uId')
         if(uid){
-            console.log("Local Storage uid: ",uid);
+           
             setUId(uid)
         }else{
             setUId('nouid')
@@ -26,22 +26,25 @@ const AuthProvider = ({children}) => {
  
     ////Current User from Database start
     useEffect(()=>{
-        fetch(`http://154.26.135.41:3800/api/uid`,{
-            method: 'POST',
-            headers: {
-                'content-type':'application/json'
-            },
-            body: JSON.stringify({uid: uId })
-        })
-        .then(res=>res.json())
-        .then(data=>{
-           if(data){
-            setCurrentUser(data[0]);
-           }
-        })        
+       if(uId){
+            fetch(`http://154.26.135.41:3800/api/uid`,{
+                method: 'POST',
+                headers: {
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify({uid: uId })
+            })
+            .then(res=>res.json())
+            .then(data=>{
+            if(data){
+                setCurrentUser(data[0]);
+            }
+            })   
+       }     
     },[uId])
 
-    // console.log("Current User: ",currentUser);
+    console.log("Local Storage uid: ",uId);
+    console.log("Current User: ",currentUser);
     ////Current User from Database end
 
 
@@ -114,6 +117,7 @@ const AuthProvider = ({children}) => {
     const [propertyName, setPropertyName] = useState('');
     ///Rent Tk 
     const [rentTkValue,setRentTkValue]=useState('')
+    const [errorRentTkValue,setErrorRentTkValue]=useState(false)
     ///Short Address
     const [shortAddress,setShortAddress]=useState('')
     ///Description
@@ -173,6 +177,7 @@ const AuthProvider = ({children}) => {
     const [totalUnit,setTotalUnit]=useState('')
     const [errorTotalUnit,setErrorTotalUnit]=useState(false)
     ///Price
+    const [priceMode,setPriceMode]=useState(false)
     const [price,setPrice]=useState(0)
     const [errorPrice,setErrorPrice]=useState(false)
     ///EMI
@@ -198,6 +203,10 @@ const AuthProvider = ({children}) => {
     ////Country Code
     const [selectPhoneCountryCode,setSelectPhoneCountryCode]=useState('+880')
     const [selectWappCountryCode,setSelectWappCountryCode]=useState('+880')
+
+
+    ////Rent Category
+    const [errorRentCategory,setErrorRentCategory]=useState(false)
 
 
     
@@ -265,6 +274,7 @@ const AuthProvider = ({children}) => {
         ///Total Unit
         totalUnit,setTotalUnit,
         ///Price
+        priceMode,setPriceMode,
         price,setPrice,
         ///EMI
         selectedEmi,setSelectedEmi,
@@ -294,7 +304,7 @@ const AuthProvider = ({children}) => {
         ////Error
         errorBalcony,setErrorBalcony,errorKitchen,setErrorKitchen,errorFaching,setErrorFaching,errorTotalFloor,setErrorTotalFloor,errorFloorNumber,setErrorFloorNumber,
         errorTotalSize,setErrorTotalSize,errorTotalUnit,setErrorTotalUnit,errorImages,setErrorImages,errorMeasurement,setErrorMeasurement,errorRoadSize,setErrorRoadSize,
-        errorPrice,setErrorPrice,
+        errorPrice,setErrorPrice,errorRentTkValue,setErrorRentTkValue,errorRentCategory,setErrorRentCategory
         
 
 

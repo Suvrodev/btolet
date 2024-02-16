@@ -84,7 +84,7 @@ const MultiImagePage = () => {
                 </div>
             ))}
           <div className='flex items-center'>
-              {images.length < 12 && (
+              {images.length > 0 && images.length < 12 && (
                 <div className='bg-green-600 justify-center iconDiv w-[200px] h-[200px] object-cover '>
                     <FaChevronRight className='text-red-600' />
                 </div>

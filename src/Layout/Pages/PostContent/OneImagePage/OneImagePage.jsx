@@ -43,7 +43,7 @@ const OneImagePage = () => {
         setImageSrc('');
     };
 
-    console.log("Image: ",imageSrc);
+    // console.log("Image: ",imageSrc);
 
     return (
     //     <div className='flex flex-col gap-4 items-start my-4 '>

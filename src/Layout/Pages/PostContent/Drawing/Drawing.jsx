@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { FaCheck } from 'react-icons/fa';
 
 const Drawing = () => {
 
@@ -19,9 +20,10 @@ const Drawing = () => {
                             <button
                                 key={index}
                                 onClick={() => handleDrawing(index)}
-                                className={`btn    ${selectedDrawing===drawing?'btn-primary':'btn-outline btn-info'}`}
+                                className={`btn btn-outline   ${selectedDrawing===drawing?'border-blue-500':' '}`}
                                 >
-                            {drawing}
+                            {/* {drawing} */}
+                            <span className='flex items-center gap-2 text-black'> {selectedDrawing===drawing?<FaCheck  className='text-blue-600' />:'' }  {drawing} </span>
                             </button>
                         ))}
                 </div>

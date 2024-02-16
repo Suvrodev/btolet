@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { FaCheck } from 'react-icons/fa';
 
 const BedRooms = () => {
 
@@ -23,9 +24,10 @@ const BedRooms = () => {
                             <button
                                 key={index}
                                 onClick={() => handleBedRoom(index)}
-                                className={`btn    ${selectedBedRoom===bedroom?'btn-primary':'btn-outline btn-info'}`}
+                                className={`btn btn-outline   ${selectedBedRoom===bedroom?'border-blue-500':' '}`}
                                 >
-                            {bedroom}
+                            {/* {bedroom} */}
+                            <span className='flex items-center gap-2 text-black'> {selectedBedRoom===bedroom?<FaCheck  className='text-blue-600' />:'' }  {bedroom} </span>
                             </button>
                         ))}
                 </div>
