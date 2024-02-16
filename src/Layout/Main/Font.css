@@ -42,3 +42,12 @@ font-weight: 500;
 font-family: 'Roboto', sans-serif;
 font-weight: bold;
 }
+
+.input{
+    background-color: #dfdddd;
+    color: black !important;
+}
+.errorBorder{
+    border: 2px solid red;
+}
+/* #F3F3F3 */

@@ -8,7 +8,7 @@ const Header = () => {
 
   const {currentUser}=useContext(AuthContext)
 
-  console.log("Current User Header: ",currentUser);
+  // console.log("Current User Header: ",currentUser);
   // const {image}=currentUser
 
 
@@ -23,7 +23,7 @@ const Header = () => {
     setLeftNav(!leftNav)
   }
   
-  console.log("Left Nav: ",leftNav);
+  // console.log("Left Nav: ",leftNav);
   
   
       const NavItems=<div className='lg:flex items-center justify-center text-white'>

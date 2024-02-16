@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BuyCard from '../BuyCard/BuyCard';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const Buy = () => {
 
-    const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
-    useEffect(() => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            position => {
-              setCoordinates({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-              });
-            },
-            error => {
-              console.error("Error getting geolocation:", error);
-            }
-          );
-        } else {
-          console.error("Geolocation is not supported by this browser.");
-        }
-      }, []);
+    const {lattitude,longitude}=useContext(AuthContext)
   
-      let lattitude=coordinates.latitude
-      let longitude=coordinates.longitude
+    console.log("Lattitude: ",lattitude);
+    console.log("Longitude: ",longitude);
       
-      console.log("Lattitude: ",lattitude);
-      console.log("Longitude:",longitude);
+ 
 
 
 

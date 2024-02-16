@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaGoogle, FaHeart, FaHouseDamage, FaLayerGroup, FaMailBulk, FaMapMarker, FaMapMarkerAlt, FaMotorcycle, FaPhoneAlt, FaRegHeart, FaShare, FaTrash, FaWhatsapp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import GarageType from '../RentPost/GarageType/GarageType';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../../Function/TimeAgo';
 import axios from 'axios';

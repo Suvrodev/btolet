@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
-import OneImagePage from '../../ShareImagePage/OneImagePage/OneImagePage';
-import MultiImagePage from '../../ShareImagePage/MultiImagePAge/MultiImagePage';
-import PropertyName from '../../../BuyRentCommonPost/PropertyName/PropertyName';
-import Facilities from '../../../BuyRentCommonPost/Facilities/Facilities';
-import PropertyTypes from '../../../BuyRentCommonPost/PropertyTypes/PropertyTypes';
-import BedRooms from '../../../BuyRentCommonPost/BedRoom/BedRooms';
-import BathRoom from '../../../BuyRentCommonPost/Bathroom/BathRoom';
-import Dining from '../../../BuyRentCommonPost/Dining/Dining';
-import Kitchen from '../../../BuyRentCommonPost/BuyRentCommonPage/Kitchen/Kitchen';
-import Fatching from '../../../BuyRentCommonPost/Fatching/Fatching';
-import Date from '../../../BuyRentCommonPost/Date/Date';
-import TotalFloor from '../../../BuyRentCommonPost/TotalFloor/TotalFloor';
-import FloorNumber from '../../../BuyRentCommonPost/FloorNumber/FloorNumber';
-import TotalSize from '../../../BuyRentCommonPost/BuyRentCommonPage/TotalSize/TotalSize';
-import TotalUnit from '../../../BuyRentCommonPost/TotalUnit/TotalUnit';
-import Price from '../../../BuyRentCommonPost/Price/Price';
-import EMI from '../../../BuyRentCommonPost/EMI/EMI';
-import YoutubeVideo from '../../../BuyRentCommonPost/YoutubeVideo/YoutubeVideo';
-import Drawing from '../../../BuyRentCommonPost/Drawing/Drawing';
-import Balcony from '../../../BuyRentCommonPost/Balcony/Balcony';
+import React, { useContext, useState } from 'react';
+import PropertyName from '../../../PostContent/PropertyName/PropertyName';
+import PropertyTypes from '../../../PostContent/PropertyTypes/PropertyTypes';
+import BedRooms from '../../../PostContent/BedRoom/BedRooms';
+import BathRoom from '../../../PostContent/Bathroom/BathRoom';
+import Drawing from '../../../PostContent/Drawing/Drawing';
+import Dining from '../../../PostContent/Dining/Dining';
+import Balcony from '../../../PostContent/Balcony/Balcony';
+import Kitchen from '../../../PostContent/Kitchen/Kitchen';
+import Fatching from '../../../PostContent/Fatching/Fatching';
+import TotalFloor from '../../../PostContent/TotalFloor/TotalFloor';
+import FloorNumber from '../../../PostContent/FloorNumber/FloorNumber';
+import TotalSize from '../../../PostContent/TotalSize/TotalSize';
+import TotalUnit from '../../../PostContent/TotalUnit/TotalUnit';
+import Price from '../../../PostContent/Price/Price';
+import EMI from '../../../PostContent/EMI/EMI';
+import Facilities from '../../../PostContent/Facilities/Facilities';
+import YoutubeVideo from '../../../PostContent/YoutubeVideo/YoutubeVideo';
+import OneImagePage from '../../../PostContent/OneImagePage/OneImagePage';
+import MultiImagePage from '../../../PostContent/MultiImagePAge/MultiImagePage';
+import Date from '../../../PostContent/Date/Date';
+import { AuthContext } from '../../../../../Providers/AuthProvider';
+import Amenities from '../../../PostContent/Amenities/Amenities';
+import ShortAddress from '../../../PostContent/ShortAddress/ShortAddress';
+import Description from '../../../PostContent/Description/Description';
+import YourDetails from '../../../PostContent/Your Details/YourDetails';
+
 
 const HomeFlat = () => {
 
@@ -37,15 +43,50 @@ const HomeFlat = () => {
             setPriceBox(false)
         }
     };
-    ///Price End
 
-    ///EMI Start
-  
-    ///EMI End
+
+    // const {selectedCategoriesBuy,propertyName,selectedTypeProperty,selectedBedRoom,selectedBathroom,selectedDrawing,selectedDining,selectedBalcony,
+    //     selectedKitchen,selectedFaching,selectedDate,totalFloor,floorNumber,totalSize,totalUnit,price,selectedEmi,selectedAmenities,ytLink,
+    //     imageSrc,images,name,phone,wapp,shortAddress,description,selectedYouAres,selectedLPTypeItems,selectedAreas,measurement,roadSize}=useContext(AuthContext)
+    
+
+    // const handleSubmit=()=>{
+    //     console.log("Selected Buy Category: ",selectedCategoriesBuy);
+    //     console.log("Property Name: ",propertyName);
+    //     console.log("Property Type: ",selectedTypeProperty);
+    //     console.log("Bedroom: ",selectedBedRoom);
+    //     console.log("Bathroom: ",selectedBathroom);
+    //     console.log("Drawing: ",selectedDrawing);
+    //     console.log("Dining: ",selectedDining);
+    //     console.log("Balcony: ",selectedBalcony);
+    //     console.log("Kitchen: ",selectedKitchen);
+    //     console.log("Faching: ",selectedFaching);
+    //     console.log("Date: ",selectedDate);
+    //     console.log("Total Floor: ",totalFloor);
+    //     console.log("Floor Number: ",floorNumber);
+    //     console.log("Total Size: ",totalSize);
+    //     console.log("Total Unit: ",totalUnit);
+    //     console.log("Price ",price);
+    //     console.log("EMI: ",selectedEmi);
+    //     console.log("Amenities: ",selectedAmenities);
+    //     console.log("Youtube Link: ",ytLink);
+    //     console.log("Floor Plan: ",imageSrc);
+    //     console.log("Select Images: ",images);
+    //     console.log("Short Address:  ",shortAddress);
+    //     console.log("Description: ",description);
+    //     console.log("You Are: ",selectedYouAres);
+    //     console.log("wapp:  ",wapp);
+    //     console.log("Name:  ",name);
+    //     console.log("phone: ",phone);
+    //     console.log("LP Type: ",selectedLPTypeItems);
+    //     console.log("Area: ",selectedAreas);
+    //     console.log("Measurement: ",measurement);
+    //     console.log("Road Size: ",roadSize);
+    // }
 
 
     return (
-        <div className='my-6'>
+        <div className='my-6  grid grid-cols-1 gap-4'>
             <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-full '>
                       <h1>Property Name</h1>
@@ -59,11 +100,11 @@ const HomeFlat = () => {
 
             <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
-                    <h1>Bedroom</h1>
+                    <h1>Bedroom*</h1>
                      <BedRooms></BedRooms>
                 </div>
                 <div className='w-full md:w-[50%]'>
-                     <h1>Bathroom</h1>
+                     <h1>Bathroom*</h1>
                     <BathRoom></BathRoom>
                 </div>
             </div>
@@ -72,11 +113,11 @@ const HomeFlat = () => {
              {/* Drawing Dining Start */}
             <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
-                   <h1>Drawing</h1>
+                   <h1>Drawing*</h1>
                     <Drawing></Drawing>
                 </div>
                 <div className='w-full md:w-[50%]'>
-                     <h1>Dining</h1>
+                     <h1>Dining*</h1>
                     <Dining></Dining>
                 </div>
             </div>
@@ -88,11 +129,11 @@ const HomeFlat = () => {
             {/* Balcony Kitchen Start */}
             <div className='flex flex-col md:flex-row gap-10'>
                <div className='w-full md:w-[50%]'>
-                <h1>Balcony</h1>
+                <h1>Balcony*</h1>
                  <Balcony></Balcony>
                </div>
                <div className='w-full md:w-[50%]'>
-                <h1>Kitchen</h1>
+                <h1>Kitchen*</h1>
                  <Kitchen></Kitchen>
                </div>
             </div>
@@ -102,12 +143,12 @@ const HomeFlat = () => {
              {/* Faching Date Start */}
              <div className='flex flex-col md:flex-row gap-10'>
                  <div className='w-full md:w-[50%]'>
-                     <h1>Faching</h1>
+                     <h1>Faching*</h1>
                      <Fatching></Fatching>
                  </div>
                 
                 <div className='w-full md:w-[50%]'>
-                    <h1 className=''>Rent From</h1>
+                    <h1 className=''>Sell From</h1>
                     <Date></Date>
                 </div>
             </div>
@@ -117,12 +158,12 @@ const HomeFlat = () => {
              {/*Total floor Floor Number Start */}
              <div className='flex flex-col md:flex-row gap-10'>
                 <div className='w-full md:w-[50%]'>
-                    <h1>Total Floor</h1>
+                    <h1>Total Floor*</h1>
                    <TotalFloor></TotalFloor>
                 </div>
               
                <div className='w-full md:w-[50%]'>
-                  <h1>Floor Number:</h1>
+                  <h1>Floor Number*</h1>
                   <FloorNumber></FloorNumber>
                </div>
             </div>
@@ -132,13 +173,13 @@ const HomeFlat = () => {
             <div className='flex flex-col md:flex-row gap-10'>
     
                 <div className='w-full md:w-[50%]'>
-                    <h1>Floor Size</h1>
+                    <h1>Total Size*</h1>
                     <TotalSize></TotalSize>
                 </div>
            
 
                 <div className='w-full md:w-[50%]'>
-                    <h1>Total Unit</h1>
+                    <h1>Total Unit*</h1>
                     <TotalUnit></TotalUnit>
                 </div>
     
@@ -159,31 +200,46 @@ const HomeFlat = () => {
         </div>
        
         
-       
-
-          {/* Facilitiest Start */}
-          <Facilities></Facilities>
-          {/* Facilitiest End */}
-
-
-           {/* Youtube Video start */}
-           <YoutubeVideo></YoutubeVideo>
+        {/* Amenities Start */}
+        <div>
+            <h1>Amenities</h1>
+            <Amenities big={true}></Amenities>
+        </div>
+        {/* Amenities End */}
          
 
-          {/* Youtube Video end */}
-
-
+        {/* Youtube Video start */}
+        <div>
+        <h1>Youtube Video</h1>
+         <YoutubeVideo></YoutubeVideo>
+        </div>
+         {/* Youtube Video end */}
+       
+         
           {/* One Image Upload Start */}
           <h1 className='my-4'>Select Floor Plan</h1>
           <OneImagePage></OneImagePage>
           {/* One Image Upload End */}
 
           {/* Multi Image Upload Start */}
-          <h1 className='my-4'>Select Floor Plan</h1>
+          <h1 className='my-4'>Select Images*</h1>
           <MultiImagePage></MultiImagePage>
           {/* Multi Image Upload End */}
 
+          <div>
+            <h1>Short Address: </h1>
+            <ShortAddress></ShortAddress>
+          </div>
+          <div>
+            <h1>Description:</h1>
+            <Description></Description>
+          </div>
 
+          <div>
+            <YourDetails ur={true}></YourDetails>
+          </div>
+
+        {/* <button className='btn btn-primary' onClick={handleSubmit}>Submit</button> */}
         </div>
     );
 };

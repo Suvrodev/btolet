@@ -1,22 +1,37 @@
-import React, { useState } from "react";
-import BedRooms from "../../../../BuyRentCommonPost/BedRoom/BedRooms";
-import BathRoom from "../../../../BuyRentCommonPost/Bathroom/BathRoom";
-import Balcony from "../../../../BuyRentCommonPost/Balcony/Balcony";
-import Kitchen from "../../../../BuyRentCommonPost/BuyRentCommonPage/Kitchen/Kitchen";
-import Drawing from "../../../../BuyRentCommonPost/Drawing/Drawing";
-import Dining from "../../../../BuyRentCommonPost/Dining/Dining";
-import FloorNumber from "../../../../BuyRentCommonPost/FloorNumber/FloorNumber";
-import Fatching from "../../../../BuyRentCommonPost/Fatching/Fatching";
-import TotalSize from "../../../../BuyRentCommonPost/BuyRentCommonPage/TotalSize/TotalSize";
-import Date from "../../../../BuyRentCommonPost/Date/Date";
-import Maintenence from "../Maintenence/Maintenence";
-import Renttk from "../Rent/Renttk";
-import GarageType from "../GarageType/GarageType";
-import ShortAddress from "../../../../BuyRentCommonPost/ShortAddress/ShortAddress";
-import Description from "../../../../BuyRentCommonPost/Description/Description";
-import YourDetails from "../../../../BuyRentCommonPost/Your Details/YourDetails";
+import React, { useContext, useState } from "react";
+import Date from "../../../../PostContent/Date/Date";
+import ShortAddress from "../../../../PostContent/ShortAddress/ShortAddress";
+import BedRooms from "../../../../PostContent/BedRoom/BedRooms";
+import BathRoom from "../../../../PostContent/Bathroom/BathRoom";
+import Balcony from "../../../../PostContent/Balcony/Balcony";
+import Kitchen from "../../../../PostContent/Kitchen/Kitchen";
+import Drawing from "../../../../PostContent/Drawing/Drawing";
+import Dining from "../../../../PostContent/Dining/Dining";
+import FloorNumber from "../../../../PostContent/FloorNumber/FloorNumber";
+import Fatching from "../../../../PostContent/Fatching/Fatching";
+
+import TotalSize from "../../../../PostContent/TotalSize/TotalSize";
+import YourDetails from "../../../../PostContent/Your Details/YourDetails";
+import Maintenence from "../../../../PostContent/Maintenence/Maintenence";
+import GarageType from "../../../../PostContent/GarageType/GarageType";
+import Renttk from "../../../../PostContent/Rent/Renttk";
+import Description from "../../../../PostContent/Description/Description";
+import PropertyName from "../../../../PostContent/PropertyName/PropertyName";
+import { AuthContext } from "../../../../../../Providers/AuthProvider";
+import Facilities from "../../../../PostContent/Facilities/Facilities";
+import OneImagePage from "../../../../PostContent/OneImagePage/OneImagePage";
+import MultiImagePage from "../../../../PostContent/MultiImagePAge/MultiImagePage";
 
 const RentPost = () => {
+
+
+ 
+
+
+
+
+
+
   const rentCategories = [
     "Family",
     "Bachelor",
@@ -46,9 +61,9 @@ const RentPost = () => {
   const checkOffice = selectedRentCategory.find((s) => s == "Office");
   const checkGarage = selectedRentCategory.find((s) => s == "Only Garage");
 
-  console.log("Check Office: ", checkOffice);
-  console.log("Check Shop: ", checkShop);
-  console.log("Check Garage: ", checkGarage);
+  // console.log("Check Office: ", checkOffice);
+  // console.log("Check Shop: ", checkShop);
+  // console.log("Check Garage: ", checkGarage);
   
 
 
@@ -58,7 +73,7 @@ const RentPost = () => {
   ///Only Garage Exist
   if(selectedRentCategory.includes('Only Garage')){
     console.log("only Garage ache");
-    shape=<div className="grid grid-cols-1  gap-10 bg-green-600">
+    shape=<div className="grid grid-cols-1  gap-10 ">
         
         
           <div className="flex flex-col md:flex-row gap-10">
@@ -73,7 +88,7 @@ const RentPost = () => {
           </div>
 
 
-          <div className="flex flex-col md:flex-row gap-10 bg-red-500">
+          <div className="flex flex-col md:flex-row gap-10">
             <div className="w-[50%]">
                 <h1>Garage Rent*</h1>
                 <Renttk></Renttk>
@@ -90,7 +105,7 @@ const RentPost = () => {
           </div>
           
           <div className="bg-purple-500">
-              <YourDetails></YourDetails>
+              <YourDetails ur={false}></YourDetails>
           </div>
 
     </div>
@@ -207,7 +222,7 @@ const RentPost = () => {
 
   /////For All
   else{
-    shape=<div className="bg-green-600">
+    shape=<div className="">
         {/* Bedroom BathRoom Start */}
         <div className="flex flex-col md:flex-row gap-10">
             <div className="w-full md:w-[50%]">
@@ -285,10 +300,73 @@ const RentPost = () => {
             </div>
             {/* Maintenance Rent End*/}
 
+            {/* Facilities Start */}
+            <div className="flex flex-col md:flex-row gap-10">
+              <h1>Facilities</h1>
+              <Facilities></Facilities>
+            </div>
+            {/* Facilities End*/}
+
+
+            {/*One Image start */}
+            <div className="flex flex-col md:flex-row gap-10">
+              <h1>Select Image</h1>
+              {/* <OneImagePage></OneImagePage> */}
+              <MultiImagePage></MultiImagePage>
+            </div>
+            {/* One Image End*/}
+
+
+            {/*Description start */}
+            <div className="">
+              <h1>Description</h1>
+              <Description></Description>
+            </div>
+            {/*Description End*/}
+
             <div className="bg-purple-500">
               <YourDetails></YourDetails>
           </div>
     </div>
+  }
+
+
+/**
+ * Function work Start
+ */
+
+
+const {propertyName,rentTkValue,shortAddress,description,selectedDate,selectedBathroom,selectedBedRoom,selectedDrawing,selectedDining,selectedBalcony,
+       selectedKitchen,floorNumber,selectedFaching,totalSize,maintenance,selectedgarageType,selectedFacilities,imageSrc,images,
+       name,phone,wapp}=useContext(AuthContext)
+
+  
+
+
+  const handleRentPost=()=>{
+    console.log("Property Name: ",propertyName);
+    console.log("Garage rent: ",rentTkValue);
+    console.log("Short Address: ",shortAddress);
+    console.log("Description: ",description);
+    console.log("Date :",selectedDate);
+    console.log("Selected Bathroom: ",selectedBathroom);
+    console.log("Selected Bedroom: ",selectedBedRoom);
+    console.log("Selected Drawing: ",selectedDrawing);
+    console.log("Selected Dining: ",selectedDining);
+    console.log("Selected Balcony: ",selectedBalcony);
+    console.log("Selected Kitchen: ",selectedKitchen);
+    console.log("Floor Number: ",floorNumber);
+    console.log("Faching: ",selectedFaching);
+    console.log("Total size/Room Size: ",totalSize);
+    console.log("Maintenance: ",maintenance);
+    console.log("Garage Type: ",selectedgarageType);
+    console.log("Facilities ",selectedFacilities);
+    console.log("Selected Images ",images);
+
+    console.log("Name: ",name);
+    console.log("Phone: ",phone);
+    console.log("Whatsapp: ",wapp);
+   
   }
 
 
@@ -300,13 +378,15 @@ const RentPost = () => {
 
       {/* Property Name start */}
       <h1 className="my-5">Property Name</h1>
-      <input
+      <PropertyName></PropertyName>
+      {/* <input
         type="text"
         name=""
-        className="input input-bordered w-full text-white"
+        className="input input-bordered w-full text-white border-2 border-red-500"
         id=""
         placeholder="Property Name"
-      />
+        onChange={handlePropertyName}
+      /> */}
       {/* Property Name end */}
 
 
@@ -338,6 +418,10 @@ const RentPost = () => {
       
       <h1 className="w-4/12 mx-auto bg-yellow-400 text-center my-10  ">Shpe Start</h1>
           {shape}
+
+      <div className="text-center my-4">
+         <button onClick={handleRentPost} className="btn btn-primary">Post</button>
+      </div>   
     </div>
   );
 };

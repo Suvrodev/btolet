@@ -1,35 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Marque from '../../../SharedPage/Marque/Marque';
 import Banner from '../../../SharedPage/Banner/Banner';
 import RentCard from '../RentCard/RentCard';
 import { Link } from 'react-router-dom';
 import Filter from '../../Filter/Filter';
+import { AuthContext } from '../../../../../Providers/AuthProvider';
 
 const Rent = () => {
 
     
-    const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
-
-    useEffect(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          position => {
-            setCoordinates({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-            });
-          },
-          error => {
-            console.error("Error getting geolocation:", error);
-          }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
-    }, []);
-
-    let lattitude=coordinates.latitude
-    let longitude=coordinates.longitude
+   const {lattitude,longitude}=useContext(AuthContext)
+ 
     console.log("Lattitude: ",lattitude);
     console.log("Longitude: ",longitude);
 
