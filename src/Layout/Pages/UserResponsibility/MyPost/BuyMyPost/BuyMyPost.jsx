@@ -5,7 +5,7 @@ import BuyCard from '../../../Buy/BuyCard/BuyCard';
 
 const BuyMyPost = () => {
 
-    const {uId,successfullMessage}=useContext(AuthContext)
+    const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
 
 
     const [refress,setRefress]=useState(true)
@@ -16,7 +16,7 @@ const BuyMyPost = () => {
     const [myPost,setMyPost]=useState([])  
     useEffect(()=>{
        if(uId){
-            axios.get(`http://154.26.135.41:3800/api/pro/user/mypost?uid=${uId}&page=1`)
+            axios.get(`${baseUrl}/api/pro/user/mypost?uid=${uId}&page=1`)
             .then(res=>{
                 setMyPost(res.data);
             })

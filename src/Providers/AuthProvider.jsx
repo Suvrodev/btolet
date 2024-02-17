@@ -5,8 +5,8 @@ export const AuthContext=createContext("")
 const AuthProvider = ({children}) => {
 
 
-    const baseUrl='http://154.26.135.41:3800'
-    // const baseUrl='http://localhost:3000'
+    // const baseUrl='http://154.26.135.41:3800'
+    const baseUrl='http://localhost:3000'
 
     const [uId,setUId]=useState("")
     const [currentUser,setCurrentUser]=useState("")
@@ -31,7 +31,7 @@ const AuthProvider = ({children}) => {
     ////Current User from Database start------------------------------------------------------------------
     useEffect(()=>{
        if(uId){
-            fetch(`http://154.26.135.41:3800/api/uid`,{
+            fetch(`${baseUrl}/api/uid`,{
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'
@@ -250,13 +250,13 @@ const AuthProvider = ({children}) => {
     ///Dining
     const [selectedDining,setSelectedDining]=useState("1")
     ///Balcony
-    const [selectedBalcony, setSelectedBalcony] = useState('');
+    const [selectedBalcony, setSelectedBalcony] = useState('1');
     const [errorBalcony,setErrorBalcony]=useState(false)
     ////Kitchen
-    const [selectedKitchen, setSelectedKitchen] = useState('');
+    const [selectedKitchen, setSelectedKitchen] = useState('1');
     const [errorKitchen,setErrorKitchen]=useState(false)
     ////faching
-    const [selectedFaching,setSelectedFaching]=useState('');
+    const [selectedFaching,setSelectedFaching]=useState('1');
     const [errorFaching,setErrorFaching]=useState(false)
     ///Garage Type
     const [selectedgarageType, setSelectedgarageType] = useState('Garage');

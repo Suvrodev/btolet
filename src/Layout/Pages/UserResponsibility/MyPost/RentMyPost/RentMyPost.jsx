@@ -5,7 +5,7 @@ import RentCard from '../../../Home/Rent/RentCard/RentCard';
 
 const RentMyPost = () => {
 
-    const {uId,successfullMessage}=useContext(AuthContext)
+    const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
 
     const [refress,setRefress]=useState(true)
     const handleRefresh=()=>{
@@ -15,7 +15,7 @@ const RentMyPost = () => {
     const [myPost,setMyPost]=useState([])  
     useEffect(()=>{
        if(uId){
-            axios.get(`http://154.26.135.41:3800/api/tolet/user/mypost?uid=${uId}&page=1`)
+            axios.get(`${baseUrl}/api/tolet/user/mypost?uid=${uId}&page=1`)
             .then(res=>{
                 setMyPost(res.data);
             })

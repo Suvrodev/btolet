@@ -12,7 +12,7 @@ const FloorNumber = () => {
     return (
         <div>
             <div className="w-full">
-                <input onChange={handleFloorNumber} type="number" className={`input input-bordered text-white w-full ${errorFloorNumber?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Floor Number' />
+                <input onChange={handleFloorNumber} type="number" className={`input input-bordered text-white w-full ${errorFloorNumber?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Floor Number' defaultValue={5} />
             </div>
         </div>
     );

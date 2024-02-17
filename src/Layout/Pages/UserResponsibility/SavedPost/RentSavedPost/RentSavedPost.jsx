@@ -4,7 +4,7 @@ import axios from 'axios';
 import RentCard from '../../../Home/Rent/RentCard/RentCard';
 
 const RentSavedPost = () => {
-    const {uId,successfullMessage}=useContext(AuthContext)
+    const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
 
     const [refress,setRefress]=useState(true)
 
@@ -21,7 +21,7 @@ const RentSavedPost = () => {
      
     const [savedPost,setSavedPost]=useState([])  
     useEffect(()=>{
-        axios.post(`http://154.26.135.41:3800/api/tolet/save/post/get`,savedInfoRent)
+        axios.post(`${baseUrl}/api/tolet/save/post/get`,savedInfoRent)
         .then(res=>{
             setSavedPost(res.data);
         })

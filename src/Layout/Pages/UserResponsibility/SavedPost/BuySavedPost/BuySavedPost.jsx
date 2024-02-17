@@ -5,7 +5,7 @@ import BuyCard from '../../../Buy/BuyCard/BuyCard';
 
 const BuySavedPost = () => {
 
-    const {uId,successfullMessage}=useContext(AuthContext)
+    const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
 
     const [refress,setRefress]=useState(true)
 
@@ -22,7 +22,7 @@ const BuySavedPost = () => {
      
     const [savedPost,setSavedPost]=useState([])  
     useEffect(()=>{
-        axios.post(`http://154.26.135.41:3800/api/pro/save/post/get`,savedInfoRent)
+        axios.post(`${baseUrl}/api/pro/save/post/get`,savedInfoRent)
         .then(res=>{
             setSavedPost(res.data);
         })

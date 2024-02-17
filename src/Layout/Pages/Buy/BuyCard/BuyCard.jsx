@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
-   const {uId,successfullMessage}=useContext(AuthContext)
+   const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
     console.log("Buy Card: ",buy);
     const {pid,image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category,geolat,geolon}=buy
 
@@ -71,7 +71,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
         console.log("Blue chilo Save korbo");
 
         if(uId){
-          fetch(`http://154.26.135.41:3800/api/pro/save/post`,{
+          fetch(`${baseUrl}/api/pro/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -92,7 +92,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
       const handleUnSave=()=>{
         console.log("Red Chilo UnSave korbo");
         if(uId){
-          fetch(`http://154.26.135.41:3800/api/pro/save/post`,{
+          fetch(`${baseUrl}/api/pro/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -123,7 +123,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
           }).then((result) => {
             if (result.isConfirmed) {
                
-              axios.delete(`http://154.26.135.41:3800/api/pro/user/mypost/delete?uid=${uId}&post_id=${pid}`)
+              axios.delete(`${baseUrl}/api/pro/user/mypost/delete?uid=${uId}&post_id=${pid}`)
               .then(res=>{
                 console.log("Delete Res: ",res.data);
                 if(res.data){

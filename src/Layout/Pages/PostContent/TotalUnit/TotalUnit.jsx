@@ -12,7 +12,7 @@ const TotalUnit = () => {
     return (
         <div>
             <div className="w-full">
-                    <input type="number" onChange={handleTotalUnit} className={`input input-bordered  w-full text-white ${errorTotalUnit?'errorBorder':''} `} name="" id="" max={50} min={1} placeholder='Total Unit' />
+                    <input type="number" onChange={handleTotalUnit} className={`input input-bordered  w-full text-white ${errorTotalUnit?'errorBorder':''} `} name="" id="" max={50} min={1} placeholder='Total Unit' defaultValue={5} />
             </div>
         </div>
     );

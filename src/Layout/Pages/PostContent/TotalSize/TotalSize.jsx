@@ -12,7 +12,7 @@ const TotalSize = () => {
     return (
         <div>
             <div className="w-full">
-                <input onChange={handleTotalSize} type="text" className={`input input-bordered  w-full text-white ${errorTotalSize?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Total Size' />
+                <input onChange={handleTotalSize} type="text" className={`input input-bordered  w-full text-white ${errorTotalSize?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Total Size' defaultValue={5} />
             </div>
         </div>
     );

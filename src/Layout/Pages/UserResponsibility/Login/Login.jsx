@@ -12,7 +12,7 @@ import seaImage from '../../../../assets/Image/SeaBitch.jpg'
 
 const Login = () => {
 
-    const {successfullMessage}=useContext(AuthContext)
+    const {successfullMessage,baseUrl}=useContext(AuthContext)
 
 
     const navigate=useNavigate()
@@ -42,7 +42,7 @@ const Login = () => {
 
 
 
-             fetch(`http://154.26.135.41:3800/api/login`,{
+             fetch(`${baseUrl}/api/login`,{
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'

@@ -63,6 +63,7 @@ const BuyPost = () => {
 
     let Fuck=0
     const handleSubmit=()=>{
+      console.log("Click Button");
       const newName= name?name:currentUser?.name
       const newPhone=`${selectPhoneCountryCode}`+ `${phone?phone:currentUser?.phone}`
       const newWapp= `${selectWappCountryCode}` + `${wapp?wapp:currentUser?.wapp}`
@@ -182,29 +183,31 @@ const BuyPost = () => {
         
 
          console.log("সবার নিচে");
+        //  const img1=images[0]
+        //  console.log("img1: ",img1);
 
          buyPosDataObject={
           uid:uId,
-          category:selectedCategoriesBuy ,
-          name: propertyName,
-          procondition: selectedTypeProperty,//////////////////
-          bed: selectedBedRoom,
-          bath: selectedBathroom,
-          balcony: selectedBalcony,
-          drawing: selectedDrawing,
-          dining: selectedDining,
-          kitchen: selectedKitchen,
-          size: totalSize,
-          sellfrom: new Date(),
-          totalFloor: totalFloor,
-          floornumber: floorNumber,
-          facing: selectedFaching,
-          totalUnit: totalUnit,
-          price: price,
-          amenities: selectedAmenities,
-          floorPlan: imageSrc,
-          ytVideo: ytLink,
-          image1:images[0] ? images[0]:"",
+          category:selectedCategoriesBuy?selectedCategoriesBuy:"" ,
+          name: propertyName?propertyName:"",
+          procondition: selectedTypeProperty,
+          bed: selectedBedRoom?selectedBedRoom:"",
+          bath: selectedBathroom?selectedBathroom:"",
+          balcony: selectedBalcony?selectedBalcony:"",
+          drawing: selectedDrawing?selectedDrawing:"",
+          dining: selectedDining?selectedDining:"",
+          kitchen: selectedKitchen?selectedKitchen:"",
+          size: totalSize?totalSize:"",
+          sellfrom: "ascd",
+          totalFloor: totalFloor?totalFloor:"",
+          floornumber: floorNumber?floorNumber:"",
+          facing: selectedFaching?selectedFaching:"",
+          total_unit: totalUnit?totalUnit:"",
+          price: priceMode?price:0,
+          amenities: selectedAmenities?selectedAmenities:"",
+          floor_plan: imageSrc?imageSrc:"",
+          yt_video: ytLink?ytLink:"",
+          image1:images[0] ?images[0]:"",
           image2: images[1] ?images[1]:"",
           image3: images[2]? images[2]:"",
           image4: images[3]? images[3]:"",
@@ -216,27 +219,26 @@ const BuyPost = () => {
           image10: images[9]? images[9]:"",
           image11: images[10]? images[10]:"",
           image12: images[11]? images[11]:"",
-          location: doubleLocation,
-          locationfull: displayName,
-          shortaddress: shortAddress,
-          description: description,
-          ownertype: selectedYouAres,
-          geolat: lattitude,
-          geolon: longitude,
-          phone: newPhone,///////////////////////////
-          wapp: newWapp,
-          emi: selectedEmi,
-         
-          landType: "",
+          location: doubleLocation?doubleLocation:"",
+          locationfull: displayName?displayName:"",
+          shortaddress: shortAddress?shortAddress:"",
+          description: description?description:"",
+          ownertype: selectedYouAres?selectedYouAres:"",
+          geolat: lattitude?lattitude:"",
+          geolon: longitude?longitude:"",
+          phone: newPhone?newPhone:"",
+          wapp: newWapp?newWapp:"",
+          emi: selectedEmi?selectedEmi:"",
+          land_type: [],
           area: "",
           measurement: "",
-          roadSize: "",
+          road_size: ""
         
          }
 
          console.log("buyPosDataObject: ",buyPosDataObject);
          
-          axios.post(`http://154.26.135.41:3800/api/pro/newpost`,buyPosDataObject)
+          // axios.post(`http://154.26.135.41:3800/api/pro/newpost`,buyPosDataObject)
           axios.post(`${baseUrl}/api/pro/newpost`,buyPosDataObject)
           .then(res=>{
             console.log(`Doneeee: ${++Fuck} `,res.data);

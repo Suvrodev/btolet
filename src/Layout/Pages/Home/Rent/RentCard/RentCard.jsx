@@ -7,7 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
-     const {uId,successfullMessage}=useContext(AuthContext)
+     const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
     console.log("Rent: ",r);
     const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category,garagetype}=r
 
@@ -103,7 +103,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
         console.log("Blue chilo Save korbo");
 
         if(uId){
-          fetch(`http://154.26.135.41:3800/api/tolet/save/post`,{
+          fetch(`${baseUrl}/api/tolet/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -124,7 +124,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       const handleUnSave=()=>{
         console.log("Red Chilo UnSave korbo");
         if(uId){
-          fetch(`http://154.26.135.41:3800/api/tolet/save/post`,{
+          fetch(`${baseUrl}/api/tolet/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -162,7 +162,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
           }).then((result) => {
             if (result.isConfirmed) {
                
-              axios.delete(`http://154.26.135.41:3800/api/tolet/user/mypost/delete?uid=${uId}&post_id=${post_id}`)
+              axios.delete(`${baseUrl}/api/tolet/user/mypost/delete?uid=${uId}&post_id=${post_id}`)
               .then(res=>{
                 console.log("Delete Res: ",res.data);
                 if(res.data){

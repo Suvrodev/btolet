@@ -31,7 +31,8 @@ const OneImagePage = () => {
         const reader = new FileReader();
 
         reader.onload = () => {
-            setImageSrc(reader.result);
+            // setImageSrc(reader.result);
+            setImageSrc(reader.result.replace(/^data:image\/[a-z]+;base64,/, ''));
         };
 
         if (file) {
@@ -75,7 +76,8 @@ const OneImagePage = () => {
     <div className='flex flex-col gap-4 items-start my-4 '>
         {imageSrc && (
             <div className="relative">
-                <img src={imageSrc} alt="Selected" className='w-[250px] h-[250px] border rounded-md' />
+                {/* <img src={imageSrc} alt="Selected" className='w-[250px] h-[250px] border rounded-md' /> */}
+                <img className='w-[200px] h-[200px] object-cover'  src={`data:image/png;base64,${imageSrc}`} alt="" />
                 <button onClick={handleRemoveImage} className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1">
                     <FaRegTrashAlt />
                 </button>
