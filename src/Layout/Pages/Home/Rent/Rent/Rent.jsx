@@ -9,7 +9,7 @@ import { AuthContext } from '../../../../../Providers/AuthProvider';
 const Rent = () => {
 
     
-   const {lattitude,longitude,baseUrl}=useContext(AuthContext)
+   const {lattitude,longitude,baseUrl,location_1,location_2}=useContext(AuthContext)
  
     console.log("Lattitude: ",lattitude);
     console.log("Longitude: ",longitude);
@@ -37,50 +37,6 @@ const Rent = () => {
 
     ////rents Data end
 
-
-    ////Area Start
-    let place=""
-    const [area,setArea]=useState('')
-    useEffect(()=>{
-      if(lattitude && longitude){
-          fetch(`http://154.26.130.64/nominatim/reverse.php?lat=${parseFloat(lattitude)}&lon=${parseFloat(longitude)}&format=jsonv2&accept-language=bn`)
-          .then(res=>res.json())
-          .then(data=>{
-          setArea(data)
-      })
-      }
-    },[lattitude,longitude])
-
-    console.log("Area(Rent): ",area);
-
-    const {address,display_name}=area
-    // console.log("Address: ",address);
-    // console.log("Display Name: ",display_name);
-
-
-    if(address?.suburb && address?.city){
-        place=address?.suburb  + ","+ address?.city
-    }
-    else if(address?.name && address?.city){
-         place=address?.name  + "," + address?.city
-    }
-    else if(address?.stateDistrict  && address?.name){
-         place=address?.name + ","+  address?.city
-    }else{
-        place=display_name
-    }
-    
-
-    let location_1,location_2;
-    if(place){
-      location_1=place.split(',')[0]
-      location_2=place.split(',')[1]
-    }
-    console.log("Display Name(Rent): ",area?.display_name);
-    console.log("Place(Rent): ",place);
-    console.log("Location-1(Rent): ",location_1);
-    console.log("Location-2(Rent): ",location_2);
-   
 
     ///Post Count
     const [postCount,setPostCount]=useState("")
@@ -138,7 +94,7 @@ const Rent = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
                 {
-                  // rents.map((rent,idx)=> <RentCard key={idx} r={rent} forRent={'forRent'} ></RentCard> )
+                  rents.map((rent,idx)=> <RentCard key={idx} r={rent} forRent={'forRent'} ></RentCard> )
                 }
             </div>
         </div>

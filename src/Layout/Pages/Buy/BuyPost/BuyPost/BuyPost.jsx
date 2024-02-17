@@ -8,11 +8,11 @@ import axios from 'axios';
 
 const BuyPost = () => {
     
-   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,duelLocation,setDuelLocation,baseUrl,uId}=useContext(AuthContext)
+   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,baseUrl,uId,doubleLocation}=useContext(AuthContext)
 
    
 
-   console.log("duel Location:",duelLocation);
+   console.log("Double Location:",doubleLocation);
     
     const categories=["House","Flat","Land","Plot"]
     // const [selectedCategories, setSelectedCategories] = useState("House");
@@ -61,6 +61,7 @@ const BuyPost = () => {
  
     
 
+    let Fuck=0
     const handleSubmit=()=>{
       const newName= name?name:currentUser?.name
       const newPhone=`${selectPhoneCountryCode}`+ `${phone?phone:currentUser?.phone}`
@@ -106,7 +107,7 @@ const BuyPost = () => {
 
         // console.log("Phone Country Code: ",selectPhoneCountryCode);
         // console.log("Wapp Country Code: ",selectWappCountryCode);
-        console.log("Duel Location: ",duelLocation);
+        console.log("Double Location: ",doubleLocation);
         console.log("Price Mode: ",priceMode);
 
 
@@ -215,7 +216,7 @@ const BuyPost = () => {
           image10: images[9]? images[9]:"",
           image11: images[10]? images[10]:"",
           image12: images[11]? images[11]:"",
-          location: duelLocation,
+          location: doubleLocation,
           locationfull: displayName,
           shortaddress: shortAddress,
           description: description,
@@ -238,7 +239,7 @@ const BuyPost = () => {
           axios.post(`http://154.26.135.41:3800/api/pro/newpost`,buyPosDataObject)
           axios.post(`${baseUrl}/api/pro/newpost`,buyPosDataObject)
           .then(res=>{
-            console.log("Doneeee: ",res.data);
+            console.log(`Doneeee: ${++Fuck} `,res.data);
           })
         }
 

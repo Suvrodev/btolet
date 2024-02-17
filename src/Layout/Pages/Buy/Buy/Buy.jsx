@@ -5,7 +5,7 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const Buy = () => {
 
-    const {lattitude,longitude,baseUrl,setDuelLocation,duelLocation }=useContext(AuthContext)
+    const {lattitude,longitude,baseUrl,doubleLocation,location_1,location_2 }=useContext(AuthContext)
   
     console.log("Lattitude: ",lattitude);
     console.log("Longitude: ",longitude);
@@ -28,53 +28,7 @@ const Buy = () => {
       ///Buy Data end
 
 
-    ////Area Start
-    let place=""
-    const [area,setArea]=useState('')
-    useEffect(()=>{
-      if(lattitude && longitude){
-          fetch(`http://154.26.130.64/nominatim/reverse.php?lat=${parseFloat(lattitude)}&lon=${parseFloat(longitude)}&format=jsonv2&accept-language=bn`)
-          .then(res=>res.json())
-          .then(data=>{
-          setArea(data)
-      })
-      }
-    },[lattitude,longitude])
-
-    console.log("Area(Buy): ",area);
-
-    const {address,display_name}=area
-    // console.log("Address: ",address);
-    // console.log("Display Name: ",display_name);
-
-
-    if(address?.suburb && address?.city){
-        console.log("Execute-1");
-        place=address?.suburb  + ","+ address?.city
-    }
-    else if(address?.name && address?.city){
-          console.log("Execute-2");
-         place=address?.name  + "," + address?.city
-    }
-    else if(address?.stateDistrict  && address?.name){
-          console.log("Execute-3");
-         place=address?.name + ","+  address?.city
-    }else{
-        place=display_name
-    }
-    
-
-    let location_1,location_2;
-    if(place){
-      location_1=place.split(',')[0]
-      location_2=place.split(',')[1]
-    }
-    setDuelLocation(location_1+','+location_2)
-    console.log("Display Name(Buy): ",area?.display_name);
-    console.log("Place(Buy): ",place);
-    console.log("Location-1(Buy): ",location_1);
-    console.log("Location-2(Buy): ",location_2);
-    console.log("Location-1+Location-2(Buy)",duelLocation);
+  
    
 
 

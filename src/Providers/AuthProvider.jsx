@@ -121,6 +121,10 @@ const AuthProvider = ({children}) => {
     /**
      * Area Start-----------------------------------------------------------------------------------
      */
+    ///Lattitude: 22.8292315
+    ///Longitude:  89.5438572
+
+    let doubleLocation=""
 
     let place=""
     let displayName=""
@@ -135,12 +139,40 @@ const AuthProvider = ({children}) => {
       }
     },[lattitude,longitude])
 
-    console.log("Area: ",area);
+    console.log("Area(Auth): ",area);
 
     const {address}=area
-    displayName=area.display_name;
+    displayName=area?.display_name;
     // console.log("Address: ",address);
     // console.log("Display Name: ",display_name);
+
+    if(address?.suburb && address?.city){
+        // console.log("Execute-1");
+        place=address?.suburb  + ","+ address?.city
+    }
+    else if(address?.name && address?.city){
+        // console.log("Execute-2");
+         place=address?.name  + "," + address?.city
+    }
+    else if(address?.stateDistrict  && address?.name){
+        // console.log("Execute-3");
+         place=address?.name + ","+  address?.city
+    }else{
+        // console.log("Execute-4");
+        place=displayName
+    }
+    let location_1,location_2;
+    if(place){
+      location_1=place.split(',')[0]
+      location_2=place.split(',')[1]
+      doubleLocation=`${location_1},${location_2}`
+      console.log("doubleLocation(Auh): ",doubleLocation);
+    }
+    console.log("Display Name(Auth): ",displayName);
+    console.log("Place(Auth): ",place);
+    console.log("Location-1(Auth): ",location_1);
+    console.log("Location-2(Auth): ",location_2);
+  
 
 
     
@@ -176,8 +208,8 @@ const AuthProvider = ({children}) => {
 
 
     
-    /////Duel Location
-    const [duelLocation,setDuelLocation]=useState('')
+
+   
 
 
     ///Your details
@@ -305,8 +337,8 @@ const AuthProvider = ({children}) => {
         longitude,
         ///Lattitude Longitude end
 
-        ///Duel Location
-        duelLocation,setDuelLocation,
+        ///doubleLocation
+        doubleLocation,location_1,location_2,
 
         ////Buy Categories
         selectedCategoriesBuy,setSelectedCategoriesBuy,
