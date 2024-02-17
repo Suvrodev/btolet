@@ -217,13 +217,17 @@ const HomeFlat = () => {
        
          
           {/* One Image Upload Start */}
-          <h1 className='my-4'>Select Floor Plan</h1>
-          <OneImagePage></OneImagePage>
+         <div>
+             <h1 className=''>Select Floor Plan</h1>
+              <OneImagePage></OneImagePage>
+         </div>
           {/* One Image Upload End */}
 
           {/* Multi Image Upload Start */}
-          <h1 className='my-4'>Select Images*</h1>
-          <MultiImagePage></MultiImagePage>
+          <div>
+            <h1 className=''>Select Images*</h1>
+            <MultiImagePage></MultiImagePage>
+          </div>
           {/* Multi Image Upload End */}
 
           <div>

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
    const {uId,successfullMessage}=useContext(AuthContext)
-    console.log(buy);
+    console.log("Buy Card: ",buy);
     const {pid,image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category,geolat,geolon}=buy
 
     const naviagte=useNavigate()

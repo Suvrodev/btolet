@@ -3,10 +3,16 @@ import HomeFlat from '../HomeFlat/HomeFlat';
 import Land from '../Land/Land';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
 import { FaCheckCircle, FaCircle, FaGoogle } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const BuyPost = () => {
     
-   const {selectedCategoriesBuy,setSelectedCategoriesBuy}=useContext(AuthContext)
+   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,duelLocation,setDuelLocation,baseUrl,uId}=useContext(AuthContext)
+
+   
+
+   console.log("duel Location:",duelLocation);
     
     const categories=["House","Flat","Land","Plot"]
     // const [selectedCategories, setSelectedCategories] = useState("House");
@@ -44,6 +50,7 @@ const BuyPost = () => {
         imageSrc,images,name,phone,wapp,shortAddress,description,selectedYouAres,selectedLPTypeItems,selectedAreas,measurement,roadSize,address,
         selectPhoneCountryCode,selectWappCountryCode, priceMode,
         setErrorBalcony,setErrorKitchen,setErrorFaching,setErrorTotalFloor,setErrorFloorNumber,setErrorTotalSize,setErrorTotalUnit,setErrorPrice,setErrorMeasurement,setErrorRoadSize,
+        setErrorImages,
         lattitude,longitude,
        }=useContext(AuthContext)
 
@@ -82,7 +89,7 @@ const BuyPost = () => {
         // console.log("Amenities: ",selectedAmenities);
         // console.log("Youtube Link: ",ytLink);
         // console.log("Floor Plan: ",imageSrc);
-        // console.log("Select Images: ",images);
+        console.log("Select Images: ",images);
         // console.log("Short Address:  ",shortAddress);
         // console.log("Description: ",description);
         // console.log("You Are: ",selectedYouAres);
@@ -99,8 +106,11 @@ const BuyPost = () => {
 
         // console.log("Phone Country Code: ",selectPhoneCountryCode);
         // console.log("Wapp Country Code: ",selectWappCountryCode);
+        console.log("Duel Location: ",duelLocation);
+        console.log("Price Mode: ",priceMode);
 
 
+      
         let buyPosDataObject={}
 
         if(selectedCategoriesBuy=='House' || selectedCategoriesBuy=='Flat'){
@@ -153,17 +163,28 @@ const BuyPost = () => {
             setErrorTotalUnit(false)
           }
 
+          console.log("Price Mode: ",priceMode);
+          if(priceMode){
+             if(!price){
+               setErrorPrice(true)
+               return
+             }else{
+               setErrorPrice(false)
+             }
+          }
 
-         if(priceMode){
-            if(!price){
-              setErrorPrice(true)
-              return
-            }else{
-              setErrorPrice(false)
-            }
-         }
+          if(images.length<1){
+            setErrorImages(true)
+            return
+          }
+
+        
+
+         console.log("সবার নিচে");
 
          buyPosDataObject={
+          uid:uId,
+          category:selectedCategoriesBuy ,
           name: propertyName,
           procondition: selectedTypeProperty,//////////////////
           bed: selectedBedRoom,
@@ -182,20 +203,20 @@ const BuyPost = () => {
           amenities: selectedAmenities,
           floorPlan: imageSrc,
           ytVideo: ytLink,
-          image1:images[0],
-          image2: images[0],
-          image3: images[0],
-          image4: images[0],
-          image5: images[0],
-          image6: images[0],
-          image7: images[0],
-          image8: images[0],
-          image9: images[0],
-          image10: images[0],
-          image11: images[0],
-          image12: images[0],
-          location: address,////////////////////////
-          locationfull: address,///////////////////////////
+          image1:images[0] ? images[0]:"",
+          image2: images[1] ?images[1]:"",
+          image3: images[2]? images[2]:"",
+          image4: images[3]? images[3]:"",
+          image5: images[4]? images[4]:"",
+          image6: images[5]? images[5]:"",
+          image7: images[6]? images[6]:"",
+          image8: images[7]? images[7]:"",
+          image9: images[8]? images[8]:"",
+          image10: images[9]? images[9]:"",
+          image11: images[10]? images[10]:"",
+          image12: images[11]? images[11]:"",
+          location: duelLocation,
+          locationfull: displayName,
           shortaddress: shortAddress,
           description: description,
           ownertype: selectedYouAres,
@@ -205,14 +226,20 @@ const BuyPost = () => {
           wapp: newWapp,
           emi: selectedEmi,
          
-          landType: selectedLPTypeItems,
-          area: selectedAreas,
-          measurement: measurement,
-          roadSize: roadSize,
+          landType: "",
+          area: "",
+          measurement: "",
+          roadSize: "",
         
          }
+
+         console.log("buyPosDataObject: ",buyPosDataObject);
          
-          console.log("Object: ",buyPosDataObject);
+          axios.post(`http://154.26.135.41:3800/api/pro/newpost`,buyPosDataObject)
+          axios.post(`${baseUrl}/api/pro/newpost`,buyPosDataObject)
+          .then(res=>{
+            console.log("Doneeee: ",res.data);
+          })
         }
 
 

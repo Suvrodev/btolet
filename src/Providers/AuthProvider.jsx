@@ -4,10 +4,14 @@ import Swal from 'sweetalert2';
 export const AuthContext=createContext("")
 const AuthProvider = ({children}) => {
 
+
+    const baseUrl='http://154.26.135.41:3800'
+    // const baseUrl='http://localhost:3000'
+
     const [uId,setUId]=useState("")
     const [currentUser,setCurrentUser]=useState("")
 
-    ///uId from Local Storage start
+    ///uId from Local Storage start-------------------------------------------------
     useEffect(()=>{
         const uid=localStorage.getItem('uId')
         if(uid){
@@ -18,13 +22,13 @@ const AuthProvider = ({children}) => {
         }
       
     },[uId])
-    ///uId from Local Storage start
+    ///uId from Local Storage start----------------------------------------------------------
 
 
    
 
  
-    ////Current User from Database start
+    ////Current User from Database start------------------------------------------------------------------
     useEffect(()=>{
        if(uId){
             fetch(`http://154.26.135.41:3800/api/uid`,{
@@ -45,12 +49,15 @@ const AuthProvider = ({children}) => {
 
     console.log("Local Storage uid: ",uId);
     console.log("Current User: ",currentUser);
-    ////Current User from Database end
+    ////Current User from Database end--------------------------------------------------------------------
 
 
 
 
-    ///Toast Message start
+   /**
+    * 
+    * Toast Message Start--------------------------------------------------------- 
+    */
     const successfullMessage=(text)=>{
         Swal.fire({
             position: "top-end",
@@ -70,10 +77,14 @@ const AuthProvider = ({children}) => {
             footer: '<a href="#">Why do I have this issue?</a>'
           });
     }
-    ///Toast Message End
+    /**
+     * Toast Message End--------------------------------------------------------------------
+     */
 
 
-    //////Lattitude and Longitude start
+    /**
+     * Collect Lattitude Longitude Start----------------------------------------------------------------
+     */
     const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
 
     useEffect(() => {
@@ -96,19 +107,85 @@ const AuthProvider = ({children}) => {
 
     let lattitude=coordinates.latitude
     let longitude=coordinates.longitude
-    // console.log("Lattitude: ",lattitude);
-    // console.log("Longitude: ",longitude);
-    //////Lattitude and Longitude end
+    console.log("Lattitude: (Main Auth) ",lattitude);
+    console.log("Longitude: (Main Auth) ",longitude);
+    
+    /**
+     * Collect Lattitude Logitude end--------------------------------------------------------------------
+     * 
+     */
 
 
 
-    //////Post Data start
+   
+    /**
+     * Area Start-----------------------------------------------------------------------------------
+     */
+
+    let place=""
+    let displayName=""
+    const [area,setArea]=useState('')
+    useEffect(()=>{
+      if(lattitude && longitude){
+          fetch(`http://154.26.130.64/nominatim/reverse.php?lat=${lattitude}&lon=${longitude}&format=jsonv2&accept-language=bn`)
+          .then(res=>res.json())
+          .then(data=>{
+          setArea(data)
+      })
+      }
+    },[lattitude,longitude])
+
+    console.log("Area: ",area);
+
+    const {address}=area
+    displayName=area.display_name;
+    // console.log("Address: ",address);
+    // console.log("Display Name: ",display_name);
+
+
+    
+
+    
+
+
+    /**
+     * Area End---------------------------------------------------------------------------------------------------------------------
+     */
+
+
+
+
+
+
+
+
+    /***
+     *  Location For Rent And Property start
+     */
+
+    /***
+     *  Location For Rent And Property end
+     */
+
+
+    
+
+    /**
+     * Post Data Start------------------------------------------------------------------------------------------
+     */
+
+
+    
+    /////Duel Location
+    const [duelLocation,setDuelLocation]=useState('')
+
 
     ///Your details
     const [name,setName]=useState('')
     const [phone,setPhone]=useState('')
     const [wapp,setWapp]=useState('')
 
+    
 
     ///Buy Categories
     const [selectedCategoriesBuy, setSelectedCategoriesBuy] = useState("House");
@@ -177,7 +254,7 @@ const AuthProvider = ({children}) => {
     const [totalUnit,setTotalUnit]=useState('')
     const [errorTotalUnit,setErrorTotalUnit]=useState(false)
     ///Price
-    const [priceMode,setPriceMode]=useState(false)
+    const [priceMode,setPriceMode]=useState(true)
     const [price,setPrice]=useState(0)
     const [errorPrice,setErrorPrice]=useState(false)
     ///EMI
@@ -196,8 +273,9 @@ const AuthProvider = ({children}) => {
     ///RoadSize
     const [roadSize,setRoadSize]=useState('')
     const [errorRoadSize,setErrorRoadSize]=useState(false)
-    ////Address
-    const [address,setAddress]=useState('')
+   
+    ////Display Name
+    // const [address,setAddress]=useState('')
 
 
     ////Country Code
@@ -212,7 +290,9 @@ const AuthProvider = ({children}) => {
     
 
 
-    //////Post Data end
+   /**
+    * Post Data End------------------------------------------------------------------------------
+    */
 
     const authInfo={
         uId,
@@ -224,6 +304,9 @@ const AuthProvider = ({children}) => {
         lattitude,
         longitude,
         ///Lattitude Longitude end
+
+        ///Duel Location
+        duelLocation,setDuelLocation,
 
         ////Buy Categories
         selectedCategoriesBuy,setSelectedCategoriesBuy,
@@ -292,8 +375,11 @@ const AuthProvider = ({children}) => {
         measurement,setMeasurement,
         ///RoadSize
         roadSize,setRoadSize,
-        ////Address
-        address,setAddress,
+        // ////Address
+        // address,setAddress,
+
+        ///displayName
+        displayName,
 
         ///Country Code
           ////Country Code
@@ -304,7 +390,10 @@ const AuthProvider = ({children}) => {
         ////Error
         errorBalcony,setErrorBalcony,errorKitchen,setErrorKitchen,errorFaching,setErrorFaching,errorTotalFloor,setErrorTotalFloor,errorFloorNumber,setErrorFloorNumber,
         errorTotalSize,setErrorTotalSize,errorTotalUnit,setErrorTotalUnit,errorImages,setErrorImages,errorMeasurement,setErrorMeasurement,errorRoadSize,setErrorRoadSize,
-        errorPrice,setErrorPrice,errorRentTkValue,setErrorRentTkValue,errorRentCategory,setErrorRentCategory
+        errorPrice,setErrorPrice,errorRentTkValue,setErrorRentTkValue,errorRentCategory,setErrorRentCategory,
+
+        //baseurl
+        baseUrl
         
 
 

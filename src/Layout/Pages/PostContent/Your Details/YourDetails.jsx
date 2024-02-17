@@ -9,23 +9,12 @@ const YourDetails = ({ur}) => {
    
 
 
-    const {currentUser,setName,setPhone,setWapp,selectedYouAres,setSelectedYouAres,lattitude,longitude,  address,setAddress,name,phone,wapp,
+    const {currentUser,setName,setPhone,setWapp,selectedYouAres,setSelectedYouAres,lattitude,longitude, displayName,name,phone,wapp,
         setSelectPhoneCountryCode,selectPhoneCountryCode,setSelectWappCountryCode,selectWappCountryCode}=useContext(AuthContext)
     // console.log("Your Detais: ",currentUser);
 
-    useEffect(()=>{
-        axios.get(`http://154.26.130.64/nominatim/reverse.php?lat=22.7967712&lon=89.551625&format=jsonv2&accept-language=bn`)
-        .then(res=>setAddress(res.data.display_name))
-    },[])
-    // console.log("Addressss: ",address);
-
-
-    // const nameRef=useRef('')
-    // const phnRef=useRef('')
-    // const wappRef=useRef('')
-    // setName(currentUser?.name)
-    // setPhone(currentUser?.phone)
-    // setWapp(currentUser?.wapp)
+  
+    ///////////////////////////////
 
     const handleName=(event)=>{
          setName(event.target.value)
@@ -95,7 +84,7 @@ const YourDetails = ({ur}) => {
                     </div>
 
                     <div>
-                        {address}
+                        {displayName}
                     </div>
                     
                 </div>

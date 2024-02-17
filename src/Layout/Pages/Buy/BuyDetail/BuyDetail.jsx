@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './BuyDetail.css'
 
 import { useLocation, useParams } from 'react-router-dom';
@@ -19,9 +19,12 @@ import BuyDetailsHomeData from './BuyDetailsHomeData/BuyDetailsHomeData';
 import BuyDetailsLandData from './BuyDetailsLandData/BuyDetailsLandData';
 import ContactButtons from './ContactButtons/ContactButtons';
 import BuyCard from '../BuyCard/BuyCard';
+import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const BuyDetail = () => {
+    const {baseUrl}=useContext(AuthContext)
     const {id}=useParams()
+    console.log("Comming id: ",id);
     const currentLocation = useLocation(); // Get the location object
     const { state } = currentLocation; // Access the state object
     //  console.log("State: ",state);
@@ -33,12 +36,12 @@ const BuyDetail = () => {
 
     const [allData,setAllData]=useState("")
     useEffect(()=>{
-        fetch(`http://154.26.135.41:3800/api/pro/post?pid=${id}`)
+        fetch(`${baseUrl}/api/pro/post?pid=${id}`)
         .then(res=>res.json())
         .then(data=>setAllData(data))
     },[id])
 
-    console.log(allData);
+    console.log("All Data: ",allData);
 
    
 
@@ -98,7 +101,7 @@ const BuyDetail = () => {
         const [moreBuyPost,setMoreBuyPost]=useState([])
         useEffect(()=>{
             if(geolat && geolon){
-            fetch(`http://154.26.135.41:3800/api/pro/more/post`,{
+            fetch(`${baseUrl}/api/pro/more/post`,{
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'
@@ -315,6 +318,7 @@ const BuyDetail = () => {
 
     return (
         <div>
+            <h1>dddd</h1>
             Buy Detail: {id}
 
             <div className='flex gap-4 w-full h-[500px] '>

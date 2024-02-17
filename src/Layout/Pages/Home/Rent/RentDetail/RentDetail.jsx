@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BuySlider from '../../../Buy/BuyDetail/BuySlider/BuySlider';
 import BuyMap from '../../../Buy/BuyDetail/BuyMap/BuyMap';
@@ -9,17 +9,19 @@ import BuyDescription from '../../../Buy/BuyDetail/BuyDescription/BuyDescription
 import ContactButtons from '../../../Buy/BuyDetail/ContactButtons/ContactButtons';
 import RentCard from '../RentCard/RentCard';
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaHouseDamage, FaMotorcycle } from 'react-icons/fa';
+import { AuthContext } from '../../../../../Providers/AuthProvider';
 
 
 const RentDetail = () => {
 
+    const {baseUrl}=useContext(AuthContext)
     const {id}=useParams()
     // console.log("Comming id:",id);
 
 
     const [allData,setAllData]=useState("")
     useEffect(()=>{
-        fetch(`http://154.26.135.41:3800/api/tolet/post?post_id=${id}`)
+        fetch(`${baseUrl}/api/tolet/post?post_id=${id}`)
         .then(res=>res.json())
         .then(data=>setAllData(data))
     },[id])
@@ -78,7 +80,7 @@ const RentDetail = () => {
     const [moreRentPost,setMoreRentPost]=useState([])
     useEffect(()=>{
       if(geolat && geolon){
-        fetch(`http://154.26.135.41:3800/api/tolet/more/post`,{
+        fetch(`${baseUrl}/api/tolet/more/post`,{
             method: 'POST',
             headers: {
                 'content-type':'application/json'

@@ -5,69 +5,30 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const Buy = () => {
 
-    const {lattitude,longitude}=useContext(AuthContext)
+    const {lattitude,longitude,baseUrl,setDuelLocation,duelLocation }=useContext(AuthContext)
   
     console.log("Lattitude: ",lattitude);
     console.log("Longitude: ",longitude);
       
  
-
-
-
       ///Buy Data start
       const [page,setPage]=useState(1)
       const [buys,setBuys]=useState([])
       const [loading, setLoading] = useState(false);
 
-      // useEffect(()=>{
-      //     fetch(`http://154.26.135.41:3800/api/pro/postlist?page=1&geolat=${lattitude}&geolon=${longitude}`)
-      //     .then(res=>res.json())
-      //     .then(data=>setBuys(data))
-      // },[])
+      useEffect(()=>{
+          fetch(`${baseUrl}/api/pro/postlist?page=1&geolat=${lattitude}&geolon=${longitude}`)
+          .then(res=>res.json())
+          .then(data=>setBuys(data))
+      },[])
   
-      // console.log("Buy Data: ",buys);
+      console.log("Buy Data: ",buys);
 
-      useEffect(() => {
-        const fetchData = async () => {
-          setLoading(true); // Set loading state to true when fetching data
-          try {
-            const response = await fetch(`http://154.26.135.41:3800/api/pro/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`);
-            const data = await response.json();
-            setBuys(prevRents => [...prevRents, ...data]); // Concatenate new data with existing rents
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-          setLoading(false); // Set loading state to false after fetching data
-        };
-    
-        // Fetch data initially
-        fetchData();
-    
-        const handleScroll = () => {
-          if (
-            window.innerHeight + document.documentElement.scrollTop !==
-            document.documentElement.offsetHeight || loading // If loading, return early
-          ) {
-            return;
-          }
-          setPage(prevPage => prevPage + 1); // Increment page when user scrolls to bottom
-        };
-    
-        window.addEventListener('scroll', handleScroll);
-    
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
-
-        console.log("Buyyyyyyyyyyyyyyyyyy: ",buys);
-      }, [page, lattitude, longitude]); // Trigger useEffect when page, lattitude, or longitude changes
-  
-      console.log("Value of Page: ",page);
 
       ///Buy Data end
 
 
-       ////Area Start
+    ////Area Start
     let place=""
     const [area,setArea]=useState('')
     useEffect(()=>{
@@ -80,20 +41,23 @@ const Buy = () => {
       }
     },[lattitude,longitude])
 
-    console.log("Area: ",area);
+    console.log("Area(Buy): ",area);
 
     const {address,display_name}=area
-    console.log("Address: ",address);
-    console.log("Display Name: ",display_name);
+    // console.log("Address: ",address);
+    // console.log("Display Name: ",display_name);
 
 
     if(address?.suburb && address?.city){
+        console.log("Execute-1");
         place=address?.suburb  + ","+ address?.city
     }
     else if(address?.name && address?.city){
+          console.log("Execute-2");
          place=address?.name  + "," + address?.city
     }
     else if(address?.stateDistrict  && address?.name){
+          console.log("Execute-3");
          place=address?.name + ","+  address?.city
     }else{
         place=display_name
@@ -105,9 +69,12 @@ const Buy = () => {
       location_1=place.split(',')[0]
       location_2=place.split(',')[1]
     }
-    console.log("Place: ",place);
-    console.log("Location-1: ",location_1);
-    console.log("Location-2: ",location_2);
+    setDuelLocation(location_1+','+location_2)
+    console.log("Display Name(Buy): ",area?.display_name);
+    console.log("Place(Buy): ",place);
+    console.log("Location-1(Buy): ",location_1);
+    console.log("Location-2(Buy): ",location_2);
+    console.log("Location-1+Location-2(Buy)",duelLocation);
    
 
 
@@ -115,7 +82,7 @@ const Buy = () => {
     const [postCount,setPostCount]=useState("")
     useEffect(()=>{
       if(location_1 && location_2){
-        fetch(`http://154.26.135.41:3800/api/pro/postcount/area?location1=${location_1}&location2=${location_2}`)
+        fetch(`${baseUrl}/api/pro/postcount/area?location1=${location_1}&location2=${location_2}`)
         .then(res=>res.json())
         .then(data=>{
            if(data?.postCount){
@@ -134,7 +101,7 @@ const Buy = () => {
 
             <div>
                 {
-                  postCount &&
+                  // postCount &&
                   <p>
                     {postCount} ads in {location_1}, {location_2}
                   </p>

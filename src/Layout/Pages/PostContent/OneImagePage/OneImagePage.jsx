@@ -43,7 +43,7 @@ const OneImagePage = () => {
         setImageSrc('');
     };
 
-    // console.log("Image: ",imageSrc);
+    console.log("Image: ",imageSrc);
 
     return (
     //     <div className='flex flex-col gap-4 items-start my-4 '>
@@ -88,9 +88,9 @@ const OneImagePage = () => {
             onChange={handleImageChange}
             style={{ display: 'none' }}
             id="fileInput"
-            className='my-4'
+            className='my-2'
         />
-        <label htmlFor="fileInput" className="btn btn-warning">
+        <label htmlFor="fileInput" className="btn btn-warning ">
             Select An Image
         </label>
     </div>

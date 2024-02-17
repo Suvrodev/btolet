@@ -1,5 +1,5 @@
 import './Banner.css'
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import BannerBody from './BannerBody';
 
@@ -21,6 +21,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { AuthContext } from '../../../../Providers/AuthProvider';
 ///Swipper End
 
 
@@ -29,10 +30,12 @@ import 'swiper/css/navigation';
 
 
 const Banner = () => {
+    const {baseUrl}=useContext(AuthContext)
     const [bannerImages,setBannerImages]=useState([])
     let showImages=[];
     useEffect(()=>{
-        fetch('http://154.26.135.41:3800/api/banner')
+         fetch(`${baseUrl}/api/banner`)
+        // fetch('http://154.26.135.41:3800/api/banner')
         .then(res=>res.json())
         .then(data=>setBannerImages(data))
     },[])

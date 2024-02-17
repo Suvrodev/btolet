@@ -9,7 +9,7 @@ import { AuthContext } from '../../../../../Providers/AuthProvider';
 const Rent = () => {
 
     
-   const {lattitude,longitude}=useContext(AuthContext)
+   const {lattitude,longitude,baseUrl}=useContext(AuthContext)
  
     console.log("Lattitude: ",lattitude);
     console.log("Longitude: ",longitude);
@@ -22,7 +22,7 @@ const Rent = () => {
     const [rents,setRents]=useState([])
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
-        fetch(`http://154.26.135.41:3800/api/web/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`)
+        fetch(`${baseUrl}/api/web/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`)
         .then(res=>res.json())
         .then(data=>{
             // const newData=[...rents,...data]
@@ -34,68 +34,6 @@ const Rent = () => {
 
     console.log("Rent Data: ",rents);
 
-
-    /////Mouce Scroll start
-  //   useEffect(() => {
-  //     let scrollSteps = 0;
-
-  //     const handleScroll = () => {
-  //     scrollSteps++;
-  //     console.log("Scroll step:", scrollSteps);
-
-  //     if (scrollSteps === 3) {
-  //         setPage(prevData => prevData + 1);
-  //         scrollSteps = 0; // Reset scroll steps after incrementing data
-  //     }
-  //     };
-
-  //     window.addEventListener('wheel', handleScroll);
-
-  //     return () => {
-  //     window.removeEventListener('wheel', handleScroll);
-  //     };
-  // }, []);
-
-    /////Mouce Scroll End
-
-
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     setLoading(true); // Set loading state to true when fetching data
-    //     try {
-    //       console.log("Value of Page----------------------: ",page);
-    //       const response = await fetch(`http://154.26.135.41:3800/api/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`);
-    //       const data = await response.json();
-    //       setRents(prevRents => [...prevRents, ...data]); // Concatenate new data with existing rents
-    //     } catch (error) {
-    //       console.error('Error fetching data:', error);
-    //     }
-    //     setLoading(false); // Set loading state to false after fetching data
-    //   };
-  
-    //   // Fetch data initially
-    //   fetchData();
-  
-    //   const handleScroll = () => {
-    //     if (
-    //       window.innerHeight + document.documentElement.scrollTop !==
-    //       document.documentElement.offsetHeight || loading // If loading, return early
-    //     ) {
-    //       return;
-    //     }
-    //     setPage(prevPage => prevPage + 1); // Increment page when user scrolls to bottom
-    //   };
-  
-    //   window.addEventListener('scroll', handleScroll);
-  
-     
-    //   return () => {
-    //     window.removeEventListener('scroll', handleScroll);
-    //   };
-    // }, [page, lattitude, longitude]); // Trigger useEffect when page, lattitude, or longitude changes
-
-   
-  
 
     ////rents Data end
 
@@ -113,7 +51,7 @@ const Rent = () => {
       }
     },[lattitude,longitude])
 
-    console.log("Area: ",area);
+    console.log("Area(Rent): ",area);
 
     const {address,display_name}=area
     // console.log("Address: ",address);
@@ -138,16 +76,17 @@ const Rent = () => {
       location_1=place.split(',')[0]
       location_2=place.split(',')[1]
     }
-    // console.log("Place: ",place);
-    // console.log("Location-1: ",location_1);
-    // console.log("Location-2: ",location_2);
+    console.log("Display Name(Rent): ",area?.display_name);
+    console.log("Place(Rent): ",place);
+    console.log("Location-1(Rent): ",location_1);
+    console.log("Location-2(Rent): ",location_2);
    
 
     ///Post Count
     const [postCount,setPostCount]=useState("")
     useEffect(()=>{
       if(location_1 && location_2){
-        fetch(`http://154.26.135.41:3800/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
+        fetch(`${baseUrl}/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
         .then(res=>res.json())
         .then(data=>{
            if(data?.postCount){
@@ -156,6 +95,8 @@ const Rent = () => {
         })
       }
     },[location_1,location_2])
+    console.log("Post Count: ",postCount);
+    console.log("Location-1 + Location-2 : ",location_1+location_2);
     ///Area End
 
     
@@ -186,7 +127,7 @@ const Rent = () => {
             <button className='btn btn-primary' onClick={()=>document.getElementById('my_modal_4').showModal()}>Filter</button>
             <div>
                 {
-                  postCount &&
+                  // postCount &&
                   <p>
                     {postCount} ads in {location_1}, {location_2}
                   </p>
@@ -197,7 +138,7 @@ const Rent = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
                 {
-                  rents.map((rent,idx)=> <RentCard key={idx} r={rent} forRent={'forRent'} ></RentCard> )
+                  // rents.map((rent,idx)=> <RentCard key={idx} r={rent} forRent={'forRent'} ></RentCard> )
                 }
             </div>
         </div>

@@ -6,17 +6,14 @@ const Price = () => {
 
     const {setPrice,errorPrice,  priceMode,setPriceMode}=useContext(AuthContext)
 
-    const [priceBox,setPriceBox]=useState(true)
     const prices=["Price","Price On Call"]
     const [selectedPrice, setSelectedPrice] = useState('Price');
     const handlePriceChange = (index) => {
         setSelectedPrice(prices[index]);
         console.log("Selected Price: ", prices[index]);
         if(prices[index]==="Price"){
-            setPriceBox(true)
             setPriceMode(true)
         }else{
-            setPriceBox(false)
             setPriceMode(false)
         }
     };
@@ -44,7 +41,7 @@ const Price = () => {
 
 
               {/* Price box start */}
-            <div className={`${priceBox?'':'hidden'}`}>
+            <div className={`${priceMode?'':'hidden'}`}>
                 <h1 className='my-4'>Price*</h1>
                 <input type="number" onChange={handlePrice}  className={`input input-bordered text-white ${errorPrice?'errorBorder':''}`} min={0} name="" id="" placeholder='Price' />
             </div>

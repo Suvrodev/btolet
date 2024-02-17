@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
+import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const Marque = () => {
+    const {baseUrl}=useContext(AuthContext)
     const [marqueText,setMarqueText]=useState("")
     useEffect(()=>{
-        fetch('http://154.26.135.41:3800/api/notes')
+        fetch(`${baseUrl}/api/notes`)
         .then(res=>res.json())
         .then(data=>setMarqueText(data.text))
     },[])
