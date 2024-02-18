@@ -474,7 +474,7 @@ const BuyDetail = () => {
                     {
                         ownertype &&
                         <div className='w-[350px] grid grid-cols-2'>
-                            <p>Position By</p>
+                            <p>Posted By</p>
                             <p>{ownertype}</p>
                          </div>
                     }

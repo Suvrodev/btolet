@@ -24,7 +24,7 @@ const LPType = () => {
     return (
         <div>
         <div className='grid grid-cols-3 md:grid-cols-4 gap-4'>
-            <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-1 ">
+            <label className="cursor-pointer label w-[100px] text-left border rounded-md py-2 px-5 flex gap-1 ">
                 <input
                     type="checkbox"
                     className="checkbox checkbox-accent"
@@ -35,7 +35,7 @@ const LPType = () => {
                 />
                 <span className="label-text">Residential</span>
             </label>
-            <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
+            <label className="cursor-pointer label w-[100px] text-left border rounded-md py-2 px-5 flex gap-2 ">
                 <input
                     type="checkbox"
                     className="checkbox checkbox-accent"
@@ -46,7 +46,7 @@ const LPType = () => {
                 />
                 <span className="label-text">Commercial</span>
             </label>
-            <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
+            <label className="cursor-pointer label w-[100px] text-left border rounded-md py-2 px-5 flex gap-2 ">
                 <input
                     type="checkbox"
                     className="checkbox checkbox-accent"

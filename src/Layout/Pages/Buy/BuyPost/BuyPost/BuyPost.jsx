@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const BuyPost = () => {
     
-   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,baseUrl,uId,doubleLocation}=useContext(AuthContext)
+   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,baseUrl,uId,doubleLocation,successfullMessage,  lattitude,longitude,}=useContext(AuthContext)
 
    
 
@@ -51,17 +51,15 @@ const BuyPost = () => {
         selectPhoneCountryCode,selectWappCountryCode, priceMode,
         setErrorBalcony,setErrorKitchen,setErrorFaching,setErrorTotalFloor,setErrorFloorNumber,setErrorTotalSize,setErrorTotalUnit,setErrorPrice,setErrorMeasurement,setErrorRoadSize,
         setErrorImages,
-        lattitude,longitude,
+      
        }=useContext(AuthContext)
 
 
-    // let namee,totalFloorr,pricee,descriptionn,phonee,wappp,measurementt,roadSizee,category,procondition,bed,bath,balcony,drawing,dining,kitchen,size,sellfrom,floornumber,
-    // facing,totalUnitt,amenities,Pl,ytVideo,image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,location,locationfull,
-    // shortaddress,ownertype,geolat,geolon,landType,area,emi;
+
  
     
 
-    let Fuck=0
+   
     const handleSubmit=()=>{
       console.log("Click Button");
       const newName= name?name:currentUser?.name
@@ -70,9 +68,8 @@ const BuyPost = () => {
 
      
 
-        // console.log("Selected Buy Category: ",selectedCategoriesBuy);
-        // console.log("PriceMode: ",priceMode);
-        // console.log("Property Name: ",propertyName);
+        console.log("Selected Buy Category: ",selectedCategoriesBuy);
+        console.log("Property Name: ",propertyName);
         // console.log("Property Type: ",selectedTypeProperty);
         // console.log("Bedroom: ",selectedBedRoom);
         // console.log("Bathroom: ",selectedBathroom);
@@ -86,7 +83,9 @@ const BuyPost = () => {
         // console.log("Floor Number: ",floorNumber);
         // console.log("Total Size: ",totalSize);
         // console.log("Total Unit: ",totalUnit);
-        // console.log("Price ",price);
+
+         // console.log("PriceMode: ",priceMode);
+        console.log("Price ",price);
         // console.log("EMI: ",selectedEmi);
         // console.log("Amenities: ",selectedAmenities);
         // console.log("Youtube Link: ",ytLink);
@@ -100,10 +99,10 @@ const BuyPost = () => {
         // console.log("phone: ",newPhone);
         // console.log("wapp:  ",newWapp);
 
-        // console.log("LP Type: ",selectedLPTypeItems);
-        // console.log("Area: ",selectedAreas);
-        // console.log("Measurement: ",measurement);
-        // console.log("Road Size: ",roadSize);
+        console.log("LP Type: ",selectedLPTypeItems);
+        console.log("Area: ",selectedAreas);
+        console.log("Measurement: ",measurement);
+        console.log("Road Size: ",roadSize);
         // console.log("Address: ",address);
 
         // console.log("Phone Country Code: ",selectPhoneCountryCode);
@@ -115,6 +114,7 @@ const BuyPost = () => {
       
         let buyPosDataObject={}
 
+        ////For House and Flat
         if(selectedCategoriesBuy=='House' || selectedCategoriesBuy=='Flat'){
           if(!selectedBalcony){
             setErrorBalcony(true)
@@ -236,13 +236,113 @@ const BuyPost = () => {
         
          }
 
-         console.log("buyPosDataObject: ",buyPosDataObject);
+         console.log("buyPosDataObject (House Flat): ",buyPosDataObject);
          
           // axios.post(`http://154.26.135.41:3800/api/pro/newpost`,buyPosDataObject)
           axios.post(`${baseUrl}/api/pro/newpost`,buyPosDataObject)
           .then(res=>{
-            console.log(`Doneeee: ${++Fuck} `,res.data);
+            console.log(`Post done(Home-Flat): `,res.data);
+            if(res.data){
+              successfullMessage("Post Done for Home-Flat")
+            }
           })
+        }
+
+
+
+
+
+        ////For Land and Plot
+        if(selectedCategoriesBuy=='Land' || selectedCategoriesBuy=='Plot'){
+          console.log("This is Land or Plot");
+
+          if(!measurement){
+            setErrorMeasurement(true)
+            return
+          }else{
+            setErrorMeasurement(false)
+          }
+
+          if(!roadSize){
+            setErrorRoadSize(true)
+            return
+          }else{
+            setErrorRoadSize(false)
+          }
+          console.log("Price Mode: ",priceMode);
+          if(priceMode){
+             if(!price){
+               setErrorPrice(true)
+               return
+             }else{
+               setErrorPrice(false)
+             }
+          }
+          if(images.length<1){
+            setErrorImages(true)
+            return
+          }
+
+          console.log("Land নিচে");
+
+          buyPosDataObject={
+            uid:uId,
+            category:selectedCategoriesBuy?selectedCategoriesBuy:"" ,
+            name: propertyName?propertyName:"",
+            sellfrom: new Date(),
+            price: priceMode?price:0,
+            amenities: selectedAmenities?selectedAmenities:"",
+            yt_video: ytLink?ytLink:"",
+            image1:images[0] ?images[0]:"",
+            image2: images[1] ?images[1]:"",
+            image3: images[2]? images[2]:"",
+            image4: images[3]? images[3]:"",
+            image5: images[4]? images[4]:"",
+            image6: images[5]? images[5]:"",
+            image7: images[6]? images[6]:"",
+            image8: images[7]? images[7]:"",
+            image9: images[8]? images[8]:"",
+            image10: images[9]? images[9]:"",
+            image11: images[10]? images[10]:"",
+            image12: images[11]? images[11]:"",
+            location: doubleLocation?doubleLocation:"",
+            locationfull: displayName?displayName:"",
+            shortaddress: shortAddress?shortAddress:"",
+            description: description?description:"",
+            ownertype: selectedYouAres?selectedYouAres:"",
+            geolat: lattitude?lattitude:"",
+            geolon: longitude?longitude:"",
+            phone: newPhone?newPhone:"",
+            wapp: newWapp?newWapp:"",
+           
+            land_type: selectedLPTypeItems?selectedLPTypeItems:[],
+            area: selectedAreas?selectedAreas:"",
+            measurement: measurement?measurement:"",
+            road_size: roadSize?roadSize:"",
+
+            procondition: "",
+            bed: "",
+            bath:"",
+            balcony: "",
+            drawing: "",
+            dining: "",
+            kitchen: "",
+            size:"",
+            emi: "",
+            totalFloor:"",
+            floornumber: "",
+            facing: "",
+            total_unit:"",
+            floor_plan:""
+           }
+           console.log("buyPosDataObject (Land-Plot): ",buyPosDataObject);
+           axios.post(`${baseUrl}/api/pro/newpost`,buyPosDataObject)
+           .then(res=>{
+             console.log(`Doneeee:(Land-Plot)`,res.data);
+             if(res.data){
+              successfullMessage("Post Done Land-Plot")
+             }
+           })
         }
 
 

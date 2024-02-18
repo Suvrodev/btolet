@@ -107,8 +107,8 @@ const AuthProvider = ({children}) => {
 
     let lattitude=coordinates.latitude
     let longitude=coordinates.longitude
-    console.log("Lattitude: (Main Auth) ",lattitude);
-    console.log("Longitude: (Main Auth) ",longitude);
+    // console.log("Lattitude: (Main Auth) ",lattitude);
+    // console.log("Longitude: (Main Auth) ",longitude);
     
     /**
      * Collect Lattitude Logitude end--------------------------------------------------------------------
@@ -139,7 +139,7 @@ const AuthProvider = ({children}) => {
       }
     },[lattitude,longitude])
 
-    console.log("Area(Auth): ",area);
+    // console.log("Area(Auth): ",area);
 
     const {address}=area
     displayName=area?.display_name;
@@ -168,10 +168,10 @@ const AuthProvider = ({children}) => {
       doubleLocation=`${location_1},${location_2}`
       console.log("doubleLocation(Auh): ",doubleLocation);
     }
-    console.log("Display Name(Auth): ",displayName);
-    console.log("Place(Auth): ",place);
-    console.log("Location-1(Auth): ",location_1);
-    console.log("Location-2(Auth): ",location_2);
+    // console.log("Display Name(Auth): ",displayName);
+    // console.log("Place(Auth): ",place);
+    // console.log("Location-1(Auth): ",location_1);
+    // console.log("Location-2(Auth): ",location_2);
   
 
 

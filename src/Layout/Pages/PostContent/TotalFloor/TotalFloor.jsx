@@ -11,7 +11,7 @@ const TotalFloor = () => {
     return (
         <div>
             <div className="w-full">
-                <input type="number" onChange={handleTotalFloor}  className={`input input-bordered  w-full text-white ${errorTotalFloor?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Total Floor' defaultValue={5} />
+                <input type="number" onChange={handleTotalFloor}  className={`input input-bordered  w-full text-white ${errorTotalFloor?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Total Floor'  />
             </div>
         </div>
     );

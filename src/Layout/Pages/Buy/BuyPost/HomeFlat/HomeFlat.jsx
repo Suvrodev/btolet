@@ -45,44 +45,7 @@ const HomeFlat = () => {
     };
 
 
-    // const {selectedCategoriesBuy,propertyName,selectedTypeProperty,selectedBedRoom,selectedBathroom,selectedDrawing,selectedDining,selectedBalcony,
-    //     selectedKitchen,selectedFaching,selectedDate,totalFloor,floorNumber,totalSize,totalUnit,price,selectedEmi,selectedAmenities,ytLink,
-    //     imageSrc,images,name,phone,wapp,shortAddress,description,selectedYouAres,selectedLPTypeItems,selectedAreas,measurement,roadSize}=useContext(AuthContext)
-    
-
-    // const handleSubmit=()=>{
-    //     console.log("Selected Buy Category: ",selectedCategoriesBuy);
-    //     console.log("Property Name: ",propertyName);
-    //     console.log("Property Type: ",selectedTypeProperty);
-    //     console.log("Bedroom: ",selectedBedRoom);
-    //     console.log("Bathroom: ",selectedBathroom);
-    //     console.log("Drawing: ",selectedDrawing);
-    //     console.log("Dining: ",selectedDining);
-    //     console.log("Balcony: ",selectedBalcony);
-    //     console.log("Kitchen: ",selectedKitchen);
-    //     console.log("Faching: ",selectedFaching);
-    //     console.log("Date: ",selectedDate);
-    //     console.log("Total Floor: ",totalFloor);
-    //     console.log("Floor Number: ",floorNumber);
-    //     console.log("Total Size: ",totalSize);
-    //     console.log("Total Unit: ",totalUnit);
-    //     console.log("Price ",price);
-    //     console.log("EMI: ",selectedEmi);
-    //     console.log("Amenities: ",selectedAmenities);
-    //     console.log("Youtube Link: ",ytLink);
-    //     console.log("Floor Plan: ",imageSrc);
-    //     console.log("Select Images: ",images);
-    //     console.log("Short Address:  ",shortAddress);
-    //     console.log("Description: ",description);
-    //     console.log("You Are: ",selectedYouAres);
-    //     console.log("wapp:  ",wapp);
-    //     console.log("Name:  ",name);
-    //     console.log("phone: ",phone);
-    //     console.log("LP Type: ",selectedLPTypeItems);
-    //     console.log("Area: ",selectedAreas);
-    //     console.log("Measurement: ",measurement);
-    //     console.log("Road Size: ",roadSize);
-    // }
+  
 
 
     return (

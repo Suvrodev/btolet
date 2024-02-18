@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const UpdateProfile = () => {
-    const {currentUser}=useContext(AuthContext)
+    const {currentUser,successfullMessage,baseUrl}=useContext(AuthContext)
 
 
     const handleUpdateProfile=(event)=>{
@@ -18,7 +18,7 @@ const UpdateProfile = () => {
         const userProfile={uid:currentUser?.uid ,name,phone,wapp}
         console.log(userProfile);
 
-        fetch(`http://154.26.135.41:3800/api/user/profile/update`,{
+        fetch(`${baseUrl}/api/user/profile/update`,{
             method: 'POST',
             headers: {
                 'content-type':'application/json'
@@ -29,6 +29,9 @@ const UpdateProfile = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log("Update Data: ",data);
+            if(data){
+                successfullMessage("Update Successfully")
+            }
         })
 
     }

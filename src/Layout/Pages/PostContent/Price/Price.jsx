@@ -43,7 +43,7 @@ const Price = () => {
               {/* Price box start */}
             <div className={`${priceMode?'':'hidden'}`}>
                 <h1 className='my-4'>Price*</h1>
-                <input type="number" onChange={handlePrice}  className={`input input-bordered text-white ${errorPrice?'errorBorder':''}`} min={0} name="" id="" placeholder='Price' defaultValue={500} />
+                <input type="number" onChange={handlePrice}  className={`input input-bordered text-white ${errorPrice?'errorBorder':''}`} min={0} name="" id="" placeholder='Price'  />
             </div>
       
 
