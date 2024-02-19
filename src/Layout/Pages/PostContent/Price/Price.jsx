@@ -4,7 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 
 const Price = () => {
 
-    const {setPrice,errorPrice,  priceMode,setPriceMode}=useContext(AuthContext)
+    const {setPrice,errorPrice,  priceMode,setPriceMode,price}=useContext(AuthContext)
 
     const prices=["Price","Price On Call"]
     const [selectedPrice, setSelectedPrice] = useState('Price');
@@ -43,7 +43,7 @@ const Price = () => {
               {/* Price box start */}
             <div className={`${priceMode?'':'hidden'}`}>
                 <h1 className='my-4'>Price*</h1>
-                <input type="number" onChange={handlePrice}  className={`input input-bordered text-white ${errorPrice?'errorBorder':''}`} min={0} name="" id="" placeholder='Price'  />
+                <input type="number" onChange={handlePrice}  className={`input input-bordered text-white ${errorPrice?'errorBorder':''}`} min={0} name="" id="" value={price?price:""} placeholder='Price'  />
             </div>
       
 

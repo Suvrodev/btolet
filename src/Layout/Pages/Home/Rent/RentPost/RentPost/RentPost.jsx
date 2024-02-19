@@ -34,7 +34,11 @@ const RentPost = () => {
     successfullMessage,
     lattitude,
     longitude,
+    clearTextField,
   } = useContext(AuthContext);
+
+
+  console.log("Doubleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: ",doubleLocation);
 
   const rentCategories = [
     "Family",
@@ -51,7 +55,6 @@ const RentPost = () => {
   const [selectedRentCategory, setSelectedRentCategory] = useState([]);
 
   const handleButtonClick = (category) => {
-    setRentTkValue("")
     if (selectedRentCategory.includes(category)) {
       setSelectedRentCategory(
         selectedRentCategory.filter((item) => item !== category)
@@ -370,13 +373,20 @@ const RentPost = () => {
         </div>
         {/* Facilities End*/}
 
-        {/*One Image start */}
-        <div className="flex flex-col md:flex-row gap-10">
-          <h1>Select Image</h1>
-          {/* <OneImagePage></OneImagePage> */}
+        {/*One Image Floor Plat start */}
+        {/* <div className="flex flex-col">
+          <h1>Floor Plan</h1>
+          <OneImagePage></OneImagePage>
+        </div> */}
+
+        {/* One Imag Floor  Plam End*/}
+
+        {/*Multi Image start */}
+        <div className="flex flex-col">
+          <h1>Select Image*</h1>
           <MultiImagePage></MultiImagePage>
         </div>
-        {/* One Image End*/}
+        {/* Multi Image End*/}
 
         {/*Description start */}
         <div className="">
@@ -513,7 +523,7 @@ const RentPost = () => {
 
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : "Today",
+        rentfrom: selectedDate ? selectedDate : "",
         rent: rentTkValue ? rentTkValue : "",
         garagetype: selectedgarageType ? selectedgarageType : "",
         image1: images[0] ? images[0] : "",
@@ -592,7 +602,7 @@ const RentPost = () => {
 
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : "Today",
+        rentfrom: selectedDate ? selectedDate : new Date(),
         rent: rentTkValue ? rentTkValue : "",
         garagetype: "",
         image1: images[0] ? images[0] : "",
@@ -669,7 +679,7 @@ const RentPost = () => {
   
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : "Today",
+        rentfrom: selectedDate ? selectedDate : "",
         rent: rentTkValue ? rentTkValue : "",
         garagetype: "",
         image1: images[0] ? images[0] : "",
@@ -748,7 +758,7 @@ const RentPost = () => {
   
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : "Today",
+        rentfrom: selectedDate ? selectedDate : new Date(),
         rent: rentTkValue ? rentTkValue : "",
         garagetype: "",
         image1: images[0] ? images[0] : "",

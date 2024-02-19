@@ -3,7 +3,7 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const Maintenence = () => {
 
-    const {setMaintenance}=useContext(AuthContext)
+    const {setMaintenance,maintenance}=useContext(AuthContext)
 
     const handleMaintenance=(event)=>{
         setMaintenance(event.target.value);
@@ -12,7 +12,7 @@ const Maintenence = () => {
     return (
         <div>
             <div className="w-full">
-                <input onChange={handleMaintenance} type="number" className='input input-bordered text-white w-full' name="" id="" max={50} min={1} placeholder='300' />
+                <input onChange={handleMaintenance} type="number" className='input input-bordered text-white w-full' name="" id="" max={50} min={1} value={maintenance?maintenance:""} placeholder='300' />
             </div>
         </div>
     );

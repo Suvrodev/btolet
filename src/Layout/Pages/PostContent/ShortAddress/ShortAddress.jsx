@@ -3,7 +3,7 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const ShortAddress = () => {
 
-    const {setShortAddress}=useContext(AuthContext)
+    const {setShortAddress,shortAddress}=useContext(AuthContext)
 
     const handleShortAddress=(event)=>{
         setShortAddress(event.target.value);
@@ -12,7 +12,7 @@ const ShortAddress = () => {
     return (
         <div>
             <div className="w-full">
-                <input onChange={handleShortAddress} type="text" className='input input-bordered  w-full text-white' name="" id=""  placeholder='Uttara Sector 16, Road-3, Dhaka' />
+                <input onChange={handleShortAddress} type="text" className='input input-bordered  w-full text-white' name="" id="" value={shortAddress?shortAddress:""}  placeholder='Uttara Sector 16, Road-3, Dhaka' />
             </div>
           </div>
     );

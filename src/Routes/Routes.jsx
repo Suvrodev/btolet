@@ -16,6 +16,7 @@ import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
 import Filter from "../Layout/Pages/Home/Filter/Filter";
 import SavedPost from "../Layout/Pages/UserResponsibility/SavedPost/SavedPost/SavedPost";
 import MyPost from "../Layout/Pages/UserResponsibility/MyPost/MyPost/MyPost";
+import ZCheck from "../Layout/Pages/ZCheck1/ZCheck";
 
 
   const router = createBrowserRouter([
@@ -75,6 +76,10 @@ import MyPost from "../Layout/Pages/UserResponsibility/MyPost/MyPost/MyPost";
         {
           path: '/filter',
           element: <Filter></Filter>
+        },
+        {
+          path: '/zcheck',
+          element: <ZCheck></ZCheck>
         }
       ]
     },

@@ -143,7 +143,7 @@ const MultiImagePage = () => {
             Select Images (Max 12)
         </label>
         <div className='grid grid-cols-6 gap-10'>
-            {images.map((image, index) => (
+            {images?.map((image, index) => (
                 <div key={index} style={{ position: 'relative' }}>
                     <img className='w-[200px] h-[200px] object-cover' src={`data:image/png;base64,${image}`} alt={`Image ${index + 1}`} />
                     {/* <img className='w-[200px] h-[200px] object-cover'  src={`data:image/png;base64,${image}`} alt="" /> */}

@@ -3,7 +3,7 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const TotalUnit = () => {
 
-    const {setTotalUnit,errorTotalUnit}=useContext(AuthContext)
+    const {setTotalUnit,totalUnit,errorTotalUnit}=useContext(AuthContext)
 
     const handleTotalUnit=(event)=>{
         setTotalUnit(event.target.value);
@@ -12,7 +12,8 @@ const TotalUnit = () => {
     return (
         <div>
             <div className="w-full">
-                    <input type="number" onChange={handleTotalUnit} className={`input input-bordered  w-full text-white ${errorTotalUnit?'errorBorder':''} `} name="" id="" max={50} min={1} placeholder='Total Unit'  />
+                    <input type="number" onChange={handleTotalUnit} className={`input input-bordered  w-full text-white ${errorTotalUnit?'errorBorder':''} `} 
+                    name="" id="" max={50} min={1} value={totalUnit?totalUnit:""} placeholder='Total Unit'  />
             </div>
         </div>
     );

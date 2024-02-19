@@ -85,30 +85,57 @@ const AuthProvider = ({children}) => {
     /**
      * Collect Lattitude Longitude Start----------------------------------------------------------------
      */
+    // const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
+
+    // useEffect(() => {
+    //   if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(
+    //       position => {
+    //         setCoordinates({
+    //           latitude: position.coords.latitude,
+    //           longitude: position.coords.longitude
+    //         });
+    //       },
+    //       error => {
+    //         console.error("Error getting geolocation:", error);
+    //       }
+    //     );
+    //   } else {
+    //     console.error("Geolocation is not supported by this browser.");
+    //   }
+    // }, []);
+
+    // let lattitude=coordinates.latitude
+    // let longitude=coordinates.longitude
+    // console.log("Lattitude: (Main Auth) ",lattitude);
+    // console.log("Longitude: (Main Auth) ",longitude);
+
+
+    ///After
     const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
 
     useEffect(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          position => {
-            setCoordinates({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-            });
-          },
-          error => {
-            console.error("Error getting geolocation:", error);
-          }
+        const watchId = navigator.geolocation.watchPosition(
+            position => {
+                setCoordinates({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                });
+            },
+            error => {
+                console.error("Error getting geolocation:", error);
+            }
         );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
+
+        return () => {
+            navigator.geolocation.clearWatch(watchId);
+        };
     }, []);
 
     let lattitude=coordinates.latitude
     let longitude=coordinates.longitude
-    // console.log("Lattitude: (Main Auth) ",lattitude);
-    // console.log("Longitude: (Main Auth) ",longitude);
+    console.log("Latitude: ", lattitude);
+    console.log("Longitude: ", longitude);
     
     /**
      * Collect Lattitude Logitude end--------------------------------------------------------------------
@@ -209,6 +236,7 @@ const AuthProvider = ({children}) => {
 
     
 
+
    
 
 
@@ -240,7 +268,7 @@ const AuthProvider = ({children}) => {
     ////Maintenance
     const [maintenance,setMaintenance]=useState('')
     ///Date
-    const [selectedDate,setSelectedDate]=useState('')
+    const [selectedDate,setSelectedDate]=useState()
     ///Bathroom
     const [selectedBedRoom,setSelectedBedRoom]=useState("1")
     ///Bathroom
@@ -250,13 +278,13 @@ const AuthProvider = ({children}) => {
     ///Dining
     const [selectedDining,setSelectedDining]=useState("1")
     ///Balcony
-    const [selectedBalcony, setSelectedBalcony] = useState('1');
+    const [selectedBalcony, setSelectedBalcony] = useState('');
     const [errorBalcony,setErrorBalcony]=useState(false)
     ////Kitchen
-    const [selectedKitchen, setSelectedKitchen] = useState('1');
+    const [selectedKitchen, setSelectedKitchen] = useState('');
     const [errorKitchen,setErrorKitchen]=useState(false)
     ////faching
-    const [selectedFaching,setSelectedFaching]=useState('1');
+    const [selectedFaching,setSelectedFaching]=useState('');
     const [errorFaching,setErrorFaching]=useState(false)
     ///Garage Type
     const [selectedgarageType, setSelectedgarageType] = useState('Garage');
@@ -322,6 +350,31 @@ const AuthProvider = ({children}) => {
     
 
 
+
+
+    
+    const clearTextField=()=>{
+      setPropertyName('')
+      setTotalSize('')
+      setMaintenance('')
+      setRentTkValue('') 
+      
+      setTotalFloor('')
+      setFloorNumber('')
+      setTotalUnit('')
+      setPrice('')
+      setYtLink('')
+      setRoadSize('')
+      setMeasurement('')
+      setImageSrc('')
+      setImages([])
+
+      setShortAddress('')
+      setDescription('')
+      setName('')
+      setPhone('')
+      setWapp('')
+    }
    /**
     * Post Data End------------------------------------------------------------------------------
     */
@@ -425,7 +478,11 @@ const AuthProvider = ({children}) => {
         errorPrice,setErrorPrice,errorRentTkValue,setErrorRentTkValue,errorRentCategory,setErrorRentCategory,
 
         //baseurl
-        baseUrl
+        baseUrl,
+
+
+        ///Clear Text Field
+        clearTextField
         
 
 

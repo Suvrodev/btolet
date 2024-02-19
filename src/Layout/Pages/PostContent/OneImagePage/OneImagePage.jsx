@@ -80,7 +80,7 @@ const OneImagePage = () => {
             setImageSrc('');
         };
 
-        console.log("Image: ",imageSrc);
+        // console.log("Image: ",imageSrc);
 
 
 

@@ -3,7 +3,7 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const TotalFloor = () => {
     
-    const {setTotalFloor,errorTotalFloor}=useContext(AuthContext)
+    const {setTotalFloor,totalFloor,errorTotalFloor}=useContext(AuthContext)
 
     const handleTotalFloor=(event)=>{
         setTotalFloor(event.target.value);
@@ -11,7 +11,8 @@ const TotalFloor = () => {
     return (
         <div>
             <div className="w-full">
-                <input type="number" onChange={handleTotalFloor}  className={`input input-bordered  w-full text-white ${errorTotalFloor?'errorBorder':''}`} name="" id="" max={50} min={1} placeholder='Total Floor'  />
+                <input type="number" onChange={handleTotalFloor}  className={`input input-bordered  w-full text-white ${errorTotalFloor?'errorBorder':''}`} 
+                name="" id="" max={50} min={1} placeholder='Total Floor' value={totalFloor?totalFloor:""}  />
             </div>
         </div>
     );

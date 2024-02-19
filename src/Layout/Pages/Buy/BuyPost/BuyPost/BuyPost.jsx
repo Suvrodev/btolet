@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const BuyPost = () => {
     
-   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,baseUrl,uId,doubleLocation,successfullMessage,  lattitude,longitude,}=useContext(AuthContext)
+   const {selectedCategoriesBuy,setSelectedCategoriesBuy,displayName,baseUrl,uId,doubleLocation,successfullMessage,  lattitude,longitude,clearTextField}=useContext(AuthContext)
 
    
 
@@ -18,8 +18,10 @@ const BuyPost = () => {
     // const [selectedCategories, setSelectedCategories] = useState("House");
 
     const handleCategories = (index) => {
+      clearTextField()
       setSelectedCategoriesBuy(categories[index]);
       // setCategory(categories[index])
+    
     };
 
     // console.log("Category: ",selectedCategoriesBuy);
@@ -198,7 +200,7 @@ const BuyPost = () => {
           dining: selectedDining?selectedDining:"",
           kitchen: selectedKitchen?selectedKitchen:"",
           size: totalSize?totalSize:"",
-          sellfrom: "ascd",
+          sellfrom: selectedDate?selectedDate:new Date(),
           totalFloor: totalFloor?totalFloor:"",
           floornumber: floorNumber?floorNumber:"",
           facing: selectedFaching?selectedFaching:"",
@@ -289,7 +291,7 @@ const BuyPost = () => {
             uid:uId,
             category:selectedCategoriesBuy?selectedCategoriesBuy:"" ,
             name: propertyName?propertyName:"",
-            sellfrom: new Date(),
+            sellfrom: selectedDate?selectedDate:new Date(),
             price: priceMode?price:0,
             amenities: selectedAmenities?selectedAmenities:"",
             yt_video: ytLink?ytLink:"",
