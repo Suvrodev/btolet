@@ -153,7 +153,7 @@ const BuyFilter = () => {
         {/* Facilities */}
         <div className=''>
             <h1>Amenities:</h1>
-            <Amenities big={true}></Amenities>
+            <Amenities forSort={true}></Amenities>
         </div>
 
 

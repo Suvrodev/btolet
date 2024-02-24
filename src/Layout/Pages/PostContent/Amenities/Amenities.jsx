@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 
-const Amenities = ({small,big}) => {
+const Amenities = ({small,big,forSort}) => {
 
     const {selectedAmenities,setSelectedAmenities}=useContext(AuthContext)
 
@@ -13,6 +13,10 @@ const Amenities = ({small,big}) => {
     }
     if(small){
         amenities=["Electricity","Drain"]
+    }
+    if(forSort){
+        amenities=["Parking","CCTV","GAS","Giser","Elevator","Fire Alarm","Wasa Connection","Fire Exit","Security Guard","Garden",
+        "Power Backup","Waste Disposal","Earthquack Resistant","Swiming Pool","Telephone","Water Supply","Internet","Cable TV","Electricity","Drain"]
     }
     
 
