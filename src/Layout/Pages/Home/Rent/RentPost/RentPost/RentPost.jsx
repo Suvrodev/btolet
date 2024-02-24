@@ -38,7 +38,6 @@ const RentPost = () => {
   } = useContext(AuthContext);
 
 
-  console.log("Doubleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee: ",doubleLocation);
 
   const rentCategories = [
     "Family",

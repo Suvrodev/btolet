@@ -7,7 +7,7 @@ import './Font.css'
 
 const Main = () => {
     return (
-        <div className='roboto'>
+        <div className='roboto '>
            <Header></Header>
             <h1 className='rb_rg text-2xl'> This is Main</h1>
            <Outlet></Outlet>

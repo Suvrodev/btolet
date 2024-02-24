@@ -3,8 +3,7 @@
     width: 100%;
     max-width: 500px;
     height: 20px;
-    border: 1px solid gray;
-    background-color: purple;
+    background-color: #D8E7FE;
     border-radius: 10px;
 }
 .horizontal-slider .example-track{
@@ -14,15 +13,15 @@
 
 }
 .horizontal-slider .example-track-0{
-   background-color: purple;
+   background-color: #D8E7FE;
 }
 .horizontal-slider .example-track-1{
-    background-color: red;
+    background-color: #5280E6;
 }
 
 .horizontal-slider .example-thumb{
     top: 1;
-    width: 50px;
+    width: 80px;
     height: 48px;
     line-height: 38px;
     font-size: 0.9em;
@@ -30,7 +29,7 @@
     background-color: black;
     color: white;
     cursor: pointer;
-    border: 5px solid silver;
+    border: 5px solid #5280E6;
     box-sizing: border-box;
     margin-top: -50px;
 }

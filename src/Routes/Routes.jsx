@@ -13,10 +13,11 @@ import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
 import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
 import UpdateProfile from "../Layout/Pages/UserResponsibility/UpdateProfile/UpdateProfile";
 import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
-import Filter from "../Layout/Pages/Home/Filter/Filter";
 import SavedPost from "../Layout/Pages/UserResponsibility/SavedPost/SavedPost/SavedPost";
 import MyPost from "../Layout/Pages/UserResponsibility/MyPost/MyPost/MyPost";
 import ZCheck from "../Layout/Pages/ZCheck1/ZCheck";
+import Filter from "../Layout/Pages/Sort/Filter/Filter";
+
 
 
   const router = createBrowserRouter([

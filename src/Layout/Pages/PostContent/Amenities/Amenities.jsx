@@ -63,22 +63,22 @@ const Amenities = ({small,big}) => {
 
 
         <div>
-        <div className="max-w-screen-lg mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-            {amenities.map((amenity, index) => (
-                <div key={index} className="flex items-center border p-5 rounded-md">
-                    <button
-                        onClick={() => handleButtonClick(amenity)}
-                        className={`btn btn-outline text-black ${selectedAmenities.includes(amenity) ? 'border-4 border-blue-600' : ''}`}
-                    >
-                        {/* Add your icon here */}
-                        {amenity}
-                    </button>
-                </div>
-            ))}
-            <div className="mt-4 md:col-span-4">
-                Selected Amenities: {selectedAmenities.join(', ')}
+            <div className="flex flex-wrap  w-8/12 gap-1">
+                {amenities.map((amenity, index) => (
+                    <div key={index} className="flex items-center  p-2 rounded-md">
+                        <button
+                            onClick={() => handleButtonClick(amenity)}
+                            className={`btn btn-outline text-black ${selectedAmenities.includes(amenity) ? 'border-4 border-blue-600' : ''}`}
+                        >
+                            {/* Add your icon here */}
+                            {amenity}
+                        </button>
+                    </div>
+                ))}
+                {/* <div className="mt-4 md:col-span-4 bg-red-400">
+                    Selected Amenities: {selectedAmenities.join(', ')}
+                </div> */}
             </div>
-        </div>
     </div>
     );
 };

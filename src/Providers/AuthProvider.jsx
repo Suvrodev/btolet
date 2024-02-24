@@ -5,8 +5,8 @@ export const AuthContext=createContext("")
 const AuthProvider = ({children}) => {
 
 
-    // const baseUrl='http://154.26.135.41:3800'
-    const baseUrl='http://localhost:3000'
+    const baseUrl='http://154.26.135.41:3800'
+    // const baseUrl='http://localhost:3000'
 
     const [uId,setUId]=useState("")
     const [currentUser,setCurrentUser]=useState("")
@@ -47,8 +47,8 @@ const AuthProvider = ({children}) => {
        }     
     },[uId])
 
-    console.log("Local Storage uid: ",uId);
-    console.log("Current User: ",currentUser);
+    // console.log("Local Storage uid: ",uId);
+    // console.log("Current User: ",currentUser);
     ////Current User from Database end--------------------------------------------------------------------
 
 
@@ -134,8 +134,8 @@ const AuthProvider = ({children}) => {
 
     let lattitude=coordinates.latitude
     let longitude=coordinates.longitude
-    console.log("Latitude: ", lattitude);
-    console.log("Longitude: ", longitude);
+    // console.log("Latitude: ", lattitude);
+    // console.log("Longitude: ", longitude);
     
     /**
      * Collect Lattitude Logitude end--------------------------------------------------------------------
@@ -217,17 +217,6 @@ const AuthProvider = ({children}) => {
 
 
 
-
-    /***
-     *  Location For Rent And Property start
-     */
-
-    /***
-     *  Location For Rent And Property end
-     */
-
-
-    
 
     /**
      * Post Data Start------------------------------------------------------------------------------------------

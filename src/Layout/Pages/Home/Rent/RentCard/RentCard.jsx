@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
      const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
-    console.log("Rent: ",r);
+    // console.log("Rent: ",r);
     const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category,garagetype}=r
 
     const naviagte=useNavigate()
@@ -58,18 +58,18 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
             iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaMotorcycle /> Bike </div>
-            console.log("Garage Type: ",garagetype);
+            // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
             iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaCarAlt /> Car </div>
-            console.log("Garage Type: ",garagetype);
+            // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
             iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaHouseDamage />Garage  </div>
-            console.log("Garage Type: ",garagetype);
+            // console.log("Garage Type: ",garagetype);
           }
       }else{
-          console.log("Post id: ",post_id," Only Garage: No");
+          // console.log("Post id: ",post_id," Only Garage: No");
           if(category.includes('Office') || category.includes('Shop')){
              iconDiv=<div className='p-5 h-[45px]  bg-orange-400'>  </div>
           }else{
@@ -100,7 +100,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
       const [save,setSave]=useState(false)
       const handleSave=()=>{
-        console.log("Blue chilo Save korbo");
+        // console.log("Blue chilo Save korbo");
 
         if(uId){
           fetch(`${baseUrl}/api/tolet/save/post`,{
@@ -122,7 +122,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
      
 
       const handleUnSave=()=>{
-        console.log("Red Chilo UnSave korbo");
+        // console.log("Red Chilo UnSave korbo");
         if(uId){
           fetch(`${baseUrl}/api/tolet/save/post`,{
             method: 'POST',
@@ -178,9 +178,9 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       }
       ////Save And Unsave and Delete end
 
-      console.log("savedRent: ",savedRent);
-      console.log('forRent',forRent);
-      console.log("myPostRent",myPostRent);
+      // console.log("savedRent: ",savedRent);
+      // console.log('forRent',forRent);
+      // console.log("myPostRent",myPostRent);
 
     return (
         <div className='flex flex-col relative border  rounded-md h-[550px]' >

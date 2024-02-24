@@ -1,106 +1,59 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { FaCheckCircle, FaPlus } from 'react-icons/fa';
 
-const Facilities = () => {
+const Facilities = ({fromFilter}) => {
 
     const {selectedFacilities,setSelectedFacilities}=useContext(AuthContext)
 
 
-    // const facilities=["Balcony","Parking","CCTV","GAS","Giser","Elevator","Free Alerm","Wasa Connection","Fire Exit","Security Guard","Garden",
-    // "Power Backup","Waste Disposal","Earthquack Resistant","Swiming Pool","Telephone","Water Supply","Internet","Cable TV"]
+    
     const facilities=["Parking","GAS","Free Alarm","CCTV","Fire Exit","Lift",
-    "Power Backup","Security Guard","Wifi","Giser","Garden","Drinking Water"]
-
-    // const [selectedFacilities, setSelectedFacilities] = useState([]);
-
-  const handleCheckboxChange = (facility) => {
-    if (selectedFacilities.includes(facility)) {
-      setSelectedFacilities(selectedFacilities.filter(item => item !== facility));
-    } else {
-      setSelectedFacilities([...selectedFacilities, facility]);
-    }
-  };
+        "Power Backup","Security Guard","Wifi","Giser","Garden","Drinking Water"]
+    
 
 
-  console.log("Selected Facilities: ",selectedFacilities);
+
+
+
+
+        //  const [selectedFacilities, setSelectedFacilities] = useState([]);
+
+        const handleButtonClick = (facility) => {
+        if (selectedFacilities.includes(facility)) {
+            setSelectedFacilities(
+                selectedFacilities.filter((item) => item !== facility)
+            );
+        } else {
+            setSelectedFacilities([...selectedFacilities, facility]);
+        }
+        };
+
+        // console.log("Selected Facilities: ", selectedFacilities);
 
     return (
-        <div>
-            
-                    
-                    {/* <div className='grid grid-cols-3 md:grid-cols-4 gap-4'>
-                    <label className="cursor-pointer label  w-[200px] text-left border rounded-md py-2 px-5 flex gap-1 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Balcony</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Parking</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">CCTV</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">GAS</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Giser</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Elevator</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Free Alerm</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Wasa Connection</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Fire Exit</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Security Guard</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Garden</span>
-                    </label>
-                    <label className="cursor-pointer label  w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Power Backup</span>
-                    </label>
-                    <label className="cursor-pointer label w-[200px] text-left border rounded-md py-2 px-5 flex gap-2 ">
-                        <input type="checkbox"  className="checkbox checkbox-accent" />
-                        <span className="label-text">Waste Disposal</span>
-                    </label>
-                </div> */}
-
-
-            <div className="max-w-screen-lg mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div >
+            <div className='flex flex-wrap  w-8/12 gap-1'>
                 {facilities.map((facility, index) => (
-                    <div key={index} className="flex items-center border p-5 rounded-md">
-                    <input
-                        type="checkbox"
-                        id={facility}
-                        checked={selectedFacilities.includes(facility)}
-                        onChange={() => handleCheckboxChange(facility)}
-                        className="checkbox checkbox-accent mr-5"
-                    />
-                    <label htmlFor={facility} className="text-sm">{facility}</label>
-                    </div>
-                ))}
-                <div className="mt-4 md:col-span-4">
-                    Selected facilities: {selectedFacilities.join(', ')}
-                </div>
+                <div key={index} className="flex items-center  p-2 rounded-md">
+                    <button
+                    onClick={() => handleButtonClick(facility)}
+                    className={`flex items-center btn btn-outline btn-sm ${
+                        selectedFacilities.includes(facility)
+                        ? "border-blue-600 border-2"
+                        : ""
+                    } `}
+                    >
+                    {selectedFacilities.includes(facility) ? (
+                        <FaCheckCircle className="text-blue-500" />
+                    ) : (
+                        <FaPlus />
+                    )}
+                    <span className="ml-2">{facility}</span>
+                    </button>
             </div>
+            ))}
+        </div>
 
         
 

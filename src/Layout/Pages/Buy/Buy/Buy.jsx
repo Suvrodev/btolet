@@ -1,15 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import BuyCard from '../BuyCard/BuyCard';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import Filter from '../../Sort/Filter/Filter';
+import { FilterDataContext } from '../../../../Providers/FilterDataProvider';
+import { FaSliders } from 'react-icons/fa6';
+import BuyFilter from '../../Sort/BuyFilter/BuyFilter';
+import axios from 'axios';
 
 const Buy = () => {
 
-    const {lattitude,longitude,baseUrl,doubleLocation,location_1,location_2 }=useContext(AuthContext)
+    const {lattitude,longitude,baseUrl,doubleLocation,location_1,location_2,selectedAmenities  }=useContext(AuthContext)
+    const {byFilter,setByFilter,selectedBathrooms,selectedBedrooms,minPrice,maxPrice,selectedCategoriesBuySort}=useContext(FilterDataContext)
+
   
-    console.log("Lattitude: ",lattitude);
-    console.log("Longitude: ",longitude);
-      
+    // console.log("Lattitude: ",lattitude);
+    // console.log("Longitude: ",longitude);
+
+    const filterBody={
+      geolat:lattitude,
+      geolon:longitude,
+      rentmin:minPrice,
+      rentmax: maxPrice,
+      page:1,
+      category:selectedCategoriesBuySort,
+      fasalitis:selectedAmenities,
+      bed:selectedBedrooms,
+      bath:selectedBathrooms
+    }
+    console.log("Filter Body(Pro): ",filterBody); 
  
       ///Buy Data start
       const [page,setPage]=useState(1)
@@ -17,12 +36,21 @@ const Buy = () => {
       const [loading, setLoading] = useState(false);
 
       useEffect(()=>{
-          fetch(`${baseUrl}/api/pro/postlist?page=1&geolat=${lattitude}&geolon=${longitude}`)
-          .then(res=>res.json())
-          .then(data=>setBuys(data))
-      },[])
+        if(!byFilter){
+            fetch(`${baseUrl}/api/pro/postlist?page=1&geolat=${lattitude}&geolon=${longitude}`)
+            .then(res=>res.json())
+            .then(data=>setBuys(data))
+        }else{
+          axios.post(`${baseUrl}/api/pro/sort/postlist`,filterBody)
+          .then(res=>{
+            setBuys(res.data)
+            console.log("Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",res.data);
+            // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
+          })
+        }
+      },[page,byFilter,doubleLocation,minPrice,maxPrice,selectedCategoriesBuySort,selectedBedrooms,selectedBathrooms,selectedAmenities])
   
-      console.log("Buy Data: ",buys);
+      // console.log("Buy Data: ",buys);
 
 
       ///Buy Data end
@@ -48,10 +76,42 @@ const Buy = () => {
     ///Area End
 
 
+      ////Close Popup
+    //Show Properties button a click korle X button a o click hobe autometically
+    const closeButtonRef=useRef("")
+    // console.log("---------------------------------------------------------------------------By Filter(3)): ",byFilter);
+    if(byFilter){
+      closeButtonRef?.current.click();
+      // console.log("---------------------------------------------------------------------By Fielter(4):",byFilter);
+    }
+    setByFilter(false)
+
+
+
     return (
         <div>
+
+           {/* Modal start */}
+           <div>
+           {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
+            <dialog id="filterModal_2" className="modal-middle md:modal  ">
+              <div className="modal-box w-11/12 max-w-full bg-white">
+                <BuyFilter></BuyFilter>
+                <div className="modal-action">
+                  <form method="dialog">
+                    {/* if there is a button, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-error absolute right-2 top-2" ref={closeButtonRef}>✕</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+          </div>
+          {/* Modal end */}
+
+
           <div className='flex justify-between items-center my-4'>
-            <button className='btn btn-primary'>Filter</button>
+            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_2').showModal()}><FaSliders />Filter</button>
 
             <div>
                 {
@@ -64,15 +124,23 @@ const Buy = () => {
 
             <Link to={'/buypost'}> <button className='btn btn-success'>Post</button> </Link>
           </div>
-           <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
-               {
-                 buys.map((buy,idx)=><BuyCard
-                 key={idx}
-                 buy={buy}
-                 forBuy={'forBuy'}
-                 ></BuyCard>)
-               }
-           </div>
+
+          <div>
+            {
+              buys.length>0?
+              <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
+              {
+                buys.map((buy,idx)=><BuyCard
+                key={idx}
+                buy={buy}
+                forBuy={'forBuy'}
+                ></BuyCard>)
+              }
+          </div>:
+          <p>Nothig to Show</p>
+            }
+          </div>
+         
         </div>
     );
 };
