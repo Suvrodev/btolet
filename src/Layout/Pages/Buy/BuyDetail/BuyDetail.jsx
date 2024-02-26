@@ -4,7 +4,7 @@ import './BuyDetail.css'
 import { useLocation, useParams } from 'react-router-dom';
 
 import locationColorImage from '../../../../assets/icons/home/map.svg'
-import { FaBath, FaBed, FaCheckCircle, FaShare } from 'react-icons/fa';
+import { FaBath, FaBed, FaCheck, FaCheckCircle, FaShare } from 'react-icons/fa';
 import YouTube from 'react-youtube';
 import getYouTubeID from 'get-youtube-id';
 
@@ -20,6 +20,9 @@ import BuyDetailsLandData from './BuyDetailsLandData/BuyDetailsLandData';
 import ContactButtons from './ContactButtons/ContactButtons';
 import BuyCard from '../BuyCard/BuyCard';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import { AccessTimeOutlined, ConstructionOutlined, DomainOutlined, HomeOutlined, PermIdentityOutlined, ShareLocationOutlined } from '@mui/icons-material';
+import { FiShare2 } from 'react-icons/fi';
+import calculateTimeAgo from '../../../../Function/TimeAgo';
 
 const BuyDetail = () => {
     const {baseUrl}=useContext(AuthContext)
@@ -50,44 +53,19 @@ const BuyDetail = () => {
         procondition,road_size,sellfrom,shortaddress,size,status,time,top_ads,total_floor,total_unit,phone,wapp,yt_video}=allData
 
         
-
-      
+       // Convert the rent to Bangladeshi Taka style start
+       const formattedRent = price?.toLocaleString('en-US');
+        // Convert the rent to Bangladeshi Taka style end
 
 
         //Time Start
-        const [difference, setDifference] = useState('');
-        useEffect(() => {
-            const calculateDifference = () => {
-            const currentTime = new Date();
-            const postedTime = new Date(time);
-            const differenceInMilliseconds = currentTime - postedTime;
-            const seconds = Math.floor(differenceInMilliseconds / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-      
-            if (days > 0) {
-              setDifference(`${days} day${days !== 1 ? 's' : ''} ago`);
-            } else if (hours > 0) {
-              setDifference(`${hours} hour${hours !== 1 ? 's' : ''} ago`);
-            } else if (minutes > 0) {
-              setDifference(`${minutes} minute${minutes !== 1 ? 's' : ''} ago`);
-            } else {
-              setDifference(`Just now`);
-            }
-          };
-      
-          calculateDifference();
-      
-          // Refresh difference every minute
-          const interval = setInterval(calculateDifference, 60000);
-      
-          return () => clearInterval(interval);
-        }, [time]);
+        const [timeAgo, setTimeAgo] = useState('');
+        useEffect(()=>{
+          setTimeAgo(calculateTimeAgo(time))
+        },[time])
+  
          ////Time End
 
-        //  console.log("Kochu Time: ",time);
-        //  console.log("Kochu Different: ",difference);
 
 
           ////Buy More Post Start
@@ -352,12 +330,12 @@ const BuyDetail = () => {
 
             <div className='flex justify-between items-center my-4'>
                  <div className='text-xl font-bold'>
-                    {price? <span className='font-bold '>Take : <span className=''>{price}</span> </span> :'Price On Call'}
+                    {price? <span className='font-bold '>Take : <span className=''>{formattedRent}</span> </span> :'Price On Call'}
                 </div>
 
                 <div className='flex gap-4 items-center'>
                     <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
-                    <FaShare/>
+                    <FiShare2/>
                 </div>
             </div>
 
@@ -375,7 +353,7 @@ const BuyDetail = () => {
                     <p className='text-xl font-bold'>{location}</p>
                 </div>
                 <div className='font-bold text-xl'>
-                    {difference}
+                    {timeAgo}
                 </div>
             </div>
 
@@ -420,7 +398,7 @@ const BuyDetail = () => {
                         <h1 className='font-bold'>Land Type:</h1>
                         <div className='flex gap-4 my-4'>
                             {
-                                land_type.map((lt,idx)=> <p key={idx} className='border-2 border-blue-500 p-2 rounded-md'>{lt}</p> )
+                                land_type.map((lt,idx)=> <p key={idx} className='border-2 border-blue-500 p-2 rounded-md'> <span className='flex items-center gap-2'> <FaCheck/> {lt}</span> </p> )
                             }
                         </div>
                      </div>
@@ -437,19 +415,29 @@ const BuyDetail = () => {
                      {
                         name && 
                         <div className='w-[350px] grid grid-cols-2'>
-                            <p>Name</p>
+                            <div className='flex items-start gap-1'>
+                                <HomeOutlined/>
+                                <p>Name</p>
+                            </div>
+                            
                             <p>{name}</p>
                         </div>
                      }
                    
                     <div className='w-[350px] grid grid-cols-2'>
-                        <p>Type</p>
+                       <div className='flex items-start gap-1'>
+                          <DomainOutlined/>
+                          <p>Type</p>
+                       </div>
                         <p>{category}</p>
                     </div>
                     {
                         procondition &&
                         <div className='w-[350px] grid grid-cols-2'>
-                            <p>condition</p>
+                            <div className='flex items-start gap-1'>
+                                  <ConstructionOutlined/>
+                                 <p>condition</p>
+                            </div>
                             <p>{procondition}</p>
                         </div>
                     }
@@ -457,7 +445,10 @@ const BuyDetail = () => {
                     {
                         sellfrom_ &&
                         <div className='w-[350px] grid grid-cols-2'>
-                            <p>Available from</p>
+                           <div className='flex items-start gap-1'>
+                             <AccessTimeOutlined/>
+                             <p>Available from</p>
+                           </div>
                             <p>{sellfrom_}</p>
                         </div>
                     }
@@ -466,7 +457,10 @@ const BuyDetail = () => {
                     {
                         shortaddress &&
                         <div className='w-[350px] grid grid-cols-2'>
-                            <p>Short Address</p>
+                            <div className='flex items-start gap-1'>
+                                <ShareLocationOutlined/>
+                              <p>Short Address</p>
+                            </div>
                             <p>{shortaddress}</p>
                         </div>
                     }
@@ -474,7 +468,10 @@ const BuyDetail = () => {
                     {
                         ownertype &&
                         <div className='w-[350px] grid grid-cols-2'>
-                            <p>Posted By</p>
+                            <div className='flex items-center gap-1'>
+                              <PermIdentityOutlined/>
+                              <p>Posted By</p>
+                            </div>
                             <p>{ownertype}</p>
                          </div>
                     }

@@ -88,8 +88,6 @@ const Filter = () => {
 
     return (
         <div>
-
-            {/* After Code */}
             <div className=' p-5 flex flex-col justify-center rounded-md'>
             <p className='bg-yellow-600 w-2/12 text-center font-bold text-xl text-white mx-auto rounded-md mb-20 p-2'>
                 BDT {minPrice} to {maxPrice} +/month

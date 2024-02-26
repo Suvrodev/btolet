@@ -1,6 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 
+
+
+//////Material Icon
+import { CameraAltOutlined, DirectionsBikeOutlined, Elevator, ElevatorOutlined, ExitToAppOutlined, FireExtinguisherOutlined, FireTruckSharp, GasMeter, GasMeterOutlined, GrassOutlined, LiveTvOutlined, LocalFireDepartmentOutlined, Phone, PhotoCamera, Pool, PowerSettingsNew, PowerSettingsNewRounded, SecurityOutlined, TurnSharpRight, VerifiedUserOutlined, Water, Wifi } from "@mui/icons-material";
+
+
 const Amenities = ({small,big,forSort}) => {
 
     const {selectedAmenities,setSelectedAmenities}=useContext(AuthContext)
@@ -20,16 +26,6 @@ const Amenities = ({small,big,forSort}) => {
     }
     
 
-    // const handleCheckboxChange = (amenity) => {
-    //     if (selectedAmenities.includes(amenity)) {
-    //         setSelectedAmenities(selectedAmenities.filter(item => item !== amenity));
-    //     } else {
-    //         setSelectedAmenities([...selectedAmenities, amenity]);
-    //     }
-    //   };
-    
-    
-    //   console.log("Selected Amenities: ",selectedAmenities);
     const handleButtonClick = (amenity) => {
         if (selectedAmenities.includes(amenity)) {
             setSelectedAmenities(selectedAmenities.filter(item => item !== amenity));
@@ -40,7 +36,29 @@ const Amenities = ({small,big,forSort}) => {
 
 
 
-    ////After
+    ////Icon
+    const amenitiesIcons = [
+        <DirectionsBikeOutlined />,
+        <PhotoCamera />,
+        <LocalFireDepartmentOutlined/>,
+        <GasMeterOutlined />,
+        <ElevatorOutlined />,
+        <FireExtinguisherOutlined/>, 
+        <GasMeterOutlined />,
+        <ExitToAppOutlined />,
+        <SecurityOutlined />,
+        <GrassOutlined />,
+        <PowerSettingsNewRounded />,
+        <FireTruckSharp />,
+        <VerifiedUserOutlined />,
+        <Pool />,
+        <Phone />,
+        <Water />,
+        <Wifi />,
+        <LiveTvOutlined />,
+        <PowerSettingsNew />,
+        <TurnSharpRight />
+    ];
 
 
     return (
@@ -72,9 +90,14 @@ const Amenities = ({small,big,forSort}) => {
                     <div key={index} className="flex items-center  p-2 rounded-md">
                         <button
                             onClick={() => handleButtonClick(amenity)}
-                            className={`btn btn-outline text-black ${selectedAmenities.includes(amenity) ? 'border-4 border-blue-600' : ''}`}
+                            className={`btn btn-outline btn-sm  ${selectedAmenities.includes(amenity) ? 'border-2 text-blue-600 border-blue-600' : ''}`}
                         >
-                            {/* Add your icon here */}
+                            {
+                                small?
+                                amenitiesIcons[index+18]:
+                                amenitiesIcons[index]
+                            }
+                           
                             {amenity}
                         </button>
                     </div>

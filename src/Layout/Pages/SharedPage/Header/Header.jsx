@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import headerLogo from '../../../../assets/Logo/logo.png'
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import { FaBaby, FaBars, FaCross, FaReply } from 'react-icons/fa';
+import { FiAlertCircle, FiEdit, FiHeart, FiPhoneCall, FiRadio, FiSearch, FiUser } from 'react-icons/fi';
 
 const Header = () => {
 
@@ -52,16 +53,16 @@ const Header = () => {
                           <div className='relative'>
                             <img className='w-[45px] h-[45px] rounded-full' onClick={handleProfileBox} src={currentUser?.image} alt="" />
 
-                            <div className={`w-[250px] border-2 absolute top-14 right-0 bg-green-500 rounded-md p-5 z-10 ${profileBox?'':'hidden'}`}>
+                            <div className={`w-[270px] border-2 absolute top-14 right-0 bg-green-500 rounded-md p-5 z-10 ${profileBox?'':'hidden'}`}>
                               <div className='flex flex-col gap-4'>
-                                  <Link to='/updateprofile'>Profile</Link>
-                                  <Link to='/savedpost'>Saved</Link>
-                                  <Link to='/mypost'>My Post</Link>
-                                  <Link to=''>FeedBack</Link>
+                                  <Link to='/updateprofile'> <span className='flex items-center gap-2'> <FiUser /> Profile</span> </Link>
+                                  <Link to='/savedpost'><span className='flex items-center gap-2'> <FiHeart /> Saved</span></Link>
+                                  <Link to='/mypost'><span className='flex items-center gap-2'> <FiEdit  /> My Post</span></Link>
+                                  <Link to=''><span className='flex items-center gap-2'> <FiRadio />Feedback</span></Link>
                                   <p className='h-[1px] bg-black mt-4 mb-2'></p>
-                                  <Link to=''>Terms And Condition</Link>
-                                  <Link to=''>Contuct</Link>
-                                  <Link to=''>About US</Link>
+                                  <Link to=''><span className='flex items-center gap-2'> <FiSearch />Terms And Condition</span></Link>
+                                  <Link to=''><span className='flex items-center gap-2'> <FiPhoneCall />Contact us</span></Link>
+                                  <Link to=''><span className='flex items-center gap-2'> <FiAlertCircle />About US</span></Link>
                               </div>
                               
                             </div>

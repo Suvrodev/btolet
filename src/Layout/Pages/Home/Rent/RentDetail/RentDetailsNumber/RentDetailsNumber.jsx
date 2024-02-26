@@ -25,7 +25,10 @@ const RentDetailsNumber = ({ad}) => {
     
     return (
         <div className='w-full grid grid-cols-2 '>
-           <div className='font-bold'> {ad?.itemName} </div>
+           <div className='flex items-center gap-2'>
+               <span>{ad?.iconName}</span>
+               <h1 className='font-bold'> {ad?.itemName} </h1>
+           </div>
             <div>
                 {/* {itemNumbers} */}
                 {color && <p className='text-green-500'>{itemNumbers}</p>}

@@ -9,6 +9,11 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../Function/TimeAgo';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { FiLayers, FiMapPin, FiShare2 } from 'react-icons/fi';
+
+import  SmsIcon from '../../../../assets/icons/home/sms_white.svg'
+import whatsappIcon from '../../../../assets/icons/home/wapp.svg'
+
 
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
@@ -200,13 +205,13 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                  <FaShare onClick={handleshare} className='text-white'/>
+                  <FiShare2 onClick={handleshare} className='text-white'/>
                </p>
              </div >
 
                 <div className='absolute bottom-2 right-10'>
                     <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
-                        <span className='text-white'>{total_image}</span> <FaLayerGroup className='text-white'/>
+                        <span className='text-white'>{total_image}</span> <FiLayers  className='text-white'/>
                     </p>
                 </div>
             </div>
@@ -217,7 +222,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                <p className='roboto font-bold text-xl'>{category}</p>
                  {price!=0? <p className='text-4xl font-bold text-black'> ৳ {formattePrice} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
-                    <FaMapMarkerAlt />
+                    <FiMapPin />
                     <span>{location}</span>
                 </p>
             </div>
@@ -255,8 +260,8 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                 </div>
                 <div className='flex items-center justify-center gap-2'>
                     <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <FaMailBulk /> </button>
-                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + '8801518748081&text=Hi%20User', '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><FaWhatsapp /></button>
+                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + '8801518748081&text=Hi%20User', '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>

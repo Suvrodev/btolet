@@ -7,6 +7,7 @@ import { FilterDataContext } from '../../../../Providers/FilterDataProvider';
 import { FaSliders } from 'react-icons/fa6';
 import BuyFilter from '../../Sort/BuyFilter/BuyFilter';
 import axios from 'axios';
+import { FiChevronDown, FiSliders } from 'react-icons/fi';
 
 const Buy = () => {
 
@@ -111,7 +112,7 @@ const Buy = () => {
 
 
           <div className='flex justify-between items-center my-4'>
-            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_2').showModal()}><FaSliders />Filter</button>
+            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_2').showModal()}><FiSliders />Filter <FiChevronDown /></button>
 
             <div>
                 {

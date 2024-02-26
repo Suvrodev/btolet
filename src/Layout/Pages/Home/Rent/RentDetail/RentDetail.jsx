@@ -10,7 +10,16 @@ import ContactButtons from '../../../Buy/BuyDetail/ContactButtons/ContactButtons
 import RentCard from '../RentCard/RentCard';
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaHouseDamage, FaMotorcycle } from 'react-icons/fa';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
+import { AccessTimeOutlined, BalanceOutlined, ChairOutlined, CottageOutlined, DiningOutlined, DomainOutlined, HomeOutlined, KitchenOutlined, MonetizationOnOutlined, PersonPinCircleOutlined, SearchOutlined, ShareLocationOutlined, ShowerOutlined, WindowOutlined } from '@mui/icons-material';
 
+/////Image Icon start
+import bedIcon from '../../../../../assets/icons/tolet/bed.svg'
+import bathIcon from '../../../../../assets/icons/tolet/bath.svg'
+import areaIcon from '../../../../../assets/icons/tolet/size.svg'
+import garageIcon from '../../../../../assets/icons/tolet/garage.svg'
+import bikeIcon from '../../../../../assets/icons/tolet/bike.svg'
+import carIcon from '../../../../../assets/icons/tolet/car.svg'
+import calculateTimeAgo from '../../../../../Function/TimeAgo';
 
 const RentDetail = () => {
 
@@ -32,41 +41,19 @@ const RentDetail = () => {
         image8,image9,image10,image11,image12,kitchen,location,locationfull,mentenance,payment,phone,propertyname,rent,rentfrom,roomsize,shortaddress,time,top_ads,wapp}=allData
 
 
+
+      // Convert the rent to Bangladeshi Taka style start
+      const formattedRent = rent?.toLocaleString('en-US');
+      // Convert the rent to Bangladeshi Taka style end
+
       //Time Start
-      const [difference, setDifference] = useState('');
-      useEffect(() => {
-          const calculateDifference = () => {
-          const currentTime = new Date();
-          const postedTime = new Date(time);
-          const differenceInMilliseconds = currentTime - postedTime;
-          const seconds = Math.floor(differenceInMilliseconds / 1000);
-          const minutes = Math.floor(seconds / 60);
-          const hours = Math.floor(minutes / 60);
-          const days = Math.floor(hours / 24);
-    
-          if (days > 0) {
-            setDifference(`${days} day${days !== 1 ? 's' : ''} ago`);
-          } else if (hours > 0) {
-            setDifference(`${hours} hour${hours !== 1 ? 's' : ''} ago`);
-          } else if (minutes > 0) {
-            setDifference(`${minutes} minute${minutes !== 1 ? 's' : ''} ago`);
-          } else {
-            setDifference(`Just now`);
-          }
-        };
-    
-        calculateDifference();
-    
-        // Refresh difference every minute
-        const interval = setInterval(calculateDifference, 60000);
-    
-        return () => clearInterval(interval);
-      }, [time]);
+      const [timeAgo, setTimeAgo] = useState('');
+      useEffect(()=>{
+        setTimeAgo(calculateTimeAgo(time))
+      },[time])
+
        ////Time End
 
-    //    console.log("Kochu Time: ",time);
-    //    console.log("Kochu Different: ",difference);  
-    
     
 
      ////More Post Rent Start
@@ -189,6 +176,7 @@ const RentDetail = () => {
 
       if(propertyname){
         allDetails.push({
+            iconName: <HomeOutlined/>,
             itemName:'Property Name',
             itemNumber: propertyname
             
@@ -197,13 +185,34 @@ const RentDetail = () => {
     
       if(category){
          allDetails.push({
+            iconName: <DomainOutlined/>,
             itemName:'Property Type',
             itemNumber: category
             
          })
       }
+      if(bed){
+         allDetails.push({
+            iconName: <CottageOutlined/>,
+            itemName:'Room',
+            itemNumber: bed
+            
+         })
+      }
+      if(bath){
+         allDetails.push({
+            iconName: <ShowerOutlined/>,
+            itemName:'Wash Room',
+            itemNumber: bath
+            
+         })
+      }
+
+
+
       if(dining){
         allDetails.push({
+            iconName: <DiningOutlined/>,
             itemName:'Dining',
             itemNumber: dining
             
@@ -212,6 +221,7 @@ const RentDetail = () => {
 
       if(drawing){
         allDetails.push({
+            iconName:<ChairOutlined/>,
             itemName:'Drawing',
             itemNumber: drawing
             
@@ -220,6 +230,7 @@ const RentDetail = () => {
 
       if(kitchen){
         allDetails.push({
+            iconName: <KitchenOutlined/>,
             itemName:'Kitchen',
             itemNumber: kitchen
             
@@ -227,6 +238,7 @@ const RentDetail = () => {
       }
       if(balcony){
         allDetails.push({
+            iconName: <BalanceOutlined/>,
             itemName:'Balcony',
             itemNumber: balcony
             
@@ -234,6 +246,7 @@ const RentDetail = () => {
       }
       if(floornumber){
         allDetails.push({
+            iconName: <PersonPinCircleOutlined/>,
             itemName:'Floor',
             itemNumber: floornumber
             
@@ -241,22 +254,33 @@ const RentDetail = () => {
       }
       if(facing){
         allDetails.push({
+            iconName: <WindowOutlined/>,
             itemName:'Facing',
             itemNumber: facing
             
          })
       }
+      if(roomsize){
+        allDetails.push({
+          iconName: <WindowOutlined/>,
+          itemName:'Size',
+          itemNumber: roomsize
+          
+       })
+      }
 
       if(rentfrom){
         allDetails.push({
+            iconName: <AccessTimeOutlined/>,
             itemName:'Rent From',
             itemNumber: rentFrom_
             
          })
       }
 
-      if(fasalitis){
+      if(fasalitis.length>0){
         allDetails.push({
+            iconName: <SearchOutlined/>,
             itemName:'Facilities',
             itemNumber: fasalitis
             
@@ -265,6 +289,7 @@ const RentDetail = () => {
 
       if(mentenance){
         allDetails.push({
+            iconName: <MonetizationOnOutlined/>,
             itemName:'Maintenance',
             itemNumber: mentenance
             
@@ -272,6 +297,7 @@ const RentDetail = () => {
       }
       if(shortaddress){
         allDetails.push({
+            iconName: <ShareLocationOutlined/>,
             itemName:'Short Address',
             itemNumber: shortaddress
             
@@ -290,26 +316,30 @@ const RentDetail = () => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaMotorcycle /> Bike Garage</div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[30px]' src={bikeIcon} alt="" /> Bike Garage</div>
             console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaCarAlt /> Car Garage </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[30px]' src={carIcon} alt="" /> Car Garage </div>
             console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaHouseDamage />Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[30px]' src={garageIcon} alt="" /> Garage  </div>
             console.log("Garage Type: ",garagetype);
           }
       }else{
           console.log("Post id: ",post_id," Only Garage: No");
-          if(category.includes('Office') || category.includes('Shop')){
-             iconDiv=<div className='p-5 h-[45px]  bg-orange-400'>  </div>
-          }else{
+          if(category.includes('Office')){
+             iconDiv=<div className='p-5 h-[45px]  bg-orange-400'> Office</div>
+          }
+          if(category.includes('Shop')){
+            iconDiv=<div className='p-5 h-[45px]  bg-orange-400'> Shop  </div>
+          }
+          else{
              iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  bg-orange-400'>
-               <div className='flex items-center gap-2'><FaBath/> {bath}</div>
-               <div className='flex items-center gap-2'><FaBed/> {bed}</div>
-               <div className='flex items-center gap-2'><FaChartArea/> {roomsize} ft<sup>2</sup></div>
+               <div className='flex items-center gap-2'><img className='w-[30px]' src={bedIcon} alt="" /> {bath}</div>
+               <div className='flex items-center gap-2'><img className='w-[30px]' src={bathIcon} alt="" /> {bed}</div>
+               <div className='flex items-center gap-2'><img className='w-[30px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
              </div>
           }
       }
@@ -346,7 +376,7 @@ const RentDetail = () => {
             {/* <TkAndShare price={price}></TkAndShare> */}
 
             <div className='my-4 flex justify-between'>
-                <div className='text-2xl font-bold'>৳ {rent}</div>
+                <div className='text-2xl font-bold'>৳ {formattedRent}</div>
 
              
 
@@ -373,7 +403,7 @@ const RentDetail = () => {
                     <p className='text-xl font-bold'>{location}</p>
                 </div>
                 <div className='font-bold text-xl'>
-                    {difference}
+                    {timeAgo}
                 </div>
             </div>
 
@@ -381,7 +411,7 @@ const RentDetail = () => {
 
             <section>
             <h1 className='text-xl'>Details</h1>
-            <div className='border-2 border-yellow-500 w-[600px] p-5 rounded-md'>
+            <div className='border-2 border-yellow-500 w-[650px] p-5 rounded-md'>
                {
                  allDetails.map((ad,idx)=> <RentDetailsNumber key={idx}  ad={ad} ></RentDetailsNumber> )
                }

@@ -11,6 +11,7 @@ import { FaSliders } from "react-icons/fa6";
 import './RentModal.css'
 import { FilterDataContext } from '../../../../../Providers/FilterDataProvider';
 import axios from 'axios';
+import { FiChevronDown, FiSliders } from 'react-icons/fi';
 
 const Rent = () => {
  
@@ -131,7 +132,7 @@ const Rent = () => {
           <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1>
         
           <div className='flex justify-between items-center my-4'>
-            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_1').showModal()}><FaSliders />Filter</button>
+            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_1').showModal()}><FiSliders />Filter <FiChevronDown /></button>
             <div>
                 {
                   // postCount &&

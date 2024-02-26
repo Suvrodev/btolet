@@ -5,6 +5,18 @@ import { AuthContext } from '../../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../../Function/TimeAgo';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { FiLayers, FiMapPin, FiShare2 } from 'react-icons/fi';
+
+/////Image Icon start
+import bedIcon from '../../../../../assets/icons/tolet/bed.svg'
+import bathIcon from '../../../../../assets/icons/tolet/bath.svg'
+import areaIcon from '../../../../../assets/icons/tolet/size.svg'
+import garageIcon from '../../../../../assets/icons/tolet/garage.svg'
+import bikeIcon from '../../../../../assets/icons/tolet/bike.svg'
+import carIcon from '../../../../../assets/icons/tolet/car.svg'
+import  SmsIcon from '../../../../../assets/icons/home/sms_white.svg'
+import whatsappIcon from '../../../../../assets/icons/home/wapp.svg'
+
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
      const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
@@ -57,15 +69,15 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaMotorcycle /> Bike </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaCarAlt /> Car </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <FaHouseDamage />Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
             // console.log("Garage Type: ",garagetype);
           }
       }else{
@@ -74,9 +86,9 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
              iconDiv=<div className='p-5 h-[45px]  bg-orange-400'>  </div>
           }else{
              iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  bg-orange-400'>
-               <div className='flex items-center gap-2'><FaBath/> {bath}</div>
-               <div className='flex items-center gap-2'><FaBed/> {bed}</div>
-               <div className='flex items-center gap-2'><FaChartArea/> {roomsize} ft<sup>2</sup></div>
+               <div className='flex items-center gap-2'> <img className='w-[20px]' src={bathIcon} alt="" /> {bath}</div>
+               <div className='flex items-center gap-2'><img className='w-[20px]' src={bedIcon} alt="" /> {bed}</div>
+               <div className='flex items-center gap-2'><img className='w-[20px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
              </div>
           }
       }
@@ -206,7 +218,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                   <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
                       {
                         save==true ?
-                        <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
+                        <FaHeart   onClick={handleUnSave} className='text-red-800 '/>:
                         <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
                       
                       }
@@ -232,13 +244,13 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                  <FaShare onClick={handleshare} className='text-white'/>
+                  <FiShare2 onClick={handleshare} className='text-white'/>
                </p>
             </div >
 
                 <div className='absolute bottom-2 right-10'>
                     <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
-                        <span className='text-white'>{total_image}</span> <FaLayerGroup className='text-white'/>
+                        <span className='text-white'>{total_image}</span> <FiLayers  className='text-white'/>
                     </p>
                 </div>
             </div>
@@ -248,7 +260,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                <p className='roboto font-bold text-2xl'>{categoryString}</p>
                 {   {rent}? <p className='text-4xl font-bold text-black'> ৳ {formattedRent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
-                    <FaMapMarkerAlt />
+                    <FiMapPin />
                     <span>{location}</span>
                 </p>
             </div>
@@ -288,8 +300,8 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                 </div>
                 <div className='flex items-center justify-center gap-2'>
                     <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <FaMailBulk /> </button>
-                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + phone, '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><FaWhatsapp /></button>
+                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + phone, '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>

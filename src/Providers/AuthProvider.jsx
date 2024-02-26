@@ -223,6 +223,13 @@ const AuthProvider = ({children}) => {
      */
 
 
+     // Function to format date as MM/DD/YY
+     function formatDate(date) {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+        const year = date.getFullYear().toString().slice(2);
+        return `${month}/${day}/${year}`;
+    }
     
 
 
@@ -257,7 +264,7 @@ const AuthProvider = ({children}) => {
     ////Maintenance
     const [maintenance,setMaintenance]=useState('')
     ///Date
-    const [selectedDate,setSelectedDate]=useState()
+    const [selectedDate,setSelectedDate]=useState(formatDate(new Date()))
     ///Bathroom
     const [selectedBedRoom,setSelectedBedRoom]=useState("1")
     ///Bathroom
