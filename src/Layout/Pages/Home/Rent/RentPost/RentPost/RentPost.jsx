@@ -459,6 +459,10 @@ const RentPost = () => {
     setErrorImages,
   } = useContext(AuthContext);
 
+  // let myDate= new window.Date(selectedDate.setHours(selectedDate.getHours() + 6));
+
+  console.log("Selected Date******************************************************************************",selectedDate);
+
   const handleRentPost = () => {
     const newName = name ? name : currentUser?.name;
     const newPhone =
@@ -522,7 +526,7 @@ const RentPost = () => {
 
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : "",
+        rentfrom: selectedDate,
         rent: rentTkValue ? rentTkValue : "",
         garagetype: selectedgarageType ? selectedgarageType : "",
         image1: images[0] ? images[0] : "",
@@ -601,7 +605,7 @@ const RentPost = () => {
 
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : new Date(),
+        rentfrom: selectedDate ,
         rent: rentTkValue ? rentTkValue : "",
         garagetype: "",
         image1: images[0] ? images[0] : "",
@@ -678,7 +682,7 @@ const RentPost = () => {
   
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : "",
+        rentfrom: selectedDate ,
         rent: rentTkValue ? rentTkValue : "",
         garagetype: "",
         image1: images[0] ? images[0] : "",
@@ -757,7 +761,7 @@ const RentPost = () => {
   
         propertyname: propertyName ? propertyName : "",
         category: selectedRentCategory ? selectedRentCategory : [],
-        rentfrom: selectedDate ? selectedDate : new Date(),
+        rentfrom: selectedDate,
         rent: rentTkValue ? rentTkValue : "",
         garagetype: "",
         image1: images[0] ? images[0] : "",
