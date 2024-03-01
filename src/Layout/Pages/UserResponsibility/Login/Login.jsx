@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {  GoogleLogin, useGoogleOAuth } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 
 
@@ -16,6 +16,9 @@ const Login = () => {
 
 
     const navigate=useNavigate()
+    const location=useLocation()
+    const toGo=location?.state?.from?.pathname || '/'
+   
 
     const [loggedUser,setLoggedUser]=useState("")
     console.log("Logged User: ", loggedUser);
@@ -57,7 +60,8 @@ const Login = () => {
                     localStorage.setItem('uId',data[0].uid)
                     console.log("Login Succesfully");
                     successfullMessage("Login Successfully")
-                    navigate('/')
+                    navigate(toGo,{replace:true})
+                    window.location.reload()
                 }
             })
         }

@@ -10,12 +10,12 @@ const AuthProvider = ({children}) => {
 
     const [uId,setUId]=useState("")
     const [currentUser,setCurrentUser]=useState("")
+    const [loading,setLoading]=useState(true)
 
     ///uId from Local Storage start-------------------------------------------------
     useEffect(()=>{
         const uid=localStorage.getItem('uId')
         if(uid){
-           
             setUId(uid)
         }else{
             setUId('nouid')
@@ -42,6 +42,13 @@ const AuthProvider = ({children}) => {
             .then(data=>{
             if(data){
                 setCurrentUser(data[0]);
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",data[0]);
+                setLoading(false)
+                // console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",data);
+            }
+            if(data.length<1){
+                localStorage.removeItem('uId')
+                localStorage.setItem('uId',"***")
             }
             })   
        }     
@@ -85,35 +92,14 @@ const AuthProvider = ({children}) => {
     /**
      * Collect Lattitude Longitude Start----------------------------------------------------------------
      */
-    // const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
-
-    // useEffect(() => {
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //       position => {
-    //         setCoordinates({
-    //           latitude: position.coords.latitude,
-    //           longitude: position.coords.longitude
-    //         });
-    //       },
-    //       error => {
-    //         console.error("Error getting geolocation:", error);
-    //       }
-    //     );
-    //   } else {
-    //     console.error("Geolocation is not supported by this browser.");
-    //   }
-    // }, []);
-
-    // let lattitude=coordinates.latitude
-    // let longitude=coordinates.longitude
-    // console.log("Lattitude: (Main Auth) ",lattitude);
-    // console.log("Longitude: (Main Auth) ",longitude);
-
+    
 
     ///After
-    const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
+     ///Lattitude: 22.8292315
+    ///Longitude:  89.5438572
 
+    const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
+   
     useEffect(() => {
         const watchId = navigator.geolocation.watchPosition(
             position => {
@@ -132,10 +118,19 @@ const AuthProvider = ({children}) => {
         };
     }, []);
 
-    let lattitude=coordinates.latitude
-    let longitude=coordinates.longitude
-    // console.log("Latitude: ", lattitude);
-    // console.log("Longitude: ", longitude);
+    const [lattitude,setLattitude]=useState("")
+    const [longitude,setLongitude]=useState("")
+
+
+    useEffect(() => {
+        if(coordinates){
+            setLattitude(coordinates.latitude)
+            setLongitude(coordinates.longitude)
+        }
+    }, [coordinates]);
+    console.log("Latitude(auth): ", lattitude);
+    console.log("Longitude(auth): ", longitude);
+
     
     /**
      * Collect Lattitude Logitude end--------------------------------------------------------------------
@@ -148,14 +143,18 @@ const AuthProvider = ({children}) => {
     /**
      * Area Start-----------------------------------------------------------------------------------
      */
-    ///Lattitude: 22.8292315
-    ///Longitude:  89.5438572
+   
 
-    let doubleLocation=""
+    
+    const [doubleLocation,setDoubleLocation]=useState("")
+    
 
     let place=""
     let displayName=""
     const [area,setArea]=useState('')
+    let location_1,location_2;
+
+
     useEffect(()=>{
       if(lattitude && longitude){
           fetch(`http://154.26.130.64/nominatim/reverse.php?lat=${lattitude}&lon=${longitude}&format=jsonv2&accept-language=bn`)
@@ -166,40 +165,40 @@ const AuthProvider = ({children}) => {
       }
     },[lattitude,longitude])
 
-    // console.log("Area(Auth): ",area);
+    
+    useEffect(()=>{
 
-    const {address}=area
-    displayName=area?.display_name;
-    // console.log("Address: ",address);
-    // console.log("Display Name: ",display_name);
+        const {address}=area
+        displayName=area?.display_name;
+       
+        if(address?.suburb && address?.city){
+            // console.log("Execute-1");
+            place=address?.suburb  + ","+ address?.city
+        }
+        else if(address?.name && address?.city){
+            // console.log("Execute-2");
+             place=address?.name  + "," + address?.city
+        }
+        else if(address?.stateDistrict  && address?.name){
+            // console.log("Execute-3");
+             place=address?.name + ","+  address?.city
+        }else{
+            // console.log("Execute-4");
+            place=displayName
+        }
+       
+        if(place){
+          location_1=place.split(',')[0]
+          location_2=place.split(',')[1]
+          let doubleLocationn=`${location_1},${location_2}`
+          console.log("doubleLocation(Auh: ",doubleLocationn);
+          setDoubleLocation(doubleLocationn)
+        }
 
-    if(address?.suburb && address?.city){
-        // console.log("Execute-1");
-        place=address?.suburb  + ","+ address?.city
-    }
-    else if(address?.name && address?.city){
-        // console.log("Execute-2");
-         place=address?.name  + "," + address?.city
-    }
-    else if(address?.stateDistrict  && address?.name){
-        // console.log("Execute-3");
-         place=address?.name + ","+  address?.city
-    }else{
-        // console.log("Execute-4");
-        place=displayName
-    }
-    let location_1,location_2;
-    if(place){
-      location_1=place.split(',')[0]
-      location_2=place.split(',')[1]
-      doubleLocation=`${location_1},${location_2}`
-      console.log("doubleLocation(Auh): ",doubleLocation);
-    }
-    // console.log("Display Name(Auth): ",displayName);
-    // console.log("Place(Auth): ",place);
-    // console.log("Location-1(Auth): ",location_1);
-    // console.log("Location-2(Auth): ",location_2);
-  
+    },[area,lattitude,longitude])
+
+    console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
+   
 
 
     
@@ -371,15 +370,18 @@ const AuthProvider = ({children}) => {
         uId,
         currentUser,
         successfullMessage,
+        loading,
 
 
         ///Lattitude Longitude start
         lattitude,
+        setLattitude,
         longitude,
+        setLongitude,
         ///Lattitude Longitude end
 
         ///doubleLocation
-        doubleLocation,location_1,location_2,
+        doubleLocation, setDoubleLocation,location_1,location_2,
 
         ////Buy Categories
         selectedCategoriesBuy,setSelectedCategoriesBuy,

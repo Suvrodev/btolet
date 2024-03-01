@@ -7,7 +7,7 @@ import { FiAlertCircle, FiEdit, FiHeart, FiPhoneCall, FiRadio, FiSearch, FiUser 
 
 const Header = () => {
 
-  const {currentUser}=useContext(AuthContext)
+  const {currentUser,lattitude,longitude,doubleLocation}=useContext(AuthContext)
 
   // console.log("Current User Header: ",currentUser);
   // const {image}=currentUser
@@ -25,11 +25,19 @@ const Header = () => {
   }
   
   // console.log("Left Nav: ",leftNav);
+
+  const handleLogout=()=>{
+    console.log("Logout");
+    localStorage.removeItem('uId')
+    localStorage.setItem('uId',"***")
+    window.location.reload()
+  }
   
   
       const NavItems=<div className='lg:flex items-center justify-center text-white'>
           <li><NavLink className={({isActive})=> isActive? 'text-green-600 rb_rg font-extrabold ':'rb_rg'}  to='/home'>Home</NavLink ></li>
           <li><NavLink className={({isActive})=> isActive? 'text-green-600 rb_rg font-extrabold ':'rb_rg'}  to='/buy'>Buy</NavLink ></li>
+          <li className='text-black'>{lattitude}</li>
      </div>
 
     return (
@@ -44,7 +52,9 @@ const Header = () => {
                         <div className='text-lg flex gap-5 items-center'>
                             <NavLink className={({isActive})=> isActive? 'text-green-600 ':'rb_rg'}  to='/home'>Home</NavLink >
                             <NavLink className={({isActive})=> isActive? 'text-green-600 ':'rb_rg'}  to='/buy'>Buy</NavLink >
-                          
+                            <li>{lattitude}</li>
+                            <li>{longitude}</li>
+                            <li>{doubleLocation}</li>
                         </div>
                     </div>
                     <div className='w-[30%] flex items-center justify-end'>
@@ -63,6 +73,7 @@ const Header = () => {
                                   <Link to=''><span className='flex items-center gap-2'> <FiSearch />Terms And Condition</span></Link>
                                   <Link to=''><span className='flex items-center gap-2'> <FiPhoneCall />Contact us</span></Link>
                                   <Link to=''><span className='flex items-center gap-2'> <FiAlertCircle />About US</span></Link>
+                                  <button onClick={handleLogout} className='btn btn-error'>Logout</button>
                               </div>
                               
                             </div>

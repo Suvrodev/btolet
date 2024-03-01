@@ -12,11 +12,14 @@ import RentDetail from "../Layout/Pages/Home/Rent/RentDetail/RentDetail";
 import BuyDetail from "../Layout/Pages/Buy/BuyDetail/BuyDetail";
 import RentPost from "../Layout/Pages/Home/Rent/RentPost/RentPost/RentPost";
 import UpdateProfile from "../Layout/Pages/UserResponsibility/UpdateProfile/UpdateProfile";
-import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
 import SavedPost from "../Layout/Pages/UserResponsibility/SavedPost/SavedPost/SavedPost";
 import MyPost from "../Layout/Pages/UserResponsibility/MyPost/MyPost/MyPost";
-import ZCheck from "../Layout/Pages/ZCheck1/ZCheck";
 import Filter from "../Layout/Pages/Sort/Filter/Filter";
+import PrivateRoute from "./PrivateRoute";
+import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
+import ZCheck from "../Layout/Pages/UserResponsibility/Check/ZCheck1/ZCheck";
+import MapCheck from "../Layout/Pages/UserResponsibility/Check/MapCheck/MapCheck";
+import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLocation/UserLocation";
 
 
 
@@ -43,7 +46,7 @@ import Filter from "../Layout/Pages/Sort/Filter/Filter";
         },
         {
           path: '/buypost',
-          element: <BuyPost></BuyPost>
+          element: <PrivateRoute><BuyPost></BuyPost></PrivateRoute>
         },
        
         {
@@ -52,7 +55,7 @@ import Filter from "../Layout/Pages/Sort/Filter/Filter";
         },
         {
           path: '/rentpost',
-          element: <RentPost></RentPost>
+          element: <PrivateRoute><RentPost></RentPost></PrivateRoute>
         },
         {
           path: 'rentdetail/:id',
@@ -64,15 +67,15 @@ import Filter from "../Layout/Pages/Sort/Filter/Filter";
         },
         {
           path: '/updateprofile',
-          element: <UpdateProfile></UpdateProfile>
+          element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
         },
         {
           path:'/savedpost',
-          element: <SavedPost></SavedPost>
+          element: <PrivateRoute><SavedPost></SavedPost></PrivateRoute>
         },
         {
           path: '/mypost',
-          element: <MyPost></MyPost>
+          element: <PrivateRoute><MyPost></MyPost></PrivateRoute>
         },
         {
           path: '/filter',
@@ -81,6 +84,14 @@ import Filter from "../Layout/Pages/Sort/Filter/Filter";
         {
           path: '/zcheck',
           element: <ZCheck></ZCheck>
+        },
+        {
+          path: '/mc',
+          element: <MapCheck/>
+        },
+        {
+          path: '/location',
+          element: <UserLocation></UserLocation>
         }
       ]
     },

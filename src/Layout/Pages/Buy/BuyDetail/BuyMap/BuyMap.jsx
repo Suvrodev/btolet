@@ -1,5 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import { FaMarker } from 'react-icons/fa';
+import { FmdGood } from '@mui/icons-material';
 
 const BuyMap = ({geolat,geolon}) => {
 
@@ -37,6 +39,7 @@ const BuyMap = ({geolat,geolon}) => {
                 defaultZoom={defaultProps.zoom}
                 text="My Marker"
                 >
+                    <p><FmdGood className='text-red-600'/></p>
                 </GoogleMapReact>:
                 <span className="loading loading-spinner text-error"></span>
             }
@@ -45,3 +48,7 @@ const BuyMap = ({geolat,geolon}) => {
 };
 
 export default BuyMap;
+
+/**Link:
+ * https://www.npmjs.com/package/google-map-react
+ */
