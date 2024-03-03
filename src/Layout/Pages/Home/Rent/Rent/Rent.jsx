@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import './Rent.css'
+
 import Marque from '../../../SharedPage/Marque/Marque';
 import Banner from '../../../SharedPage/Banner/Banner';
 import RentCard from '../RentCard/RentCard';
@@ -12,6 +14,7 @@ import './RentModal.css'
 import { FilterDataContext } from '../../../../../Providers/FilterDataProvider';
 import axios from 'axios';
 import { FiChevronDown, FiSliders } from 'react-icons/fi';
+import { AddOutlined } from '@mui/icons-material';
 
 const Rent = () => {
  
@@ -75,7 +78,7 @@ const Rent = () => {
 
 
     ///Post Count
-    const [postCount,setPostCount]=useState("")
+    const [postCount,setPostCount]=useState("0")
     useEffect(()=>{
       if(location_1 && location_2){
         fetch(`${baseUrl}/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
@@ -86,7 +89,7 @@ const Rent = () => {
            }
         })
       }
-    },[location_1,location_2])
+    },[location_1,location_2,doubleLocation])
     console.log("Post Count: ",postCount);
     // console.log("Location-1 + Location-2 : ",location_1+location_2);
     ///Area End
@@ -134,14 +137,13 @@ const Rent = () => {
           <div className='flex justify-between items-center my-4'>
             <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_1').showModal()}><FiSliders />Filter <FiChevronDown /></button>
             <div>
-                {
-                  // postCount &&
                   <p>
                     {postCount} ads in {location_1}, {location_2}
                   </p>
-                }
+               
             </div>
-            <Link to={'/rentpost'}> <button className='btn btn-success'>Post</button> </Link>
+            <Link to={'/rentpost'}> <span className='postButtonrd'> <span className='postButtonrdwht'> <AddOutlined/> post</span> </span> </Link>
+            {/* <Link to={'/rentpost'}> <span className='testButton'> pos</span> </Link> */}
           </div>
 
             <div>

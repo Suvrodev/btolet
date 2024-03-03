@@ -1,0 +1,20 @@
+.postButtonrd{
+    background: linear-gradient(to left, #23E5DB, #3A77FF);
+    width: 55px;
+    padding: 16px 7px;
+    border-radius: 20px;
+}
+.postButtonrdwht{
+    background: white;
+    border-radius: 16px; 
+    padding: 10px;
+}
+
+.testButton{
+    border: 5px solid linear-gradient(to left, #23E5DB, #3A77FF);
+    /* border-image: linear-gradient(to left, #23E5DB, #3A77FF) 1; 
+    border-image-slice: 1;  */
+    /* border-color: red; */
+    padding: 10px;
+    border-radius: 20px ;
+}

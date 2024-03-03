@@ -13,7 +13,7 @@ const BuyMap = ({geolat,geolon}) => {
           lat: 0,
           lng: 0
         },
-        zoom: 11
+        zoom: 16
     };
 
     if(geolat){
@@ -22,7 +22,7 @@ const BuyMap = ({geolat,geolon}) => {
               lat: parseFloat(geolat),
               lng: parseFloat(geolon)
             },
-            zoom: 11
+            zoom: 16
         };
     }
     else{

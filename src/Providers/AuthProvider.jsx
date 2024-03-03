@@ -95,11 +95,14 @@ const AuthProvider = ({children}) => {
     
 
     ///After
-     ///Lattitude: 22.8292315
-    ///Longitude:  89.5438572
+     ///Lattitude: 22.81854080201318
+    ///Longitude:  89.55184745782235
 
     const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
-   
+    const [lattitude,setLattitude]=useState("0")
+    const [longitude,setLongitude]=useState("0")
+
+
     useEffect(() => {
         const watchId = navigator.geolocation.watchPosition(
             position => {
@@ -118,14 +121,11 @@ const AuthProvider = ({children}) => {
         };
     }, []);
 
-    const [lattitude,setLattitude]=useState("")
-    const [longitude,setLongitude]=useState("")
-
 
     useEffect(() => {
         if(coordinates){
-            setLattitude(coordinates.latitude)
-            setLongitude(coordinates.longitude)
+            setLattitude(coordinates?.latitude)
+            setLongitude(coordinates?.longitude)
         }
     }, [coordinates]);
     console.log("Latitude(auth): ", lattitude);
@@ -145,14 +145,17 @@ const AuthProvider = ({children}) => {
      */
    
 
-    
-    const [doubleLocation,setDoubleLocation]=useState("")
-    
+   
 
+
+
+    const [doubleLocation,setDoubleLocation]=useState("")
     let place=""
     let displayName=""
     const [area,setArea]=useState('')
-    let location_1,location_2;
+    const [location_1,setLocation_1]=useState("")
+    const [location_2,setLocation_2]=useState("")
+    // let location_1='',location_2='';
 
 
     useEffect(()=>{
@@ -188,23 +191,22 @@ const AuthProvider = ({children}) => {
         }
        
         if(place){
-          location_1=place.split(',')[0]
-          location_2=place.split(',')[1]
+          let loc_1=place.split(',')[0]
+          let loc_2=place.split(',')[1]
           let doubleLocationn=`${location_1},${location_2}`
           console.log("doubleLocation(Auh: ",doubleLocationn);
           setDoubleLocation(doubleLocationn)
+          setLocation_1(loc_1)
+          setLocation_2(loc_2)
         }
 
-    },[area,lattitude,longitude])
+    },[area,lattitude,longitude,location_1,location_2])
 
     console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
+    console.log("Location-1(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_1);
+    console.log("Location-2(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_2);
+
    
-
-
-    
-
-    
-
 
     /**
      * Area End---------------------------------------------------------------------------------------------------------------------
