@@ -13,11 +13,12 @@ import { FiLayers, FiMapPin, FiShare2 } from 'react-icons/fi';
 
 import  SmsIcon from '../../../../assets/icons/home/sms_white.svg'
 import whatsappIcon from '../../../../assets/icons/home/wapp.svg'
+import { Favorite, FavoriteBorderOutlined } from '@mui/icons-material';
 
 
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
-   const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
+   const {uId,successfullMessage,baseUrl,currentUser,unSuccessFullMessage}=useContext(AuthContext)
     // console.log("Buy Card: ",buy);
     const {pid,image,image1,wapp,price,bath,bed,area,phone,size,location,measurement,time,total_image,category,geolat,geolon}=buy
 
@@ -75,7 +76,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
       const handleSave=()=>{
         console.log("Blue chilo Save korbo");
 
-        if(uId){
+        if(currentUser){
           fetch(`${baseUrl}/api/pro/save/post`,{
             method: 'POST',
               headers: {
@@ -89,8 +90,11 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                 successfullMessage("Saved Successfully")
                }
             })
+            setSave(!save)
+        }else{
+          unSuccessFullMessage("At First Log in")
         }
-        setSave(!save)
+       
       }
      
 
@@ -167,8 +171,8 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
               {
                 savedBuy &&
                 <div className='absolute top-5 right-[60px] '>
-                 <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                    <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
+                 <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
+                    <Favorite   onClick={handleUnSave} className='text-white'/>:
                 </p>
               </div >
               }
@@ -177,11 +181,11 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                {/* Save UnSave  Start */}
                {  forBuy &&
                   <div className='absolute top-5 right-[60px] '>
-                  <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                  <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
                       {
                         save==true ?
-                        <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
-                        <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
+                        <Favorite   onClick={handleUnSave} className='text-white'/>:
+                        <FavoriteBorderOutlined  onClick={handleSave} className='text-white'/> 
                       
                       }
                       
@@ -194,7 +198,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                {/* For Delete Start */}
                {  myPostBuy &&
                   <div className='absolute top-5 right-[60px] '>
-                  <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                  <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
                       
                         <FaTrash  onClick={handleDelte} className='text-red-700 '/> 
                   </p>
@@ -204,13 +208,13 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
 
               <div className='absolute top-5 right-5 '>
-               <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+               <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
                   <FiShare2 onClick={handleshare} className='text-white'/>
                </p>
              </div >
 
                 <div className='absolute bottom-2 right-10'>
-                    <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
+                    <p className='py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full '>
                         <span className='text-white'>{total_image}</span> <FiLayers  className='text-white'/>
                     </p>
                 </div>
@@ -218,7 +222,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
             {/* Image Box End */}
 
        
-            <div className='py-5 px-4 bg-red-600 h-[250px]'>
+            <div className='py-5 px-4  h-[250px]'>
                <p className='roboto font-bold text-xl'>{category}</p>
                  {price!=0? <p className='text-4xl font-bold text-black'> ৳ {formattePrice} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
@@ -227,7 +231,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                 </p>
             </div>
 
-            <div className='h-50px] bg-yellow-300'>
+            <div className='h-50px] '>
               {
                 category=='Flat' || category=='House'?
                 <div>

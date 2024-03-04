@@ -1,8 +1,9 @@
 .postButtonrd{
     background: linear-gradient(to left, #23E5DB, #3A77FF);
-    width: 55px;
-    padding: 16px 7px;
+    width: 105px;
+    padding: 10px 7px;
     border-radius: 20px;
+    margin: 0 auto;
 }
 .postButtonrdwht{
     background: white;
@@ -17,4 +18,8 @@
     /* border-color: red; */
     padding: 10px;
     border-radius: 20px ;
+}
+
+.btnPlace{
+    margin: auto;
 }

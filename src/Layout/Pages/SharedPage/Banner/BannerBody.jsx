@@ -3,8 +3,8 @@ import React from 'react';
 const BannerBody = ({b}) => {
     // console.log("BannerBody(b): ",b);
     return (
-        <div className='bg-yellow-500 w-full h-full'>
-           <img className='w-full h-full '  src={`data:image/png;base64,${b}`} alt="" />
+        <div className=' w-full h-full rounded-lg '>
+           <img className='w-full h-full rounded-lg '  src={`data:image/png;base64,${b}`} alt="" />
         </div>
     );
 };

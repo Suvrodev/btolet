@@ -9,8 +9,10 @@ const Main = () => {
     return (
         <div className='roboto '>
            <Header></Header>
-            <h1 className='rb_rg text-2xl'> This is Main</h1>
-           <Outlet></Outlet>
+            {/* <h1 className='rb_rg text-2xl'> This is Main</h1> */}
+            <div className='max-w-[90rem] mx-auto'>
+              <Outlet></Outlet>
+            </div>
         </div>
     );
 };

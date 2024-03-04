@@ -64,7 +64,7 @@ const Filter = () => {
            
             let count=res.data
             count=count.total_count
-            console.log("Post Count++++++++++++++++++++++++++",count);
+            // console.log("Post Count++++++++++++++++++++++++++",count);
             setPropertyNumber(count)
         })
     },[doubleLocation,minPrice,maxPrice,selectedRentCategory,selectedBedrooms,selectedBathrooms,selectedFacilities])

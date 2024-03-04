@@ -44,19 +44,19 @@ import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLo
             path: '/buy',
             element: <Buy></Buy>
         },
-        {
-          path: '/buypost',
-          element: <PrivateRoute><BuyPost></BuyPost></PrivateRoute>
-        },
+        // {
+        //   path: '/buypost',
+        //   element: <PrivateRoute><BuyPost></BuyPost></PrivateRoute>
+        // },
        
         {
           path: '/buydetail/:id',
           element: <BuyDetail></BuyDetail>
         },
-        {
-          path: '/rentpost',
-          element: <PrivateRoute><RentPost></RentPost></PrivateRoute>
-        },
+        // {
+        //   path: '/rentpost',
+        //   element: <PrivateRoute><RentPost></RentPost></PrivateRoute>
+        // },
         {
           path: 'rentdetail/:id',
           element: <RentDetail></RentDetail>

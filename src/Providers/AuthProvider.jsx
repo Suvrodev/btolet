@@ -128,8 +128,8 @@ const AuthProvider = ({children}) => {
             setLongitude(coordinates?.longitude)
         }
     }, [coordinates]);
-    console.log("Latitude(auth): ", lattitude);
-    console.log("Longitude(auth): ", longitude);
+    // console.log("Latitude(auth): ", lattitude);
+    // console.log("Longitude(auth): ", longitude);
 
     
     /**
@@ -202,9 +202,9 @@ const AuthProvider = ({children}) => {
 
     },[area,lattitude,longitude,location_1,location_2])
 
-    console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
-    console.log("Location-1(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_1);
-    console.log("Location-2(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_2);
+    // console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
+    // console.log("Location-1(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_1);
+    // console.log("Location-2(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_2);
 
    
 
@@ -372,6 +372,7 @@ const AuthProvider = ({children}) => {
         uId,
         currentUser,
         successfullMessage,
+        unSuccessFullMessage,
         loading,
 
 

@@ -6,16 +6,16 @@ import BuyMyPost from '../BuyMyPost/BuyMyPost';
 const MyPost = () => {
     return (
         <div>
-           <div>
+           <div className='tabs  font-bold my-10 '>
                 <Tabs defaultIndex={0} onSelect={(index) => console.log(index)}>
-                    <TabList>
+                    <TabList className='tab'>
                         <Tab>Rent</Tab>
                         <Tab>Buy</Tab>
                     </TabList>
-                    <TabPanel>
+                    <TabPanel className='tab'>
                         <RentMyPost></RentMyPost>
                     </TabPanel>
-                    <TabPanel>
+                    <TabPanel className='tab'>
                         <BuyMyPost></BuyMyPost>
                     </TabPanel>
                 </Tabs>

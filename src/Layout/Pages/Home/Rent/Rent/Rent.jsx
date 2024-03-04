@@ -40,7 +40,7 @@ const Rent = () => {
       bath:selectedBathrooms
     }
 
-    console.log("Filter Body: ",filterBody);
+    // console.log("Filter Body: ",filterBody);
 
 
   
@@ -90,7 +90,7 @@ const Rent = () => {
         })
       }
     },[location_1,location_2,doubleLocation])
-    console.log("Post Count: ",postCount);
+    // console.log("Post Count: ",postCount);
     // console.log("Location-1 + Location-2 : ",location_1+location_2);
     ///Area End
 
@@ -132,21 +132,21 @@ const Rent = () => {
           </div>
           {/* Modal end */}
 
-          <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1>
+          {/* <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1> */}
         
           <div className='flex justify-between items-center my-4'>
             <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_1').showModal()}><FiSliders />Filter <FiChevronDown /></button>
             <div>
-                  <p>
+                  <p className='text-2xl'>
                     {postCount} ads in {location_1}, {location_2}
                   </p>
                
             </div>
-            <Link to={'/rentpost'}> <span className='postButtonrd'> <span className='postButtonrdwht'> <AddOutlined/> post</span> </span> </Link>
-            {/* <Link to={'/rentpost'}> <span className='testButton'> pos</span> </Link> */}
+          
+        
           </div>
 
-            <div>
+            <div className='relative'>
               {
                 rents.length>0?
                 <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
@@ -156,7 +156,22 @@ const Rent = () => {
                 </div>:
                 <p>Nothing to Show</p>
               }
+
+               {/* POST bUTTON */}
+                {/* <Link to={'/rentpost'}> <p className='postButtonrd absolute bottom-[50px] left-[50%] translate(-50%, -50%) '> <span className='postButtonrdwht flex items-center'> <AddOutlined/> post</span> </p> </Link> */}
+          
+
+               
+                {/* <div style={{ position: 'fixed', bottom: '50px', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                  <Link to='/rentpost' className='postButtonrd'>
+                      <p className='postButtonrdwht flex items-center'>
+                          <AddOutlined/> post
+                      </p>
+                  </Link>
+             </div> */}
             </div>
+
+
            
         </div>
     );

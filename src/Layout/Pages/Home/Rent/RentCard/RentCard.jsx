@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import './BlackOpacity.css'
+
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaGoogle, FaHeart, FaHouseDamage, FaLayerGroup, FaMailBulk, FaMapMarker, FaMapMarkerAlt, FaMotorcycle, FaPhoneAlt, FaRegHeart, FaShare, FaTrash, FaWhatsapp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
@@ -16,10 +18,11 @@ import bikeIcon from '../../../../../assets/icons/tolet/bike.svg'
 import carIcon from '../../../../../assets/icons/tolet/car.svg'
 import  SmsIcon from '../../../../../assets/icons/home/sms_white.svg'
 import whatsappIcon from '../../../../../assets/icons/home/wapp.svg'
+import { Favorite, FavoriteBorderOutlined } from '@mui/icons-material';
 
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
-     const {uId,successfullMessage,baseUrl}=useContext(AuthContext)
+     const {uId,successfullMessage,baseUrl,currentUser,unSuccessFullMessage}=useContext(AuthContext)
     // console.log("Rent: ",r);
     const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category,garagetype}=r
 
@@ -69,23 +72,23 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
             // console.log("Garage Type: ",garagetype);
           }
       }else{
           // console.log("Post id: ",post_id," Only Garage: No");
           if(category.includes('Office') || category.includes('Shop')){
-             iconDiv=<div className='p-5 h-[45px]  bg-orange-400'>  </div>
+             iconDiv=<div className='p-5 h-[45px]  '>  </div>
           }else{
-             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  bg-orange-400'>
+             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  '>
                <div className='flex items-center gap-2'> <img className='w-[20px]' src={bathIcon} alt="" /> {bath}</div>
                <div className='flex items-center gap-2'><img className='w-[20px]' src={bedIcon} alt="" /> {bed}</div>
                <div className='flex items-center gap-2'><img className='w-[20px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
@@ -114,7 +117,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       const handleSave=()=>{
         // console.log("Blue chilo Save korbo");
 
-        if(uId){
+        if(currentUser){
           fetch(`${baseUrl}/api/tolet/save/post`,{
             method: 'POST',
               headers: {
@@ -128,8 +131,11 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                 successfullMessage("Saved Successfully")
                }
             })
+            setSave(!save)
+        }else{
+          unSuccessFullMessage("At First Log in")
         }
-        setSave(!save)
+        
       }
      
 
@@ -198,15 +204,15 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
         <div className='flex flex-col relative border  rounded-md h-[550px]' >
 
             {/* Image Box Start */}
-            <div className='relative bg-yellow-400'>
+            <div className='relative'>
               <img onClick={()=>goinDetail(post_id)} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
 
             {/* For Saved Start */}
               {
                 savedRent &&
                 <div className='absolute top-5 right-[60px] '>
-                 <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
-                    <FaHeart   onClick={handleUnSave} className='text-red-800 opacity-100'/>:
+                 <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
+                    <Favorite  onClick={handleUnSave} className='text-white'/>
                 </p>
               </div >
               }
@@ -215,11 +221,12 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                {/* Save UnSave  Start */}
                {  forRent &&
                   <div className='absolute top-5 right-[60px] '>
-                  <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                  <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
                       {
                         save==true ?
-                        <FaHeart   onClick={handleUnSave} className='text-red-800 '/>:
-                        <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
+                        <Favorite   onClick={handleUnSave} className='text-white'/>:
+                        // <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
+                        <FavoriteBorderOutlined  onClick={handleSave} className='text-white' />
                       
                       }
                       
@@ -232,7 +239,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                {/* For Delete Start */}
                {  myPostRent &&
                   <div className='absolute top-5 right-[60px] '>
-                  <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+                  <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
                       
                         <FaTrash  onClick={handleDelte} className='text-red-700 '/> 
                   </p>
@@ -243,20 +250,20 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
 
               <div className='absolute top-5 right-5 '>
-               <p className='w-[30px] h-[30px] bg-black opacity-50 flex items-center justify-center rounded-full'>
+               <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
                   <FiShare2 onClick={handleshare} className='text-white'/>
                </p>
             </div >
 
-                <div className='absolute bottom-2 right-10'>
-                    <p className='p-2 bg-black flex items-center justify-center gap-2 rounded-full opacity-50'>
-                        <span className='text-white'>{total_image}</span> <FiLayers  className='text-white'/>
+                <div className='absolute bottom-2 right-4'>
+                    <p className='py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full '>
+                        <span className='text-white'>{total_image} </span> <FiLayers  className='text-white'/>
                     </p>
                 </div>
             </div>
             {/* Image Box End */}
        
-            <div className='py-5 px-4 bg-red-500 h-[250px]'>
+            <div className='py-5 px-4  h-[250px]'>
                <p className='roboto font-bold text-2xl'>{categoryString}</p>
                 {   {rent}? <p className='text-4xl font-bold text-black'> ৳ {formattedRent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2'>
@@ -265,7 +272,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                 </p>
             </div>
 
-            <div className=' h-[45px] bg-purple-600'>
+            <div className=' h-[45px]'>
               {/* {
                 garagetype ?
                 <div className='p-5'>
@@ -299,9 +306,9 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                     <p>{timeAgo} </p>
                 </div>
                 <div className='flex items-center justify-center gap-2'>
-                    <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
-                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + phone, '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
+                    <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
+                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + phone, '_blank')} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>

@@ -30,9 +30,9 @@ const BuySlider = ({imagesForSlider}) => {
 
                     {
                         imagesForSlider.map((i, idx) => (
-                            <div key={idx} className='w-full h-full'>
+                            <div key={idx} className='w-full h-full rounded-md'>
                                 <SwiperSlide key={idx+1}>
-                                    <img className='w-full h-full' src={`data:image/png;base64,${i}`} alt="" />
+                                    <img className='w-full h-full rounded-md' src={`data:image/png;base64,${i}`} alt="" />
                                 </SwiperSlide>
                             </div>
                         ))

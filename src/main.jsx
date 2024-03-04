@@ -10,7 +10,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import FilterDataProvider from './Providers/FilterDataProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
- <div className=' max-w-7xl mx-auto'>
+ <div className=''>
 
    <AuthProvider>
       <FilterDataProvider>

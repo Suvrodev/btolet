@@ -12,18 +12,16 @@ const SavedPost = () => {
 
     return (
         <div>
-
-            <h1>Saved Post</h1>
-            <div className='tabs text-center font-bold my-10'>
+            <div className='tabs  font-bold my-10  '>
             <Tabs defaultIndex={0} onSelect={(index) => console.log(index)}>
-                <TabList classID='flex justify-center gap-5'>
+                <TabList className='tab'>
                     <Tab>Rent</Tab>
                     <Tab>Buy</Tab>
                 </TabList>
-                <TabPanel>
+                <TabPanel className='tab'>
                     <RentSavedPost></RentSavedPost>
                 </TabPanel>
-                <TabPanel>
+                <TabPanel className='tab'>
                     <BuySavedPost></BuySavedPost>
                 </TabPanel>
             </Tabs>

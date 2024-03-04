@@ -2,44 +2,45 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { FaMarker } from 'react-icons/fa';
 import { FmdGood } from '@mui/icons-material';
+import Marker from './Marker/Marker';
 
 const BuyMap = ({geolat,geolon}) => {
 
     // console.log("geolat: ",geolat);
     // console.log("geolon: ",geolon);
 
-    let defaultProps = {
-        center: {
-          lat: 0,
-          lng: 0
-        },
-        zoom: 16
+    let defaultCenter = {
+        lat: 0, // Default latitude
+        lng: 0  // Default longitude
     };
 
-    if(geolat){
-        defaultProps = {
-            center: {
-              lat: parseFloat(geolat),
-              lng: parseFloat(geolon)
-            },
-            zoom: 16
+    if (geolat && geolon) {
+        defaultCenter = {
+            lat: parseFloat(geolat),
+            lng: parseFloat(geolon)
         };
-    }
-    else{
-        return <span className="loading loading-spinner text-error"></span>;
+    } else {
+        return <span className="loading loading-spinner text-error">Loading...</span>;
     }
 
     return (
-        <div className='w-full h-full'>
+        <div className='w-full h-full rounded-xl bg-yellow-400 overflow-hidden'>
              {
                 geolat ?
                 <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyBvMWY8-16dqG7km0DEHFFKh39sD7tSw0g" }}
-                defaultCenter={defaultProps.center}
-                defaultZoom={defaultProps.zoom}
-                text="My Marker"
+                    className='rounded-xl'
+                    bootstrapURLKeys={{ key: "AIzaSyBvMWY8-16dqG7km0DEHFFKh39sD7tSw0g" }}
+                    defaultCenter={defaultCenter}
+                    defaultZoom={16}
+                    draggable={false}
+                    onChange={() => {}} 
                 >
-                    <p><FmdGood className='text-red-600'/></p>
+                <Marker
+                    lat={defaultCenter.lat}
+                    lng={defaultCenter.lng}
+                    text="My Marker"
+                />
+                
                 </GoogleMapReact>:
                 <span className="loading loading-spinner text-error"></span>
             }

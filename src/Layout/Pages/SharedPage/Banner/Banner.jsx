@@ -22,6 +22,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import BannerSwipperComponent from './BannerSwipperComponent/BannerSwipperComponent';
 ///Swipper End
 
 
@@ -51,14 +52,15 @@ const Banner = () => {
     showImages.pop()
     ///Fucking Galib
 
-    // console.log(showImages[4]);
-
-    const MoveEvent=()=>{}
-
+    /**
+     * Own Banner
+     */
+   
+    
     return (
         <div className='Banner'>
 
-            <Swiper
+            {/* <Swiper
                     spaceBetween={30}
                     centeredSlides={true}
                     autoplay={{
@@ -81,52 +83,12 @@ const Banner = () => {
                     </SwiperSlide> ) 
                 }
                 
-                </Swiper>
+                </Swiper> */}
 
                  {/* <img src={`data:image/png;base64,${showImages[0]}`} alt="Base64 Image" /> */}
 
-            {/* <Carousel className='w-11/12 mx-auto bg-yellow-600'>
-                <div className='imagesize'>
-                    <img className=''  src={`data:image/png;base64,${showImages[0]}`} alt="Base64 Image" /> 
-                </div>
-                <div>
-                     <img  className='' src={`data:image/png;base64,${showImages[1]}`} alt="Base64 Image" /> 
-                </div>
-                <div>
-                  <img  className='' src={`data:image/png;base64,${showImages[2]}`} alt="Base64 Image" /> 
-                </div>
-                <div>
-                  <img className='' src={`data:image/png;base64,${showImages[3]}`} alt="Base64 Image" /> 
-                </div>
-             </Carousel> */}
 
-        {/* <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={125}
-            totalSlides={4}
-        >
-        <Slider>
-            <Slide index={0}>
-                 <img className='imagesize'  src={`data:image/png;base64,${showImages[0]}`} alt="Base64 Image" />
-            </Slide>
-              <Slide index={1}>
-                  <img className='imagesize'  src={`data:image/png;base64,${showImages[1]}`} alt="Base64 Image" />
-              </Slide>
-              <Slide index={2}>
-                  <img className='imagesize'  src={`data:image/png;base64,${showImages[2]}`} alt="Base64 Image" />
-                </Slide>
-              <Slide index={3}>
-                  <img className='imagesize'  src={`data:image/png;base64,${showImages[3]}`} alt="Base64 Image" />
-                </Slide>
-        </Slider>
-
-        <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
-
-      </CarouselProvider> */}
-
-      
-            
+                 <BannerSwipperComponent images={showImages}></BannerSwipperComponent>
 
         </div>
     );

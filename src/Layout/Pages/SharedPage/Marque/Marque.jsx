@@ -14,8 +14,8 @@ const Marque = () => {
     // console.log("Marque: ",marqueText);
 
     return (
-        <div className='bg-[#E3E3E3] p-2 rounded-md m-5'>
-             <Marquee speed={100} className="text-black font-bold">
+        <div className='bg-[#e9e8e8] p-2 rounded-md my-4'>
+             <Marquee speed={100} className="text-black text-lg ">
                 {marqueText}
             </Marquee>
         </div>

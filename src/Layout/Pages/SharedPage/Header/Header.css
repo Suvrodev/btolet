@@ -1,0 +1,7 @@
+.upLine{
+    width: 25px;
+    height: 2px;
+    background-color: blue;
+    position: relative;
+    top: -14px;
+}

@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react';
+import './Header.css'
+
 import { Link, NavLink } from 'react-router-dom';
 import headerLogo from '../../../../assets/Logo/logo.png'
 import { AuthContext } from '../../../../Providers/AuthProvider';
@@ -35,57 +37,63 @@ const Header = () => {
   
   
       const NavItems=<div className='lg:flex items-center justify-center text-white'>
-          <li><NavLink className={({isActive})=> isActive? 'text-green-600 rb_rg font-extrabold ':'rb_rg'}  to='/home'>Home</NavLink ></li>
-          <li><NavLink className={({isActive})=> isActive? 'text-green-600 rb_rg font-extrabold ':'rb_rg'}  to='/buy'>Buy</NavLink ></li>
+          <li><NavLink className={({isActive})=> isActive? 'text-blue-600 rb_rg font-extrabold ':'rb_rg'}  to='/blue'>Home</NavLink ></li>
+          <li><NavLink className={({isActive})=> isActive? 'text-blue-600 rb_rg font-extrabold ':'rb_rg'}  to='/buy'>Buy</NavLink ></li>
           <li className='text-black'>{lattitude}</li>
      </div>
 
     return (
       <div>
 
-            <div className='hidden  w-full h-[75px] border-4 p-5 md:flex items-center justify-end '>
-                    <div className='w-[70%] flex justify-start items-center gap-10'>
-                        <div className='flex gap-5 items-center '>
-                          <Link to='/'><img className='w-[50px] h-[50px]' src={headerLogo} alt="" /></Link>
-                          <h1 className='h-[50px] text-4xl font-bold my-auto'>B2Let</h1>
-                        </div>
-                        <div className='text-lg flex gap-5 items-center'>
-                            <NavLink className={({isActive})=> isActive? 'text-green-600 ':'rb_rg'}  to='/home'>Home</NavLink >
-                            <NavLink className={({isActive})=> isActive? 'text-green-600 ':'rb_rg'}  to='/buy'>Buy</NavLink >
-                            <li>{lattitude}</li>
-                            <li>{longitude}</li>
-                            <li>{doubleLocation}</li>
-                        </div>
-                    </div>
-                    <div className='w-[30%] flex items-center justify-end'>
-                        {
-                          currentUser?
-                          <div className='relative'>
-                            <img className='w-[45px] h-[45px] rounded-full' onClick={handleProfileBox} src={currentUser?.image} alt="" />
+        <div className='  border-[1px] border-r-0 border-l-0'>
+          <div className='hidden max-w-[100rem] mx-auto w-full h-[75px] py-5 md:flex items-center justify-end '>
+                      <div className='w-[70%] flex justify-start items-center gap-10'>
+                          <div className='flex gap-2 items-center '>
+                            <Link to='/'><img className='w-[50px] h-[50px]' src={headerLogo} alt="" /></Link>
+                            <h1 className='h-[50px] text-4xl font-bold my-auto'>BtoLet</h1>
+                          </div>
+                          <div className='text-lg flex gap-5 items-center'>
+                              <NavLink className={({isActive})=> isActive? 'text-blue-600 upLine ':'text-gray-500'}  to='/home'>Rent</NavLink >
+                              <NavLink className={({isActive})=> isActive? 'text-blue-600 upLine':'text-gray-500'}  to='/buy'>Buy</NavLink >
+                            
+                          </div>
+                      </div>
+                      <div className='w-[30%] flex items-center justify-end'>
+                          {
+                            currentUser?
+                            <div className='relative'>
+                              <img className='w-[45px] h-[45px] rounded-full customBorder' onClick={handleProfileBox} src={currentUser?.image} alt="" />
 
-                            <div className={`w-[270px] border-2 absolute top-14 right-0 bg-green-500 rounded-md p-5 z-10 ${profileBox?'':'hidden'}`}>
-                              <div className='flex flex-col gap-4'>
-                                  <Link to='/updateprofile'> <span className='flex items-center gap-2'> <FiUser /> Profile</span> </Link>
-                                  <Link to='/savedpost'><span className='flex items-center gap-2'> <FiHeart /> Saved</span></Link>
-                                  <Link to='/mypost'><span className='flex items-center gap-2'> <FiEdit  /> My Post</span></Link>
-                                  <Link to=''><span className='flex items-center gap-2'> <FiRadio />Feedback</span></Link>
-                                  <p className='h-[1px] bg-black mt-4 mb-2'></p>
-                                  <Link to=''><span className='flex items-center gap-2'> <FiSearch />Terms And Condition</span></Link>
-                                  <Link to=''><span className='flex items-center gap-2'> <FiPhoneCall />Contact us</span></Link>
-                                  <Link to=''><span className='flex items-center gap-2'> <FiAlertCircle />About US</span></Link>
-                                  <button onClick={handleLogout} className='btn btn-error'>Logout</button>
+                              <div className={`w-[270px] border-2 absolute top-14 right-0 bg-white rounded-md p-5 z-10 ${profileBox?'':'hidden'}`}>
+                                <div className='flex flex-col gap-2'>
+                                    <Link to='/updateprofile'> <span className='flex items-center gap-2'> <FiUser /> Profile</span> </Link>
+                                    <Link to='/savedpost'><span className='flex items-center gap-2'> <FiHeart /> Saved</span></Link>
+                                    <Link to='/mypost'><span className='flex items-center gap-2'> <FiEdit  /> My Post</span></Link>
+                                    <Link to=''><span className='flex items-center gap-2'> <FiRadio />Feedback</span></Link>
+                                    <p className='h-[1px] customBorder mt-2 mb-2'></p>
+                                    <Link to=''><span className='flex items-center gap-2'> <FiSearch />Terms And Condition</span></Link>
+                                    <Link to=''><span className='flex items-center gap-2'> <FiPhoneCall />Contact us</span></Link>
+                                    <Link to=''><span className='flex items-center gap-2'> <FiAlertCircle />About US</span></Link>
+                                    <button onClick={handleLogout} className=' bg-[#FF5861] text-white rounded-md h-[30px] flex items-center justify-center'>Logout</button>
+                                    
+                                </div>
+                                
                               </div>
-                              
-                            </div>
-                          </div>:
-                          <Link to='/login'><button className="btn btn-outline btn-accent text-xl font-bold">Login</button></Link>
-                        }
-                      
-                    </div>
-              </div>
-
-
-
+                            </div>:
+                            // <Link to='/login'><button className=" py-2 px-5 hover:border-2 transition duration-700 ease-in-out"><span className='flex items-center gap-1 text-black opacity-75'> <FiUser /> Sign in</span></button></Link>
+                            <Link to='/login'>
+                            <button className="py-2 px-5 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-700 ease-in-out">
+                              <span className='flex items-center gap-1 text-black opacity-75'>
+                                <FiUser /> Sign in
+                              </span>
+                            </button>
+                          </Link>
+                          
+                          }
+                        
+                      </div>
+          </div>
+        </div>
 
               
 

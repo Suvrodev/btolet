@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import './RentDetail.css'
+
 import { useParams } from 'react-router-dom';
 import BuySlider from '../../../Buy/BuyDetail/BuySlider/BuySlider';
 import BuyMap from '../../../Buy/BuyDetail/BuyMap/BuyMap';
@@ -361,21 +363,21 @@ const RentDetail = () => {
     return (
         <div>
             Rent Detail: {id}
-            <h1 className='text-2xl font-bold text-center mb-4'>Rent Page</h1>
+            {/* <h1 className='text-2xl font-bold text-center mb-4'>Rent Page</h1> */}
             <div className='flex gap-4 w-full h-[500px] '>
-                    <div className='w-[60%] h-full'>
+                    <div className='w-[60%] h-full rounded-md'>
                         {/* <img className='w-full h-[450px]'  src={`data:image/png;base64,${image1}`} alt="" /> */}
                         <BuySlider imagesForSlider={imagesForSlider}></BuySlider>
                     </div>
-                <div className='w-[40%] h-full flex flex-col bg-green-600 '>
-                    <div className='h-full'>
-                        <BuyMap geolat={geolat} geolon={geolon} ></BuyMap>
+                <div className='w-[40%] h-full flex flex-col bg-green-600 rounded-xl'>
+                    <div className='h-full rounded-xl'>
+                        <BuyMap geolat={geolat} geolon={geolon} className='rounded-xl' ></BuyMap>
                     </div>
                 </div>
             </div>
             {/* <TkAndShare price={price}></TkAndShare> */}
 
-            <div className='my-4 flex justify-between'>
+            <div className='my-4 flex justify-between rounded-md'>
                 <div className='text-2xl font-bold'>৳ {formattedRent}</div>
 
              
@@ -386,7 +388,7 @@ const RentDetail = () => {
                 </div>
             </div>
 
-            <div className='w-full h-[1px] bg-black my-4'></div>
+            <div className='w-full h-[1px] bg-black opacity-20 my-4'></div>
 
             <div>
                  {/* Celma start */}
@@ -411,7 +413,7 @@ const RentDetail = () => {
 
             <section>
             <h1 className='text-xl'>Details</h1>
-            <div className='border-2 border-yellow-500 w-[650px] p-5 rounded-md'>
+            <div className='customBorder w-[650px] p-5 rounded-md'>
                {
                  allDetails.map((ad,idx)=> <RentDetailsNumber key={idx}  ad={ad} ></RentDetailsNumber> )
                }

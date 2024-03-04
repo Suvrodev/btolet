@@ -8,6 +8,7 @@ import { FiHeart } from "react-icons/fi";
 
 /////Material Icon
 import { CameraAltOutlined, DirectionsBikeOutlined, Elevator, ElevatorOutlined, ExitToAppOutlined, FireExtinguisherOutlined, FireTruckSharp, GasMeter, GasMeterOutlined, GrassOutlined, LiveTvOutlined, LocalFireDepartmentOutlined, Phone, PhotoCamera, Pool, PowerSettingsNew, PowerSettingsNewRounded, SecurityOutlined, TurnSharpRight, VerifiedUserOutlined, Water, Wifi } from "@mui/icons-material";
+import ImageZoom from "./ImageZoom.jsx";
 
 
 
@@ -40,7 +41,7 @@ const Checki = () => {
   return (
         <div>
 
-            <div>
+            {/* <div>
                 <h1>Amenitie Icon:</h1>
                 <div className="flex gap-4">
                   {
@@ -49,7 +50,15 @@ const Checki = () => {
                     ))
                   }
                 </div>
-            </div>
+            </div> */}
+
+
+
+          
+
+          <div className="App">
+              <ImageZoom src={Image} alt="Your image" />
+          </div>
       </div>
 
   );
