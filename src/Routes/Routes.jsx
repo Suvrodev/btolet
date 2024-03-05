@@ -20,6 +20,7 @@ import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
 import ZCheck from "../Layout/Pages/UserResponsibility/Check/ZCheck1/ZCheck";
 import MapCheck from "../Layout/Pages/UserResponsibility/Check/MapCheck/MapCheck";
 import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLocation/UserLocation";
+import ImageZoom from "../Layout/Pages/UserResponsibility/Check/ImageZoom/ImageZoom";
 
 
 
@@ -92,6 +93,10 @@ import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLo
         {
           path: '/location',
           element: <UserLocation></UserLocation>
+        },
+        {
+          path: '/iz',
+          element: <ImageZoom></ImageZoom>
         }
       ]
     },

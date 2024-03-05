@@ -135,13 +135,15 @@ const Rent = () => {
           {/* <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1> */}
         
           <div className='flex justify-between items-center my-4'>
-            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_1').showModal()}><FiSliders />Filter <FiChevronDown /></button>
-            <div>
-                  <p className='text-2xl'>
-                    {postCount} ads in {location_1}, {location_2}
+          <div>
+                  <p className='text-2xl prText'>
+                   <span className='text-black opacity-80'>{postCount} ads in</span>  {location_1}, {location_2}
                   </p>
                
             </div>
+
+            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_1').showModal()}><FiSliders />Filter <FiChevronDown /></button>
+           
           
         
           </div>

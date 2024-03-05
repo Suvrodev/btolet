@@ -223,15 +223,15 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
        
             <div className='py-5 px-4  h-[250px]'>
-               <p className='roboto font-bold text-xl'>{category}</p>
-                 {price!=0? <p className='text-4xl font-bold text-black'> ৳ {formattePrice} </p>: <span className='text-xl font-bold text-black'>Price on Call</span>}
-                <p className='flex gap-2 items-center my-2'>
+               <p className='roboto  text-xl text-black prText'>{category}</p>
+                 {price!=0? <p className='text-4xl font-bold text-black opacity-80'> ৳ {formattePrice} </p>: <span className='text-xl font-bold text-black opacity-80'>Price on Call</span>}
+                <p className='flex gap-2 items-center my-2 prText'>
                     <FiMapPin />
                     <span>{location}</span>
                 </p>
             </div>
 
-            <div className='h-50px] '>
+            <div className='h-50px] text-black opacity-60'>
               {
                 category=='Flat' || category=='House'?
                 <div>
@@ -255,10 +255,10 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
             </div>
           
 
-            <div className='h-[1px] w-full bg-white'> </div>
+            <div className='h-[1px] w-full customBorder'> </div>
 
             <div className='py-5 px-2 flex gap-2 justify-around'>
-                <div className='flex gap-2 items-center'>
+                <div className='flex gap-2 items-center text-black opacity-60'>
                    <img className='w-[40px] h-[40px] rounded-full ' src={image} alt="" />
                     <p>{timeAgo} </p>
                 </div>

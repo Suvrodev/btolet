@@ -1,3 +1,21 @@
+.detailParent{
+   display: grid;
+   grid-template-columns: 6fr 2fr;
+   gap: 10px;
+   height: 1600px;
+   overflow: hidden;
+}
+.detailParentLeftdiv {
+    align-self: start;
+  }
+
+.detailParentRightdiv {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 1px; /* Adjust according to your needs */
+    box-sizing: content-box;
+}
 .customBorder{
     border: 1px solid rgba(0, 0, 0, 0.2);
 }

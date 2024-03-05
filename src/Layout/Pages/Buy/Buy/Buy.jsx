@@ -8,6 +8,8 @@ import { FaSliders } from 'react-icons/fa6';
 import BuyFilter from '../../Sort/BuyFilter/BuyFilter';
 import axios from 'axios';
 import { FiChevronDown, FiSliders } from 'react-icons/fi';
+import Marque from '../../SharedPage/Marque/Marque';
+import Banner from '../../SharedPage/Banner/Banner';
 
 const Buy = () => {
 
@@ -91,6 +93,22 @@ const Buy = () => {
 
     return (
         <div>
+
+
+          {/* Marque + Banner start */}
+          <Marque></Marque>
+            <div className='h-[360px] flex gap-2 items-center justify-start '>
+                <div className='w-[60%] h-[360px]'>
+                    <Banner></Banner>
+                </div>
+                 <div className='w-[40%]    '>
+                   <div className='bg-green-500 h-[360px] rounded-lg  flex items-center justify-center '>
+                       <h1> Google Ads</h1>
+                   </div>
+                 </div>
+            </div>
+
+          {/* Marque + Banner end */}
 
            {/* Modal start */}
            <div>

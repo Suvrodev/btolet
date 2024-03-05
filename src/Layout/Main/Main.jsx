@@ -3,6 +3,7 @@ import Header from '../Pages/SharedPage/Header/Header';
 import { Outlet } from 'react-router-dom';
 
 import './Font.css'
+import './Main.css'
 
 
 const Main = () => {

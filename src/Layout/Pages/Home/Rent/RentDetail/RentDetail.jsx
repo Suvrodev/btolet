@@ -12,7 +12,7 @@ import ContactButtons from '../../../Buy/BuyDetail/ContactButtons/ContactButtons
 import RentCard from '../RentCard/RentCard';
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaHouseDamage, FaMotorcycle } from 'react-icons/fa';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
-import { AccessTimeOutlined, BalanceOutlined, ChairOutlined, CottageOutlined, DiningOutlined, DomainOutlined, HomeOutlined, KitchenOutlined, MonetizationOnOutlined, PersonPinCircleOutlined, SearchOutlined, ShareLocationOutlined, ShowerOutlined, WindowOutlined } from '@mui/icons-material';
+import { AccessTimeOutlined, BalanceOutlined, BalconyOutlined, ChairOutlined, CottageOutlined, DiningOutlined, DomainOutlined, HomeOutlined, KitchenOutlined, MonetizationOnOutlined, PersonPinCircleOutlined, SearchOutlined, ShareLocationOutlined, ShowerOutlined, WindowOutlined } from '@mui/icons-material';
 
 /////Image Icon start
 import bedIcon from '../../../../../assets/icons/tolet/bed.svg'
@@ -22,6 +22,7 @@ import garageIcon from '../../../../../assets/icons/tolet/garage.svg'
 import bikeIcon from '../../../../../assets/icons/tolet/bike.svg'
 import carIcon from '../../../../../assets/icons/tolet/car.svg'
 import calculateTimeAgo from '../../../../../Function/TimeAgo';
+import BannerSwipperComponent from '../../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent';
 
 const RentDetail = () => {
 
@@ -240,7 +241,7 @@ const RentDetail = () => {
       }
       if(balcony){
         allDetails.push({
-            iconName: <BalanceOutlined/>,
+            iconName: <BalconyOutlined/>,
             itemName:'Balcony',
             itemNumber: balcony
             
@@ -338,10 +339,14 @@ const RentDetail = () => {
             iconDiv=<div className='p-5 h-[45px] '> Shop  </div>
           }
           else{
-             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  '>
-               <div className='flex items-center gap-2'><img className='w-[30px]' src={bedIcon} alt="" /> {bath}</div>
-               <div className='flex items-center gap-2'><img className='w-[30px]' src={bathIcon} alt="" /> {bed}</div>
-               <div className='flex items-center gap-2'><img className='w-[30px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  text-[30px] my-4 '>
+               <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={bedIcon} alt="" /> {bath}</div>
+               <div className='flex items-center gap-2'><img className='w-[40px] opacity-40  mb-[2px]' src={bathIcon} alt="" /> {bed}</div>
+               {
+                roomsize &&
+                <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+               }
+               {/* <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div> */}
              </div>
           }
       }
@@ -361,22 +366,100 @@ const RentDetail = () => {
 
    
     return (
-        <div>
-          <div className='grid grid-cols-2 w-full bg-red-600'>
-             <div className='w-[90%] bg-green-500 '>
-Lefffftttttttttttt
+        <div className='mt-10'>
+          <div className='detailParent'>
+
+            {/* Left Div start */}
+             <div className='w-full detailParentLeftdiv'>
+                <div className='flex gap-1 w-full h-[500px] '>
+                        <div className='w-[60%] h-full rounded-md'>
+                            <BannerSwipperComponent images={imagesForSlider}></BannerSwipperComponent>
+                        </div>
+                    <div className='w-[40%] h-full flex flex-col bg-green-600 rounded-xl'>
+                        <div className='h-full rounded-xl'>
+                            <BuyMap geolat={geolat} geolon={geolon} className='rounded-xl' ></BuyMap>
+                        </div>
+                    </div>
+                </div>
+
+                 {/* <TkAndShare price={price}></TkAndShare> */}
+                <div className='my-4 flex justify-between rounded-md'>
+                    <div className='text-3xl robot font-bold text-black opacity-80'>৳ {formattedRent}</div>
+                    <div>
+                        <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
+                    </div>
+                </div>
+                 {/* <TkAndShare price={price}></TkAndShare> */}
+
+                <div className='w-full h-[1px] bg-black opacity-20 my-4'></div>
+
+                <div className='flex justify-between'>
+                    {iconDiv}
+                    <span className='font-bold text-xl prText'>{timeAgo}</span> 
+                </div>
+
+                {/* Location and Time Ago start */}
+                <div className='flex justify-between items-center'>
+                    <div className='my-4 flex items-center gap-4 '>
+                        <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 '>
+                            <img className='' src={locationColorImage} alt="" />
+                        </div>
+                        <p className='text-[26px] font-bold text-black opacity-70'>{location}</p>
+                    </div>
+                    <div className='font-bold text-xl'>
+                        {/* {timeAgo} */}
+                    </div>
+               </div>
+              {/* Location and Time Ago end */}
+
+              <div className='h-[30px] w-full bg-[#DEDEE0]'>
+                
+              </div>
+
+
+            <section>
+              <h1 className='text-xl my-4'>Details</h1>
+              <div className='customBorder w-[650px] p-5 rounded-md'>
+                {
+                  allDetails.map((ad,idx)=> <RentDetailsNumber key={idx}  ad={ad} ></RentDetailsNumber> )
+                }
+              </div>
+          </section>
+
+            
+            <div className='h-[1px] w-full  my-[25px]  customBorder '></div>
+
+            <div>
+                <BuyDescription description={description} ></BuyDescription>
+            </div>
+
+
+
+
+
+
+  
+
              </div>
+            {/* Left Div End */}
+
 
              {/* More Post */}
-             <div className='w-[30%] bg-yellow-400'>
-                Right
-             </div>
+             <div className='w-full px-4 detailParentRightdiv  '>
+                {/* <h1 className='text-2xl font-bold'>More Post</h1> */}
+                <div className='grid  grid-cols-1 gap-5 '>
+                    {
+                      moreRentPost &&
+                      moreRentPost.map((r,idx)=> <RentCard key={idx} r={r} forRent={'forRent'}></RentCard> )
+                    }
+                </div>
+            </div>
+            {/* More Post End */}
           </div>
           
-            {/* <h1 className='text-2xl font-bold text-center mb-4'>Rent Page</h1> */}
-            <div className='flex gap-4 w-full h-[500px] '>
+          
+            {/* <div className='flex gap-4 w-full h-[500px] '>
                     <div className='w-[60%] h-full rounded-md'>
-                        {/* <img className='w-full h-[450px]'  src={`data:image/png;base64,${image1}`} alt="" /> */}
                         <BuySlider imagesForSlider={imagesForSlider}></BuySlider>
                     </div>
                 <div className='w-[40%] h-full flex flex-col bg-green-600 rounded-xl'>
@@ -385,7 +468,8 @@ Lefffftttttttttttt
                     </div>
                 </div>
             </div>
-            {/* <TkAndShare price={price}></TkAndShare> */}
+         
+
 
             <div className='my-4 flex justify-between rounded-md'>
                 <div className='text-3xl robot font-bold text-black opacity-80'>৳ {formattedRent}</div>
@@ -397,10 +481,7 @@ Lefffftttttttttttt
             <div className='w-full h-[1px] bg-black opacity-20 my-4'></div>
 
             <div>
-                 {/* Celma start */}
                  {iconDiv}
-                {/* Celma End */}
-
             </div>
 
             <div className='flex justify-between items-center'>
@@ -428,18 +509,10 @@ Lefffftttttttttttt
 
             <div>
                 <BuyDescription description={description}></BuyDescription>
-            </div>
+            </div> */}
 
 
-            <div>
-              <h1 className='text-2xl font-bold'>More Post</h1>
-              <div className='grid  grid-cols-4 gap-5'>
-                  {
-                    moreRentPost &&
-                    moreRentPost.map((r,idx)=> <RentCard key={idx} r={r}></RentCard> )
-                  }
-              </div>
-            </div>
+           
            
 
 

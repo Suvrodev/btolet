@@ -23,6 +23,8 @@ import { AuthContext } from '../../../../Providers/AuthProvider';
 import { AccessTimeOutlined, ConstructionOutlined, DomainOutlined, HomeOutlined, PermIdentityOutlined, ShareLocationOutlined } from '@mui/icons-material';
 import { FiShare2 } from 'react-icons/fi';
 import calculateTimeAgo from '../../../../Function/TimeAgo';
+import BannerSwipperComponent from '../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent';
+import ImageZoom from '../../UserResponsibility/Check/ImageZoom/ImageZoom';
 
 const BuyDetail = () => {
     const {baseUrl}=useContext(AuthContext)
@@ -296,13 +298,15 @@ const BuyDetail = () => {
 
     return (
         <div>
-            <h1>dddd</h1>
-            Buy Detail: {id}
+            <div className='detailParent'>
 
-            <div className='flex gap-4 w-full h-[500px] '>
+                {/* Left Div start */}
+                <div className='w-full detailParentLeftdiv'>
+                    
+
+                <div className='flex gap-4 w-full h-[500px] '>
                 <div className='w-[60%] h-full'>
-                      {/* <img className='w-full h-[450px]'  src={`data:image/png;base64,${image1}`} alt="" /> */}
-                     <BuySlider imagesForSlider={imagesForSlider}></BuySlider>
+                     <BannerSwipperComponent images={imagesForSlider}></BannerSwipperComponent>
                 </div>
                 <div className='w-[40%] h-full flex flex-col bg-green-600 '>
                    
@@ -313,7 +317,9 @@ const BuyDetail = () => {
                         floor_plan?
                         <>
                             <h1 className='absolute middle font-bold text-xl text-black bg-white p-2 rounded-md opacity-30'>Floor Plan</h1>
-                            <img className='w-full h-full phaseImage z-20'  src={`data:image/png;base64,${floor_plan}`} alt="" />
+                            {/* <img className='w-full h-full phaseImage z-20'  src={`data:image/png;base64,${floor_plan}`} alt="" /> */}
+
+                            <ImageZoom comeImage={floor_plan}></ImageZoom>
                         </>:
                         <> 
                             <img className='w-full h-full phaseImage z-20' src={noImage} alt="" />
@@ -326,181 +332,197 @@ const BuyDetail = () => {
                       <BuyMap geolat={geolat} geolon={geolon} ></BuyMap>
                     </div>
                 </div>
-            </div>
+                 </div>
 
-            <div className='flex justify-between items-center my-4'>
-                 <div className='text-xl font-bold'>
-                    {price? <span className='font-bold '>Take : <span className=''>{formattedRent}</span> </span> :'Price On Call'}
-                </div>
-
-                <div className='flex gap-4 items-center'>
-                    <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
-                    <FiShare2/>
-                </div>
-            </div>
-
-           {/* <TkAndShare phone={phone} wapp={wapp} price={price}></TkAndShare> */}
-
-
-
-            <div className='w-full h-[1px] bg-black my-4'></div>
-
-           <div className='flex justify-between items-center'>
-                <div className='my-4 flex items-center gap-10'>
-                    <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 '>
-                        <img className='' src={locationColorImage} alt="" />
+                <div className='flex justify-between items-center my-4'>
+                    <div className='text-xl font-bold'>
+                        {price? <span className='font-bold '>Take : <span className=''>{formattedRent}</span> </span> :'Price On Call'}
                     </div>
-                    <p className='text-xl font-bold'>{location}</p>
-                </div>
-                <div className='font-bold text-xl'>
-                    {timeAgo}
-                </div>
-            </div>
 
-
-            {/* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */}
-           <div className='flex  gap-20'>
-                <div className='w-[50%]'>
-                {
-                     (category === 'House' || category === 'Flat') ? (
-                    <div className='box'>
-                        {
-                            bedBathImportant.map((b,idx)=> <BuyDetailsHomeData key={idx} b={b} num={idx}></BuyDetailsHomeData> )
-                        }
-                      
+                    <div className='flex gap-4 items-center'>
+                        <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
+                        <FiShare2/>
                     </div>
-                    ):(
-                      <div className='box2'>
-                        {
-                            roadSizeSotangso.map((b,idx)=> <BuyDetailsLandData key={idx} b={b} num={idx} area={area}></BuyDetailsLandData> )
-                        }
-                      
-                      </div>
-                    )
-                    
-                }
                 </div>
 
-                <div className='w-[50%]  p-5 flex flex-col gap-4'>
-                     <div>
-                        <h1 className='text-xl font-bold mb-5'>Amenities: </h1>
-                        <div className='grid grid-cols-2'>
-                            {
-                            amenities.map((a,idx) => <div key={idx} className='flex items-center gap-2'>
-                                <p><FaCheckCircle className=' text-green-600' /></p>
-                                <p>{a}</p>
-                                </div> )
-                            }
+                  {/* <TkAndShare phone={phone} wapp={wapp} price={price}></TkAndShare> */}
 
+
+
+                 <div className='w-full h-[1px] bg-black my-4'></div>
+
+                <div className='flex justify-between items-center'>
+                        <div className='my-4 flex items-center gap-10'>
+                            <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 '>
+                                <img className='' src={locationColorImage} alt="" />
+                            </div>
+                            <p className='text-xl font-bold'>{location}</p>
                         </div>
-                     </div>
-                     <div className={land_type.length<1?'hidden':''}>
-                        <h1 className='font-bold'>Land Type:</h1>
-                        <div className='flex gap-4 my-4'>
-                            {
-                                land_type.map((lt,idx)=> <p key={idx} className='border-2 border-blue-500 p-2 rounded-md'> <span className='flex items-center gap-2'> <FaCheck/> {lt}</span> </p> )
-                            }
+                        <div className='font-bold text-xl'>
+                            {timeAgo}
                         </div>
-                     </div>
                 </div>
-           </div>
+
+
+                 {/* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */}
+                <div className='flex  gap-20'>
+                    <div className='w-[50%]'>
+                    {
+                            (category === 'House' || category === 'Flat') ? (
+                        <div className='box'>
+                            {
+                                bedBathImportant.map((b,idx)=> <BuyDetailsHomeData key={idx} b={b} num={idx}></BuyDetailsHomeData> )
+                            }
+                            
+                        </div>
+                        ):(
+                            <div className='box2'>
+                            {
+                                roadSizeSotangso.map((b,idx)=> <BuyDetailsLandData key={idx} b={b} num={idx} area={area}></BuyDetailsLandData> )
+                            }
+                            
+                            </div>
+                        )
+                        
+                    }
+                    </div>
+
+                    <div className='w-[50%]  p-5 flex flex-col gap-4'>
+                            <div>
+                            <h1 className='text-xl font-bold mb-5'>Amenities: </h1>
+                            <div className='grid grid-cols-2'>
+                                {
+                                amenities.map((a,idx) => <div key={idx} className='flex items-center gap-2'>
+                                    <p><FaCheckCircle className=' text-green-600' /></p>
+                                    <p>{a}</p>
+                                    </div> )
+                                }
+
+                            </div>
+                            </div>
+                            <div className={land_type.length<1?'hidden':''}>
+                            <h1 className='font-bold'>Land Type:</h1>
+                            <div className='flex gap-4 my-4'>
+                                {
+                                    land_type.map((lt,idx)=> <p key={idx} className='border-2 border-blue-500 p-2 rounded-md'> <span className='flex items-center gap-2'> <FaCheck/> {lt}</span> </p> )
+                                }
+                            </div>
+                            </div>
+                    </div>
+                </div>
           
 
            
 
 
-            <div className='flex gap-10 my-10  justify-end '>
-                <div className='w-[30%]'>
-                     <h1 className='text-xl font-bold'>Details: </h1>
-                     {
-                        name && 
-                        <div className='w-[350px] grid grid-cols-2'>
-                            <div className='flex items-start gap-1'>
-                                <HomeOutlined/>
-                                <p>Name</p>
+                <div className='flex gap-10 my-10  justify-end '>
+                    <div className='w-[30%]'>
+                        <h1 className='text-xl font-bold'>Details: </h1>
+                        {
+                            name && 
+                            <div className='w-[350px] grid grid-cols-2'>
+                                <div className='flex items-start gap-1'>
+                                    <HomeOutlined/>
+                                    <p>Name</p>
+                                </div>
+                                
+                                <p>{name}</p>
                             </div>
-                            
-                            <p>{name}</p>
-                        </div>
-                     }
-                   
-                    <div className='w-[350px] grid grid-cols-2'>
-                       <div className='flex items-start gap-1'>
-                          <DomainOutlined/>
-                          <p>Type</p>
-                       </div>
-                        <p>{category}</p>
-                    </div>
-                    {
-                        procondition &&
+                        }
+                    
                         <div className='w-[350px] grid grid-cols-2'>
-                            <div className='flex items-start gap-1'>
-                                  <ConstructionOutlined/>
-                                 <p>condition</p>
+                        <div className='flex items-start gap-1'>
+                            <DomainOutlined/>
+                            <p>Type</p>
+                        </div>
+                            <p>{category}</p>
+                        </div>
+                        {
+                            procondition &&
+                            <div className='w-[350px] grid grid-cols-2'>
+                                <div className='flex items-start gap-1'>
+                                    <ConstructionOutlined/>
+                                    <p>condition</p>
+                                </div>
+                                <p>{procondition}</p>
                             </div>
-                            <p>{procondition}</p>
-                        </div>
-                    }
-                   
-                    {
-                        sellfrom_ &&
-                        <div className='w-[350px] grid grid-cols-2'>
-                           <div className='flex items-start gap-1'>
-                             <AccessTimeOutlined/>
-                             <p>Available from</p>
-                           </div>
-                            <p>{sellfrom_}</p>
-                        </div>
-                    }
+                        }
+                    
+                        {
+                            sellfrom_ &&
+                            <div className='w-[350px] grid grid-cols-2'>
+                            <div className='flex items-start gap-1'>
+                                <AccessTimeOutlined/>
+                                <p>Available from</p>
+                            </div>
+                                <p>{sellfrom_}</p>
+                            </div>
+                        }
+                        
+
+                        {
+                            shortaddress &&
+                            <div className='w-[350px] grid grid-cols-2'>
+                                <div className='flex items-start gap-1'>
+                                    <ShareLocationOutlined/>
+                                <p>Short Address</p>
+                                </div>
+                                <p>{shortaddress}</p>
+                            </div>
+                        }
+
+                        {
+                            ownertype &&
+                            <div className='w-[350px] grid grid-cols-2'>
+                                <div className='flex items-center gap-1'>
+                                <PermIdentityOutlined/>
+                                <p>Posted By</p>
+                                </div>
+                                <p>{ownertype}</p>
+                            </div>
+                        }
                     
 
-                    {
-                        shortaddress &&
-                        <div className='w-[350px] grid grid-cols-2'>
-                            <div className='flex items-start gap-1'>
-                                <ShareLocationOutlined/>
-                              <p>Short Address</p>
-                            </div>
-                            <p>{shortaddress}</p>
-                        </div>
-                    }
+                    </div>
 
-                    {
-                        ownertype &&
-                        <div className='w-[350px] grid grid-cols-2'>
-                            <div className='flex items-center gap-1'>
-                              <PermIdentityOutlined/>
-                              <p>Posted By</p>
-                            </div>
-                            <p>{ownertype}</p>
-                         </div>
-                    }
-                   
-
+                    <div className='w-[70%] flex justify-end '>
+                        {
+                            ytId &&
+                            <YouTube videoId={ytId} opts={opts}  />
+                        }
+                </div>
                 </div>
 
-                <div className='w-[70%] flex justify-end '>
-                     {
-                        ytId &&
-                        <YouTube videoId={ytId} opts={opts}  />
-                     }
-              </div>
-            </div>
+
+                <div>
+                    <BuyDescription description={description}></BuyDescription>
+                </div>
 
 
-            <div>
-                <BuyDescription description={description}></BuyDescription>
             </div>
+                {/* Left Div End */}
 
-            <div>
-              <h1 className='text-2xl font-bold'>More Post</h1>
-              <div className='grid  grid-cols-4 gap-5'>
-                  {
-                    moreBuyPost &&
-                    moreBuyPost.map((buy,idx)=> <BuyCard key={idx} buy={buy}></BuyCard> )
-                  }
-              </div>
-            </div>
+
+
+
+
+
+
+
+                {/* More Post */}
+                <div className='w-full px-4 detailParentRightdiv'>
+                    <div className='grid  grid-cols-1 gap-5'>
+                        {
+                            moreBuyPost &&
+                            moreBuyPost.map((buy,idx)=> <BuyCard key={idx} buy={buy}></BuyCard> )
+                        }
+                    </div>
+                </div>
+                {/* More Post End */}
+                </div>
+
+    
+          
            
         </div>
 

@@ -40,7 +40,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       let categoryString = category.join(', ');
       if (categoryString.length > 35) {
         // Truncate the string to 19 characters and add '...'
-        categoryString = categoryString.substring(0, 35) + '...';
+        categoryString = categoryString.substring(0, 25) + '...';
       }
 
       ///Category String end
@@ -72,28 +72,28 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] text-black opacity-60 '> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText '> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] text-black opacity-60  '> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText  '> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] text-black opacity-60  '> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText  '> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
             // console.log("Garage Type: ",garagetype);
           }
       }else{
           // console.log("Post id: ",post_id," Only Garage: No");
           if(category.includes('Office') || category.includes('Shop')){
-             iconDiv=<div className='p-5 h-[45px] text-black opacity-60  '>  </div>
+             iconDiv=<div className='p-5 h-[45px] text-black opacity-60   '>  </div>
           }else{
-             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px] text-black opacity-60  '>
-               <div className='flex items-center gap-2'><img className='w-[20px]' src={bedIcon} alt="" /> {bed}</div>
-               <div className='flex items-center gap-2'> <img className='w-[20px]' src={bathIcon} alt="" /> {bath}</div>
+             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px] prText text-[22px] '>
+               <div className='flex items-center gap-2'><img className='w-[35px] opacity-40' src={bedIcon} alt="" /> {bed}</div>
+               <div className='flex items-center gap-2 '> <img className='w-[30px] opacity-40 mb-[2px]' src={bathIcon} alt="" /> {bath}</div>
                {
                 roomsize &&
-                <div className='flex items-center gap-2'><img className='w-[20px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+                <div className='flex items-center gap-2'><img className='w-[30px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
                }
              </div>
           }
@@ -269,9 +269,9 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
             {/* Family Taka Location Start */}
             <div className='py-5 px-4  h-[130px] '>
-               <p className='roboto text-2xl text-black opacity-60'>{categoryString}</p>
+               <p className='roboto text-2xl  prText '>{categoryString}</p>
                 {   {rent}? <p className='text-4xl font-bold text-black opacity-80 flex items-center gap-1'> <span className='text-3xl'> ৳</span>{formattedRent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
-                <p className='flex gap-2 items-center my-2 text-black opacity-60'>
+                <p className='flex gap-2 items-center my-2 prText'>
                     <FiMapPin />
                     <span className=''>{location}</span>
                 </p>
@@ -291,7 +291,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
             <div className='py-5 px-2 flex gap-2 justify-around '>
                 <div className='flex gap-2 items-center'>
                    <img className='w-[40px] h-[40px] rounded-full ' src={image} alt="" />
-                    <p>{timeAgo} </p>
+                    <p className='text-black opacity-80'>{timeAgo} </p>
                 </div>
                 <div className='flex items-center justify-center gap-2'>
                     <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
