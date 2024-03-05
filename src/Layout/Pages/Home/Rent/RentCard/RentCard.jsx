@@ -72,26 +72,29 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] text-black opacity-60 '> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] text-black opacity-60  '> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] text-black opacity-60  '> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
             // console.log("Garage Type: ",garagetype);
           }
       }else{
           // console.log("Post id: ",post_id," Only Garage: No");
           if(category.includes('Office') || category.includes('Shop')){
-             iconDiv=<div className='p-5 h-[45px]  '>  </div>
+             iconDiv=<div className='p-5 h-[45px] text-black opacity-60  '>  </div>
           }else{
-             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  '>
-               <div className='flex items-center gap-2'> <img className='w-[20px]' src={bathIcon} alt="" /> {bath}</div>
+             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px] text-black opacity-60  '>
                <div className='flex items-center gap-2'><img className='w-[20px]' src={bedIcon} alt="" /> {bed}</div>
-               <div className='flex items-center gap-2'><img className='w-[20px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+               <div className='flex items-center gap-2'> <img className='w-[20px]' src={bathIcon} alt="" /> {bath}</div>
+               {
+                roomsize &&
+                <div className='flex items-center gap-2'><img className='w-[20px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+               }
              </div>
           }
       }
@@ -201,106 +204,91 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       // console.log("myPostRent",myPostRent);
 
     return (
-        <div className='flex flex-col relative border  rounded-md h-[550px]' >
+        <div className='flex flex-col relative border  rounded-md  ' >
 
             {/* Image Box Start */}
             <div className='relative'>
               <img onClick={()=>goinDetail(post_id)} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
 
-            {/* For Saved Start */}
-              {
-                savedRent &&
-                <div className='absolute top-5 right-[60px] '>
-                 <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
-                    <Favorite  onClick={handleUnSave} className='text-white'/>
-                </p>
-              </div >
-              }
-             {/* For Saved End */}
-
-               {/* Save UnSave  Start */}
-               {  forRent &&
-                  <div className='absolute top-5 right-[60px] '>
-                  <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
-                      {
-                        save==true ?
-                        <Favorite   onClick={handleUnSave} className='text-white'/>:
-                        // <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
-                        <FavoriteBorderOutlined  onClick={handleSave} className='text-white' />
-                      
-                      }
-                      
-                  </p>
-                </div >
-                }
-              {/* Save UnSave  End */}
-
-
-               {/* For Delete Start */}
-               {  myPostRent &&
-                  <div className='absolute top-5 right-[60px] '>
-                  <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
-                      
-                        <FaTrash  onClick={handleDelte} className='text-red-700 '/> 
-                  </p>
-                </div >
-                }
-              {/* For Delete End */}
-
-
-
-              <div className='absolute top-5 right-5 '>
-               <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
-                  <FiShare2 onClick={handleshare} className='text-white'/>
-               </p>
-            </div >
-
-                <div className='absolute bottom-2 right-4'>
-                    <p className='py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full '>
-                        <span className='text-white'>{total_image} </span> <FiLayers  className='text-white'/>
+                {/* For Saved Start */}
+                  {
+                    savedRent &&
+                    <div className='absolute top-5 right-[60px] '>
+                    <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
+                        <Favorite  onClick={handleUnSave} className='text-white'/>
                     </p>
+                  </div >
+                  }
+                {/* For Saved End */}
+
+                  {/* Save UnSave  Start */}
+                  {  forRent &&
+                      <div className='absolute top-5 right-[60px] '>
+                      <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
+                          {
+                            save==true ?
+                            <Favorite   onClick={handleUnSave} className='text-white'/>:
+                            // <FaRegHeart  onClick={handleSave} className='text-blue-600 '/> 
+                            <FavoriteBorderOutlined  onClick={handleSave} className='text-white' />
+                          
+                          }
+                          
+                      </p>
+                    </div >
+                    }
+                  {/* Save UnSave  End */}
+
+
+                  {/* For Delete Start */}
+                  {  myPostRent &&
+                      <div className='absolute top-5 right-[60px] '>
+                      <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
+                          
+                            <FaTrash  onClick={handleDelte} className='text-red-700 '/> 
+                      </p>
+                    </div >
+                    }
+                  {/* For Delete End */}
+
+
+
+                  <div className='absolute top-5 right-5'>
+                    <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
+                        <FiShare2 onClick={handleshare} className='text-white'/>
+                    </p>
+                </div >
+
+                    <div className='absolute bottom-2 right-4'>
+                        <p className='py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full '>
+                            <span className='text-white'>{total_image} </span> <FiLayers  className='text-white'/>
+                        </p>
+                    </div>
                 </div>
-            </div>
             {/* Image Box End */}
        
-            <div className='py-5 px-4  h-[250px]'>
-               <p className='roboto font-bold text-2xl'>{categoryString}</p>
-                {   {rent}? <p className='text-4xl font-bold text-black'> ৳ {formattedRent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
-                <p className='flex gap-2 items-center my-2'>
+
+            {/* Family Taka Location Start */}
+            <div className='py-5 px-4  h-[130px] '>
+               <p className='roboto text-2xl text-black opacity-60'>{categoryString}</p>
+                {   {rent}? <p className='text-4xl font-bold text-black opacity-80 flex items-center gap-1'> <span className='text-3xl'> ৳</span>{formattedRent} </p>: <span className='text-xl font-bold'>Price on Call</span>}
+                <p className='flex gap-2 items-center my-2 text-black opacity-60'>
                     <FiMapPin />
-                    <span>{location}</span>
+                    <span className=''>{location}</span>
                 </p>
             </div>
+            {/* Family Taka Location Start */}
 
-            <div className=' h-[45px]'>
-              {/* {
-                garagetype ?
-                <div className='p-5'>
-                  GarageType: {garagetype}
-                  {
-                    garagetype===''
-                  }
-                </div>:
-                <div className='p-5 flex gap-3'>
-                  <div className='flex items-center  gap-2 roboto'>
-                      <FaBed/> {bed}
-                  </div>
-                  <div className='flex items-center  gap-2'>
-                      <FaBath/> {bed}
-                  </div>
-                  <div className='flex items-center  gap-2'>
-                        <FaChartArea /> {roomsize}
-                  </div>
-                </div>
-              } */}
+
+            
+            <div className=' h-[45px]  '>
               {iconDiv}
             </div>
           
            
 
-            <div className='h-[1px] w-full bg-black'> </div>
+            <div className='h-[1px] w-full bg-black opacity-10'> </div>
 
-            <div className='py-5 px-2 flex gap-2 justify-around'>
+            <div className='py-5 px-2 flex gap-2 justify-around '>
                 <div className='flex gap-2 items-center'>
                    <img className='w-[40px] h-[40px] rounded-full ' src={image} alt="" />
                     <p>{timeAgo} </p>

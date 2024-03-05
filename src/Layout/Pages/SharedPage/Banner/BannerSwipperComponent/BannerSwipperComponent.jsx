@@ -43,7 +43,7 @@ const BannerSwipperComponent = ({ images }) => {
             {images.map((_, index) => (
             <p
                 key={index}
-                className={`w-[10px] h-[10px] bg-white rounded-full transition-width duration-500 ease-in-out ${currentIndex === index ? 'w-10' : 'w-[10px]'} `}
+                className={`w-[10px] h-[10px] bg-white rounded-full transition-width duration-500 ease-in-out ${currentIndex === index ? 'w-[35px]' : 'w-[10px]'} `}
             ></p>
             ))}
             </div>

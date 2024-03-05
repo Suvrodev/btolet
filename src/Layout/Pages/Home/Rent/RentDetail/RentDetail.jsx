@@ -318,27 +318,27 @@ const RentDetail = () => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[30px]' src={bikeIcon} alt="" /> Bike Garage</div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[30px]' src={bikeIcon} alt="" /> Bike Garage</div>
             console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[30px]' src={carIcon} alt="" /> Car Garage </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[30px]' src={carIcon} alt="" /> Car Garage </div>
             console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] bg-orange-400'> <img className='w-[30px]' src={garageIcon} alt="" /> Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] '> <img className='w-[30px]' src={garageIcon} alt="" /> Garage  </div>
             console.log("Garage Type: ",garagetype);
           }
       }else{
           console.log("Post id: ",post_id," Only Garage: No");
           if(category.includes('Office')){
-             iconDiv=<div className='p-5 h-[45px]  bg-orange-400'> Office</div>
+             iconDiv=<div className='p-5 h-[45px]  '> Office</div>
           }
           if(category.includes('Shop')){
-            iconDiv=<div className='p-5 h-[45px]  bg-orange-400'> Shop  </div>
+            iconDiv=<div className='p-5 h-[45px] '> Shop  </div>
           }
           else{
-             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  bg-orange-400'>
+             iconDiv=<div className='flex gap-5 items-center p-5 h-[45px]  '>
                <div className='flex items-center gap-2'><img className='w-[30px]' src={bedIcon} alt="" /> {bath}</div>
                <div className='flex items-center gap-2'><img className='w-[30px]' src={bathIcon} alt="" /> {bed}</div>
                <div className='flex items-center gap-2'><img className='w-[30px]' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
@@ -362,7 +362,17 @@ const RentDetail = () => {
    
     return (
         <div>
-            Rent Detail: {id}
+          <div className='grid grid-cols-2 w-full bg-red-600'>
+             <div className='w-[90%] bg-green-500 '>
+Lefffftttttttttttt
+             </div>
+
+             {/* More Post */}
+             <div className='w-[30%] bg-yellow-400'>
+                Right
+             </div>
+          </div>
+          
             {/* <h1 className='text-2xl font-bold text-center mb-4'>Rent Page</h1> */}
             <div className='flex gap-4 w-full h-[500px] '>
                     <div className='w-[60%] h-full rounded-md'>
@@ -378,11 +388,7 @@ const RentDetail = () => {
             {/* <TkAndShare price={price}></TkAndShare> */}
 
             <div className='my-4 flex justify-between rounded-md'>
-                <div className='text-2xl font-bold'>৳ {formattedRent}</div>
-
-             
-
-
+                <div className='text-3xl robot font-bold text-black opacity-80'>৳ {formattedRent}</div>
                 <div>
                     <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
                 </div>

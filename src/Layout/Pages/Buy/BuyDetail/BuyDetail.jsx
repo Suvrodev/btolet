@@ -308,7 +308,7 @@ const BuyDetail = () => {
                    
                    {
                     floor_plan &&
-                    <div className='relative h-[50%] bg-red-500 z-10'>
+                    <div className='relative h-[50%] bg-red-500 z-10 phaseImageParent'>
                         {
                         floor_plan?
                         <>
