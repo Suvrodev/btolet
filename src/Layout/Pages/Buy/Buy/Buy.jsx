@@ -97,11 +97,11 @@ const Buy = () => {
 
           {/* Marque + Banner start */}
           <Marque></Marque>
-            <div className='h-[360px] flex gap-2 items-center justify-start '>
-                <div className='w-[60%] h-[360px]'>
+            <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start'>
+                <div className='w-full md:w-[60%] h-[360px]'>
                     <Banner></Banner>
                 </div>
-                 <div className='w-[40%]    '>
+                 <div className='w-full md:w-[40%]    '>
                    <div className='bg-green-500 h-[360px] rounded-lg  flex items-center justify-center '>
                        <h1> Google Ads</h1>
                    </div>

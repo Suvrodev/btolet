@@ -118,8 +118,8 @@ const Rent = () => {
           <div>
            {/* You can open the modal using document.getElementById('ID').showModal() method */}
             {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
-            <dialog id="filterModal_1" className="modal-middle md:modal  ">
-              <div className="modal-box w-11/12 max-w-full bg-white">
+            <dialog id="filterModal_1" className=" modal-middle md:modal  ">
+              <div className="modal-box w-full md:w-11/12 max-w-full bg-white">
                 <Filter></Filter>
                 <div className="modal-action">
                   <form method="dialog">

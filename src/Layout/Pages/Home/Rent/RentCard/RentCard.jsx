@@ -18,13 +18,14 @@ import bikeIcon from '../../../../../assets/icons/tolet/bike.svg'
 import carIcon from '../../../../../assets/icons/tolet/car.svg'
 import  SmsIcon from '../../../../../assets/icons/home/sms_white.svg'
 import whatsappIcon from '../../../../../assets/icons/home/wapp.svg'
-import { Favorite, FavoriteBorderOutlined } from '@mui/icons-material';
+import kitchenIcon from '../../../../../assets/icons/tolet/kitchen.svg'
+import { Favorite, FavoriteBorderOutlined, Kitchen } from '@mui/icons-material';
 
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
      const {uId,successfullMessage,baseUrl,currentUser,unSuccessFullMessage}=useContext(AuthContext)
     // console.log("Rent: ",r);
-    const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category,garagetype}=r
+    const {post_id,image,image1,wapp,rent,bath,bed,area,phone,roomsize,location,measurement,time,total_image,category,garagetype,kitchen}=r
 
     const naviagte=useNavigate()
 
@@ -72,15 +73,15 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       if(category.includes('Only Garage')){
           // console.log("Post id: ",post_id," Only Garage: yes");
           if(garagetype=="Bike"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText '> <img className='w-[20px]' src={bikeIcon} alt="" /> Bike </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText text-[22px]'> <img className='w-[35px] opacity-40' src={bikeIcon} alt="" /> Bike </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Car"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText  '> <img className='w-[20px]' src={carIcon} alt="" /> Car </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText text-[22px]  '> <img className='w-[35px] opacity-40' src={carIcon} alt="" /> Car </div>
             // console.log("Garage Type: ",garagetype);
           }
           if(garagetype=="Garage"){
-            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px]  prText  '> <img className='w-[20px]' src={garageIcon} alt="" />Garage  </div>
+            iconDiv=<div className='flex items-center gap-2 p-5 h-[45px] prText text-[22px] '> <img className='w-[35px] opacity-40' src={garageIcon} alt="" />Garage  </div>
             // console.log("Garage Type: ",garagetype);
           }
       }else{
@@ -92,8 +93,9 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                <div className='flex items-center gap-2'><img className='w-[35px] opacity-40' src={bedIcon} alt="" /> {bed}</div>
                <div className='flex items-center gap-2 '> <img className='w-[30px] opacity-40 mb-[2px]' src={bathIcon} alt="" /> {bath}</div>
                {
-                roomsize &&
-                <div className='flex items-center gap-2'><img className='w-[30px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+                roomsize ?
+                <div className='flex items-center gap-2'><img className='w-[30px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>:
+                <div className='flex items-center gap-2'><img className='w-[30px] opacity-40' src={kitchenIcon} alt="" /> {kitchen} </div>
                }
              </div>
           }
@@ -204,7 +206,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       // console.log("myPostRent",myPostRent);
 
     return (
-        <div className='flex flex-col relative border  rounded-md  ' >
+        <div className='flex flex-col relative border  rounded-md m-2 md:m-0 ' >
 
             {/* Image Box Start */}
             <div className='relative'>

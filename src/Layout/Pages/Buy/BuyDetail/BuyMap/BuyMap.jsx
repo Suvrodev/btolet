@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { FaMarker } from 'react-icons/fa';
-import { FmdGood } from '@mui/icons-material';
+import { FmdGood, NearMeOutlined } from '@mui/icons-material';
 import Marker from './Marker/Marker';
 
 
@@ -59,9 +59,16 @@ const BuyMap = ({geolat,geolon}) => {
 
 
      
+      const handleGoGoogleMap=()=>{
+        const mapUrl= `https://www.google.com/maps?q=${center.lat},${center.lng}`;
+        window.open(mapUrl,'_blank')
+      }
+
+
+     
     return (
         
-        <div className='w-full h-full rounded-xl bg-yellow-400 overflow-hidden'>
+        <div className='w-full h-full rounded-xl bg-yellow-400 overflow-hidden relative'>
              {
                 !loading ?
                 <GoogleMapReact
@@ -81,6 +88,12 @@ const BuyMap = ({geolat,geolon}) => {
                 </GoogleMapReact>:
                 <span className="loading loading-spinner text-error"></span>
             }
+            
+            spa
+         
+            {/* <span className='w-[75px] h-[40px] bg-blue-500 text-white py-2 px-5 rounded-2xl flex items-center justify-center absolute bottom-10 right-14'>   </span> */}
+            <p onClick={handleGoGoogleMap} className='w-[75px] h-[40px] bg-blue-500 text-white py-2 px-10 rounded-2xl flex items-center justify-center gap-1 absolute bottom-10 right-14'>Map <NearMeOutlined/> </p>
+            
         </div>
 
 

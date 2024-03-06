@@ -25,6 +25,7 @@ import { FiShare2 } from 'react-icons/fi';
 import calculateTimeAgo from '../../../../Function/TimeAgo';
 import BannerSwipperComponent from '../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent';
 import ImageZoom from '../../UserResponsibility/Check/ImageZoom/ImageZoom';
+import convertDate from '../../../../Function/DateConvert';
 
 const BuyDetail = () => {
     const {baseUrl}=useContext(AuthContext)
@@ -94,7 +95,7 @@ const BuyDetail = () => {
                 })
             }
         },[geolat,geolon])
-        console.log("More Buy: ",moreBuyPost);
+        // console.log("More Buy: ",moreBuyPost);
         ////Buy More Post End
 
 
@@ -109,7 +110,17 @@ const BuyDetail = () => {
             year: 'numeric'
           };
          sellfrom_ = sellfrom_.toLocaleDateString('en-US', options);
-          ////Sell From start
+
+
+
+          //////Self From 
+        const [myDate,setMyDate]=useState("")
+        useEffect(()=>{
+            if(sellfrom_){
+                setMyDate(convertDate(sellfrom_))
+            }
+        },[sellfrom_])
+          ////Sell From end
         
 
 
@@ -158,13 +169,6 @@ const BuyDetail = () => {
         //  console.log("Length of Image: ",imagesForSlider.length);
 
         ///Set Image for Slider End
-
-
-
-
-        //Amenities Start
-        //Amenities End
-
 
 
 
@@ -286,6 +290,10 @@ const BuyDetail = () => {
 
 
 
+   
+
+
+
     //Loading Start
     if (!allData) {
         if(!defaultProps){
@@ -335,7 +343,7 @@ const BuyDetail = () => {
                  </div>
 
                 <div className='flex justify-between items-center my-4'>
-                    <div className='text-xl font-bold'>
+                    <div className='text-xl font-bold text-black opacity-80'>
                         {price? <span className='font-bold '>Take : <span className=''>{formattedRent}</span> </span> :'Price On Call'}
                     </div>
 
@@ -351,7 +359,7 @@ const BuyDetail = () => {
 
                  <div className='w-full h-[1px] bg-black my-4'></div>
 
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center prText'>
                         <div className='my-4 flex items-center gap-10'>
                             <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 '>
                                 <img className='' src={locationColorImage} alt="" />
@@ -369,7 +377,7 @@ const BuyDetail = () => {
                     <div className='w-[50%]'>
                     {
                             (category === 'House' || category === 'Flat') ? (
-                        <div className='box'>
+                        <div className='box '>
                             {
                                 bedBathImportant.map((b,idx)=> <BuyDetailsHomeData key={idx} b={b} num={idx}></BuyDetailsHomeData> )
                             }
@@ -388,7 +396,7 @@ const BuyDetail = () => {
                     </div>
 
                     <div className='w-[50%]  p-5 flex flex-col gap-4'>
-                            <div>
+                            <div className='prText'>
                             <h1 className='text-xl font-bold mb-5'>Amenities: </h1>
                             <div className='grid grid-cols-2'>
                                 {
@@ -400,7 +408,7 @@ const BuyDetail = () => {
 
                             </div>
                             </div>
-                            <div className={land_type.length<1?'hidden':''}>
+                            <div className={land_type.length<1?'hidden':'prText'}>
                             <h1 className='font-bold'>Land Type:</h1>
                             <div className='flex gap-4 my-4'>
                                 {
@@ -416,8 +424,8 @@ const BuyDetail = () => {
 
 
                 <div className='flex gap-10 my-10  justify-end '>
-                    <div className='w-[30%]'>
-                        <h1 className='text-xl font-bold'>Details: </h1>
+                    <div className='w-[30%] peText'>
+                        <h1 className='text-xl font-bold my-4'>Details: </h1>
                         {
                             name && 
                             <div className='w-[350px] grid grid-cols-2'>
@@ -431,10 +439,10 @@ const BuyDetail = () => {
                         }
                     
                         <div className='w-[350px] grid grid-cols-2'>
-                        <div className='flex items-start gap-1'>
-                            <DomainOutlined/>
-                            <p>Type</p>
-                        </div>
+                            <div className='flex items-start gap-1'>
+                                <DomainOutlined/>
+                                <p>Type</p>
+                            </div>
                             <p>{category}</p>
                         </div>
                         {
@@ -455,7 +463,7 @@ const BuyDetail = () => {
                                 <AccessTimeOutlined/>
                                 <p>Available from</p>
                             </div>
-                                <p>{sellfrom_}</p>
+                                <p>{myDate}</p>
                             </div>
                         }
                         

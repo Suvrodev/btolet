@@ -15,6 +15,11 @@ import  SmsIcon from '../../../../assets/icons/home/sms_white.svg'
 import whatsappIcon from '../../../../assets/icons/home/wapp.svg'
 import { Favorite, FavoriteBorderOutlined } from '@mui/icons-material';
 
+import bedIcon from '../../../../assets/icons/tolet/bed.svg'
+import bathIcon from '../../../../assets/icons/tolet/bath.svg'
+import areaIcon from '../../../../assets/icons/tolet/size.svg'
+import kitchenIcon from '../../../../assets/icons/tolet/kitchen.svg'
+
 
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
@@ -158,7 +163,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
 
     return (
-        <div className='flex flex-col relative border  rounded-md h-[550px]'>
+        <div className='flex flex-col relative border  rounded-md h-[550px] m-2 md:m-0'>
           
 
            
@@ -222,7 +227,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
             {/* Image Box End */}
 
        
-            <div className='py-5 px-4  h-[250px]'>
+            <div className='py-5 px-4  h-[120px] '>
                <p className='roboto  text-xl text-black prText'>{category}</p>
                  {price!=0? <p className='text-4xl font-bold text-black opacity-80'> ৳ {formattePrice} </p>: <span className='text-xl font-bold text-black opacity-80'>Price on Call</span>}
                 <p className='flex gap-2 items-center my-2 prText'>
@@ -231,19 +236,23 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                 </p>
             </div>
 
-            <div className='h-50px] text-black opacity-60'>
+            <div className='h-50px] text-black opacity-60 '>
               {
                 category=='Flat' || category=='House'?
                 <div>
                     <div className='p-5 flex gap-3'>
                         <div className='flex items-center  gap-2 roboto'>
-                            <FaBed/> {bed}
+                             <div className='flex items-center gap-2'><img className='w-[35px] opacity-40' src={bedIcon} alt="" /> {bed}</div>
                         </div>
                         <div className='flex items-center  gap-2'>
-                            <FaBath/> {bed}
+                          <div className='flex items-center gap-2 '> <img className='w-[30px] opacity-40 mb-[2px]' src={bathIcon} alt="" /> {bath}</div>
                         </div>
                         <div className='flex items-center  gap-2'>
-                              <FaChartArea /> {size}
+                        {
+                            size ?
+                            <div className='flex items-center gap-2'><img className='w-[30px] opacity-40' src={areaIcon} alt="" /> {size} ft<sup>2</sup></div>:
+                            <div className='flex items-center gap-2'><img className='w-[30px] opacity-40' src={kitchenIcon} alt="" /> {kitchen} </div>
+                        }
                         </div>
                     </div>
                 </div>:

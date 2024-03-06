@@ -1,7 +1,7 @@
 .box{
     /* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */
     margin: 4px 0 4px 0;
-    border: 2px solid gray;
+    border: 2px solid rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     padding: 30px;
     display: grid;
@@ -15,7 +15,7 @@
 .box2{
     /* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */
     margin: 4px 0 4px 0;
-    border: 2px solid gray;
+    border: 2px solid rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     padding: 30px;
     display: grid;

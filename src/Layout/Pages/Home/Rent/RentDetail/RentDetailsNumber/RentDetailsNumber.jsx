@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import convertDate from '../../../../../../Function/DateConvert';
 
 const RentDetailsNumber = ({ad}) => {
 
@@ -21,6 +22,19 @@ const RentDetailsNumber = ({ad}) => {
 
     const isNumber = typeof itemNumbers === 'number';
     const isString = typeof itemNumbers === 'string';
+
+
+
+   
+
+
+    const [myDate,setMyDate]=useState("")
+    useEffect(()=>{
+        if(ad?.itemName=="Rent From"){
+            setMyDate(convertDate(itemNumbers))
+         }
+    },[])
+   
    
     
     return (
@@ -34,8 +48,12 @@ const RentDetailsNumber = ({ad}) => {
                 {/* {color && <p className='text-green-500'>{itemNumbers}</p>}
                 {color || <p className=' text-black'>{itemNumbers}</p>} */}
                 {
-                    ad?.itemName=='Facilities' ?
-                    <p className=' text-green-500'>{itemNumbers}</p>:
+                    ad?.itemName=='Facilities' &&
+                    <p className=' text-green-500'>{itemNumbers}</p>
+                }
+                {
+                    ad?.itemName=='Rent From' ?
+                    <p className=' text-black'>{myDate}</p>:
                     <p className=' text-black'>{itemNumbers}</p>
                 }
             </div>

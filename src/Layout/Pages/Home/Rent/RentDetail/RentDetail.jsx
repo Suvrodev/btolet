@@ -21,7 +21,9 @@ import areaIcon from '../../../../../assets/icons/tolet/size.svg'
 import garageIcon from '../../../../../assets/icons/tolet/garage.svg'
 import bikeIcon from '../../../../../assets/icons/tolet/bike.svg'
 import carIcon from '../../../../../assets/icons/tolet/car.svg'
+import kitchenIcon from '../../../../../assets/icons/tolet/kitchen.svg'
 import calculateTimeAgo from '../../../../../Function/TimeAgo';
+
 import BannerSwipperComponent from '../../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent';
 
 const RentDetail = () => {
@@ -83,7 +85,7 @@ const RentDetail = () => {
           })
       }
     },[geolat,geolon])
-    console.log("More rent: ",moreRentPost);
+    // console.log("More rent: ",moreRentPost);
     ////More Post Rent End
 
 
@@ -194,22 +196,27 @@ const RentDetail = () => {
             
          })
       }
-      if(bed){
-         allDetails.push({
-            iconName: <CottageOutlined/>,
-            itemName:'Room',
-            itemNumber: bed
-            
-         })
+      if(category.includes('Only Garage') || category.includes('Office') || category.includes('Shop')){
+        if(bed){
+          allDetails.push({
+              iconName: <CottageOutlined/>,
+              itemName:'Room',
+              itemNumber: bed
+              
+          })
+        }
       }
-      if(bath){
-         allDetails.push({
-            iconName: <ShowerOutlined/>,
-            itemName:'Wash Room',
-            itemNumber: bath
-            
-         })
+      if(category.includes('Only Garage') || category.includes('Office') || category.includes('Shop')){
+        if(bath){
+          allDetails.push({
+             iconName: <ShowerOutlined/>,
+             itemName:'Wash Room',
+             itemNumber: bath
+             
+          })
+        }
       }
+     
 
 
 
@@ -343,8 +350,9 @@ const RentDetail = () => {
                <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={bedIcon} alt="" /> {bath}</div>
                <div className='flex items-center gap-2'><img className='w-[40px] opacity-40  mb-[2px]' src={bathIcon} alt="" /> {bed}</div>
                {
-                roomsize &&
-                <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>
+                roomsize ?
+                <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div>:
+                <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={kitchenIcon} alt="" /> {kitchen} </div>
                }
                {/* <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div> */}
              </div>

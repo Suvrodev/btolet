@@ -1,14 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { AuthContext } from '../../../../Providers/AuthProvider';
+import axios from 'axios';
 
 const Marque = () => {
+
     const {baseUrl}=useContext(AuthContext)
     const [marqueText,setMarqueText]=useState("")
+
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com';
+    // const apiUrl=`${baseUrl}/api/notes`
+    const apiUrl='http://154.26.135.41:3800/api/notes'
+
+    
     useEffect(()=>{
-        fetch(`${baseUrl}/api/notes`)
-        .then(res=>res.json())
-        .then(data=>setMarqueText(data.text))
+        axios.get(apiUrl)
+        .then(res=>setMarqueText(res.data.text))
+        .catch(error=>console.log("Error: ",error))
     },[])
 
     // console.log("Marque: ",marqueText);
