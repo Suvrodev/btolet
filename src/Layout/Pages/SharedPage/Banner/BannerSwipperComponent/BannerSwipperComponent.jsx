@@ -38,14 +38,14 @@ const BannerSwipperComponent = ({ images }) => {
           </div>
         ))}
 
-            <div className='absolute bottom-4 left-[50%] flex gap-4 rounded-xl'>
+            <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 rounded-xl'>
         
-            {images.map((_, index) => (
-            <p
-                key={index}
-                className={`w-[10px] h-[10px] bg-white rounded-full transition-width duration-500 ease-in-out ${currentIndex === index ? 'w-[35px]' : 'w-[10px]'} `}
-            ></p>
-            ))}
+              {images.map((_, index) => (
+              <p
+                  key={index}
+                  className={`w-[10px] h-[10px] bg-white rounded-full transition-width duration-500 ease-in-out ${currentIndex === index ? 'w-[35px]' : 'w-[10px]'} `}
+              ></p>
+              ))}
             </div>
       </div>
     );

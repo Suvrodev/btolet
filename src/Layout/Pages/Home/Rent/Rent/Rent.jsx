@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import './Rent.css'
 
+import '../../../../Main/Font.css'
+
 import Marque from '../../../SharedPage/Marque/Marque';
 import Banner from '../../../SharedPage/Banner/Banner';
 import RentCard from '../RentCard/RentCard';
@@ -15,6 +17,7 @@ import { FilterDataContext } from '../../../../../Providers/FilterDataProvider';
 import axios from 'axios';
 import { FiChevronDown, FiSliders } from 'react-icons/fi';
 import { AddOutlined } from '@mui/icons-material';
+import CheckFilterSize from '../../../Sort/CheckFilterSize/CheckFilterSize';
 
 const Rent = () => {
  
@@ -118,9 +121,10 @@ const Rent = () => {
           <div>
            {/* You can open the modal using document.getElementById('ID').showModal() method */}
             {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
-            <dialog id="filterModal_1" className=" modal-middle md:modal  ">
+            <dialog id="filterModal_1" className=" modal md:modal  ">
               <div className="modal-box w-full md:w-11/12 max-w-full bg-white">
                 <Filter></Filter>
+                {/* <CheckFilterSize></CheckFilterSize> */}
                 <div className="modal-action">
                   <form method="dialog">
                     {/* if there is a button, it will close the modal */}
@@ -137,7 +141,7 @@ const Rent = () => {
           <div className='flex justify-between items-center my-4'>
           <div>
                   <p className='text-2xl prText'>
-                   <span className='text-black opacity-80'>{postCount} ads in</span>  {location_1}, {location_2}
+                   <span className='text-black opacity-80 text-xl'>{postCount} ads in</span> <span className='robotoBangla'>{location_1}, {location_2}</span>  
                   </p>
                
             </div>

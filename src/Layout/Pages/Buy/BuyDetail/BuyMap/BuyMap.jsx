@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { FaMarker } from 'react-icons/fa';
 import { FmdGood, NearMeOutlined } from '@mui/icons-material';
 import Marker from './Marker/Marker';
+import './BuyMap.css'
 
 
 ///////////////from documentration
@@ -77,6 +78,7 @@ const BuyMap = ({geolat,geolon}) => {
                     center={center}
                     zoom={mapZoom}
                     draggable={false}
+                    options={{ disableDefaultUI: true }}
                     // onChange={handleMapChange} 
                 >
                 <Marker
@@ -92,7 +94,7 @@ const BuyMap = ({geolat,geolon}) => {
             spa
          
             {/* <span className='w-[75px] h-[40px] bg-blue-500 text-white py-2 px-5 rounded-2xl flex items-center justify-center absolute bottom-10 right-14'>   </span> */}
-            <p onClick={handleGoGoogleMap} className='w-[75px] h-[40px] bg-blue-500 text-white py-2 px-10 rounded-2xl flex items-center justify-center gap-1 absolute bottom-10 right-14'>Map <NearMeOutlined/> </p>
+            <p onClick={handleGoGoogleMap} className='w-[75px] h-[40px] bg-blue-500 text-white py-2 px-14 rounded-[40px] flex items-center justify-center gap-1 absolute bottom-10 right-8'>Map <NearMeOutlined className='mapIcon'/> </p>
             
         </div>
 

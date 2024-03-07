@@ -18,7 +18,7 @@ const BuyDetailsLandData = ({b,num,area}) => {
             itemNumber=b
     }
     return (
-        <div className='flex flex-col items-center gap-4 w-[125px] p-5'>
+        <div className='flex flex-col items-center gap-4 w-[125px] p-5 prText'>
               
                 <div className='w-[40px] h-[40px] p-2 bg-[#edf0ef] rounded-full flex items-center justify-center'>
                     {

@@ -256,9 +256,9 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                         </div>
                     </div>
                 </div>:
-                <div className='flex gap-2 p-4'>
+                <div className='flex gap-2 p-4 text-[22px]'>
                   <p>{measurement}</p>
-                  <p>{area}</p>
+                  <p className=''>{area}</p>
                 </div>
               }
             </div>

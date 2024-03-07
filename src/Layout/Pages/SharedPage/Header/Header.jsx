@@ -107,7 +107,7 @@ const Header = () => {
                     <FaBars />
 
                     
-                    <div className={`w-[300px] h-[100vh] border-2 absolute   bg-green-500 rounded-md p-5 z-10 -top-7 transition duration-700 ease-in-out ${leftNav?'-left-6 duration-700':'left-[500px]'}`}>
+                    <div className={`w-[300px] h-[100vh] border-2 absolute   bg-green-500 rounded-md p-5 z-10 -top-7 transition duration-700 ease-in-out ${leftNav?'-left-6 duration-700':'left-[500px] hidden'}`}>
                         <div className='mb-10'>
                            <FaReply />
                         </div>

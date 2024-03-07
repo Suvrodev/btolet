@@ -423,12 +423,12 @@ const BuyDetail = () => {
            
 
 
-                <div className='flex gap-10 my-10  justify-end '>
+                <div className='flex gap-10 my-10  justify-end prText'>
                     <div className='w-[30%] peText'>
                         <h1 className='text-xl font-bold my-4'>Details: </h1>
                         {
                             name && 
-                            <div className='w-[350px] grid grid-cols-2'>
+                            <div className='w-[350px] grid grid-cols-2 mb-3'>
                                 <div className='flex items-start gap-1'>
                                     <HomeOutlined/>
                                     <p>Name</p>
@@ -438,7 +438,7 @@ const BuyDetail = () => {
                             </div>
                         }
                     
-                        <div className='w-[350px] grid grid-cols-2'>
+                        <div className='w-[350px] grid grid-cols-2 mb-3 '>
                             <div className='flex items-start gap-1'>
                                 <DomainOutlined/>
                                 <p>Type</p>
@@ -447,7 +447,7 @@ const BuyDetail = () => {
                         </div>
                         {
                             procondition &&
-                            <div className='w-[350px] grid grid-cols-2'>
+                            <div className='w-[350px] grid grid-cols-2 mb-3'>
                                 <div className='flex items-start gap-1'>
                                     <ConstructionOutlined/>
                                     <p>condition</p>
@@ -458,7 +458,7 @@ const BuyDetail = () => {
                     
                         {
                             sellfrom_ &&
-                            <div className='w-[350px] grid grid-cols-2'>
+                            <div className='w-[350px] grid grid-cols-2 mb-3'>
                             <div className='flex items-start gap-1'>
                                 <AccessTimeOutlined/>
                                 <p>Available from</p>

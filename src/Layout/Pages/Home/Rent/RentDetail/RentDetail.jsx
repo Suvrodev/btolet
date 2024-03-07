@@ -425,7 +425,7 @@ const RentDetail = () => {
               </div>
 
 
-            <section>
+            <section className=''>
               <h1 className='text-xl my-4'>Details</h1>
               <div className='customBorder w-[650px] p-5 rounded-md'>
                 {

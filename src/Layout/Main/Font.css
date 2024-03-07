@@ -1,4 +1,4 @@
-/* 
+
 
 @font-face {
     font-family: 'Roboto';
@@ -9,7 +9,12 @@
 
 .roboto {
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    /* font-size: px; */
+}
+
+/* .robotoBangla {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 } */
 
 

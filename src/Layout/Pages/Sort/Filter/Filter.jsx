@@ -89,7 +89,7 @@ const Filter = () => {
     return (
         <div>
             <div className=' p-5 flex flex-col justify-center rounded-md'>
-            <p className='bg-yellow-600 w-2/12 text-center font-bold text-xl text-white mx-auto rounded-md mb-20 p-2'>
+            <p className='bg-yellow-600 w-10/12 md:w-2/12 text-center font-bold text-xl text-white mx-auto rounded-md mb-20 p-2'>
                 BDT {minPrice} to {maxPrice} +/month
             </p>
             <div className='  mb-10 p-5'>

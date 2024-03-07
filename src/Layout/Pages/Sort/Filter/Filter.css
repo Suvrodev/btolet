@@ -33,3 +33,20 @@
     box-sizing: border-box;
     margin-top: -50px;
 }
+
+@media screen and (max-width: 576px) {
+    .horizontal-slider .example-thumb{
+        top: 1;
+        width: 80px;
+        height: 48px;
+        line-height: 38px;
+        font-size: 0.9em;
+        text-align: center;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        border: 5px solid #5280E6;
+        box-sizing: border-box;
+        margin-top: -70px;
+    }
+}
