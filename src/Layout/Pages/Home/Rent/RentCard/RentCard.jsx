@@ -206,7 +206,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       // console.log("myPostRent",myPostRent);
 
     return (
-        <div className='flex flex-col relative border  rounded-md m-2 md:m-0 ' >
+        <div className='flex flex-col relative border  rounded-md m-2 md:m-0 bg-green-600  md:w-[342px]' >
 
             {/* Image Box Start */}
             <div className='relative'>

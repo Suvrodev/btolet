@@ -12,7 +12,7 @@ import ContactButtons from '../../../Buy/BuyDetail/ContactButtons/ContactButtons
 import RentCard from '../RentCard/RentCard';
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaHouseDamage, FaMotorcycle } from 'react-icons/fa';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
-import { AccessTimeOutlined, BalanceOutlined, BalconyOutlined, ChairOutlined, CottageOutlined, DiningOutlined, DomainOutlined, HomeOutlined, KitchenOutlined, MonetizationOnOutlined, PersonPinCircleOutlined, SearchOutlined, ShareLocationOutlined, ShowerOutlined, WindowOutlined } from '@mui/icons-material';
+import { AccessTimeOutlined, BalanceOutlined, BalconyOutlined, Block, ChairOutlined, CottageOutlined, DiningOutlined, DomainOutlined, HomeOutlined, KitchenOutlined, MonetizationOnOutlined, PersonPinCircleOutlined, SearchOutlined, ShareLocationOutlined, ShowerOutlined, WindowOutlined } from '@mui/icons-material';
 
 /////Image Icon start
 import bedIcon from '../../../../../assets/icons/tolet/bed.svg'
@@ -379,21 +379,21 @@ const RentDetail = () => {
 
             {/* Left Div start */}
              <div className='w-full detailParentLeftdiv'>
-                <div className='flex gap-1 w-full h-[500px] '>
-                        <div className='w-[60%] h-full rounded-md'>
+                <div className='flex flex-col md:flex-row gap-1 w-full h-[500px] '>
+                        <div className='w-full md:w-[60%] h-full rounded-md p-2 md:p-0'>
                             <BannerSwipperComponent images={imagesForSlider}></BannerSwipperComponent>
                         </div>
-                    <div className='w-[40%] h-full flex flex-col bg-green-600 rounded-xl'>
-                        <div className='h-full rounded-xl'>
-                            <BuyMap geolat={geolat} geolon={geolon} className='rounded-xl' ></BuyMap>
-                        </div>
-                    </div>
+                      <div className='hidden md:flex w-[40%] h-full  flex-col bg-green-600 rounded-xl'>
+                          <div className='h-full w-[80%] md:w-full mx-auto rounded-xl bg-yellow-300'>
+                              <BuyMap geolat={geolat} geolon={geolon} className='rounded-xl' ></BuyMap>
+                          </div>
+                      </div>
                 </div>
 
                  {/* <TkAndShare price={price}></TkAndShare> */}
-                <div className='my-4 flex justify-between rounded-md'>
+                <div className='my-4 flex justify-between rounded-md '>
                     <div className='text-3xl robot font-bold text-black opacity-80'>৳ {formattedRent}</div>
-                    <div>
+                    <div className='hidden md:block'>
                         <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
                     </div>
                 </div>
@@ -401,22 +401,22 @@ const RentDetail = () => {
 
                 <div className='w-full h-[1px] bg-black opacity-20 my-4'></div>
 
-                <div className='flex justify-between'>
-                    {iconDiv}
-                    <span className='font-bold text-xl prText'>{timeAgo}</span> 
+                <div className='flex justify-between items-center'>
+                   <div className='w-full md:w-[80%]'> {iconDiv}</div>
+                    <span className='font-bold text-xl prText hidden md:block'>{timeAgo}</span> 
                 </div>
 
                 {/* Location and Time Ago start */}
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center  '>
                     <div className='my-4 flex items-center gap-4 '>
-                        <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 '>
-                            <img className='' src={locationColorImage} alt="" />
+                        <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 flex items-center justify-center '>
+                            <img className='w-[50px] h-[50px]' src={locationColorImage} alt="" />
                         </div>
-                        <p className='text-[26px] font-bold text-black opacity-70'>{location}</p>
+                        <p className='text-[18px] md:text-[26px] font-bold text-black opacity-70'>{location}</p>
                     </div>
-                    <div className='font-bold text-xl'>
-                        {/* {timeAgo} */}
-                    </div>
+                  
+                    <span className='font-bold text-xl prText md:hidden '>{timeAgo}</span> 
+                    
                </div>
               {/* Location and Time Ago end */}
 
@@ -425,9 +425,9 @@ const RentDetail = () => {
               </div>
 
 
-            <section className=''>
+            <section className='m-5 md:m-0'>
               <h1 className='text-xl my-4'>Details</h1>
-              <div className='customBorder w-[650px] p-5 rounded-md'>
+              <div className='customBorder w-full md:w-[650px] p-5 rounded-md'>
                 {
                   allDetails.map((ad,idx)=> <RentDetailsNumber key={idx}  ad={ad} ></RentDetailsNumber> )
                 }
@@ -437,9 +437,17 @@ const RentDetail = () => {
             
             <div className='h-[1px] w-full  my-[25px]  customBorder '></div>
 
-            <div>
+            <div className='m-5 md:m-0'>
                 <BuyDescription description={description} ></BuyDescription>
             </div>
+
+
+            {/* Map For Mobile start */}
+            <div className='md:hidden h-[250px] w-full px-2 rounded-xl '>
+                <h1>In Map: </h1>
+                <BuyMap geolat={geolat} geolon={geolon} className='rounded-xl' ></BuyMap>
+            </div>
+            {/* Map For Mobile end */}
 
 
 
@@ -453,15 +461,27 @@ const RentDetail = () => {
 
 
              {/* More Post */}
-             <div className='w-full px-4 detailParentRightdiv  '>
-                {/* <h1 className='text-2xl font-bold'>More Post</h1> */}
-                <div className='grid  grid-cols-1 gap-5 '>
-                    {
-                      moreRentPost &&
-                      moreRentPost.map((r,idx)=> <RentCard key={idx} r={r} forRent={'forRent'}></RentCard> )
-                    }
-                </div>
+             {/* <div className='w-full  detailParentRightdiv  '>
+                <div className='flex flex-no-wrap overflow-x-scroll md:flex-col bg-yellow-300'>
+                    {moreRentPost &&
+                      moreRentPost.map((r, idx) => (
+                        <div key={idx} className='w-full md:w-auto md:flex-shrink-0 md:flex-grow bg-red-500'>
+                          <RentCard r={r} forRent={'forRent'} />
+                        </div>
+                      ))}
+                  </div>
+            </div> */}
+          <div className='w-full detailParentRightdiv overflow-x-auto'>
+            <div className='flex flex-nowrap md:overflow-x-auto'>
+              {moreRentPost &&
+                moreRentPost.map((r, idx) => (
+                  <div key={idx} className='w-10/12 md:w-screen bg-red-500 flex-none md:flex-grow-0 md:flex-shrink-0'>
+                    {/* RentCard component */}
+                    <RentCard r={r} forRent={'forRent'} />
+                  </div>
+                ))}
             </div>
+          </div>
             {/* More Post End */}
           </div>
           

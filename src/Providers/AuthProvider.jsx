@@ -5,7 +5,8 @@ export const AuthContext=createContext("")
 const AuthProvider = ({children}) => {
 
 
-    const baseUrl='http://154.26.135.41:3800'
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com';
+    const baseUrl= 'http://154.26.135.41:3800'
     // const baseUrl='http://localhost:3000'
 
     const [uId,setUId]=useState("")

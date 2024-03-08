@@ -97,7 +97,7 @@ const Buy = () => {
 
           {/* Marque + Banner start */}
           <Marque></Marque>
-            <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start'>
+            <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start mx-4 md-mx-0'>
                 <div className='w-full md:w-[60%] h-[360px]'>
                     <Banner></Banner>
                 </div>
@@ -129,8 +129,7 @@ const Buy = () => {
           {/* Modal end */}
 
 
-          <div className='flex justify-between items-center my-4'>
-            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_2').showModal()}><FiSliders />Filter <FiChevronDown /></button>
+          <div className='flex justify-between items-center my-4 mx-4 md-mx-0'>
 
             <div>
                 {
@@ -141,7 +140,8 @@ const Buy = () => {
                 }
             </div>
 
-            <Link to={'/buypost'}> <button className='btn btn-success'>Post</button> </Link>
+            <button className='btn btn-outline' onClick={()=>document.getElementById('filterModal_2').showModal()}><FiSliders />Filter <FiChevronDown /></button>
+            {/* <Link to={'/buypost'}> <button className='btn btn-success'>Post</button> </Link> */}
           </div>
 
           <div>
