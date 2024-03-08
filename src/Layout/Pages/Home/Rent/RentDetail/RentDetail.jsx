@@ -30,7 +30,8 @@ const RentDetail = () => {
 
     const {baseUrl}=useContext(AuthContext)
     const {id}=useParams()
-    // console.log("Comming id:",id);
+    console.log("Comming id:",id);
+   
 
 
     const [allData,setAllData]=useState("")
@@ -376,6 +377,7 @@ const RentDetail = () => {
     return (
         <div className='mt-10'>
           <div className='detailParent'>
+          
 
             {/* Left Div start */}
              <div className='w-full detailParentLeftdiv'>
@@ -461,7 +463,9 @@ const RentDetail = () => {
 
 
              {/* More Post */}
-             {/* <div className='w-full  detailParentRightdiv  '>
+
+             {/* For Desktop Device start */}
+             <div className='w-full  detailParentRightdiv  hidden md:block'>
                 <div className='flex flex-no-wrap overflow-x-scroll md:flex-col bg-yellow-300'>
                     {moreRentPost &&
                       moreRentPost.map((r, idx) => (
@@ -470,18 +474,25 @@ const RentDetail = () => {
                         </div>
                       ))}
                   </div>
-            </div> */}
-          <div className='w-full detailParentRightdiv overflow-x-auto'>
-            <div className='flex flex-nowrap md:overflow-x-auto'>
-              {moreRentPost &&
-                moreRentPost.map((r, idx) => (
-                  <div key={idx} className='w-10/12 md:w-screen bg-red-500 flex-none md:flex-grow-0 md:flex-shrink-0'>
-                    {/* RentCard component */}
-                    <RentCard r={r} forRent={'forRent'} />
-                  </div>
-                ))}
             </div>
-          </div>
+             {/* For Desktop Device end */}
+            
+
+            {/* For Mobile Device start */}
+            <div className='w-full detailParentRightdiv overflow-x-auto md:hidden'>
+              <div className='flex flex-nowrap md:overflow-x-auto'>
+                {moreRentPost &&
+                  moreRentPost.map((r, idx) => (
+                    <div key={idx} className='w-10/12 md:w-screen  flex-none md:flex-grow-0 md:flex-shrink-0'>
+                      <RentCard r={r} forRent={'forRent'} />
+                    </div>
+                  ))}
+              </div>
+            </div>
+            {/* For Mobile Device start */}
+
+
+
             {/* More Post End */}
           </div>
           
