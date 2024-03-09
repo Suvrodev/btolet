@@ -101,32 +101,36 @@ const Header = () => {
 
 
 
-              <div className='w-full h-[75px] border-4 p-5 flex items-center justify-between md:hidden'>
+              <div className='w-full h-[75px] border-4 p-5 flex items-center justify-between  md:hidden '>
 
                  <div onClick={handleLeftNav} className=' relative'>
                     <FaBars />
 
                     
-                    <div className={`w-[300px] h-[100vh] border-2 absolute   bg-green-500 rounded-md p-5 z-10 -top-7 transition duration-700 ease-in-out ${leftNav?'-left-6 duration-700':'left-[500px] hidden'}`}>
-                        <div className='mb-10'>
-                           <FaReply />
+                    <div className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition duration-700 ease-in-out ${leftNav?'-left-6 duration-700':'left-[500px] hidden'}`}>
+                        <div className='bg-blue-400 p-5 text-white'>
+                            <div className='mb-10'>
+                              <FaReply />
+                            </div>
+                            <div className='mb-5'>
+                              {
+                                currentUser &&
+                                <div className=''>
+                                    <img src={currentUser?.image} alt="" className='w-[50px] h-[50px] rounded-full' />
+                                    <h1>{currentUser?.name}</h1>
+                                    <h1>{currentUser?.email}</h1>
+                                </div>
+                              }
+                            </div>
                         </div>
-                        <div className='mb-5'>
-                          {
-                             currentUser &&
-                             <div>
-                                <img src={currentUser?.image} alt="" className='w-[50px] h-[50px] rounded-full' />
-                                <h1>{currentUser?.name}</h1>
-                                <h1>{currentUser?.email}</h1>
-                             </div>
-                          }
-                        </div>
-                        <div className='flex flex-col gap-4'>
-                            <Link to=''>Profile</Link>
-                            <Link to=''>Saved</Link>
-                            <Link to=''>My Post</Link>
+                        <div className='flex flex-col gap-4 p-5 prText'>
+                            <Link to='/home'>Rent</Link>
+                            <Link to='/buy'>Buy</Link>
+                            <Link to='updateprofile'>Profile</Link>
+                            <Link to='/savedpost'>Saved</Link>
+                            <Link to='/mypost'>My Post</Link>
                             <Link to=''>FeedBack</Link>
-                            <p className='h-[1px] bg-black mt-4 mb-2'></p>
+                            <p className='h-[1px] mt-4 mb-2 customBorder'></p>
                             <Link to=''>Terms And Condition</Link>
                             <Link to=''>Contuct</Link>
                             <Link to=''>About US</Link>

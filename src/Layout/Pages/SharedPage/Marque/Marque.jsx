@@ -3,6 +3,8 @@ import Marquee from 'react-fast-marquee';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import axios from 'axios';
 
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+
 const Marque = () => {
 
     const {baseUrl}=useContext(AuthContext)

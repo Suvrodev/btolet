@@ -59,7 +59,7 @@ const UpdateProfile = () => {
 
     return (
         <div>
-           <div className='w-4/12 border-2 rounded-md p-5 flex flex-col items-center mx-auto'>
+           <div className='w-full md:w-4/12 border-2 rounded-md p-5 flex flex-col items-center mx-auto'>
                <img className='w-[150px] h-[150px] rounded-full' src={currentUser?.image} alt="" />
                <h1 className='text-2xl font-bol'>{currentUser?.name} ({currentUser?.uid}) </h1>
                <h1 className='text-xl '>{currentUser?.email}</h1>

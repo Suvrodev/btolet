@@ -101,7 +101,7 @@ const Buy = () => {
                 <div className='w-full md:w-[60%] h-[360px]'>
                     <Banner></Banner>
                 </div>
-                 <div className='w-full md:w-[40%]    '>
+                 <div className='hidden md:block w-full md:w-[40%]    '>
                    <div className='bg-green-500 h-[360px] rounded-lg  flex items-center justify-center '>
                        <h1> Google Ads</h1>
                    </div>

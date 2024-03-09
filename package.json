@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "http://154.26.135.41:3800",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,6 +20,7 @@
     "axios": "^1.6.7",
     "get-youtube-id": "^1.0.1",
     "google-map-react": "^2.2.1",
+    "http-proxy-middleware": "^2.0.6",
     "jwt-decode": "^4.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.3",

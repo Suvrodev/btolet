@@ -466,10 +466,10 @@ const RentDetail = () => {
 
              {/* For Desktop Device start */}
              <div className='w-full  detailParentRightdiv  hidden md:block'>
-                <div className='flex flex-no-wrap overflow-x-scroll md:flex-col bg-yellow-300'>
+                <div className='flex flex-no-wrap overflow-x-scroll md:flex-col '>
                     {moreRentPost &&
                       moreRentPost.map((r, idx) => (
-                        <div key={idx} className='w-full md:w-auto md:flex-shrink-0 md:flex-grow bg-red-500'>
+                        <div key={idx} className='w-full md:w-auto md:flex-shrink-0 md:flex-grow '>
                           <RentCard r={r} forRent={'forRent'} />
                         </div>
                       ))}
