@@ -37,10 +37,11 @@ const Buy = () => {
       const [page,setPage]=useState(1)
       const [buys,setBuys]=useState([])
       const [loading, setLoading] = useState(false);
+      const [pageNumber,setPageNumber]=useState(1)
 
       useEffect(()=>{
         if(!byFilter){
-            fetch(`${baseUrl}/api/pro/postlist?page=1&geolat=${lattitude}&geolon=${longitude}`)
+            fetch(`${baseUrl}/api/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`)
             .then(res=>res.json())
             .then(data=>{
               const newData=[...buys,...data]
@@ -54,9 +55,40 @@ const Buy = () => {
             // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
           })
         }
-      },[page,byFilter,doubleLocation,minPrice,maxPrice,selectedCategoriesBuySort,selectedBedrooms,selectedBathrooms,selectedAmenities])
+      },[pageNumber,page,byFilter,doubleLocation,minPrice,maxPrice,selectedCategoriesBuySort,selectedBedrooms,selectedBathrooms,selectedAmenities])
   
       // console.log("Buy Data: ",buys);
+
+
+
+      ////For check end pount start
+      const [isAtEnd, setIsAtEnd] = useState(false);
+      useEffect(() => {
+        const handleScroll = () => {
+          const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+          const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+          const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+          let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+    
+          setIsAtEnd(scrolledToBottom);
+          console.log("ScrolledToBottom>>>>>>>>>>>>>>>>>",scrolledToBottom);
+          if(scrolledToBottom){
+            setPageNumber(pageNumber+1)
+            scrolledToBottom=""
+          }
+        };
+    
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    
+        // Clean up the event listener
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [pageNumber]);
+      ////For check end pount end
+
+
 
 
       ///Buy Data end

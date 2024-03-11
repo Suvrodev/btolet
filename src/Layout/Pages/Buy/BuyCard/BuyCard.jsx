@@ -164,7 +164,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
 
     return (
-        <div className='flex flex-col relative border  rounded-md h-[550px] m-2 md:m-0'>
+        <div className='flex flex-col relative border  rounded-md  m-2 md:m-0'>
           
 
            
