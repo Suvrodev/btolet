@@ -19,7 +19,7 @@
     border-radius: 15px;
     padding: 30px;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3,1fr);
     grid-row-gap: 30px;
     place-items: center;
     /* width: fit-content; */
@@ -74,3 +74,14 @@
     transform: scale(2);
 }
 
+.ytVideo{
+    /* width: 700px; */
+    /* height: 250px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+@media screen and (max-width:576px) {
+    
+}

@@ -376,13 +376,20 @@ const RentDetail = () => {
    
     return (
         <div className='mt-10'>
+
+          <div className='md:hidden'>
+            <footer className="footer">
+               <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
+            </footer>
+          </div>
+
           <div className='detailParent'>
           
 
             {/* Left Div start */}
              <div className='w-full detailParentLeftdiv'>
                 <div className='flex flex-col md:flex-row gap-1 w-full h-[500px] '>
-                        <div className='w-full md:w-[60%] h-full rounded-md p-2 md:p-0'>
+                        <div className='w-full md:w-[60%] h-full rounded-md p-2 md:p-0 '>
                             <BannerSwipperComponent images={imagesForSlider}></BannerSwipperComponent>
                         </div>
                       <div className='hidden md:flex w-[40%] h-full  flex-col bg-green-600 rounded-xl'>
@@ -428,7 +435,10 @@ const RentDetail = () => {
 
 
             <section className='m-5 md:m-0'>
-              <h1 className='text-xl my-4'>Details</h1>
+              <div className='flex justify-between prText'>
+                <h1 className='text-xl my-4'>Details</h1>
+                <p>id: {id} </p>
+              </div>
               <div className='customBorder w-full md:w-[650px] p-5 rounded-md'>
                 {
                   allDetails.map((ad,idx)=> <RentDetailsNumber key={idx}  ad={ad} ></RentDetailsNumber> )
@@ -440,7 +450,7 @@ const RentDetail = () => {
             <div className='h-[1px] w-full  my-[25px]  customBorder '></div>
 
             <div className='m-5 md:m-0'>
-                <BuyDescription description={description} ></BuyDescription>
+                <BuyDescription description={description} post_id={post_id} ></BuyDescription>
             </div>
 
 
@@ -479,7 +489,7 @@ const RentDetail = () => {
             
 
             {/* For Mobile Device start */}
-            <div className='w-full detailParentRightdiv overflow-x-auto md:hidden'>
+            <div className='w-full detailParentRightdiv overflow-x-auto md:hidden h-[500px] mb-20  '>
               <div className='flex flex-nowrap md:overflow-x-auto'>
                 {moreRentPost &&
                   moreRentPost.map((r, idx) => (
@@ -496,64 +506,6 @@ const RentDetail = () => {
             {/* More Post End */}
           </div>
           
-          
-            {/* <div className='flex gap-4 w-full h-[500px] '>
-                    <div className='w-[60%] h-full rounded-md'>
-                        <BuySlider imagesForSlider={imagesForSlider}></BuySlider>
-                    </div>
-                <div className='w-[40%] h-full flex flex-col bg-green-600 rounded-xl'>
-                    <div className='h-full rounded-xl'>
-                        <BuyMap geolat={geolat} geolon={geolon} className='rounded-xl' ></BuyMap>
-                    </div>
-                </div>
-            </div>
-         
-
-
-            <div className='my-4 flex justify-between rounded-md'>
-                <div className='text-3xl robot font-bold text-black opacity-80'>৳ {formattedRent}</div>
-                <div>
-                    <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
-                </div>
-            </div>
-
-            <div className='w-full h-[1px] bg-black opacity-20 my-4'></div>
-
-            <div>
-                 {iconDiv}
-            </div>
-
-            <div className='flex justify-between items-center'>
-                <div className='my-4 flex items-center gap-10'>
-                    <div className='w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 '>
-                        <img className='' src={locationColorImage} alt="" />
-                    </div>
-                    <p className='text-xl font-bold'>{location}</p>
-                </div>
-                <div className='font-bold text-xl'>
-                    {timeAgo}
-                </div>
-            </div>
-
-
-
-            <section>
-            <h1 className='text-xl'>Details</h1>
-            <div className='customBorder w-[650px] p-5 rounded-md'>
-               {
-                 allDetails.map((ad,idx)=> <RentDetailsNumber key={idx}  ad={ad} ></RentDetailsNumber> )
-               }
-            </div>
-            </section>
-
-            <div>
-                <BuyDescription description={description}></BuyDescription>
-            </div> */}
-
-
-           
-           
-
 
         </div>
     );

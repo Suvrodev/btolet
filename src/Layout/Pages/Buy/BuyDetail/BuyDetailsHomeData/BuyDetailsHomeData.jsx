@@ -86,7 +86,7 @@ const BuyDetailsHomeData = ({b,num}) => {
     return (
              <div className='flex flex-col justify-center items-center gap-4'>
                 {/* w-[40px] h-[40px] bg-gray-400 rounded-full flex items-center justify-center */}
-                <div className='w-[40px] h-[40px] bg-gray-400 rounded-full flex items-center justify-center p-3'>
+                <div className='w-[40px] h-[40px] bg-[#edf0ef] rounded-full flex items-center justify-center p-3'>
                     <img className='w-[25px]' src={iconName} alt="" />
                 </div>
                 {/* flex flex-col items-center justify-center w-[40px] h-[40px] */}

@@ -9,7 +9,7 @@ import { FiAlertCircle, FiEdit, FiHeart, FiPhoneCall, FiRadio, FiSearch, FiUser 
 
 const Header = () => {
 
-  const {currentUser,lattitude,longitude,doubleLocation}=useContext(AuthContext)
+  const {currentUser,lattitude,longitude,doubleLocation,screenTouch}=useContext(AuthContext)
 
   // console.log("Current User Header: ",currentUser);
   // const {image}=currentUser
@@ -101,13 +101,13 @@ const Header = () => {
 
 
 
-              <div className='w-full h-[75px] border-4 p-5 flex items-center justify-between  md:hidden '>
+              <div className='w-full  h-[75px] border-4 p-5 flex items-center justify-between fixed top-0 z-10 bg-white md:hidden   '>
 
                  <div onClick={handleLeftNav} className=' relative'>
                     <FaBars />
 
                     
-                    <div className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition duration-700 ease-in-out ${leftNav?'-left-6 duration-700':'left-[500px] hidden'}`}>
+                    <div className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition duration-700 ease-in-out ${leftNav?'-left-6 duration-700':'left-[500px] hidden'} ${screenTouch?'hidden':'' }  `}>
                         <div className='bg-blue-400 p-5 text-white'>
                             <div className='mb-10'>
                               <FaReply />

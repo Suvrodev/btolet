@@ -210,7 +210,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
             {/* Image Box Start */}
             <div className='relative'>
-              <img onClick={()=>goinDetail(post_id)} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
+              <img onClick={()=>goinDetail(post_id)} className='w-full h-[200px] md:h-[250px]  rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
 
                 {/* For Saved Start */}
                   {

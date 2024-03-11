@@ -9,34 +9,25 @@ import { FiHeart } from "react-icons/fi";
 
 
 
-const Checki = ({chukuImage}) => {
+const Checki = () => {
 
-  //   const [isHovered, setIsHovered] = useState(false);
-  //   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  //   const handleMouseMove = (e) => {
-  //   const imageWrapper = e.currentTarget.getBoundingClientRect();
-
-  //   const x = ((e.clientX - imageWrapper.left) / imageWrapper.width) * 100;
-  //   const y = ((e.clientY - imageWrapper.top) / imageWrapper.height) * 100;
-
-  //   setPosition({ x, y });
-  // };
+ 
     
   return (
-        <div>
-            <div
-              className="imageWrapper"
-              onMouseMove={handleMouseMove}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-
-              <div className={`viewport ${isHovered ? 'zoomed' : ''}`} style={{ backgroundImage: `url(${Image})`, backgroundPosition: `${position.x}% ${position.y}%` }}></div>
-           
-            </div>
-
-
+        <div className="text-black">
+           <h1>Check Something</h1>
+           <div>
+              <div className="collapse bg-green-600 w-2/12 collapse-arrow">
+                    <input type="checkbox" /> 
+                        <div className="collapse-title text-xl font-medium">
+                          Click me to show/hide content
+                        </div>
+                        
+                        <div className="collapse-content"> 
+                          <p>hello</p>
+                        </div>
+                </div>
+           </div>
         </div>
 
   );

@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
     const baseUrl= 'http://154.26.135.41:3800'
     // const baseUrl='http://localhost:3000'
 
+   
     const [uId,setUId]=useState("")
     const [currentUser,setCurrentUser]=useState("")
     const [loading,setLoading]=useState(true)
@@ -59,6 +60,21 @@ const AuthProvider = ({children}) => {
     // console.log("Current User: ",currentUser);
     ////Current User from Database end--------------------------------------------------------------------
 
+
+
+    /***
+     * Scareen Touch Start
+     */
+
+    const [screenTouch,setScreenTouch]=useState(false)
+    const handleScreenTouch=()=>{
+        // setScreenTouch(!screenTouch)
+        console.log("Screen Touch: ",screenTouch);
+    }
+
+    /**
+     * Screen Touch end
+     */
 
 
 
@@ -476,7 +492,10 @@ const AuthProvider = ({children}) => {
 
 
         ///Clear Text Field
-        clearTextField
+        clearTextField,
+
+        ///Screen Touch
+        screenTouch,setScreenTouch,handleScreenTouch
         
 
 
