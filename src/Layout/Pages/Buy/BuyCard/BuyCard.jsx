@@ -4,7 +4,7 @@ import { FaBath, FaBed, FaBeer, FaChartArea, FaHeart, FaLayerGroup, FaMailBulk, 
 
 import locationImage from '../../../../assets/downloadedIcon/location.svg'
 import shareImage from '../../../../assets/downloadedIcon/share.svg'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../Function/TimeAgo';
 import axios from 'axios';
@@ -22,6 +22,7 @@ import kitchenIcon from '../../../../assets/icons/tolet/kitchen.svg'
 
 
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
+  
 
    const {uId,successfullMessage,baseUrl,currentUser,unSuccessFullMessage}=useContext(AuthContext)
     // console.log("Buy Card: ",buy);
@@ -169,7 +170,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
            
             {/* Image Box Start */}
             <div className='relative'>
-              <img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" />
+              <Link to={`/buydetail/${pid}`}><img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[200px] md:h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" /></Link>
 
 
               {/* For Saved Start */}

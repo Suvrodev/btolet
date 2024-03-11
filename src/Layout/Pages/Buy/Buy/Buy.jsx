@@ -42,7 +42,10 @@ const Buy = () => {
         if(!byFilter){
             fetch(`${baseUrl}/api/pro/postlist?page=1&geolat=${lattitude}&geolon=${longitude}`)
             .then(res=>res.json())
-            .then(data=>setBuys(data))
+            .then(data=>{
+              const newData=[...buys,...data]
+              setBuys(newData)
+            })
         }else{
           axios.post(`${baseUrl}/api/pro/sort/postlist`,filterBody)
           .then(res=>{

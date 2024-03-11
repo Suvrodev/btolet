@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './BlackOpacity.css'
 
 import { FaBath, FaBed, FaCarAlt, FaChartArea, FaGoogle, FaHeart, FaHouseDamage, FaLayerGroup, FaMailBulk, FaMapMarker, FaMapMarkerAlt, FaMotorcycle, FaPhoneAlt, FaRegHeart, FaShare, FaTrash, FaWhatsapp } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../../Providers/AuthProvider';
 import calculateTimeAgo from '../../../../../Function/TimeAgo';
 import axios from 'axios';
@@ -210,7 +210,8 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
             {/* Image Box Start */}
             <div className='relative'>
-              <img onClick={()=>goinDetail(post_id)} className='w-full h-[200px] md:h-[250px]  rounded-md'  src={`data:image/png;base64,${image1}` } alt="" />
+            <Link to={`/rentdetail/${post_id}`}><img onClick={()=>goinDetail(post_id)} className='w-full h-[200px] md:h-[250px]  rounded-md'  src={`data:image/png;base64,${image1}` } alt="" /></Link>
+            
 
                 {/* For Saved Start */}
                   {
