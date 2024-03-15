@@ -36,7 +36,7 @@ const RentDetail = () => {
 
     const [allData,setAllData]=useState("")
     useEffect(()=>{
-        fetch(`${baseUrl}/api/tolet/post?post_id=${id}`)
+        fetch(`${baseUrl}/tolet/post?post_id=${id}`)
         .then(res=>res.json())
         .then(data=>setAllData(data))
     },[id])
@@ -73,7 +73,7 @@ const RentDetail = () => {
     const [moreRentPost,setMoreRentPost]=useState([])
     useEffect(()=>{
       if(geolat && geolon){
-        fetch(`${baseUrl}/api/tolet/more/post`,{
+        fetch(`${baseUrl}/tolet/more/post`,{
             method: 'POST',
             headers: {
                 'content-type':'application/json'

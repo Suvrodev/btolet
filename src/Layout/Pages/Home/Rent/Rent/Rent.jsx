@@ -54,7 +54,7 @@ const Rent = () => {
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
       if(!byFilter){
-          fetch(`${baseUrl}/api/web/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`)
+          fetch(`${baseUrl}/web/tolet/postlist?page=${page}&geolat=${lattitude}&geolon=${longitude}`)
           .then(res=>res.json())
           .then(data=>{
               // const newData=[...rents,...data]
@@ -64,7 +64,7 @@ const Rent = () => {
             }
           )
       }else{
-        axios.post(`${baseUrl}/api/tolet/sort/postlist`,filterBody)
+        axios.post(`${baseUrl}/tolet/sort/postlist`,filterBody)
         .then(res=>{
           setRents(res.data)
           console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",res.data);
@@ -84,7 +84,8 @@ const Rent = () => {
     const [postCount,setPostCount]=useState("0")
     useEffect(()=>{
       if(location_1 && location_2){
-        fetch(`${baseUrl}/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
+        fetch(`${baseUrl}/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
+        // fetch(`${baseUrl}/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
         .then(res=>res.json())
         .then(data=>{
            if(data?.postCount){
@@ -93,7 +94,7 @@ const Rent = () => {
         })
       }
     },[location_1,location_2,doubleLocation])
-    // console.log("Post Count: ",postCount);
+    console.log("Post Count: ",postCount);
     // console.log("Location-1 + Location-2 : ",location_1+location_2);
     ///Area End
 

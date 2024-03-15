@@ -10,9 +10,14 @@ const Marque = () => {
     const {baseUrl}=useContext(AuthContext)
     const [marqueText,setMarqueText]=useState("")
 
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com';
+    // const proxyUrl = 'https://cors-anywhere.herokuapp.com';
     // const apiUrl=`${baseUrl}/api/notes`
-    const apiUrl='http://154.26.135.41:3800/api/notes'
+    // const apiUrl='http://154.26.135.41:3800/api/notes'
+    const apiUrl=`${baseUrl}/notes`
+    // const apiUrl2=`https://api.btolet.com/api/notes`
+
+    // console.log("apiUrl-1: ",apiUrl1);
+    // console.log("apiUrl-2: ",apiUrl2);
 
     
     useEffect(()=>{

@@ -35,8 +35,7 @@ const Banner = () => {
     const [bannerImages,setBannerImages]=useState([])
     let showImages=[];
     useEffect(()=>{
-         fetch(`${baseUrl}/api/banner`)
-        // fetch('http://154.26.135.41:3800/api/banner')
+        fetch(`${baseUrl}/banner`)
         .then(res=>res.json())
         .then(data=>setBannerImages(data))
     },[])

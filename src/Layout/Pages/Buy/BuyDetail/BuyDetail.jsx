@@ -42,7 +42,7 @@ const BuyDetail = () => {
 
     const [allData,setAllData]=useState("")
     useEffect(()=>{
-        fetch(`${baseUrl}/api/pro/post?pid=${id}`)
+        fetch(`${baseUrl}/pro/post?pid=${id}`)
         .then(res=>res.json())
         .then(data=>setAllData(data))
     },[id])
@@ -82,7 +82,7 @@ const BuyDetail = () => {
         const [moreBuyPost,setMoreBuyPost]=useState([])
         useEffect(()=>{
             if(geolat && geolon){
-            fetch(`${baseUrl}/api/pro/more/post`,{
+            fetch(`${baseUrl}/pro/more/post`,{
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'

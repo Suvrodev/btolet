@@ -41,14 +41,14 @@ const Buy = () => {
 
       useEffect(()=>{
         if(!byFilter){
-            fetch(`${baseUrl}/api/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`)
+            fetch(`${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`)
             .then(res=>res.json())
             .then(data=>{
               const newData=[...buys,...data]
               setBuys(newData)
             })
         }else{
-          axios.post(`${baseUrl}/api/pro/sort/postlist`,filterBody)
+          axios.post(`${baseUrl}/pro/sort/postlist`,filterBody)
           .then(res=>{
             setBuys(res.data)
             console.log("Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",res.data);
@@ -102,7 +102,7 @@ const Buy = () => {
     const [postCount,setPostCount]=useState("")
     useEffect(()=>{
       if(location_1 && location_2){
-        fetch(`${baseUrl}/api/pro/postcount/area?location1=${location_1}&location2=${location_2}`)
+        fetch(`${baseUrl}/pro/postcount/area?location1=${location_1}&location2=${location_2}`)
         .then(res=>res.json())
         .then(data=>{
            if(data?.postCount){
