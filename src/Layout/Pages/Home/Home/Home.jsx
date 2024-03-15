@@ -6,7 +6,7 @@ import Banner from '../../SharedPage/Banner/Banner';
 const Home = () => {
     return (
         <div>
-            <Marque></Marque>
+            {/* <Marque></Marque>
             <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start mx-4 md:mx-0'>
                 <div className='w-full md:w-[60%] h-[360px]'>
                     <Banner></Banner>
@@ -16,7 +16,7 @@ const Home = () => {
                        <h1> Google Ads</h1>
                    </div>
                  </div>
-            </div>
+            </div> */}
             <Rent></Rent>
         </div>
     );

@@ -131,7 +131,7 @@ const Buy = () => {
 
 
           {/* Marque + Banner start */}
-          <Marque></Marque>
+          {/* <Marque></Marque>
             <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start mx-4 md:mx-0'>
                 <div className='w-full md:w-[60%] h-[360px]'>
                     <Banner></Banner>
@@ -141,7 +141,7 @@ const Buy = () => {
                        <h1> Google Ads</h1>
                    </div>
                  </div>
-            </div>
+            </div> */}
 
           {/* Marque + Banner end */}
 
