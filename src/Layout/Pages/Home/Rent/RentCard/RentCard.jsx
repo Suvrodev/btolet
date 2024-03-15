@@ -317,8 +317,8 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                 </div>
                 <div className='flex items-center justify-center gap-2'>
                     <button onClick={()=>handlePhoneCall(phone)} className='w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={()=>handleSendSMS(phone)} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
-                    <button onClick={()=>handleWhatsAppCall(wapp)} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
+                    <button onClick={()=>handleSendSMS(phone)} className='w-[35px] h-[35px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={()=>handleWhatsAppCall(wapp)} className='w-[35px] h-[35px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>

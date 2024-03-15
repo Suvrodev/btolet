@@ -280,9 +280,9 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                     <p>{timeAgo} </p>
                 </div>
                 <div className='flex items-center justify-center gap-2'>
-                    <button onClick={()=>handlePhoneCall(phone)} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={()=>handleSendSMS(phone)} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
-                    <button onClick={()=>handleWhatsAppCall(wapp)} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
+                    <button onClick={()=>handlePhoneCall(phone)} className='w-[35px] h-[35px] bg-[#F36150] rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
+                    <button onClick={()=>handleSendSMS(phone)} className='w-[35px] h-[35px] bg-[#2196F5] rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={()=>handleWhatsAppCall(wapp)} className='w-[35px] h-[35px] bg-[#25D569] rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>
