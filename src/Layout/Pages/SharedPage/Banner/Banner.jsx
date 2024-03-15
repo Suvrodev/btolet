@@ -39,6 +39,7 @@ const Banner = () => {
         .then(res=>res.json())
         .then(data=>setBannerImages(data))
     },[])
+    // console.log("Banenr: ",bannerImages);
   
 
     let i=0;

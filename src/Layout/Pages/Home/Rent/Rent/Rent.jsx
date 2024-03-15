@@ -94,7 +94,7 @@ const Rent = () => {
         })
       }
     },[location_1,location_2,doubleLocation])
-    console.log("Post Count: ",postCount);
+    console.log("Post Count(Rent): ",postCount);
     // console.log("Location-1 + Location-2 : ",location_1+location_2);
     ///Area End
 

@@ -7,6 +7,7 @@ const PrivateRoute = ({children}) => {
     const {currentUser,loading}=useContext(AuthContext) 
     const location=useLocation()
 
+    console.log("Loading status: ",loading);
     if(loading){
         return <div>
             <span className="loading loading-spinner text-primary"></span>

@@ -59,7 +59,7 @@ const Filter = () => {
 
 
     useEffect(()=>{
-        axios.post(`${baseUrl}/api/tolet/sort/postcount`,filterBody)
+        axios.post(`${baseUrl}/tolet/sort/postcount`,filterBody)
         .then(res=>{
            
             let count=res.data

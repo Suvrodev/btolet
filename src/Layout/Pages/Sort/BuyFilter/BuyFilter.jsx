@@ -57,7 +57,7 @@ const BuyFilter = () => {
 
 
     useEffect(()=>{
-        axios.post(`${baseUrl}/api/pro/sort/postcount`,filterBody)
+        axios.post(`${baseUrl}/pro/sort/postcount`,filterBody)
         .then(res=>{
            
             let count=res.data

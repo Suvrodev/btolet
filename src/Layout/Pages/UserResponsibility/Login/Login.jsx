@@ -45,7 +45,7 @@ const Login = () => {
 
 
 
-             fetch(`${baseUrl}/api/login`,{
+             fetch(`${baseUrl}/login`,{
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'
@@ -71,11 +71,11 @@ const Login = () => {
    
 
     return (
-        <div className='flex h-[100%] bg-green-600 rounded-md border-2'>
-            <div className='w-[70%] h-[vh] bg-red-500' >
-                <img className='h-[100%]' src={seaImage} alt="" />
+        <div className='flex flex-col-reverse md:flex-row h-[100%] bg-transparent md:bg-green-600  rounded-xl border-2 gap-10 md:gap-0 mt-20 '>
+            <div className='w-full md:w-[70%] h-full bg-red-500 rounded-xl' >
+                <img className='h-[100%] rounded-xl' src={seaImage} alt="" />
             </div>
-            <div className=' w-[30%] bg-yellow-500 flex items-center justify-center'>
+            <div className='w-full md:w-[30%]  bg-yellow-500 flex items-center justify-center'>
                 <GoogleLogin
                     onSuccess={credentialResponse => {
                         // console.log(credentialResponse);
@@ -97,3 +97,9 @@ const Login = () => {
 };
 
 export default Login;
+
+
+/**
+ * Yt Link: https://www.youtube.com/watch?v=r5ff1_3WrPM&t=3s
+ * npm: https://www.npmjs.com/package/@react-oauth/google
+ */

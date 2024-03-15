@@ -34,7 +34,7 @@ const AuthProvider = ({children}) => {
     ////Current User from Database start------------------------------------------------------------------
     useEffect(()=>{
        if(uId){
-            fetch(`${baseUrl}/api/uid`,{
+            fetch(`${baseUrl}/uid`,{
                 method: 'POST',
                 headers: {
                     'content-type':'application/json'
@@ -44,8 +44,9 @@ const AuthProvider = ({children}) => {
             .then(res=>res.json())
             .then(data=>{
             if(data){
+                console.log("!!!!!!!!!!!!!!!!!!!",data);
                 setCurrentUser(data[0]);
-                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",data[0]);
+                console.log("&&&&Current User: ",data[0]);
                 setLoading(false)
                 // console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",data);
             }
@@ -70,7 +71,7 @@ const AuthProvider = ({children}) => {
     const [screenTouch,setScreenTouch]=useState(false)
     const handleScreenTouch=()=>{
         // setScreenTouch(!screenTouch)
-        console.log("Screen Touch: ",screenTouch);
+        // console.log("Screen Touch: ",screenTouch);
     }
 
     /**
