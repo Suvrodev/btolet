@@ -209,11 +209,11 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
      
 
     return (
-        <div className='flex flex-col relative border  rounded-md m-2 md:m-0  md:w-[342px]' >
+        <div className='flex flex-col relative border  rounded-md m-2 md:m-0   h-[450px] md:h-[510px]' >
 
             {/* Image Box Start */}
             <div className='relative'>
-            <Link to={`/rentdetail/${post_id}`}><img onClick={()=>goinDetail(post_id)} className='w-full h-[200px] md:h-[250px]  rounded-md'  src={`data:image/png;base64,${image1}` } alt="" /></Link>
+            <Link to={`/rentdetail/${post_id}`} className='w-full h-[200px] md:h-[250px]  rounded-md'><img onClick={()=>goinDetail(post_id)} className='w-full h-[200px] md:h-[250px]  rounded-md'  src={`data:image/png;base64,${image1}` } alt="" /></Link>
             
 
                 {/* For Saved Start */}

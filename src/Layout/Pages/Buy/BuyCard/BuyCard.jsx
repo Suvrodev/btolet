@@ -171,13 +171,13 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
 
     return (
-        <div className='flex flex-col relative border  rounded-md  m-2 md:m-0'>
+        <div className='flex flex-col relative border  rounded-md  m-2 md:m-0  h-[450px] md:h-[510px]'>
           
 
            
             {/* Image Box Start */}
             <div className='relative'>
-              <Link to={`/buydetail/${pid}`}><img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[200px] md:h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" /></Link>
+              <Link to={`/buydetail/${pid}`} className='w-full h-[200px] md:h-[250px] rounded-md'><img onClick={()=>{goinDetail(pid,geolat,geolon)}} className='w-full h-[200px] md:h-[250px] rounded-md'  src={`data:image/png;base64,${image1}`} alt="" /></Link>
 
 
               {/* For Saved Start */}
