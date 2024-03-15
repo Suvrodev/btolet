@@ -21,6 +21,9 @@ import whatsappIcon from '../../../../../assets/icons/home/wapp.svg'
 import kitchenIcon from '../../../../../assets/icons/tolet/kitchen.svg'
 import { Favorite, FavoriteBorderOutlined, Kitchen } from '@mui/icons-material';
 import RentPostShare from '../../../../../Function/RentPostShare';
+import handlePhoneCall from '../../../../../Function/GoCall';
+import handleSendSMS from '../../../../../Function/GoMessage';
+import handleWhatsAppCall from '../../../../../Function/GoWhatappCall';
 
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
@@ -203,26 +206,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
 
 
-      /**
-       * Call Whatsapp Message start
-       */
-
-      const handlePhoneCall=(phone)=>{
-          window.location.href = `tel:${phone}`;
-      }
-
-      const handleWhatsAppCall=(wapp)=>{
-        console.log("Whatsapp Number: ",wapp);
-          window.location.href = `whatsapp://send?phone=${wapp}`;
-      }
-
-      const handleSendSMS=(phone)=>{
-          // window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent("message")}`;
-          console.log('SMS');
-      }
-      /**
-       * Call Whatsapp Message end
-       */
+     
 
     return (
         <div className='flex flex-col relative border  rounded-md m-2 md:m-0  md:w-[342px]' >
