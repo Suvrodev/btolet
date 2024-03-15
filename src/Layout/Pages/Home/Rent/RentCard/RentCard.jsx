@@ -20,6 +20,7 @@ import  SmsIcon from '../../../../../assets/icons/home/sms_white.svg'
 import whatsappIcon from '../../../../../assets/icons/home/wapp.svg'
 import kitchenIcon from '../../../../../assets/icons/tolet/kitchen.svg'
 import { Favorite, FavoriteBorderOutlined, Kitchen } from '@mui/icons-material';
+import RentPostShare from '../../../../../Function/RentPostShare';
 
 
 const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
@@ -53,14 +54,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
         // Convert the rent to Bangladeshi Taka style end
 
 
-      const handleshare=async()=>{
-        try {
-            await navigator.share({ url: "https://www.google.com/" });
-            console.log('Shared successfully');
-          } catch (error) {
-            console.error('Error sharing:', error);
-          }
-      }
+     
 
 
       const goinDetail=(post_id)=>{
@@ -123,7 +117,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
         // console.log("Blue chilo Save korbo");
 
         if(currentUser){
-          fetch(`${baseUrl}/api/tolet/save/post`,{
+          fetch(`${baseUrl}/tolet/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -147,7 +141,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       const handleUnSave=()=>{
         // console.log("Red Chilo UnSave korbo");
         if(uId){
-          fetch(`${baseUrl}/api/tolet/save/post`,{
+          fetch(`${baseUrl}/tolet/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -185,7 +179,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
           }).then((result) => {
             if (result.isConfirmed) {
                
-              axios.delete(`${baseUrl}/api/tolet/user/mypost/delete?uid=${uId}&post_id=${post_id}`)
+              axios.delete(`${baseUrl}/tolet/user/mypost/delete?uid=${uId}&post_id=${post_id}`)
               .then(res=>{
                 console.log("Delete Res: ",res.data);
                 if(res.data){
@@ -204,6 +198,31 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
       // console.log("savedRent: ",savedRent);
       // console.log('forRent',forRent);
       // console.log("myPostRent",myPostRent);
+
+
+
+
+
+      /**
+       * Call Whatsapp Message start
+       */
+
+      const handlePhoneCall=(phone)=>{
+          window.location.href = `tel:${phone}`;
+      }
+
+      const handleWhatsAppCall=(wapp)=>{
+        console.log("Whatsapp Number: ",wapp);
+          window.location.href = `whatsapp://send?phone=${wapp}`;
+      }
+
+      const handleSendSMS=(phone)=>{
+          // window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent("message")}`;
+          console.log('SMS');
+      }
+      /**
+       * Call Whatsapp Message end
+       */
 
     return (
         <div className='flex flex-col relative border  rounded-md m-2 md:m-0  md:w-[342px]' >
@@ -257,7 +276,7 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
 
                   <div className='absolute top-5 right-5'>
                     <p className='w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full'>
-                        <FiShare2 onClick={handleshare} className='text-white'/>
+                        <FiShare2 onClick={RentPostShare} className='text-white'/>
                     </p>
                 </div >
 
@@ -297,9 +316,9 @@ const RentCard = ({r,forRent,savedRent,handleRefresh,myPostRent}) => {
                     <p className='text-black opacity-80'>{timeAgo} </p>
                 </div>
                 <div className='flex items-center justify-center gap-2'>
-                    <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
-                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + phone, '_blank')} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
+                    <button onClick={()=>handlePhoneCall(phone)} className='w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
+                    <button onClick={()=>handleSendSMS(phone)} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={()=>handleWhatsAppCall(wapp)} className='w-[35px] h-[35px] bg-[#2BD268] rounded-lg flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>

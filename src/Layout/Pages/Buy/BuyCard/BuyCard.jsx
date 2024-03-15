@@ -19,6 +19,10 @@ import bedIcon from '../../../../assets/icons/tolet/bed.svg'
 import bathIcon from '../../../../assets/icons/tolet/bath.svg'
 import areaIcon from '../../../../assets/icons/tolet/size.svg'
 import kitchenIcon from '../../../../assets/icons/tolet/kitchen.svg'
+import handlePhoneCall from '../../../../Function/GoCall';
+import handleWhatsAppCall from '../../../../Function/GoWhatappCall';
+import handleSendSMS from '../../../../Function/GoMessage';
+import buyPostshare from '../../../../Function/BuyPostShare';
 
 
 const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
@@ -44,7 +48,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
       const handleshare=async()=>{
         try {
-            await navigator.share({ url: "https://www.google.com/" });
+            await navigator.share({ url: `https://celadon-kitsune-3c82ab.netlify.app/buydetail/${pid}` });
             console.log('Shared successfully');
           } catch (error) {
             console.error('Error sharing:', error);
@@ -83,7 +87,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
         console.log("Blue chilo Save korbo");
 
         if(currentUser){
-          fetch(`${baseUrl}/api/pro/save/post`,{
+          fetch(`${baseUrl}/pro/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -107,7 +111,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
       const handleUnSave=()=>{
         console.log("Red Chilo UnSave korbo");
         if(uId){
-          fetch(`${baseUrl}/api/pro/save/post`,{
+          fetch(`${baseUrl}/pro/save/post`,{
             method: 'POST',
               headers: {
                   'content-type':'application/json'
@@ -138,7 +142,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
           }).then((result) => {
             if (result.isConfirmed) {
                
-              axios.delete(`${baseUrl}/api/pro/user/mypost/delete?uid=${uId}&post_id=${pid}`)
+              axios.delete(`${baseUrl}/pro/user/mypost/delete?uid=${uId}&post_id=${pid}`)
               .then(res=>{
                 console.log("Delete Res: ",res.data);
                 if(res.data){
@@ -157,6 +161,9 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
       // console.log("savedBuy: ",savedBuy);
       // console.log('forBuy',forBuy);
       // console.log("myPostBuy",myPostBuy);
+
+
+
 
 
 
@@ -215,7 +222,7 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
 
               <div className='absolute top-5 right-5 '>
                <p className='w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full'>
-                  <FiShare2 onClick={handleshare} className='text-white'/>
+                  <FiShare2 onClick={()=>buyPostshare(pid)} className='text-white'/>
                </p>
              </div >
 
@@ -273,9 +280,9 @@ const BuyCard = ({buy,forBuy,savedBuy,handleRefresh,myPostBuy}) => {
                     <p>{timeAgo} </p>
                 </div>
                 <div className='flex items-center justify-center gap-2'>
-                    <button onClick={() => window.location.href = 'tel:' + phone} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
-                    <button onClick={() => window.location.href = 'sms:' + phone} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
-                    <button onClick={() => window.open('https://api.whatsapp.com/send?phone=' + '8801518748081&text=Hi%20User', '_blank')} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
+                    <button onClick={()=>handlePhoneCall(phone)} className='w-[35px] h-[35px] bg-orange-700 rounded-xl flex items-center justify-center text-white font-bold'> <FaPhoneAlt /> </button>
+                    <button onClick={()=>handleSendSMS(phone)} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white font-bold'> <img className='w-[20px]' src={SmsIcon} alt="" /> </button>
+                    <button onClick={()=>handleWhatsAppCall(wapp)} className='w-[35px] h-[35px] bg-green-500 rounded-xl flex items-center justify-center text-white text-xl'><img className='w-[30px]' src={whatsappIcon} alt="" /></button>
                 </div>
             </div>
         </div>

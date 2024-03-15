@@ -7,22 +7,13 @@ import './ContactButton.css'
 import  SmsIcon from '../../../../../assets/icons/home/sms_white.svg'
 import whatsappIcon from '../../../../../assets/icons/home/wapp.svg'
 import { FaPhone, FaPhoneAlt } from 'react-icons/fa';
+import handleWhatsAppCall from '../../../../../Function/GoWhatappCall';
+import handlePhoneCall from '../../../../../Function/GoCall';
+import handleSendSMS from '../../../../../Function/GoMessage';
 
 const ContactButtons = ({phone,wapp}) => {
 
-    const handlePhoneCall=(phone)=>{
-        window.location.href = `tel:${phone}`;
-    }
-
-    const handleWhatsAppCall=(wapp)=>{
-        window.location.href = `whatsapp://send?phone=${wapp}`;
-    }
-
-    const handleSendSMS=(phone)=>{
-        // window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent("message")}`;
-        console.log('SMS');
-    }
-
+ 
     return (
         <div className=' flex gap-4 items-center bg-white'>
             <button onClick={()=>handlePhoneCall(phone)} className=' btn bg-[#F36150] border-0 text-white'> <FaPhoneAlt className='text-[18px]' /> Call</button>  

@@ -52,9 +52,14 @@ const RentDetailsNumber = ({ad}) => {
                     <p className=' text-green-500'>{itemNumbers}</p>
                 }
                 {
-                    ad?.itemName=='Rent From' ?
-                    <p className=' text-black'>{myDate}</p>:
-                    <p className=' text-black'>{itemNumbers}</p>
+                    ad?.itemName=='Rent From' &&
+                    <p className=' text-black'>{myDate}</p>
+                   
+                }
+                {
+                  ad?.itemName !== 'Facilities' && ad?.itemName !== 'Rent From' ?
+                  <p className='text-black'>{itemNumbers}</p> :
+                  <p className='text-black'></p>  
                 }
             </div>
         </div>

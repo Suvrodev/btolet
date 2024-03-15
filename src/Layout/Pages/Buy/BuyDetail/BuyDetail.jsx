@@ -26,6 +26,7 @@ import calculateTimeAgo from '../../../../Function/TimeAgo';
 import BannerSwipperComponent from '../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent';
 import ImageZoom from '../../UserResponsibility/Check/ImageZoom/ImageZoom';
 import convertDate from '../../../../Function/DateConvert';
+import buyPostshare from '../../../../Function/BuyPostShare';
 
 const BuyDetail = () => {
     const {baseUrl}=useContext(AuthContext)
@@ -354,7 +355,7 @@ const BuyDetail = () => {
 
                     <div className='hidden md:flex gap-4 items-center'>
                         <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
-                        <FiShare2/>
+                        <FiShare2 onClick={()=>buyPostshare(id)}/>
                     </div>
                 </div>
 

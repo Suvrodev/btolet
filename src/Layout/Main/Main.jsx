@@ -15,7 +15,7 @@ const Main = () => {
         <div className='roboto  '>
            <Header></Header>
             {/* <h1 className='rb_rg text-2xl'> This is Main</h1> */}
-            <div onClick={handleScreenTouch} className='max-w-[90rem] mx-auto'>
+            <div onClick={handleScreenTouch} className='max-w-[100rem] mx-auto'>
               <Outlet></Outlet>
             </div>
         </div>

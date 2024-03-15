@@ -179,13 +179,16 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
       if(lattitude && longitude){
-          fetch(`http://154.26.130.64/nominatim/reverse.php?lat=${lattitude}&lon=${longitude}&format=jsonv2&accept-language=bn`)
+          fetch(`https://map.btolet.com/nominatim/reverse.php?lat=${lattitude}&lon=${longitude}&format=jsonv2&accept-language=bn`)
           .then(res=>res.json())
           .then(data=>{
           setArea(data)
       })
       }
     },[lattitude,longitude])
+
+
+    console.log("Area--------------------------------:",area);
 
     
     useEffect(()=>{
@@ -221,7 +224,7 @@ const AuthProvider = ({children}) => {
 
     },[area,lattitude,longitude,location_1,location_2])
 
-    // console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
+    console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
     // console.log("Location-1(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_1);
     // console.log("Location-2(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_2);
 
