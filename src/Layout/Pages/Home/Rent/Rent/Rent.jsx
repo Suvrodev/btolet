@@ -90,13 +90,16 @@ const Rent = () => {
    * Maintaining specific Second start
    */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPageNumber((prevPageNumber) => prevPageNumber + 1);
-    }, 2000);
+    if (rents.length > 0) {
+      const interval = setInterval(() => {
+        setPageNumber((prevPageNumber) => prevPageNumber + 1);
+      }, 2000);
 
-    // Clean up the interval to prevent memory leaks
-    return () => clearInterval(interval);
-  }, []);
+      // Clean up the interval to prevent memory leaks
+      return () => clearInterval(interval);
+    }
+  }, [rents]);
+  // console.log("Page Number (Rents): ", pageNumber);
 
   /**
    * Maintaining specific second end
