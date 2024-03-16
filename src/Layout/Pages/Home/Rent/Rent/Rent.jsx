@@ -30,13 +30,15 @@ const Rent = () => {
   } = useContext(AuthContext);
 
   const {
-    byFilter,
-    setByFilter,
+    byFilterRent,
+    setByFilterRent,
     selectedBathrooms,
     selectedBedrooms,
     minPrice,
     maxPrice,
     selectedRentCategory,
+    rents,
+    setRents,
   } = useContext(FilterDataContext);
 
   // console.log("Lattitude: ",lattitude);
@@ -59,46 +61,46 @@ const Rent = () => {
   ////rents Data start
   const closeButtonRef = useRef("");
 
-  const [pageNumber, setPageNumber] = useState(1);
-  const [rents, setRents] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    if (!byFilter) {
-      fetch(
-        `${baseUrl}/tolet/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const newData = [...rents, ...data];
-          setRents(newData);
-        });
-    } else {
-      axios.post(`${baseUrl}/tolet/sort/postlist`, filterBody).then((res) => {
-        setRents(res.data);
-        console.log(
-          "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
-          res.data
-        );
-        // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
-      });
-    }
-  }, [pageNumber, byFilter]);
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const [rents, setRents] = useState([]);
 
-  // console.log("Rent Data: ",rents);
+  // useEffect(() => {
+  //   if (!byFilterRent) {
+  //     fetch(
+  //       `${baseUrl}/tolet/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         const newData = [...rents, ...data];
+  //         setRents(newData);
+  //       });
+  //   } else {
+  //     axios.post(`${baseUrl}/tolet/sort/postlist`, filterBody).then((res) => {
+  //       setRents(res.data);
+  //       console.log(
+  //         "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
+  //         res.data
+  //       );
+  //       // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
+  //     });
+  //   }
+  // }, [pageNumber, byFilterRent]);
+
+  // console.log("Rent Data: ", rents);
 
   /**
    * Maintaining specific Second start
    */
-  useEffect(() => {
-    if (rents.length > 0) {
-      const interval = setInterval(() => {
-        setPageNumber((prevPageNumber) => prevPageNumber + 1);
-      }, 2000);
+  // useEffect(() => {
+  //   if (rents.length > 0) {
+  //     const interval = setInterval(() => {
+  //       setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  //     }, 3000);
 
-      // Clean up the interval to prevent memory leaks
-      return () => clearInterval(interval);
-    }
-  }, [rents]);
+  //     // Clean up the interval to prevent memory leaks
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [rents]);
   // console.log("Page Number (Rents): ", pageNumber);
 
   /**
@@ -131,10 +133,18 @@ const Rent = () => {
   //Show Properties button a click korle X button a o click hobe autometically
 
   // console.log("---------------------------------------------------------------------------By Filter(3)): ",byFilter);
-  if (byFilter) {
-    closeButtonRef?.current.click();
-    setByFilter(false);
-  }
+
+  useEffect(() => {
+    if (byFilterRent) {
+      closeButtonRef?.current.click();
+      // setByFilter(false);
+    }
+  }, [byFilterRent]);
+
+  // if (byFilterRent) {
+  //   closeButtonRef?.current.click();
+  //   setByFilterRent(false);
+  // }
 
   return (
     <div className="my-4">

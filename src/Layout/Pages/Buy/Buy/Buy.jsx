@@ -21,6 +21,7 @@ const Buy = () => {
     location_2,
     selectedAmenities,
   } = useContext(AuthContext);
+
   const {
     byFilter,
     setByFilter,
@@ -29,29 +30,33 @@ const Buy = () => {
     minPrice,
     maxPrice,
     selectedCategoriesBuySort,
+    buys, ///come from FilterDataContext
+    setBuys, /// ///come from FilterDataContext
   } = useContext(FilterDataContext);
 
-  // console.log("Lattitude: ",lattitude);
-  // console.log("Longitude: ",longitude);
+  // console.log("Buysssssssssssssssss(2): ", buys);
 
-  const filterBody = {
-    geolat: lattitude,
-    geolon: longitude,
-    rentmin: minPrice,
-    rentmax: maxPrice,
-    page: 1,
-    category: selectedCategoriesBuySort,
-    fasalitis: selectedAmenities,
-    bed: selectedBedrooms,
-    bath: selectedBathrooms,
-  };
+  /**
+   * Card Operation start
+   */
+
+  // const filterBody = {
+  //   geolat: lattitude,
+  //   geolon: longitude,
+  //   rentmin: minPrice,
+  //   rentmax: maxPrice,
+  //   page: 1,
+  //   category: selectedCategoriesBuySort,
+  //   fasalitis: selectedAmenities,
+  //   bed: selectedBedrooms,
+  //   bath: selectedBathrooms,
+  // };
   // console.log("Filter Body(Pro): ",filterBody);
 
   ///Buy Data start
   const closeButtonRef = useRef(null);
-  const [buys, setBuys] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
+  // const [buys, setBuys] = useState([]);
+  // const [pageNumber, setPageNumber] = useState(1);
 
   const [hasMore, setHasMore] = useState(true);
   const loadingRef = useRef(null);
@@ -59,44 +64,44 @@ const Buy = () => {
   /***
    * Prv code start
    */
-  console.log("ByFilter,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,: ", byFilter);
-  useEffect(() => {
-    if (!byFilter) {
-      fetch(
-        `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const newData = [...buys, ...data];
-          setBuys(newData);
-        });
-    } else {
-      axios.post(`${baseUrl}/pro/sort/postlist`, filterBody).then((res) => {
-        setBuys(res.data);
-        console.log(
-          "Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
-          res.data
-        );
-        // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
-      });
-    }
-  }, [pageNumber, byFilter]);
+  // console.log("ByFilter,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,: ", byFilter);
+  // useEffect(() => {
+  //   if (!byFilter) {
+  //     fetch(
+  //       `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         const newData = [...buys, ...data];
+  //         setBuys(newData);
+  //       });
+  //   } else {
+  //     axios.post(`${baseUrl}/pro/sort/postlist`, filterBody).then((res) => {
+  //       setBuys(res.data);
+  //       console.log(
+  //         "Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
+  //         res.data
+  //       );
+  //       // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
+  //     });
+  //   }
+  // }, [pageNumber, byFilter]);
 
   // console.log("Buy Data: ", buys);
 
   /**
    * Maintaining specific Second start
    */
-  useEffect(() => {
-    if (buys.length > 0) {
-      const interval = setInterval(() => {
-        setPageNumber((prevPageNumber) => prevPageNumber + 1);
-      }, 2000);
+  // useEffect(() => {
+  //   if (buys.length > 0) {
+  //     const interval = setInterval(() => {
+  //       setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  //     }, 2000);
 
-      // Clean up the interval to prevent memory leaks
-      return () => clearInterval(interval);
-    }
-  }, [buys]);
+  //     // Clean up the interval to prevent memory leaks
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [buys]);
   // console.log("Page Number (Buy): ", pageNumber);
 
   /**
@@ -105,6 +110,10 @@ const Buy = () => {
 
   /**
    * Prv code end
+   */
+
+  /**
+   * Card Operation start
    */
 
   /***
