@@ -21,6 +21,7 @@ import ZCheck from "../Layout/Pages/UserResponsibility/Check/ZCheck1/ZCheck";
 import MapCheck from "../Layout/Pages/UserResponsibility/Check/MapCheck/MapCheck";
 import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLocation/UserLocation";
 import ImageZoom from "../Layout/Pages/UserResponsibility/Check/ImageZoom/ImageZoom";
+import ScrollCheck from "../Layout/Pages/Buy/Buy/ScrollCheck/ScrollCheck";
 
 
 
@@ -97,6 +98,10 @@ import ImageZoom from "../Layout/Pages/UserResponsibility/Check/ImageZoom/ImageZ
         {
           path: '/iz',
           element: <ImageZoom></ImageZoom>
+        },
+        {
+          path: '/sc',
+          element: <ScrollCheck></ScrollCheck>
         }
       ]
     },

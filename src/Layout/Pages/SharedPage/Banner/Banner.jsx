@@ -23,6 +23,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import BannerSwipperComponent from './BannerSwipperComponent/BannerSwipperComponent';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
+import { green } from '@mui/material/colors';
 ///Swipper End
 
 
@@ -58,38 +61,14 @@ const Banner = () => {
    
     
     return (
-        <div className='Banner'>
+        <div className='Banner '>
+             <BannerSwipperComponent images={showImages} className=''></BannerSwipperComponent>
 
-            {/* <Swiper
-                    spaceBetween={30}
-                    centeredSlides={true}
-                    autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                    }}
-                    pagination={{
-                    clickable: true,
-                    }}
-                    navigation={true}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="yesSwiper"
-                >
-                    
-                {
-                    showImages.map((b,idx)=> <SwiperSlide key={idx}>
-                    <BannerBody b={b}>
-
-                    </BannerBody>
-                    </SwiperSlide> ) 
-                }
-                
-                </Swiper> */}
-
-                 {/* <img src={`data:image/png;base64,${showImages[0]}`} alt="Base64 Image" /> */}
-
-
-                 <BannerSwipperComponent images={showImages}></BannerSwipperComponent>
-
+             {/* <SkeletonTheme className='w-full h-full' baseColor="#202020" highlightColor="#444">
+                <Skeleton className='w-full h-full' />
+            </SkeletonTheme> */}
+            
+           
         </div>
     );
 };

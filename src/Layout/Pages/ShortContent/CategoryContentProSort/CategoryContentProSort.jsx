@@ -20,7 +20,7 @@ const CategoryContentProSort = () => {
             setSelectedCategoriesBuySort([...selectedCategoriesBuySort, category]);
         }
       };
-    console.log("Sorting Property Category**************************",selectedCategoriesBuySort);
+    // console.log("Sorting Property Category**************************",selectedCategoriesBuySort);
 
     return (
         <div>

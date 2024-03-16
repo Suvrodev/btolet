@@ -24,9 +24,9 @@ const Main = () => {
         show=false
     }
 
-    console.log("Show: ",show);
+    // console.log("Show: ",show);
 
-    console.log("My Location::::::::::::::::::::::::::",location);
+    // console.log("My Location::::::::::::::::::::::::::",location);
     return (
         <div className='roboto  '>
            <Header></Header>
