@@ -58,6 +58,7 @@ const Buy = () => {
   // console.log("Filter Body(Pro): ",filterBody);
 
   ///Buy Data start
+  const [closeFilterBuy, setCloseFilterBuy] = useState(false);
   const closeButtonRef = useRef(null);
   // const [buys, setBuys] = useState([]);
   // const [pageNumber, setPageNumber] = useState(1);
@@ -250,11 +251,11 @@ const Buy = () => {
    */
   //Show Properties button a click korle X button a o click hobe autometically
   useEffect(() => {
-    if (byFilter) {
+    if (byFilter || closeFilterBuy) {
       closeButtonRef?.current.click();
       // setByFilter(false);
     }
-  }, [byFilter]);
+  }, [byFilter, closeFilterBuy]);
 
   return (
     <div>
@@ -264,7 +265,10 @@ const Buy = () => {
         {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
         <dialog id="filterModal_2" className="modal-middle md:modal  ">
           <div className="modal-box w-11/12 max-w-full bg-white">
-            <BuyFilter></BuyFilter>
+            <BuyFilter
+              closeFilterBuy={closeFilterBuy}
+              setCloseFilterBuy={setCloseFilterBuy}
+            ></BuyFilter>
             <div className="modal-action">
               <form method="dialog">
                 {/* if there is a button, it will close the modal */}

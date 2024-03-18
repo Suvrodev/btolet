@@ -111,6 +111,7 @@ const FilterDataProvider = ({ children }) => {
 
   useEffect(() => {
     if (!byFilterRent) {
+      console.log("Up Condition (Buy Filter Rent):::::", byFilterRent);
       fetch(
         `${baseUrl}/tolet/postlist?page=${rentPageNumber}&geolat=${lattitude}&geolon=${longitude}`
       )

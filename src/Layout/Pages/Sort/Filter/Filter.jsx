@@ -12,7 +12,7 @@ import { FilterDataContext } from "../../../../Providers/FilterDataProvider";
 import CategoryContentSort from "../../ShortContent/CategoryContentSort/CategoryContentSort";
 import axios from "axios";
 
-const Filter = () => {
+const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
   const { baseUrl, lattitude, longitude, doubleLocation, selectedFacilities } =
     useContext(AuthContext);
   const {
@@ -26,6 +26,8 @@ const Filter = () => {
     maxPrice,
     setMaxPrice,
     setByFilterRent,
+    setRentPageNumber,
+    setRents,
   } = useContext(FilterDataContext);
 
   const [propertyNumber, setPropertyNumber] = useState("");
@@ -90,7 +92,11 @@ const Filter = () => {
   };
 
   const handleRentClearSort = () => {
-    window.location.reload();
+    setCloseFilterRent(true);
+    setRentPageNumber(1);
+    setByFilterRent(false);
+    setRents([]);
+    // window.location.reload();
   };
 
   return (

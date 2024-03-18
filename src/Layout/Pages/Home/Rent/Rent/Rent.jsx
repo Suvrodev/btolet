@@ -44,6 +44,9 @@ const Rent = () => {
   // console.log("Lattitude: ",lattitude);
   // console.log("Longitude: ",longitude);
 
+  const [closeFilterRent, setCloseFilterRent] = useState(false);
+
+  const closeButtonRef = useRef("");
   const filterBody = {
     geolat: lattitude,
     geolon: longitude,
@@ -59,7 +62,6 @@ const Rent = () => {
   // console.log("Filter Body: ",filterBody);
 
   ////rents Data start
-  const closeButtonRef = useRef("");
 
   // const [pageNumber, setPageNumber] = useState(1);
   // const [rents, setRents] = useState([]);
@@ -135,11 +137,11 @@ const Rent = () => {
   // console.log("---------------------------------------------------------------------------By Filter(3)): ",byFilter);
 
   useEffect(() => {
-    if (byFilterRent) {
+    if (byFilterRent || closeFilterRent) {
       closeButtonRef?.current.click();
       // setByFilter(false);
     }
-  }, [byFilterRent]);
+  }, [byFilterRent, closeFilterRent]);
 
   // if (byFilterRent) {
   //   closeButtonRef?.current.click();
@@ -154,7 +156,10 @@ const Rent = () => {
         {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
         <dialog id="filterModal_1" className=" modal md:modal  ">
           <div className="modal-box w-full md:w-11/12 max-w-full bg-white">
-            <Filter></Filter>
+            <Filter
+              closeFilterRent={closeFilterRent}
+              setCloseFilterRent={setCloseFilterRent}
+            ></Filter>
             {/* <CheckFilterSize></CheckFilterSize> */}
             <div className="modal-action">
               <form method="dialog">

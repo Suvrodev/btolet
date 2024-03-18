@@ -293,14 +293,12 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
           to={`/rentdetail/${post_id}`}
           className="w-full h-[200px] md:h-[250px]  rounded-md"
         >
-          <LazyLoad>
-            <img
-              onClick={() => goinDetail(post_id)}
-              className="w-full h-[200px] md:h-[250px]  rounded-md"
-              src={`data:image/png;base64,${image1}`}
-              alt=""
-            />
-          </LazyLoad>
+          <img
+            onClick={() => goinDetail(post_id)}
+            className="w-full h-[200px] md:h-[250px]  rounded-md"
+            src={`data:image/png;base64,${image1}`}
+            alt=""
+          />
         </Link>
 
         {/* For Saved Start */}

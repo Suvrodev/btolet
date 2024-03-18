@@ -10,7 +10,7 @@ import Facilities from "../../PostContent/Facilities/Facilities";
 import Amenities from "../../PostContent/Amenities/Amenities";
 import CategoryContentProSort from "../../ShortContent/CategoryContentProSort/CategoryContentProSort";
 
-const BuyFilter = () => {
+const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
   const {
     baseUrl,
     lattitude,
@@ -19,6 +19,7 @@ const BuyFilter = () => {
     selectedFacilities,
     selectedAmenities,
   } = useContext(AuthContext);
+
   const {
     selectedBathrooms,
     setSelectedBathrooms,
@@ -30,6 +31,8 @@ const BuyFilter = () => {
     maxPrice,
     setMaxPrice,
     setByFilter,
+    setPageNumber,
+    setBuys,
   } = useContext(FilterDataContext);
 
   const [propertyNumber, setPropertyNumber] = useState("");
@@ -94,7 +97,10 @@ const BuyFilter = () => {
   };
 
   const handleBuyClearSort = () => {
-    window.location.reload();
+    setCloseFilterBuy(true);
+    setByFilter(false);
+    setPageNumber(0);
+    setBuys([]);
   };
 
   return (
