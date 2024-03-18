@@ -210,6 +210,17 @@ const AuthProvider = ({ children }) => {
    */
 
   /**
+   * Header Data start
+   */
+
+  const [profileBox, setProfileBox] = useState(false);
+  const [leftNav, setLeftNav] = useState(false);
+
+  /***
+   * Header Data end
+   */
+
+  /**
    * Post Data Start------------------------------------------------------------------------------------------
    */
 
@@ -513,9 +524,10 @@ const AuthProvider = ({ children }) => {
     clearTextField,
 
     ///Screen Touch
-    screenTouch,
-    setScreenTouch,
-    handleScreenTouch,
+    profileBox,
+    setProfileBox,
+    leftNav,
+    setLeftNav,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

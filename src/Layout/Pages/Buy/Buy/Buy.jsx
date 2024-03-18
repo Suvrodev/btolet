@@ -32,6 +32,10 @@ const Buy = () => {
     selectedCategoriesBuySort,
     buys, ///come from FilterDataContext
     setBuys, /// ///come from FilterDataContext
+    pageNumber,
+    setPageNumber,
+    rentPageNumber,
+    setRentPageNumber,
   } = useContext(FilterDataContext);
 
   // console.log("Buysssssssssssssssss(2): ", buys);
@@ -60,6 +64,30 @@ const Buy = () => {
 
   const [hasMore, setHasMore] = useState(true);
   const loadingRef = useRef(null);
+
+  ////Ovserver start
+  useEffect(() => {
+    const observer = new IntersectionObserver((items) => {
+      console.log("Check Observer: ");
+      let output = items[0].isIntersecting;
+      console.log(output);
+      if (output) {
+        setPageNumber((prevPageNumber) => prevPageNumber + 1);
+      }
+      setHasMore(false);
+    });
+    if (loadingRef.current) {
+      observer.observe(loadingRef.current);
+    }
+    return () => {
+      if (loadingRef.current) {
+        observer.unobserve(loadingRef.current);
+      }
+    };
+  }, [hasMore]);
+  console.log("Page Number: ", pageNumber);
+
+  ////Ovserver end
 
   /***
    * Prv code start
@@ -280,9 +308,9 @@ const Buy = () => {
         {/* <Link to={'/buypost'}> <button className='btn btn-success'>Post</button> </Link> */}
       </div>
 
-      <div>
+      <div className="">
         {buys?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4  md:gap-x-6 gap-y-6 gap-x-0 mx-5 overflow-auto ">
             {buys.map((buy, idx) => (
               <BuyCard key={idx} buy={buy} forBuy={"forBuy"}></BuyCard>
             ))}
@@ -291,11 +319,11 @@ const Buy = () => {
           <p>Nothig to Show</p>
         )}
       </div>
-      {hasMore && (
-        <div ref={loadingRef}>
-          <p>Loading</p>
-        </div>
-      )}
+
+      <div ref={loadingRef}>
+        {/* <p>Loading</p> */}
+        <span className="loading loading-spinner text-warning"></span>
+      </div>
     </div>
   );
 };

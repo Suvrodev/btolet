@@ -89,10 +89,14 @@ const Filter = () => {
     setByFilterRent(true);
   };
 
+  const handleRentClearSort = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       <div className=" p-5 flex flex-col justify-center rounded-md">
-        <p className="bg-yellow-600 w-10/12 md:w-2/12 text-center font-bold text-xl text-white mx-auto rounded-md mb-20 p-2">
+        <p className="bg-yellow-600 w-full md:w-6/12 text-center font-bold text-xl text-white mx-auto rounded-md mb-20 p-2">
           BDT {minPrice} to {maxPrice} +/month
         </p>
         <div className="  mb-10 p-5">
@@ -114,26 +118,26 @@ const Filter = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-5  w-[80%] mx-auto justify-center">
-        <div className="flex gap-5 items-center justify-center ">
-          <div>
+      <div className="flex flex-col gap-5 w-full  md:w-[80%] mx-auto justify-center ">
+        <div className="flex flex-col md:flex-row gap-5 items-center w-full ">
+          <div className=" w-full">
             <p>Min</p>
             <input
               type="number"
               name=""
               id=""
-              className="input input-bordered  border-red-500 bg-gray-500"
+              className="input input-bordered w-full  border-red-500 bg-gray-500"
               value={minPrice}
               onChange={handleMinInputChange}
             />
           </div>
-          <div>
+          <div className="w-full">
             <p>Max</p>
             <input
               type="number"
               name=""
               id=""
-              className="input input-bordered  border-red-500 bg-gray-500"
+              className="input input-bordered w-full border-red-500 bg-gray-500"
               value={maxPrice}
               onChange={handleMaxInputChange}
             />
@@ -141,16 +145,23 @@ const Filter = () => {
         </div>
       </div>
 
-      <div>
+      <div className="mt-5">
+        <h1>Category: </h1>
         <CategoryContentSort></CategoryContentSort>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* BedRoom Start */}
-        <BedRoomSort></BedRoomSort>
+        <div>
+          <h1>Bedroom:</h1>
+          <BedRoomSort></BedRoomSort>
+        </div>
 
         {/* Bathroom short */}
-        <BathroomSort></BathroomSort>
+        <div>
+          <h1>Bathroom</h1>
+          <BathroomSort></BathroomSort>
+        </div>
       </div>
 
       {/* Facilities */}
@@ -159,9 +170,11 @@ const Filter = () => {
         <Facilities fromFilter={true}></Facilities>
       </div>
 
-      <div className="flex gap-4 w-4/12 mx-auto justify-center">
-        <button className="btn btn-warning">Clear</button>
-        <button onClick={handleRentSort} className="btn btn-primary">
+      <div className="flex gap-4 w-full md:w-4/12 mx-auto flex-col-reverse md:flex-row justify-center">
+        <button onClick={handleRentClearSort} className="btn btn-warning">
+          Clear
+        </button>
+        <button onClick={handleRentSort} className="btn btn-primary ">
           Show Properties {propertyNumber} Properties{" "}
         </button>
       </div>

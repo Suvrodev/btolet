@@ -93,6 +93,10 @@ const BuyFilter = () => {
     setByFilter(true);
   };
 
+  const handleBuyClearSort = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       <h1 className="text-center">Property Sort</h1>
@@ -165,7 +169,9 @@ const BuyFilter = () => {
       </div>
 
       <div className="flex gap-4 w-4/12 mx-auto justify-center">
-        <button className="btn btn-warning">Clear</button>
+        <button className="btn btn-warning" onClick={handleBuyClearSort}>
+          Clear
+        </button>
         <button onClick={handleRentSort} className="btn btn-primary">
           Show Properties {propertyNumber} Properties{" "}
         </button>

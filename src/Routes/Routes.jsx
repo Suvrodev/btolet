@@ -1,8 +1,8 @@
 import {
-    createBrowserRouter,
-    Navigate,
-    RouterProvider,
-  } from "react-router-dom";
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import Home from "../Layout/Pages/Home/Home/Home";
 import Main from "../Layout/Main/Main";
 import Buy from "../Layout/Pages/Buy/Buy/Buy";
@@ -22,89 +22,104 @@ import MapCheck from "../Layout/Pages/UserResponsibility/Check/MapCheck/MapCheck
 import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLocation/UserLocation";
 import ImageZoom from "../Layout/Pages/UserResponsibility/Check/ImageZoom/ImageZoom";
 import ScrollCheck from "../Layout/Pages/Buy/Buy/ScrollCheck/ScrollCheck";
+import CheckSvg from "../Layout/Pages/UserResponsibility/Check/SVG/CheckSvg/CheckSvg";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Navigate to="/home"></Navigate>,
+      },
+      {
+        path: "/home",
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/buy",
+        element: <Buy></Buy>,
+      },
+      // {
+      //   path: '/buypost',
+      //   element: <PrivateRoute><BuyPost></BuyPost></PrivateRoute>
+      // },
 
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      children:[
-        {
-            path: '/',
-            element: <Navigate to='/home'></Navigate>
-        },
-        {
-            path: '/home',
-            element: <Home></Home>
-        },
-        {
-          path: '/login',
-          element: <Login></Login>
-        },
-        {
-            path: '/buy',
-            element: <Buy></Buy>
-        },
-        // {
-        //   path: '/buypost',
-        //   element: <PrivateRoute><BuyPost></BuyPost></PrivateRoute>
-        // },
-       
-        {
-          path: '/buydetail/:id',
-          element: <BuyDetail></BuyDetail>
-        },
-        // {
-        //   path: '/rentpost',
-        //   element: <PrivateRoute><RentPost></RentPost></PrivateRoute>
-        // },
-        {
-          path: 'rentdetail/:id',
-          element: <RentDetail></RentDetail>
-        },
-        {
-          path: '/check',
-          element: <Checki></Checki>
-        },
-        {
-          path: '/updateprofile',
-          element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
-        },
-        {
-          path:'/savedpost',
-          element: <PrivateRoute><SavedPost></SavedPost></PrivateRoute>
-        },
-        {
-          path: '/mypost',
-          element: <PrivateRoute><MyPost></MyPost></PrivateRoute>
-        },
-        {
-          path: '/filter',
-          element: <Filter></Filter>
-        },
-        {
-          path: '/zcheck',
-          element: <ZCheck></ZCheck>
-        },
-        {
-          path: '/mc',
-          element: <MapCheck/>
-        },
-        {
-          path: '/location',
-          element: <UserLocation></UserLocation>
-        },
-        {
-          path: '/iz',
-          element: <ImageZoom></ImageZoom>
-        },
-        {
-          path: '/sc',
-          element: <ScrollCheck></ScrollCheck>
-        }
-      ]
-    },
-  ]);
+      {
+        path: "/buydetail/:id",
+        element: <BuyDetail></BuyDetail>,
+      },
+      // {
+      //   path: '/rentpost',
+      //   element: <PrivateRoute><RentPost></RentPost></PrivateRoute>
+      // },
+      {
+        path: "rentdetail/:id",
+        element: <RentDetail></RentDetail>,
+      },
+      {
+        path: "/check",
+        element: <Checki></Checki>,
+      },
+      {
+        path: "/updateprofile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile></UpdateProfile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/savedpost",
+        element: (
+          <PrivateRoute>
+            <SavedPost></SavedPost>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mypost",
+        element: (
+          <PrivateRoute>
+            <MyPost></MyPost>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/filter",
+        element: <Filter></Filter>,
+      },
+      {
+        path: "/zcheck",
+        element: <ZCheck></ZCheck>,
+      },
+      {
+        path: "/mc",
+        element: <MapCheck />,
+      },
+      {
+        path: "/location",
+        element: <UserLocation></UserLocation>,
+      },
+      {
+        path: "/iz",
+        element: <ImageZoom></ImageZoom>,
+      },
+      {
+        path: "/sc",
+        element: <ScrollCheck></ScrollCheck>,
+      },
+      {
+        path: "/cs",
+        element: <CheckSvg></CheckSvg>,
+      },
+    ],
+  },
+]);
 
 export default router;

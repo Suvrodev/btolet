@@ -72,18 +72,18 @@ const FilterDataProvider = ({ children }) => {
     }
   }, [pageNumber, byFilter]);
 
-  useEffect(() => {
-    if (buys.length > 0 && searchingBuy) {
-      const interval = setInterval(() => {
-        setPageNumber((prevPageNumber) => prevPageNumber + 1);
-      }, 2000);
+  // useEffect(() => {
+  //   if (buys.length > 0 && searchingBuy) {
+  //     const interval = setInterval(() => {
+  //       setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  //     }, 2000);
 
-      // Clean up the interval to prevent memory leaks
-      return () => clearInterval(interval);
-    }
-  }, [buys]);
+  //     // Clean up the interval to prevent memory leaks
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [buys]);
 
-  console.log("Buys (Auth) pageNumber: ", pageNumber, "Data: ", buys);
+  // console.log("Buys (Auth) pageNumber: ", pageNumber, "Data: ", buys);
 
   /**
    * Buy Data retrive end
@@ -143,12 +143,12 @@ const FilterDataProvider = ({ children }) => {
     }
   }, [rents]);
 
-  console.log(
-    "Rentssssssssssssssssssssss (Auth) pageNumber: ",
-    rentPageNumber,
-    "Data: ",
-    rents
-  );
+  // console.log(
+  //   "Rentssssssssssssssssssssss (Auth) pageNumber: ",
+  //   rentPageNumber,
+  //   "Data: ",
+  //   rents
+  // );
   /***
    * Rent Retrive data end
    */
@@ -177,6 +177,10 @@ const FilterDataProvider = ({ children }) => {
     setBuys,
     rents,
     setRents,
+    pageNumber,
+    setPageNumber,
+    rentPageNumber,
+    setRentPageNumber,
   };
   return (
     <FilterDataContext.Provider value={filterDataContextInfo}>

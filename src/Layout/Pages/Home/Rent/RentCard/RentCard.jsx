@@ -37,12 +37,24 @@ import carIcon from "../../../../../assets/icons/tolet/car.svg";
 import SmsIcon from "../../../../../assets/icons/home/sms_white.svg";
 import whatsappIcon from "../../../../../assets/icons/home/wapp.svg";
 import kitchenIcon from "../../../../../assets/icons/tolet/kitchen.svg";
-import { Favorite, FavoriteBorderOutlined, Kitchen } from "@mui/icons-material";
+import {
+  Blender,
+  Call,
+  Favorite,
+  FavoriteBorderOutlined,
+  Kitchen,
+  WhatsApp,
+} from "@mui/icons-material";
 import RentPostShare from "../../../../../Function/RentPostShare";
 import handlePhoneCall from "../../../../../Function/GoCall";
 import handleSendSMS from "../../../../../Function/GoMessage";
 import handleWhatsAppCall from "../../../../../Function/GoWhatappCall";
 import LazyLoad from "react-lazy-load";
+import BedSvgIcon from "../../../SharedPage/SVGCode/BedSvgIcon";
+import BathSvgIcon from "../../../SharedPage/SVGCode/BathSvgIcon";
+import AreaSvgIcon from "../../../SharedPage/SVGCode/AreaSvgIcon";
+import KitchenSvgIcon from "../../../SharedPage/SVGCode/KitchenSvgIcon";
+// import KitchenSvgIcon from "../../../../../assets/icons/property/kitchen_.png";
 
 const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
   const {
@@ -98,6 +110,14 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
     naviagte(`/rentdetail/${post_id}`);
   };
 
+  /**
+   * Wait 2 Second Start
+   */
+
+  /**
+   * wait 2 second End
+   */
+
   ///////Check Catgory start
   let iconDiv;
   if (category.includes("Only Garage")) {
@@ -142,25 +162,23 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
       iconDiv = (
         <div className="flex gap-5 items-center p-5 h-[45px] prText text-[22px] ">
           <div className="flex items-center gap-2">
-            <img className="w-[35px] opacity-40" src={bedIcon} alt="" /> {bed}
+            <BedSvgIcon />
+            {bed}
           </div>
           <div className="flex items-center gap-2 ">
             {" "}
-            <img
-              className="w-[30px] opacity-40 mb-[2px]"
-              src={bathIcon}
-              alt=""
-            />{" "}
+            <BathSvgIcon />
             {bath}
           </div>
           {roomsize ? (
             <div className="flex items-center gap-2">
-              <img className="w-[30px] opacity-40" src={areaIcon} alt="" />{" "}
+              <AreaSvgIcon className="bg-green-400 " />
               {roomsize} ft<sup>2</sup>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
-              <img className="w-[30px] opacity-40" src={kitchenIcon} alt="" />{" "}
+            <div className="flex items-center gap-2  ">
+              {/* <KitchenSvgIcon /> */}
+              <Blender />
               {kitchen}{" "}
             </div>
           )}
@@ -268,7 +286,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
   // console.log("myPostRent",myPostRent);
 
   return (
-    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[450px] md:h-[510px]">
+    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[450px] md:h-[520px] bg-purple-400 ">
       {/* Image Box Start */}
       <div className="relative">
         <Link
@@ -363,7 +381,6 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
 
       <div className="py-5 px-2 flex gap-2 justify-around ">
         <div className="flex gap-2 items-center">
-          <img className="w-[40px] h-[40px] rounded-full " src={image} alt="" />
           <p className="text-black opacity-80">{timeAgo} </p>
         </div>
         <div className="flex items-center justify-center gap-2">
@@ -371,21 +388,20 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
             onClick={() => handlePhoneCall(phone)}
             className="w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold"
           >
-            {" "}
-            <FaPhoneAlt />{" "}
+            {/* <FaPhoneAlt /> */}
+            <Call />
           </button>
           <button
             onClick={() => handleSendSMS(phone)}
             className="w-[35px] h-[35px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold"
           >
-            {" "}
             <img className="w-[20px]" src={SmsIcon} alt="" />{" "}
           </button>
           <button
             onClick={() => handleWhatsAppCall(wapp)}
             className="w-[35px] h-[35px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl"
           >
-            <img className="w-[30px]" src={whatsappIcon} alt="" />
+            <WhatsApp />
           </button>
         </div>
       </div>
