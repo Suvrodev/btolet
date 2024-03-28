@@ -39,6 +39,10 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
 
   const handleMinInputChange = (event) => {
     const value = parseInt(event.target.value);
+    if (minPrice > maxPrice) {
+      alert("Min will not more than max price");
+      return;
+    }
     setMinPrice(value);
   };
 
@@ -120,6 +124,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
             )}
             pearling
             minDistance={5}
+            value={[minPrice, maxPrice]}
             onChange={handleSliderChange}
           />
         </div>

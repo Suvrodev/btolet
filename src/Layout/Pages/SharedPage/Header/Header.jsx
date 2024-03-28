@@ -14,6 +14,8 @@ import {
   FiSearch,
   FiUser,
 } from "react-icons/fi";
+import BedNewShort from "../../Sort/NewShort/BedNewShort/BedNewShort";
+import NewShort from "../../Sort/NewShort/NewShort/NewShort";
 
 const Header = () => {
   const {
@@ -101,6 +103,12 @@ const Header = () => {
               >
                 Buy
               </NavLink>
+              <div>
+                {/* Small Short start */}
+                {/* <BedNewShort /> */}
+                <NewShort></NewShort>
+                {/* Small Short end */}
+              </div>
             </div>
           </div>
           <div className="w-[30%] flex items-center justify-end">

@@ -341,7 +341,10 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
 
         <div className="absolute top-5 right-5">
           <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
-            <FiShare2 onClick={RentPostShare} className="text-white" />
+            <FiShare2
+              onClick={() => RentPostShare(post_id)}
+              className="text-white"
+            />
           </p>
         </div>
 

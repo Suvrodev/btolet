@@ -18,11 +18,11 @@ import Filter from "../Layout/Pages/Sort/Filter/Filter";
 import PrivateRoute from "./PrivateRoute";
 import Checki from "../Layout/Pages/UserResponsibility/Check/Checki";
 import ZCheck from "../Layout/Pages/UserResponsibility/Check/ZCheck1/ZCheck";
-import MapCheck from "../Layout/Pages/UserResponsibility/Check/MapCheck/MapCheck";
 import UserLocation from "../Layout/Pages/UserResponsibility/UserLocation/UserLocation/UserLocation";
 import ImageZoom from "../Layout/Pages/UserResponsibility/Check/ImageZoom/ImageZoom";
-import ScrollCheck from "../Layout/Pages/Buy/Buy/ScrollCheck/ScrollCheck";
 import CheckSvg from "../Layout/Pages/UserResponsibility/Check/SVG/CheckSvg/CheckSvg";
+import Skeleton from "../Layout/Pages/UserResponsibility/Check/Skeleton/skeleton";
+import NewShort from "../Layout/Pages/Sort/NewShort/NewShort/NewShort";
 
 const router = createBrowserRouter([
   {
@@ -99,24 +99,20 @@ const router = createBrowserRouter([
         element: <ZCheck></ZCheck>,
       },
       {
-        path: "/mc",
-        element: <MapCheck />,
-      },
-      {
         path: "/location",
         element: <UserLocation></UserLocation>,
       },
       {
-        path: "/iz",
-        element: <ImageZoom></ImageZoom>,
-      },
-      {
-        path: "/sc",
-        element: <ScrollCheck></ScrollCheck>,
-      },
-      {
         path: "/cs",
         element: <CheckSvg></CheckSvg>,
+      },
+      {
+        path: "/skl",
+        element: <Skeleton />,
+      },
+      {
+        path: "/ns",
+        element: <NewShort></NewShort>,
       },
     ],
   },

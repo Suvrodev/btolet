@@ -9,10 +9,9 @@ import Swal from "sweetalert2";
 
 export const AuthContext = createContext("");
 const AuthProvider = ({ children }) => {
-  // const proxyUrl = 'https://cors-anywhere.herokuapp.com';
+  // const baseUrl = "http://localhost:3000/api";
   // const baseUrl= 'http://154.26.135.41:3800'
   const baseUrl = "https://api.btolet.com/api";
-  // const baseUrl='http://localhost:3000'
 
   const [uId, setUId] = useState("");
   const [currentUser, setCurrentUser] = useState("");

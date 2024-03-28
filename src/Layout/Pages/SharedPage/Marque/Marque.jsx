@@ -20,10 +20,14 @@ const Marque = () => {
       .catch((error) => console.log("Error: ", error));
   }, []);
 
-  // console.log("Marque: ",marqueText);
+  // console.log("Marque: ", marqueText);
 
   return (
-    <div className="bg-[#e9e8e8] p-2 rounded-md mt-24 md:mt-2 mb-4 mx-4 md:mx-0 max-w-[100rem]">
+    <div
+      className={`bg-[#e9e8e8] p-2 rounded-md mt-24 md:mt-2 mb-4 mx-4 md:mx-0 max-w-[100rem] ${
+        marqueText ? "" : "sklLoading"
+      }`}
+    >
       <Marquee speed={100} className="text-black text-lg ">
         {marqueText}
       </Marquee>
