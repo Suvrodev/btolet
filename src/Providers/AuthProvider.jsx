@@ -157,48 +157,48 @@ const AuthProvider = ({ children }) => {
   const [location_2, setLocation_2] = useState("");
   // let location_1='',location_2='';
 
-  useEffect(() => {
-    if (lattitude && longitude) {
-      fetch(
-        `https://map.btolet.com/nominatim/reverse.php?lat=${lattitude}&lon=${longitude}&format=jsonv2&accept-language=bn`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setArea(data);
-        });
-    }
-  }, [lattitude, longitude]);
+  // useEffect(() => {
+  //   if (lattitude && longitude) {
+  //     fetch(
+  //       `https://map.btolet.com/nominatim/reverse.php?lat=${lattitude}&lon=${longitude}&format=jsonv2&accept-language=bn`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setArea(data);
+  //       });
+  //   }
+  // }, [lattitude, longitude]);
 
   //   console.log("Area--------------------------------:", area);
 
-  useEffect(() => {
-    const { address } = area;
-    displayName = area?.display_name;
+  // useEffect(() => {
+  //   const { address } = area;
+  //   displayName = area?.display_name;
 
-    if (address?.suburb && address?.city) {
-      // console.log("Execute-1");
-      place = address?.suburb + "," + address?.city;
-    } else if (address?.name && address?.city) {
-      // console.log("Execute-2");
-      place = address?.name + "," + address?.city;
-    } else if (address?.stateDistrict && address?.name) {
-      // console.log("Execute-3");
-      place = address?.name + "," + address?.city;
-    } else {
-      // console.log("Execute-4");
-      place = displayName;
-    }
+  //   if (address?.suburb && address?.city) {
+  //     // console.log("Execute-1");
+  //     place = address?.suburb + "," + address?.city;
+  //   } else if (address?.name && address?.city) {
+  //     // console.log("Execute-2");
+  //     place = address?.name + "," + address?.city;
+  //   } else if (address?.stateDistrict && address?.name) {
+  //     // console.log("Execute-3");
+  //     place = address?.name + "," + address?.city;
+  //   } else {
+  //     // console.log("Execute-4");
+  //     place = displayName;
+  //   }
 
-    if (place) {
-      let loc_1 = place.split(",")[0];
-      let loc_2 = place.split(",")[1];
-      let doubleLocationn = `${location_1},${location_2}`;
-      //   console.log("doubleLocation(Auh: ", doubleLocationn);
-      setDoubleLocation(doubleLocationn);
-      setLocation_1(loc_1);
-      setLocation_2(loc_2);
-    }
-  }, [area, lattitude, longitude, location_1, location_2]);
+  //   if (place) {
+  //     let loc_1 = place.split(",")[0];
+  //     let loc_2 = place.split(",")[1];
+  //     let doubleLocationn = `${location_1},${location_2}`;
+  //     //   console.log("doubleLocation(Auh: ", doubleLocationn);
+  //     setDoubleLocation(doubleLocationn);
+  //     setLocation_1(loc_1);
+  //     setLocation_2(loc_2);
+  //   }
+  // }, [area, lattitude, longitude, location_1, location_2]);
 
   // console.log("doubleLocation(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",doubleLocation);
   // console.log("Location-1(Auh)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>: ",location_1);

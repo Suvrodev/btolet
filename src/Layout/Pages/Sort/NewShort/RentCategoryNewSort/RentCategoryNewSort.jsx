@@ -1,5 +1,6 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
 const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
   const bedNumbers = [
@@ -13,10 +14,12 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
     "Office",
     "Only Garage",
   ];
-  const [selectedBeds, setSelectedBeds] = useState([]);
+  // const [selectedBeds, setSelectedBeds] = useState([]);
+  const { selectedRentCategory, setSelectedRentCategory } =
+    useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
-    setSelectedBeds((prevSelectedBeds) => {
+    setSelectedRentCategory((prevSelectedBeds) => {
       if (prevSelectedBeds.includes(bedNumber)) {
         return prevSelectedBeds.filter((bed) => bed !== bedNumber);
       } else {
@@ -28,17 +31,17 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
     toggleBedSelection(bedNumber);
   };
 
-  console.log("Selected Category(rent): ", selectedBeds);
+  console.log("Selected Category(rent): ", selectedRentCategory);
 
   const clearRentCategory = () => {
-    setSelectedBeds([]);
+    setSelectedRentCategory([]);
   };
 
   return (
     <div className=" z-10 ">
       <div className="relative">
-        <h2
-          className="text-xl  cursor-pointer"
+        <button
+          className="btn bg-white border-0 shadow-md text-black hover:bg-white "
           onClick={handleShowRentCategory}
         >
           Category(Rent)
@@ -50,7 +53,7 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
               <KeyboardArrowDown />
             )}{" "}
           </span>
-        </h2>
+        </button>
         <div
           className={` absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showRentCategory ? "" : "hidden"
@@ -61,7 +64,7 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
               key={bedNumber}
               onClick={() => handleBedButtonClick(bedNumber)}
               className={`btn text-black hover:bg-white ${
-                selectedBeds.includes(bedNumber)
+                selectedRentCategory.includes(bedNumber)
                   ? "btn-primary"
                   : "bg-white border-0 shadow-md"
               }  `}
@@ -71,10 +74,12 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
           ))}
 
           <div className="flex gap-2">
-            <button className="btn btn-warning" onClick={clearRentCategory}>
+            <button className="" onClick={clearRentCategory}>
               Clear
             </button>
-            <button className="btn btn-primary">Show</button>
+            <button className="btn bg-[#3FAE4C] border-0  text-white">
+              Show
+            </button>
           </div>
         </div>
       </div>

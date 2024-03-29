@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Header.css";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import headerLogo from "../../../../assets/Logo/logo.png";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 import { FaBaby, FaBars, FaCross, FaReply } from "react-icons/fa";
@@ -48,6 +48,10 @@ const Header = () => {
     localStorage.setItem("uId", "***");
     window.location.reload();
   };
+
+  const browserLocation = useLocation();
+  const location = browserLocation?.pathname;
+  console.log("Location (Header): ", location);
 
   const NavItems = (
     <div className="lg:flex items-center justify-center text-white">
@@ -104,10 +108,9 @@ const Header = () => {
                 Buy
               </NavLink>
               <div>
-                {/* Small Short start */}
-                {/* <BedNewShort /> */}
-                <NewShort></NewShort>
-                {/* Small Short end */}
+                {(location === "/home" || location === "/buy") && (
+                  <NewShort></NewShort>
+                )}
               </div>
             </div>
           </div>

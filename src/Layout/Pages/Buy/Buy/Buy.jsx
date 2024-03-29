@@ -38,25 +38,6 @@ const Buy = () => {
     setRentPageNumber,
   } = useContext(FilterDataContext);
 
-  // console.log("Buysssssssssssssssss(2): ", buys);
-
-  /**
-   * Card Operation start
-   */
-
-  // const filterBody = {
-  //   geolat: lattitude,
-  //   geolon: longitude,
-  //   rentmin: minPrice,
-  //   rentmax: maxPrice,
-  //   page: 1,
-  //   category: selectedCategoriesBuySort,
-  //   fasalitis: selectedAmenities,
-  //   bed: selectedBedrooms,
-  //   bath: selectedBathrooms,
-  // };
-  // console.log("Filter Body(Pro): ",filterBody);
-
   ///Buy Data start
   const [closeFilterBuy, setCloseFilterBuy] = useState(false);
   const closeButtonRef = useRef(null);
@@ -69,7 +50,6 @@ const Buy = () => {
   ////Ovserver start
   useEffect(() => {
     const observer = new IntersectionObserver((items) => {
-      console.log("Check Observer: ");
       let output = items[0].isIntersecting;
       console.log(output);
       if (output) {
@@ -89,143 +69,6 @@ const Buy = () => {
   console.log("Page Number: ", pageNumber);
 
   ////Ovserver end
-
-  /***
-   * Prv code start
-   */
-  // console.log("ByFilter,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,: ", byFilter);
-  // useEffect(() => {
-  //   if (!byFilter) {
-  //     fetch(
-  //       `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
-  //     )
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         const newData = [...buys, ...data];
-  //         setBuys(newData);
-  //       });
-  //   } else {
-  //     axios.post(`${baseUrl}/pro/sort/postlist`, filterBody).then((res) => {
-  //       setBuys(res.data);
-  //       console.log(
-  //         "Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
-  //         res.data
-  //       );
-  //       // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
-  //     });
-  //   }
-  // }, [pageNumber, byFilter]);
-
-  // console.log("Buy Data: ", buys);
-
-  /**
-   * Maintaining specific Second start
-   */
-  // useEffect(() => {
-  //   if (buys.length > 0) {
-  //     const interval = setInterval(() => {
-  //       setPageNumber((prevPageNumber) => prevPageNumber + 1);
-  //     }, 2000);
-
-  //     // Clean up the interval to prevent memory leaks
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [buys]);
-  // console.log("Page Number (Buy): ", pageNumber);
-
-  /**
-   * Maintaining specific second end
-   */
-
-  /**
-   * Prv code end
-   */
-
-  /**
-   * Card Operation start
-   */
-
-  /***
-   * Minar code
-   */
-
-  // console.log("ByFilter,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,: ", byFilter);
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     if (!byFilter) {
-  //       console.log(
-  //         "Up condition exist---------------------------------------"
-  //       );
-  //       const response = await fetch(
-  //         `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
-  //       );
-  //       const data = await response.json();
-
-  //       if (data.length === 0) {
-  //         setHasMore(false);
-  //       } else {
-  //         setBuys([...buys, ...data]);
-  //         setPageNumber((prevPage) => prevPage + 1);
-  //       }
-  //     } else {
-  //       console.log(
-  //         "Down condition exist---------------------------------------"
-  //       );
-  //       const response = axios.post(`${baseUrl}/pro/sort/postlist`, filterBody);
-  //       setBuys(response.data);
-  //       console.log("Response: ", response.data);
-  //       setHasMore(false);
-  //     }
-  //   };
-
-  //   const onIntersection = (items) => {
-  //     const loaderItem = items[0];
-
-  //     if (loaderItem.isIntersecting && hasMore) {
-  //       fetchProducts();
-  //     }
-  //   };
-
-  //   const observer = new IntersectionObserver(onIntersection);
-
-  //   if (observer && loadingRef.current) {
-  //     observer.observe(loadingRef.current);
-  //   }
-
-  //   // cleanup
-  //   return () => {
-  //     if (observer) observer.disconnect();
-  //   };
-  // }, [
-  //   hasMore,
-  //   buys,
-  //   pageNumber,
-  //   byFilter,
-  //   doubleLocation,
-  //   minPrice,
-  //   maxPrice,
-  //   selectedCategoriesBuySort,
-  //   selectedBedrooms,
-  //   selectedBathrooms,
-  //   selectedAmenities,
-  // ]);
-
-  /**
-   * Minar code end
-   */
-
-  const [scrolling, setScrolling] = useState(true);
-  const [scrolledPercent, setScrolledPercent] = useState(0);
-
-  const handleAddData = () => {
-    setFuck(!fuck);
-    setPageNumber(pageNumber + 1);
-    console.log("Add");
-  };
-
-  /**
-   * Prv Code end
-   */
 
   ///Buy Data end
 
@@ -247,15 +90,18 @@ const Buy = () => {
   ///Area End
 
   /**
-   * Close Modal
+   * Close Modal start
    */
-  //Show Properties button a click korle X button a o click hobe autometically
+
   useEffect(() => {
     if (byFilter || closeFilterBuy) {
       closeButtonRef?.current.click();
       // setByFilter(false);
     }
   }, [byFilter, closeFilterBuy]);
+  /**
+   * Close Modal end
+   */
 
   return (
     <div>
@@ -285,15 +131,17 @@ const Buy = () => {
       </div>
       {/* Modal end */}
 
-      <div className="flex justify-between items-center my-4 mx-4 md-mx-0">
-        <div>
+      <div className="flex justify-end items-center my-4 mx-4 md-mx-0">
+        {/* x ads in abc area start */}
+        {/* <div>
           {
             // postCount &&
             <p>
               {postCount} ads in {location_1}, {location_2}
             </p>
           }
-        </div>
+        </div> */}
+        {/* x ads in abc area end */}
 
         {/* <h1 className="w-6/12 text-center bg-green-400 mx-auto m-10 sticky top-0">
           Page Number: {pageNumber}

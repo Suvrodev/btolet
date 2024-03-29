@@ -179,8 +179,9 @@ const Rent = () => {
 
       {/* <h1 className='my-4 text-center text-4xl font-bold'>Rent </h1> */}
 
-      <div className="flex justify-between items-center my-4 mx-4 md-mx-0">
-        <div>
+      <div className="flex justify-end items-center my-4 mx-4 md-mx-0">
+        {/* x ads in abc area start */}
+        {/* <div>
           <p className="text-2xl prText">
             <span className="text-black opacity-80 text-xl">
               {postCount} ads in
@@ -189,7 +190,8 @@ const Rent = () => {
               {location_1}, {location_2}
             </span>
           </p>
-        </div>
+        </div> */}
+        {/*} x ads in abc area end */}
 
         <button
           className="btn btn-outline"

@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BedNewShort from "../BedNewShort/BedNewShort";
 import BathNewShort from "../BathNewShort/BathNewShort";
 import PriceNewShort from "../PriceNewShort/PriceNewShort";
 import RentCategoryNewSort from "../RentCategoryNewSort/RentCategoryNewSort";
 import BuyCategoryNewSort from "../BuyCategoryNewSort/BuyCategoryNewSort";
 import { useLocation } from "react-router-dom";
+import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
 const NewShort = () => {
+  const { selectedBedrooms, setSelectedBedrooms } =
+    useContext(FilterDataContext);
+  const { selectedBathrooms, setSelectedBathrooms } =
+    useContext(FilterDataContext);
+  const { selectedRentCategory, setSelectedRentCategory } =
+    useContext(FilterDataContext);
+  const { selectedCategoriesBuySort, setSelectedCategoriesBuySort } =
+    useContext(FilterDataContext);
+
   const [showBed, setShowBed] = useState(false);
   const [showBath, setShowBath] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
@@ -19,6 +29,10 @@ const NewShort = () => {
     setShowPrice(false);
     setShowRentCategory(false);
     setShowBuyCategory(false);
+
+    setSelectedBathrooms([]);
+    setSelectedRentCategory([]);
+    setSelectedCategoriesBuySort([]);
   };
 
   const handleShowBath = () => {
@@ -27,6 +41,10 @@ const NewShort = () => {
     setShowPrice(false);
     setShowRentCategory(false);
     setShowBuyCategory(false);
+
+    setSelectedBedrooms([]);
+    setSelectedRentCategory([]);
+    setSelectedCategoriesBuySort([]);
   };
 
   const handleShowPrice = () => {
@@ -43,6 +61,10 @@ const NewShort = () => {
     setShowPrice(false);
     setShowRentCategory(!showRentCategory);
     setShowBuyCategory(false);
+
+    setSelectedBedrooms([]);
+    setSelectedBathrooms([]);
+    setSelectedCategoriesBuySort([]);
   };
 
   const handleShowBuyCategory = () => {
@@ -51,6 +73,10 @@ const NewShort = () => {
     setShowPrice(false);
     setShowRentCategory(false);
     setShowBuyCategory(!showBuyCategory);
+
+    setSelectedBedrooms([]);
+    setSelectedBathrooms([]);
+    setSelectedRentCategory([]);
   };
 
   /***

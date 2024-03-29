@@ -1,13 +1,18 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
 const BathNewShort = ({ handleShowBath, showBath }) => {
   const bathNumbers = ["1", "2", "3", "4", "5", "6", "7+"];
-  const [selectedBeds, setSelectedBeds] = useState([]);
+
+  const { selectedBathrooms, setSelectedBathrooms } =
+    useContext(FilterDataContext);
+
+  // const [selectedBeds, setSelectedBeds] = useState([]);
 
   const toggleBedSelection = (bedNumber) => {
-    setSelectedBeds((prevSelectedBeds) => {
+    setSelectedBathrooms((prevSelectedBeds) => {
       if (prevSelectedBeds.includes(bedNumber)) {
         return prevSelectedBeds.filter((bed) => bed !== bedNumber);
       } else {
@@ -19,17 +24,19 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
     toggleBedSelection(bedNumber);
   };
 
-  console.log("Selected Bath: ", selectedBeds);
-  console.log({ showBath });
+  console.log("Selected Bath: ", selectedBathrooms);
 
   const clearBath = () => {
-    setSelectedBeds([]);
+    setSelectedBathrooms([]);
   };
 
   return (
     <div className="z-10">
       <div className="relative">
-        <h2 className="text-xl cursor-pointer" onClick={handleShowBath}>
+        <h2
+          className="btn bg-white border-0 shadow-md text-black hover:bg-white"
+          onClick={handleShowBath}
+        >
           Bath{" "}
           <span>
             {" "}
@@ -46,7 +53,7 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
               key={bathNumber}
               onClick={() => handleBedButtonClick(bathNumber)}
               className={`btn text-black hover:bg-white ${
-                selectedBeds.includes(bathNumber)
+                selectedBathrooms.includes(bathNumber)
                   ? "btn-primary"
                   : "bg-white  border-0 shadow-md"
               }  `}
@@ -56,10 +63,12 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
           ))}
 
           <div className="flex gap-2">
-            <button className="btn btn-warning" onClick={clearBath}>
+            <button className="" onClick={clearBath}>
               Clear
             </button>
-            <button className="btn btn-primary">Show</button>
+            <button className="btn bg-[#3FAE4C] border-0  text-white">
+              Show
+            </button>
           </div>
         </div>
       </div>

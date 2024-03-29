@@ -1,12 +1,16 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
 const PriceNewShort = ({ showPrice, handleShowPrice }) => {
-  const bedNumbers = ["1-10", "10-20", "20-30"];
-  const [selectedBed, setSelectedBed] = useState(null);
+  const bedNumbers = ["10000", "20000", "50000"];
+
+  const { maxPrice, setMaxPrice } = useContext(FilterDataContext);
+
+  // const [selectedBed, setSelectedBed] = useState(null);
 
   const handleBedButtonClick = (bedNumber) => {
-    setSelectedBed((prevSelectedBed) => {
+    setMaxPrice((prevSelectedBed) => {
       if (prevSelectedBed === bedNumber) {
         return null; // Deselect the currently selected button
       } else {
@@ -15,19 +19,22 @@ const PriceNewShort = ({ showPrice, handleShowPrice }) => {
     });
   };
 
-  console.log("Selected Bed: ", selectedBed);
+  console.log("Max Price: ", maxPrice);
 
   const clearPrice = () => {
-    setSelectedBed(null);
+    setMaxPrice("");
   };
 
   return (
     <div className="z-10">
       <div className="relative">
-        <h2 className="text-xl cursor-pointer" onClick={handleShowPrice}>
+        <button
+          className="btn bg-white border-0 shadow-md text-black hover:bg-white "
+          onClick={handleShowPrice}
+        >
           Price{" "}
           <span>{showPrice ? <KeyboardArrowUp /> : <KeyboardArrowDown />}</span>
-        </h2>
+        </button>
         <div
           className={`absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showPrice ? "" : "hidden"
@@ -38,20 +45,22 @@ const PriceNewShort = ({ showPrice, handleShowPrice }) => {
               key={bedNumber}
               onClick={() => handleBedButtonClick(bedNumber)}
               className={`btn text-black hover:bg-white ${
-                selectedBed === bedNumber
+                maxPrice === bedNumber
                   ? "btn-primary"
                   : "bg-white border-0 shadow-md"
               }`}
             >
-              {bedNumber}
+              <h1>up to {bedNumber}</h1>
             </button>
           ))}
 
           <div className="flex gap-2">
-            <button onClick={clearPrice} className="btn btn-warning">
+            <button onClick={clearPrice} className="">
               Clear
             </button>
-            <button className="btn btn-primary">Show</button>
+            <button className="btn bg-[#3FAE4C] border-0  text-white">
+              Show
+            </button>
           </div>
         </div>
       </div>
