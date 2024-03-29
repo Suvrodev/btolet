@@ -8,20 +8,32 @@ import { useLocation } from "react-router-dom";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
 const NewShort = () => {
-  const { selectedBedrooms, setSelectedBedrooms } =
-    useContext(FilterDataContext);
-  const { selectedBathrooms, setSelectedBathrooms } =
-    useContext(FilterDataContext);
-  const { selectedRentCategory, setSelectedRentCategory } =
-    useContext(FilterDataContext);
-  const { selectedCategoriesBuySort, setSelectedCategoriesBuySort } =
-    useContext(FilterDataContext);
+  const {
+    selectedBedrooms,
+    setSelectedBedrooms,
+    selectedBathrooms,
+    setSelectedBathrooms,
+    selectedRentCategory,
+    setSelectedRentCategory,
+    selectedCategoriesBuySort,
+    setSelectedCategoriesBuySort,
+    setRentPageNumber,
+    setRents,
+    setByFilterRent,
+    setByFilter,
+  } = useContext(FilterDataContext);
 
   const [showBed, setShowBed] = useState(false);
   const [showBath, setShowBath] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
   const [showRentCategory, setShowRentCategory] = useState(false);
   const [showBuyCategory, setShowBuyCategory] = useState(false);
+
+  const [bedClose, setBedClose] = useState(false);
+  const [bathClose, setBathClose] = useState(false);
+  const [priceClose, setPriceClose] = useState(false);
+  const [rentCategoryClose, setReCategoryClose] = useState(false);
+  const [buyCategoryClose, setBuyCategoryClose] = useState(false);
 
   const handleShowBed = () => {
     setShowBed(!showBed);
@@ -86,7 +98,7 @@ const NewShort = () => {
   const [home, setHome] = useState(false);
   const browserLocation = useLocation();
   const location = browserLocation?.pathname;
-  console.log("Location(New Sort): ", location);
+  // console.log("Location(New Sort): ", location);
 
   useEffect(() => {
     if (location == "/home") {
@@ -101,12 +113,27 @@ const NewShort = () => {
    * Check Location end
    */
 
+  useEffect(() => {
+    if (
+      bedClose == false &&
+      bathClose == false &&
+      priceClose == false &&
+      rentCategoryClose == false
+    ) {
+      setByFilterRent(false);
+      setRentPageNumber(1);
+      setRents([]);
+    }
+  }, [bedClose, bathClose, priceClose, rentCategoryClose]);
+
   return (
     <div className="flex gap-10 z-20">
       <div className=" flex items-center">
         <BedNewShort
           showBed={showBed}
           handleShowBed={handleShowBed}
+          bedClose={bedClose}
+          setBedClose={setBedClose}
         ></BedNewShort>
       </div>
       <div className="flex items-center">

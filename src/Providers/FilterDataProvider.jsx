@@ -80,6 +80,8 @@ const FilterDataProvider = ({ children }) => {
    * Rent Data Retrive start
    */
 
+  console.log("By Filter Rent: ", byFilterRent);
+
   const [rents, setRents] = useState([]);
   const [rentPageNumber, setRentPageNumber] = useState(1);
   const [searchingRent, setSearchingRent] = useState(true);

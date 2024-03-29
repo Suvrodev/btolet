@@ -20,7 +20,7 @@ const BuyCategoryNewSort = ({ showBuyCategory, handleShowBuyCategory }) => {
     toggleBedSelection(bedNumber);
   };
 
-  console.log("Selected Category(rent): ", selectedCategoriesBuySort);
+  // console.log("Selected Category(rent): ", selectedCategoriesBuySort);
 
   const clearBuyCategory = () => {
     setSelectedCategoriesBuySort([]);

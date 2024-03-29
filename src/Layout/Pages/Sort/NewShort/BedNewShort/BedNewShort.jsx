@@ -3,9 +3,17 @@ import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
-const BedNewShort = ({ handleShowBed, showBed }) => {
-  const { selectedBedrooms, setSelectedBedrooms } =
-    useContext(FilterDataContext);
+const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
+  const {
+    selectedBedrooms,
+    setSelectedBedrooms,
+    setByFilterRent,
+    setByFilter,
+  } = useContext(FilterDataContext);
+
+  const browserLocation = useLocation();
+  const location = browserLocation?.pathname;
+  // console.log("Location beddddddddddd: ", location);
 
   const bedNumbers = ["1", "2", "3", "4", "5", "6", "7+"];
   // const [selectedBeds, setSelectedBeds] = useState([]);
@@ -29,13 +37,18 @@ const BedNewShort = ({ handleShowBed, showBed }) => {
 
   console.log("Selected Bed: ", selectedBedrooms);
 
+  const handleShow = () => {
+    setByFilterRent(true);
+    setBedClose(true);
+    handleShowBed();
+  };
+
+  const handleRemoveBedSort = () => {
+    setBedClose(false);
+  };
   return (
     <div className=" z-10 ">
       <div className="relative">
-        {/* <h1 className="text-xl cursor-pointer " onClick={handleShowBed}>
-          Bed{" "}
-          <span> {showBed ? <KeyboardArrowUp /> : <KeyboardArrowDown />} </span>
-        </h1> */}
         <button
           className="btn bg-white border-0 shadow-md text-black hover:bg-white "
           onClick={handleShowBed}
@@ -43,6 +56,13 @@ const BedNewShort = ({ handleShowBed, showBed }) => {
           Bed{" "}
           <span> {showBed ? <KeyboardArrowUp /> : <KeyboardArrowDown />} </span>
         </button>
+        <span
+          className="text-red-500 cursor-pointer"
+          onClick={handleRemoveBedSort}
+        >
+          {" "}
+          {bedClose ? "x" : ""}{" "}
+        </span>
         <div
           className={` absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showBed ? "" : "hidden"
@@ -66,7 +86,10 @@ const BedNewShort = ({ handleShowBed, showBed }) => {
             <button className="" onClick={clearBed}>
               Clear
             </button>
-            <button className="btn bg-[#3FAE4C] border-0  text-white">
+            <button
+              className="btn bg-[#3FAE4C] border-0  text-white"
+              onClick={handleShow}
+            >
               Show
             </button>
           </div>

@@ -51,7 +51,7 @@ const Header = () => {
 
   const browserLocation = useLocation();
   const location = browserLocation?.pathname;
-  console.log("Location (Header): ", location);
+  // console.log("Location (Header): ", location);
 
   const NavItems = (
     <div className="lg:flex items-center justify-center text-white">

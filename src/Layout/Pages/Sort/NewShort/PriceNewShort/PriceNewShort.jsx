@@ -19,7 +19,7 @@ const PriceNewShort = ({ showPrice, handleShowPrice }) => {
     });
   };
 
-  console.log("Max Price: ", maxPrice);
+  // console.log("Max Price: ", maxPrice);
 
   const clearPrice = () => {
     setMaxPrice("");

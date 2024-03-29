@@ -24,7 +24,7 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
     toggleBedSelection(bedNumber);
   };
 
-  console.log("Selected Bath: ", selectedBathrooms);
+  // console.log("Selected Bath: ", selectedBathrooms);
 
   const clearBath = () => {
     setSelectedBathrooms([]);

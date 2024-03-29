@@ -31,7 +31,7 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
     toggleBedSelection(bedNumber);
   };
 
-  console.log("Selected Category(rent): ", selectedRentCategory);
+  // console.log("Selected Category(rent): ", selectedRentCategory);
 
   const clearRentCategory = () => {
     setSelectedRentCategory([]);
