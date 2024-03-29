@@ -3,13 +3,20 @@ import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
-const BathNewShort = ({ handleShowBath, showBath }) => {
+const BathNewShort = ({
+  handleShowBath,
+  showBath,
+  bathClose,
+  setBathClose,
+}) => {
   const bathNumbers = ["1", "2", "3", "4", "5", "6", "7+"];
 
-  const { selectedBathrooms, setSelectedBathrooms } =
-    useContext(FilterDataContext);
-
-  // const [selectedBeds, setSelectedBeds] = useState([]);
+  const {
+    selectedBathrooms,
+    setSelectedBathrooms,
+    setByFilterRent,
+    setByFilter,
+  } = useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
     setSelectedBathrooms((prevSelectedBeds) => {
@@ -24,16 +31,35 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
     toggleBedSelection(bedNumber);
   };
 
-  // console.log("Selected Bath: ", selectedBathrooms);
+  console.log("************", selectedBathrooms);
 
+  ////Clear Button Work
   const clearBath = () => {
     setSelectedBathrooms([]);
+  };
+
+  ////For Sorting
+  const browserLocation = useLocation();
+  const location = browserLocation?.pathname;
+
+  const handleBathSort = () => {
+    setBathClose(true);
+    handleShowBath();
+    if (location === "/home") {
+      setByFilterRent(true);
+    } else {
+      setByFilter(true);
+    }
+  };
+
+  const handleRemoveBedSort = () => {
+    setBathClose(false);
   };
 
   return (
     <div className="z-10">
       <div className="relative">
-        <h2
+        <button
           className="btn bg-white border-0 shadow-md text-black hover:bg-white"
           onClick={handleShowBath}
         >
@@ -42,7 +68,14 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
             {" "}
             {showBath ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{" "}
           </span>
-        </h2>
+        </button>
+        <span
+          className="text-red-500 cursor-pointer"
+          onClick={handleRemoveBedSort}
+        >
+          {" "}
+          {bathClose ? "x" : ""}{" "}
+        </span>
         <div
           className={` absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showBath ? "" : "hidden"
@@ -66,7 +99,10 @@ const BathNewShort = ({ handleShowBath, showBath }) => {
             <button className="" onClick={clearBath}>
               Clear
             </button>
-            <button className="btn bg-[#3FAE4C] border-0  text-white">
+            <button
+              className="btn bg-[#3FAE4C] border-0  text-white"
+              onClick={handleBathSort}
+            >
               Show
             </button>
           </div>

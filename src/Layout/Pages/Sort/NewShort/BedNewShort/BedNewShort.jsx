@@ -11,10 +11,6 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     setByFilter,
   } = useContext(FilterDataContext);
 
-  const browserLocation = useLocation();
-  const location = browserLocation?.pathname;
-  // console.log("Location beddddddddddd: ", location);
-
   const bedNumbers = ["1", "2", "3", "4", "5", "6", "7+"];
   // const [selectedBeds, setSelectedBeds] = useState([]);
 
@@ -31,16 +27,24 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     toggleBedSelection(bedNumber);
   };
 
+  ///Clear Button Work
   const clearBed = () => {
     setSelectedBedrooms([]);
   };
 
   console.log("Selected Bed: ", selectedBedrooms);
 
-  const handleShow = () => {
-    setByFilterRent(true);
+  const browserLocation = useLocation();
+  const location = browserLocation?.pathname;
+
+  const handleBedSort = () => {
     setBedClose(true);
     handleShowBed();
+    if (location === "/home") {
+      setByFilterRent(true);
+    } else {
+      setByFilter(true);
+    }
   };
 
   const handleRemoveBedSort = () => {
@@ -88,7 +92,7 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
             </button>
             <button
               className="btn bg-[#3FAE4C] border-0  text-white"
-              onClick={handleShow}
+              onClick={handleBedSort}
             >
               Show
             </button>

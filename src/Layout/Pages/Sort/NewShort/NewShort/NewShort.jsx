@@ -18,7 +18,9 @@ const NewShort = () => {
     selectedCategoriesBuySort,
     setSelectedCategoriesBuySort,
     setRentPageNumber,
+    setPageNumber,
     setRents,
+    setBuys,
     setByFilterRent,
     setByFilter,
   } = useContext(FilterDataContext);
@@ -126,6 +128,19 @@ const NewShort = () => {
     }
   }, [bedClose, bathClose, priceClose, rentCategoryClose]);
 
+  useEffect(() => {
+    if (
+      bedClose == false &&
+      bathClose == false &&
+      priceClose == false &&
+      buyCategoryClose == false
+    ) {
+      setByFilter(false);
+      setPageNumber(1);
+      setBuys([]);
+    }
+  }, [bedClose, bathClose, priceClose, buyCategoryClose]);
+
   return (
     <div className="flex gap-10 z-20">
       <div className=" flex items-center">
@@ -140,6 +155,8 @@ const NewShort = () => {
         <BathNewShort
           showBath={showBath}
           handleShowBath={handleShowBath}
+          bathClose={bathClose}
+          setBathClose={setBathClose}
         ></BathNewShort>
       </div>
       <div className="z-10">

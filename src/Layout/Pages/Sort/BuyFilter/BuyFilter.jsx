@@ -157,15 +157,22 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
       </div>
 
       <div>
+        <h1>Category: </h1>
         <CategoryContentProSort></CategoryContentProSort>
       </div>
 
       <div className="grid grid-cols-2 gap-6">
         {/* BedRoom Start */}
-        <BedRoomSort></BedRoomSort>
+        <div>
+          <h1>Bedroom:</h1>
+          <BedRoomSort></BedRoomSort>
+        </div>
 
         {/* Bathroom short */}
-        <BathroomSort></BathroomSort>
+        <div>
+          <h1>Bathroom</h1>
+          <BathroomSort></BathroomSort>
+        </div>
       </div>
 
       {/* Facilities */}
