@@ -50,7 +50,7 @@ const Buy = () => {
       let output = items[0].isIntersecting;
       // console.log({ output });
       // if (output && searchingBuy) {
-      if (output && searchingBuy) {
+      if (output) {
         setPageNumber((prevPageNumber) => prevPageNumber + 1);
       }
     });
@@ -64,7 +64,7 @@ const Buy = () => {
     };
   }, [searchingBuy]);
   // console.log("Searching Buy: ", searchingBuy);
-  // console.log("Page Number(Buy): ", pageNumber);
+  console.log("Page Number(Buy): ", pageNumber);
 
   ////Ovserver end
 

@@ -33,55 +33,6 @@ const FilterDataProvider = ({ children }) => {
   const [categoryRentDep, setCategoryRentDep] = useState(false);
   const [categoryBuyDep, setCategoryBuyDep] = useState(false);
 
-  /**
-   * Buy Data retrive start
-   */
-
-  const [pageNumber, setPageNumber] = useState(1);
-  const [buys, setBuys] = useState([]);
-  const [searchingBuy, setSearchingBuy] = useState(true);
-
-  const filterBody = {
-    geolat: lattitude,
-    geolon: longitude,
-    rentmin: minPrice,
-    rentmax: maxPrice,
-    page: 1,
-    category: selectedCategoriesBuySort,
-    fasalitis: selectedAmenities,
-    bed: selectedBedrooms,
-    bath: selectedBathrooms,
-  };
-
-  useEffect(() => {
-    if (!byFilter) {
-      fetch(
-        `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.length == 0) {
-            setSearchingBuy(false);
-          }
-          const newData = [...buys, ...data];
-          setBuys(newData);
-        });
-    } else {
-      axios.post(`${baseUrl}/pro/sort/postlist`, filterBody).then((res) => {
-        setBuys(res.data);
-        console.log(
-          "Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
-          res.data
-        );
-        // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
-      });
-    }
-  }, [pageNumber, byFilter, bedDep, bathDep, priceDep, categoryBuyDep]);
-
-  /**
-   * Buy Data retrive end
-   */
-
   /***
    * Rent Data Retrive start
    */
@@ -140,19 +91,67 @@ const FilterDataProvider = ({ children }) => {
     categoryRentDep,
   ]);
 
-  // useEffect(() => {
-  //   if (rents.length > 0 && searchingRent) {
-  //     const interval = setInterval(() => {
-  //       setRentPageNumber((prevPageNumber) => prevPageNumber + 1);
-  //     }, 3000);
-
-  //     // Clean up the interval to prevent memory leaks
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [rents]);
-
   /***
    * Rent Retrive data end
+   */
+
+  /**
+   * Buy Data retrive start
+   */
+
+  const [pageNumber, setPageNumber] = useState(1);
+  const [buys, setBuys] = useState([]);
+  const [searchingBuy, setSearchingBuy] = useState(true);
+
+  const filterBody = {
+    geolat: lattitude,
+    geolon: longitude,
+    rentmin: minPrice,
+    rentmax: maxPrice,
+    page: 1,
+    category: selectedCategoriesBuySort,
+    fasalitis: selectedAmenities,
+    bed: selectedBedrooms,
+    bath: selectedBathrooms,
+  };
+
+  useEffect(() => {
+    if (!byFilter) {
+      fetch(
+        `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length == 0) {
+            setSearchingBuy(false);
+          }
+          const newData = [...buys, ...data];
+          setBuys(newData);
+        });
+    } else {
+      axios.post(`${baseUrl}/pro/sort/postlist`, filterBody).then((res) => {
+        setBuys(res.data);
+        console.log(
+          "Property Sort Data++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
+          res.data
+        );
+        // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
+      });
+    }
+  }, [pageNumber, byFilter, bedDep, bathDep, priceDep, categoryBuyDep]);
+
+  // useEffect(() => {
+  //   if (byFilter) {
+  //     axios.post(`${baseUrl}/pro/sort/postlist`, filterBody).then((res) => {
+  //       const newData = [...buys, ...res.data];
+  //       setBuys(newData);
+  //       console.log("Property Sort Data*****************************: ", buys);
+  //     });
+  //   }
+  // }, [byFilter, pageNumber]);
+
+  /**
+   * Buy Data retrive end
    */
 
   const filterDataContextInfo = {

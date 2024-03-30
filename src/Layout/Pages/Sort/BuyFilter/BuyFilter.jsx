@@ -92,7 +92,7 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
     // console.log("Bedroom: ",selectedBedrooms);
     // console.log("Bathroom: ",selectedBathrooms);
     // console.log("Amenities: ",selectedAmenities);
-
+    setPageNumber(1);
     setByFilter(false);
     setTimeout(() => {
       setByFilter(true);
@@ -104,7 +104,7 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
   const handleBuyClearSort = () => {
     setCloseFilterBuy(true);
     setByFilter(false);
-    setPageNumber(0);
+    setPageNumber(1);
     setBuys([]);
   };
 

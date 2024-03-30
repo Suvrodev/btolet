@@ -9,6 +9,8 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     setSelectedBedrooms,
     setByFilterRent,
     setByFilter,
+    setRentPageNumber,
+    setPageNumber,
 
     ////Dependency for short short
     bedDep,
@@ -47,9 +49,11 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     if (location === "/home") {
       setByFilterRent(true);
       setBedDep(!bedDep);
+      setRentPageNumber(1);
     } else {
       setByFilter(true);
       setBedDep(!bedDep);
+      setPageNumber(1);
     }
   };
 
@@ -58,6 +62,8 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     setSelectedBedrooms([]);
     setBedClose(false);
     setBedDep(!bedDep);
+    setRentPageNumber(1);
+    setPageNumber(1);
   };
   return (
     <div className=" z-10 ">

@@ -16,6 +16,8 @@ const PriceNewShort = ({
     setMaxPrice,
     setByFilterRent,
     setByFilter,
+    setRentPageNumber,
+    setPageNumber,
     ////Dependency for short short
 
     priceDep,
@@ -51,9 +53,11 @@ const PriceNewShort = ({
     if (location === "/home") {
       setByFilterRent(true);
       setPriceDep(!priceDep);
+      setRentPageNumber(1);
     } else {
       setByFilter(true);
       setPriceDep(!priceDep);
+      setPageNumber(1);
     }
   };
 
@@ -61,6 +65,8 @@ const PriceNewShort = ({
   const handleRemovePriceSort = () => {
     setPriceClose(false);
     setPriceDep(!priceDep);
+    setRentPageNumber(1);
+    setPageNumber(1);
   };
 
   return (

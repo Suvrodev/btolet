@@ -96,6 +96,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     setByFilterRent(false);
 
     setTimeout(() => {
+      setRentPageNumber(1);
       setByFilterRent(true);
     }, 1000);
     // setByFilterRent(true);

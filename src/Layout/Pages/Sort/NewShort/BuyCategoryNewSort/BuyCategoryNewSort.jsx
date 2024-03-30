@@ -14,6 +14,8 @@ const BuyCategoryNewSort = ({
     setSelectedCategoriesBuySort,
     setByFilter,
 
+    setRentPageNumber,
+    setPageNumber,
     ////Dependency for short short
     categoryBuyDep,
     setCategoryBuyDep,
@@ -43,13 +45,14 @@ const BuyCategoryNewSort = ({
     handleShowBuyCategory();
     setByFilter(true);
     setCategoryBuyDep(!categoryBuyDep);
+    setPageNumber(1);
   };
 
   ////Close means if all items will cose then  byFilterRent will flase
   const handleRemoveBuyCategorySort = () => {
     setSelectedCategoriesBuySort([]);
     setBuyCategoryClose(false);
-    setCategoryBuyDep(!categoryBuyDep);
+    setPageNumber(1);
   };
 
   return (

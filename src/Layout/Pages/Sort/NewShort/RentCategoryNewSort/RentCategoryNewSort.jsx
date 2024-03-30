@@ -26,6 +26,10 @@ const RentCategoryNewSort = ({
     selectedRentCategory,
     setSelectedRentCategory,
     setByFilterRent,
+
+    setRentPageNumber,
+    setPageNumber,
+    ///Dependency
     categoryRentDep,
     setCategoryRentDep,
   } = useContext(FilterDataContext);
@@ -57,6 +61,7 @@ const RentCategoryNewSort = ({
     setByFilterRent(true);
 
     setCategoryRentDep(!categoryRentDep);
+    setRentPageNumber(1);
   };
 
   ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
@@ -65,6 +70,7 @@ const RentCategoryNewSort = ({
     setRentCategoryClose(false);
 
     setCategoryRentDep(!categoryRentDep);
+    setRentPageNumber(1);
   };
 
   return (

@@ -19,6 +19,8 @@ const BathNewShort = ({
     setByFilterRent,
     setByFilter,
 
+    setRentPageNumber,
+    setPageNumber,
     ///Short sort Dependency
     bathDep,
     setBathDep,
@@ -54,9 +56,11 @@ const BathNewShort = ({
 
       setByFilterRent(true);
       setBathDep(!bathDep);
+      setRentPageNumber(1);
     } else {
       setByFilter(true);
       setBathDep(!bathDep);
+      setPageNumber(1);
     }
   };
 
