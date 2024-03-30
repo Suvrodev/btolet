@@ -1,11 +1,18 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import React, { useContext, useState } from "react";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
+import { useLocation } from "react-router-dom";
 
-const PriceNewShort = ({ showPrice, handleShowPrice }) => {
-  const bedNumbers = ["10000", "20000", "50000"];
+const PriceNewShort = ({
+  showPrice,
+  handleShowPrice,
+  priceClose,
+  setPriceClose,
+}) => {
+  const bedNumbers = [5000, 10000, 15000, 20000, 25000];
 
-  const { maxPrice, setMaxPrice } = useContext(FilterDataContext);
+  const { maxPrice, setMaxPrice, setByFilterRent, setByFilter } =
+    useContext(FilterDataContext);
 
   // const [selectedBed, setSelectedBed] = useState(null);
 
@@ -19,10 +26,30 @@ const PriceNewShort = ({ showPrice, handleShowPrice }) => {
     });
   };
 
-  // console.log("Max Price: ", maxPrice);
+  console.log("Max Price: ", maxPrice);
 
+  ////Clear Button Work
   const clearPrice = () => {
-    setMaxPrice("");
+    setMaxPrice(100000);
+  };
+
+  ////For Sorting
+  const browserLocation = useLocation();
+  const location = browserLocation?.pathname;
+
+  const handlePriceSort = () => {
+    setPriceClose(true);
+    handleShowPrice();
+    if (location === "/home") {
+      setByFilterRent(true);
+    } else {
+      setByFilter(true);
+    }
+  };
+
+  ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
+  const handleRemovePriceSort = () => {
+    setPriceClose(false);
   };
 
   return (
@@ -35,6 +62,13 @@ const PriceNewShort = ({ showPrice, handleShowPrice }) => {
           Price{" "}
           <span>{showPrice ? <KeyboardArrowUp /> : <KeyboardArrowDown />}</span>
         </button>
+        <span
+          className="text-red-500 cursor-pointer"
+          onClick={handleRemovePriceSort}
+        >
+          {" "}
+          {priceClose ? "x" : ""}{" "}
+        </span>
         <div
           className={`absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showPrice ? "" : "hidden"
@@ -58,7 +92,10 @@ const PriceNewShort = ({ showPrice, handleShowPrice }) => {
             <button onClick={clearPrice} className="">
               Clear
             </button>
-            <button className="btn bg-[#3FAE4C] border-0  text-white">
+            <button
+              className="btn bg-[#3FAE4C] border-0  text-white"
+              onClick={handlePriceSort}
+            >
               Show
             </button>
           </div>

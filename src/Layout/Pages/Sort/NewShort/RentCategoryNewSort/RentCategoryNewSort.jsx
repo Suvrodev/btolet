@@ -2,7 +2,12 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import React, { useContext, useState } from "react";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
-const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
+const RentCategoryNewSort = ({
+  handleShowRentCategory,
+  showRentCategory,
+  rentCategoryClose,
+  setRentCategoryClose,
+}) => {
   const bedNumbers = [
     "Family",
     "Bachelor",
@@ -15,7 +20,7 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
     "Only Garage",
   ];
   // const [selectedBeds, setSelectedBeds] = useState([]);
-  const { selectedRentCategory, setSelectedRentCategory } =
+  const { selectedRentCategory, setSelectedRentCategory, setByFilterRent } =
     useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
@@ -33,8 +38,21 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
 
   // console.log("Selected Category(rent): ", selectedRentCategory);
 
+  ////Clear Button Work
   const clearRentCategory = () => {
     setSelectedRentCategory([]);
+  };
+
+  ////For Sorting
+  const handleRentCategorySort = () => {
+    setRentCategoryClose(true);
+    handleShowRentCategory();
+    setByFilterRent(true);
+  };
+
+  ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
+  const handleRemoveRentCategorySort = () => {
+    setRentCategoryClose(false);
   };
 
   return (
@@ -54,6 +72,13 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
             )}{" "}
           </span>
         </button>
+        <span
+          className="text-red-500 cursor-pointer"
+          onClick={handleRemoveRentCategorySort}
+        >
+          {" "}
+          {rentCategoryClose ? "x" : ""}{" "}
+        </span>
         <div
           className={` absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showRentCategory ? "" : "hidden"
@@ -77,7 +102,10 @@ const RentCategoryNewSort = ({ handleShowRentCategory, showRentCategory }) => {
             <button className="" onClick={clearRentCategory}>
               Clear
             </button>
-            <button className="btn bg-[#3FAE4C] border-0  text-white">
+            <button
+              className="btn bg-[#3FAE4C] border-0  text-white"
+              onClick={handleRentCategorySort}
+            >
               Show
             </button>
           </div>

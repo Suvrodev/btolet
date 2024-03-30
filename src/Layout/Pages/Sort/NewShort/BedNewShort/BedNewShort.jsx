@@ -32,7 +32,7 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     setSelectedBedrooms([]);
   };
 
-  console.log("Selected Bed: ", selectedBedrooms);
+  // console.log("Selected Bed: ", selectedBedrooms);
 
   const browserLocation = useLocation();
   const location = browserLocation?.pathname;
@@ -47,7 +47,9 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     }
   };
 
+  ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
   const handleRemoveBedSort = () => {
+    setSelectedBedrooms([]);
     setBedClose(false);
   };
   return (

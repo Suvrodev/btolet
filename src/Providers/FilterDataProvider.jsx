@@ -16,7 +16,7 @@ const FilterDataProvider = ({ children }) => {
   const [byFilterRent, setByFilterRent] = useState(false);
 
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(10000000);
+  const [maxPrice, setMaxPrice] = useState(100000);
 
   const [selectedRentCategory, setSelectedRentCategory] = useState([]);
   const [selectedBathrooms, setSelectedBathrooms] = useState([]);

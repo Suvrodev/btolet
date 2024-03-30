@@ -2,10 +2,18 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import React, { useContext, useState } from "react";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
-const BuyCategoryNewSort = ({ showBuyCategory, handleShowBuyCategory }) => {
+const BuyCategoryNewSort = ({
+  showBuyCategory,
+  handleShowBuyCategory,
+  buyCategoryClose,
+  setBuyCategoryClose,
+}) => {
   const bedNumbers = ["House", "Flat", "Land", "Plot"];
-  const { selectedCategoriesBuySort, setSelectedCategoriesBuySort } =
-    useContext(FilterDataContext);
+  const {
+    selectedCategoriesBuySort,
+    setSelectedCategoriesBuySort,
+    setByFilter,
+  } = useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
     setSelectedCategoriesBuySort((prevSelectedBeds) => {
@@ -20,10 +28,21 @@ const BuyCategoryNewSort = ({ showBuyCategory, handleShowBuyCategory }) => {
     toggleBedSelection(bedNumber);
   };
 
-  // console.log("Selected Category(rent): ", selectedCategoriesBuySort);
-
+  ////Clear Button Work
   const clearBuyCategory = () => {
     setSelectedCategoriesBuySort([]);
+  };
+
+  ////For Sorting
+  const handleBuyCategorySort = () => {
+    setBuyCategoryClose(true);
+    handleShowBuyCategory();
+    setByFilter(true);
+  };
+
+  ////Close means if all items will cose then  byFilterRent will flase
+  const handleRemoveBuyCategorySort = () => {
+    setBuyCategoryClose(false);
   };
 
   return (
@@ -39,6 +58,13 @@ const BuyCategoryNewSort = ({ showBuyCategory, handleShowBuyCategory }) => {
             {showBuyCategory ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{" "}
           </span>
         </button>
+        <span
+          className="text-red-500 cursor-pointer"
+          onClick={handleRemoveBuyCategorySort}
+        >
+          {" "}
+          {buyCategoryClose ? "x" : ""}{" "}
+        </span>
         <div
           className={` absolute flex flex-col gap-2 bg-white p-5 rounded-md ${
             showBuyCategory ? "" : "hidden"
@@ -62,7 +88,10 @@ const BuyCategoryNewSort = ({ showBuyCategory, handleShowBuyCategory }) => {
             <button onClick={clearBuyCategory} className="">
               Clear
             </button>
-            <button className="btn bg-[#3FAE4C] border-0  text-white">
+            <button
+              className="btn bg-[#3FAE4C] border-0  text-white"
+              onClick={handleBuyCategorySort}
+            >
               Show
             </button>
           </div>

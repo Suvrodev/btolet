@@ -31,8 +31,6 @@ const BathNewShort = ({
     toggleBedSelection(bedNumber);
   };
 
-  console.log("************", selectedBathrooms);
-
   ////Clear Button Work
   const clearBath = () => {
     setSelectedBathrooms([]);
@@ -52,7 +50,9 @@ const BathNewShort = ({
     }
   };
 
+  ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
   const handleRemoveBedSort = () => {
+    setSelectedBathrooms([]);
     setBathClose(false);
   };
 
@@ -69,6 +69,7 @@ const BathNewShort = ({
             {showBath ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{" "}
           </span>
         </button>
+
         <span
           className="text-red-500 cursor-pointer"
           onClick={handleRemoveBedSort}

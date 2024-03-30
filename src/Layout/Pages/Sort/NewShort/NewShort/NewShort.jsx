@@ -34,7 +34,7 @@ const NewShort = () => {
   const [bedClose, setBedClose] = useState(false);
   const [bathClose, setBathClose] = useState(false);
   const [priceClose, setPriceClose] = useState(false);
-  const [rentCategoryClose, setReCategoryClose] = useState(false);
+  const [rentCategoryClose, setRentCategoryClose] = useState(false);
   const [buyCategoryClose, setBuyCategoryClose] = useState(false);
 
   const handleShowBed = () => {
@@ -163,6 +163,8 @@ const NewShort = () => {
         <PriceNewShort
           showPrice={showPrice}
           handleShowPrice={handleShowPrice}
+          priceClose={priceClose}
+          setPriceClose={setPriceClose}
         ></PriceNewShort>
       </div>
 
@@ -171,6 +173,8 @@ const NewShort = () => {
           <RentCategoryNewSort
             showRentCategory={showRentCategory}
             handleShowRentCategory={handleShowRentCategory}
+            rentCategoryClose={rentCategoryClose}
+            setRentCategoryClose={setRentCategoryClose}
           ></RentCategoryNewSort>
         </div>
       ) : (
@@ -178,6 +182,8 @@ const NewShort = () => {
           <BuyCategoryNewSort
             showBuyCategory={showBuyCategory}
             handleShowBuyCategory={handleShowBuyCategory}
+            buyCategoryClose={buyCategoryClose}
+            setBuyCategoryClose={setBuyCategoryClose}
           ></BuyCategoryNewSort>
         </div>
       )}

@@ -115,8 +115,8 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
             className="horizontal-slider"
             thumbClassName="example-thumb"
             trackClassName="example-track"
-            defaultValue={[0, 10000000]}
-            max={10000000}
+            defaultValue={[0, 100000]}
+            max={100000}
             min={0}
             ariaLabel={["Lower thumb", "Upper thumb"]}
             ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
