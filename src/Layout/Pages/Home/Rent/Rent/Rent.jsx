@@ -54,7 +54,7 @@ const Rent = () => {
       let output = items[0].isIntersecting;
       console.log({ output });
       // if (output && searchingRent) {
-      if (output) {
+      if (output && searchingRent) {
         setRentPageNumber((prevPageNumber) => prevPageNumber + 1);
       }
     });
