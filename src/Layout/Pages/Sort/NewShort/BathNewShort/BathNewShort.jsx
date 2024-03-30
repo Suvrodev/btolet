@@ -18,6 +18,10 @@ const BathNewShort = ({
     byFilterRent,
     setByFilterRent,
     setByFilter,
+
+    ///Short sort Dependency
+    bathDep,
+    setBathDep,
   } = useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
@@ -43,16 +47,16 @@ const BathNewShort = ({
   const location = browserLocation?.pathname;
 
   const handleBathSort = () => {
-    console.log("Fuckkkkkkkkkkkkkkkkkkkkkkkkkk");
     setBathClose(true);
     handleShowBath();
     if (location === "/home") {
       console.log("byFilterrrrrrrrrrrRent: ", byFilterRent);
-      if (!byFilterRent) {
-        setByFilterRent(true);
-      }
+
+      setByFilterRent(true);
+      setBathDep(!bathDep);
     } else {
       setByFilter(true);
+      setBathDep(!bathDep);
     }
   };
 
@@ -60,6 +64,7 @@ const BathNewShort = ({
   const handleRemoveBedSort = () => {
     setSelectedBathrooms([]);
     setBathClose(false);
+    setBathDep(!bathDep);
   };
 
   //////Check

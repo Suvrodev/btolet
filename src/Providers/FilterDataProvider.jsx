@@ -27,9 +27,19 @@ const FilterDataProvider = ({ children }) => {
     []
   );
 
+  const [bedDep, setBedDep] = useState(false);
+  const [bathDep, setBathDep] = useState(false);
+  const [priceDep, setPriceDep] = useState(false);
+  const [categoryRentDep, setCategoryRentDep] = useState(false);
+  const [categoryBuyDep, setCategoryBuyDep] = useState(false);
+
   /**
    * Buy Data retrive start
    */
+
+  const [pageNumber, setPageNumber] = useState(1);
+  const [buys, setBuys] = useState([]);
+  const [searchingBuy, setSearchingBuy] = useState(true);
 
   const filterBody = {
     geolat: lattitude,
@@ -42,10 +52,6 @@ const FilterDataProvider = ({ children }) => {
     bed: selectedBedrooms,
     bath: selectedBathrooms,
   };
-
-  const [pageNumber, setPageNumber] = useState(1);
-  const [buys, setBuys] = useState([]);
-  const [searchingBuy, setSearchingBuy] = useState(true);
 
   useEffect(() => {
     if (!byFilter) {
@@ -70,7 +76,7 @@ const FilterDataProvider = ({ children }) => {
         // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
       });
     }
-  }, [pageNumber, byFilter]);
+  }, [pageNumber, byFilter, bedDep, bathDep, priceDep, categoryBuyDep]);
 
   /**
    * Buy Data retrive end
@@ -125,7 +131,14 @@ const FilterDataProvider = ({ children }) => {
           setRents(res.data);
         });
     }
-  }, [rentPageNumber, byFilterRent]);
+  }, [
+    rentPageNumber,
+    byFilterRent,
+    bedDep,
+    bathDep,
+    priceDep,
+    categoryRentDep,
+  ]);
 
   // useEffect(() => {
   //   if (rents.length > 0 && searchingRent) {
@@ -173,6 +186,18 @@ const FilterDataProvider = ({ children }) => {
     setPageNumber,
     rentPageNumber,
     setRentPageNumber,
+
+    ////Dependency for short short
+    bedDep,
+    bathDep,
+    priceDep,
+    categoryBuyDep,
+    categoryRentDep,
+    setBedDep,
+    setBathDep,
+    setPriceDep,
+    setCategoryRentDep,
+    setCategoryBuyDep,
   };
   return (
     <FilterDataContext.Provider value={filterDataContextInfo}>

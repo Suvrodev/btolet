@@ -11,8 +11,16 @@ const PriceNewShort = ({
 }) => {
   const bedNumbers = [5000, 10000, 15000, 20000, 25000];
 
-  const { maxPrice, setMaxPrice, setByFilterRent, setByFilter } =
-    useContext(FilterDataContext);
+  const {
+    maxPrice,
+    setMaxPrice,
+    setByFilterRent,
+    setByFilter,
+    ////Dependency for short short
+
+    priceDep,
+    setPriceDep,
+  } = useContext(FilterDataContext);
 
   // const [selectedBed, setSelectedBed] = useState(null);
 
@@ -42,14 +50,17 @@ const PriceNewShort = ({
     handleShowPrice();
     if (location === "/home") {
       setByFilterRent(true);
+      setPriceDep(!priceDep);
     } else {
       setByFilter(true);
+      setPriceDep(!priceDep);
     }
   };
 
   ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
   const handleRemovePriceSort = () => {
     setPriceClose(false);
+    setPriceDep(!priceDep);
   };
 
   return (

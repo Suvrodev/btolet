@@ -7,6 +7,8 @@ const RentCategoryNewSort = ({
   showRentCategory,
   rentCategoryClose,
   setRentCategoryClose,
+
+  ///Short sort Dependency
 }) => {
   const bedNumbers = [
     "Family",
@@ -20,8 +22,13 @@ const RentCategoryNewSort = ({
     "Only Garage",
   ];
   // const [selectedBeds, setSelectedBeds] = useState([]);
-  const { selectedRentCategory, setSelectedRentCategory, setByFilterRent } =
-    useContext(FilterDataContext);
+  const {
+    selectedRentCategory,
+    setSelectedRentCategory,
+    setByFilterRent,
+    categoryRentDep,
+    setCategoryRentDep,
+  } = useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
     setSelectedRentCategory((prevSelectedBeds) => {
@@ -49,14 +56,15 @@ const RentCategoryNewSort = ({
     handleShowRentCategory();
     setByFilterRent(true);
 
-    // setTimeout(() => {
-    //   setByFilterRent(false);
-    // }, 1000);
+    setCategoryRentDep(!categoryRentDep);
   };
 
   ////Close means if all items will cose then  byFilterRent and byFilterRent will flase
   const handleRemoveRentCategorySort = () => {
+    setSelectedRentCategory([]);
     setRentCategoryClose(false);
+
+    setCategoryRentDep(!categoryRentDep);
   };
 
   return (

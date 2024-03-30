@@ -13,6 +13,10 @@ const BuyCategoryNewSort = ({
     selectedCategoriesBuySort,
     setSelectedCategoriesBuySort,
     setByFilter,
+
+    ////Dependency for short short
+    categoryBuyDep,
+    setCategoryBuyDep,
   } = useContext(FilterDataContext);
 
   const toggleBedSelection = (bedNumber) => {
@@ -38,11 +42,14 @@ const BuyCategoryNewSort = ({
     setBuyCategoryClose(true);
     handleShowBuyCategory();
     setByFilter(true);
+    setCategoryBuyDep(!categoryBuyDep);
   };
 
   ////Close means if all items will cose then  byFilterRent will flase
   const handleRemoveBuyCategorySort = () => {
+    setSelectedCategoriesBuySort([]);
     setBuyCategoryClose(false);
+    setCategoryBuyDep(!categoryBuyDep);
   };
 
   return (

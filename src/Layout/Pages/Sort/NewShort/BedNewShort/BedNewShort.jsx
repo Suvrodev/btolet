@@ -9,6 +9,10 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     setSelectedBedrooms,
     setByFilterRent,
     setByFilter,
+
+    ////Dependency for short short
+    bedDep,
+    setBedDep,
   } = useContext(FilterDataContext);
 
   const bedNumbers = ["1", "2", "3", "4", "5", "6", "7+"];
@@ -42,8 +46,10 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     handleShowBed();
     if (location === "/home") {
       setByFilterRent(true);
+      setBedDep(!bedDep);
     } else {
       setByFilter(true);
+      setBedDep(!bedDep);
     }
   };
 
@@ -51,6 +57,7 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
   const handleRemoveBedSort = () => {
     setSelectedBedrooms([]);
     setBedClose(false);
+    setBedDep(!bedDep);
   };
   return (
     <div className=" z-10 ">
