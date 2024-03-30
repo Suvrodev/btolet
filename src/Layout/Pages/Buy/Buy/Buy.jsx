@@ -49,7 +49,8 @@ const Buy = () => {
     const observer = new IntersectionObserver((items) => {
       let output = items[0].isIntersecting;
       // console.log({ output });
-      if (output && searchingBuy) {
+      // if (output && searchingBuy) {
+      if (output) {
         setPageNumber((prevPageNumber) => prevPageNumber + 1);
       }
     });
@@ -91,7 +92,7 @@ const Buy = () => {
   useEffect(() => {
     if (byFilter || closeFilterBuy) {
       closeButtonRef?.current.click();
-      setByFilter(false);
+      // setByFilter(false);
     }
   }, [byFilter, closeFilterBuy]);
   /**

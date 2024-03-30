@@ -25,6 +25,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     setMinPrice,
     maxPrice,
     setMaxPrice,
+    byFilterRent,
     setByFilterRent,
     setRentPageNumber,
     setRents,
@@ -92,7 +93,12 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     console.log("Bathroom: ", selectedBathrooms);
     console.log("Facilitite: ", selectedFacilities);
 
-    setByFilterRent(true);
+    setByFilterRent(false);
+
+    setTimeout(() => {
+      setByFilterRent(true);
+    }, 1000);
+    // setByFilterRent(true);
   };
 
   const handleRentClearSort = () => {

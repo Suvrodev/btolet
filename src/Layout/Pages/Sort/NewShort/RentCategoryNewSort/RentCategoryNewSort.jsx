@@ -48,6 +48,10 @@ const RentCategoryNewSort = ({
     setRentCategoryClose(true);
     handleShowRentCategory();
     setByFilterRent(true);
+
+    // setTimeout(() => {
+    //   setByFilterRent(false);
+    // }, 1000);
   };
 
   ////Close means if all items will cose then  byFilterRent and byFilterRent will flase

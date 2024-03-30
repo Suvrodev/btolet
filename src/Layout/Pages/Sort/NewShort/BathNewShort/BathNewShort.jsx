@@ -14,6 +14,8 @@ const BathNewShort = ({
   const {
     selectedBathrooms,
     setSelectedBathrooms,
+    byFilter,
+    byFilterRent,
     setByFilterRent,
     setByFilter,
   } = useContext(FilterDataContext);
@@ -41,10 +43,14 @@ const BathNewShort = ({
   const location = browserLocation?.pathname;
 
   const handleBathSort = () => {
+    console.log("Fuckkkkkkkkkkkkkkkkkkkkkkkkkk");
     setBathClose(true);
     handleShowBath();
     if (location === "/home") {
-      setByFilterRent(true);
+      console.log("byFilterrrrrrrrrrrRent: ", byFilterRent);
+      if (!byFilterRent) {
+        setByFilterRent(true);
+      }
     } else {
       setByFilter(true);
     }
@@ -55,6 +61,12 @@ const BathNewShort = ({
     setSelectedBathrooms([]);
     setBathClose(false);
   };
+
+  //////Check
+  // const [showBathNew, setShowBathNew] = useState(false);
+  // const handleShowBathNew = () => {
+  //   setShowBathNew(!showBathNew);
+  // };
 
   return (
     <div className="z-10">

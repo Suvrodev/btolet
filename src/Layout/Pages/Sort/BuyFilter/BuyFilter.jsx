@@ -93,7 +93,12 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
     // console.log("Bathroom: ",selectedBathrooms);
     // console.log("Amenities: ",selectedAmenities);
 
-    setByFilter(true);
+    setByFilter(false);
+    setTimeout(() => {
+      setByFilter(true);
+    }, 1000);
+
+    // setByFilter(true);
   };
 
   const handleBuyClearSort = () => {

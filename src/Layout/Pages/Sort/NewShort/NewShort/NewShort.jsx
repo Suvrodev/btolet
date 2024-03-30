@@ -44,9 +44,9 @@ const NewShort = () => {
     setShowRentCategory(false);
     setShowBuyCategory(false);
 
-    setSelectedBathrooms([]);
-    setSelectedRentCategory([]);
-    setSelectedCategoriesBuySort([]);
+    // setSelectedBathrooms([]);
+    // setSelectedRentCategory([]);
+    // setSelectedCategoriesBuySort([]);
   };
 
   const handleShowBath = () => {
@@ -56,9 +56,9 @@ const NewShort = () => {
     setShowRentCategory(false);
     setShowBuyCategory(false);
 
-    setSelectedBedrooms([]);
-    setSelectedRentCategory([]);
-    setSelectedCategoriesBuySort([]);
+    // setSelectedBedrooms([]);
+    // setSelectedRentCategory([]);
+    // setSelectedCategoriesBuySort([]);
   };
 
   const handleShowPrice = () => {
@@ -76,9 +76,9 @@ const NewShort = () => {
     setShowRentCategory(!showRentCategory);
     setShowBuyCategory(false);
 
-    setSelectedBedrooms([]);
-    setSelectedBathrooms([]);
-    setSelectedCategoriesBuySort([]);
+    // setSelectedBedrooms([]);
+    // setSelectedBathrooms([]);
+    // setSelectedCategoriesBuySort([]);
   };
 
   const handleShowBuyCategory = () => {
@@ -88,9 +88,9 @@ const NewShort = () => {
     setShowRentCategory(false);
     setShowBuyCategory(!showBuyCategory);
 
-    setSelectedBedrooms([]);
-    setSelectedBathrooms([]);
-    setSelectedRentCategory([]);
+    // setSelectedBedrooms([]);
+    // setSelectedBathrooms([]);
+    // setSelectedRentCategory([]);
   };
 
   /***

@@ -97,6 +97,7 @@ const FilterDataProvider = ({ children }) => {
     bed: selectedBedrooms,
     bath: selectedBathrooms,
   };
+  console.log("Rent Filter Body: ", rentFilterBody);
 
   useEffect(() => {
     if (!byFilterRent) {
