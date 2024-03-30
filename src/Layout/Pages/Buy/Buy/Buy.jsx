@@ -36,26 +36,22 @@ const Buy = () => {
     setPageNumber,
     rentPageNumber,
     setRentPageNumber,
+    searchingBuy,
   } = useContext(FilterDataContext);
 
   ///Buy Data start
   const [closeFilterBuy, setCloseFilterBuy] = useState(false);
   const closeButtonRef = useRef(null);
-  // const [buys, setBuys] = useState([]);
-  // const [pageNumber, setPageNumber] = useState(1);
-
-  const [hasMore, setHasMore] = useState(true);
   const loadingRef = useRef(null);
 
   ////Ovserver start
   useEffect(() => {
     const observer = new IntersectionObserver((items) => {
       let output = items[0].isIntersecting;
-      console.log(output);
-      if (output) {
+      // console.log({ output });
+      if (output && searchingBuy) {
         setPageNumber((prevPageNumber) => prevPageNumber + 1);
       }
-      setHasMore(false);
     });
     if (loadingRef.current) {
       observer.observe(loadingRef.current);
@@ -65,12 +61,11 @@ const Buy = () => {
         observer.unobserve(loadingRef.current);
       }
     };
-  }, [hasMore]);
-  console.log("Page Number: ", pageNumber);
+  }, [searchingBuy]);
+  // console.log("Searching Buy: ", searchingBuy);
+  // console.log("Page Number: ", pageNumber);
 
   ////Ovserver end
-
-  ///Buy Data end
 
   ////Post Count
   const [postCount, setPostCount] = useState("");
@@ -96,7 +91,7 @@ const Buy = () => {
   useEffect(() => {
     if (byFilter || closeFilterBuy) {
       closeButtonRef?.current.click();
-      // setByFilter(false);
+      setByFilter(false);
     }
   }, [byFilter, closeFilterBuy]);
   /**

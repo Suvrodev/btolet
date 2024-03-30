@@ -16,7 +16,7 @@ const FilterDataProvider = ({ children }) => {
   const [byFilterRent, setByFilterRent] = useState(false);
 
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(100000);
+  const [maxPrice, setMaxPrice] = useState(10000000);
 
   const [selectedRentCategory, setSelectedRentCategory] = useState([]);
   const [selectedBathrooms, setSelectedBathrooms] = useState([]);
@@ -111,6 +111,10 @@ const FilterDataProvider = ({ children }) => {
           }
           const newData = [...rents, ...data];
           setRents(newData);
+        })
+        .catch((error) => {
+          console.log("Error Fetch: ", error);
+          setSearchingRent(false);
         });
     } else {
       console.log("Down Condition (Buy Filter Rent):::::", byFilterRent);
@@ -157,6 +161,7 @@ const FilterDataProvider = ({ children }) => {
     setSelectedCategoriesBuySort,
 
     /////
+    searchingBuy,
     buys,
     setBuys,
     rents,

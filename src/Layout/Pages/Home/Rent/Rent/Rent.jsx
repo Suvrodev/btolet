@@ -41,112 +41,36 @@ const Rent = () => {
     setRents,
   } = useContext(FilterDataContext);
 
-  // console.log("Lattitude: ",lattitude);
-  // console.log("Longitude: ",longitude);
-
   const [closeFilterRent, setCloseFilterRent] = useState(false);
 
   const closeButtonRef = useRef("");
-  const filterBody = {
-    geolat: lattitude,
-    geolon: longitude,
-    rentmin: minPrice,
-    rentmax: maxPrice,
-    page: 1,
-    category: selectedRentCategory,
-    fasalitis: selectedFacilities,
-    bed: selectedBedrooms,
-    bath: selectedBathrooms,
-  };
-
-  // console.log("Filter Body: ",filterBody);
-
-  ////rents Data start
-
-  // const [pageNumber, setPageNumber] = useState(1);
-  // const [rents, setRents] = useState([]);
-
-  // useEffect(() => {
-  //   if (!byFilterRent) {
-  //     fetch(
-  //       `${baseUrl}/tolet/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
-  //     )
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         const newData = [...rents, ...data];
-  //         setRents(newData);
-  //       });
-  //   } else {
-  //     axios.post(`${baseUrl}/tolet/sort/postlist`, filterBody).then((res) => {
-  //       setRents(res.data);
-  //       console.log(
-  //         "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++: ",
-  //         res.data
-  //       );
-  //       // console.log("------------------------------------------------------------------------------Buy Filter(else)(2)",byFilter);
-  //     });
-  //   }
-  // }, [pageNumber, byFilterRent]);
-
-  // console.log("Rent Data: ", rents);
-
-  /**
-   * Maintaining specific Second start
-   */
-  // useEffect(() => {
-  //   if (rents.length > 0) {
-  //     const interval = setInterval(() => {
-  //       setPageNumber((prevPageNumber) => prevPageNumber + 1);
-  //     }, 3000);
-
-  //     // Clean up the interval to prevent memory leaks
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [rents]);
-  // console.log("Page Number (Rents): ", pageNumber);
-
-  /**
-   * Maintaining specific second end
-   */
-
-  ////rents Data end
 
   ///Post Count
-  const [postCount, setPostCount] = useState("0");
-  useEffect(() => {
-    if (location_1 && location_2) {
-      fetch(
-        `${baseUrl}/tolet/postcount/area?location1=${location_1}&location2=${location_2}`
-      )
-        // fetch(`${baseUrl}/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.postCount) {
-            setPostCount(data?.postCount);
-          }
-        });
-    }
-  }, [location_1, location_2, doubleLocation]);
-  // console.log("Post Count(Rent): ", postCount);
-  // console.log("Location-1 + Location-2 : ",location_1+location_2);
+  // const [postCount, setPostCount] = useState("0");
+  // useEffect(() => {
+  //   if (location_1 && location_2) {
+  //     fetch(
+  //       `${baseUrl}/tolet/postcount/area?location1=${location_1}&location2=${location_2}`
+  //     )
+  //       // fetch(`${baseUrl}/api/tolet/postcount/area?location1=${location_1}&location2=${location_2}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data?.postCount) {
+  //           setPostCount(data?.postCount);
+  //         }
+  //       });
+  //   }
+  // }, [location_1, location_2, doubleLocation]);
+
   ///Area End
 
   ////Close Popup
-  //Show Properties button a click korle X button a o click hobe autometically
-
-  // console.log("---------------------------------------------------------------------------By Filter(3)): ",byFilter);
-
   useEffect(() => {
     if (byFilterRent || closeFilterRent) {
       closeButtonRef?.current.click();
-      // setByFilter(false);
+      setByFilterRent(false);
     }
   }, [byFilterRent, closeFilterRent]);
-
-  // if (byFilterRent) {
-  //   closeButtonRef?.current.click();
-  //   setByFilterRent(false);
-  // }
 
   return (
     <div className="my-4">

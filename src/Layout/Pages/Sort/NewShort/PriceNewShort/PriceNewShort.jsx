@@ -26,7 +26,7 @@ const PriceNewShort = ({
     });
   };
 
-  console.log("Max Price: ", maxPrice);
+  // console.log("Max Price: ", maxPrice);
 
   ////Clear Button Work
   const clearPrice = () => {
