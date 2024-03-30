@@ -1,12 +1,12 @@
-import React from 'react';
-import Rent from '../Rent/Rent/Rent';
-import Marque from '../../SharedPage/Marque/Marque';
-import Banner from '../../SharedPage/Banner/Banner';
+import React from "react";
+import Rent from "../Rent/Rent/Rent";
+import Marque from "../../SharedPage/Marque/Marque";
+import Banner from "../../SharedPage/Banner/Banner";
 
 const Home = () => {
-    return (
-        <div>
-            {/* <Marque></Marque>
+  return (
+    <div className="p-3 md:p-0">
+      {/* <Marque></Marque>
             <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start mx-4 md:mx-0'>
                 <div className='w-full md:w-[60%] h-[360px]'>
                     <Banner></Banner>
@@ -17,9 +17,9 @@ const Home = () => {
                    </div>
                  </div>
             </div> */}
-            <Rent></Rent>
-        </div>
-    );
+      <Rent></Rent>
+    </div>
+  );
 };
 
 export default Home;

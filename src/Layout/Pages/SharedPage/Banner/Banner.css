@@ -23,7 +23,7 @@
 @media only screen and (max-width: 576px) {
     .Banner{
         margin: 0px;
-        height: 350px;
+        height: 160px;
         width: 100%;
     }
     .yesSwiper{

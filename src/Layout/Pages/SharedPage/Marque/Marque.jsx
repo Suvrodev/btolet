@@ -28,7 +28,7 @@ const Marque = () => {
         marqueText ? "" : "sklLoading"
       }`}
     >
-      <Marquee speed={100} className="text-black text-lg ">
+      <Marquee speed={100} className="text-black text-[12px] md:text-lg ">
         {marqueText}
       </Marquee>
     </div>

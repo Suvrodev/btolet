@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./BlackOpacity.css";
+import "./RentCard.css";
 
 import {
   FaBath,
   FaBed,
   FaCarAlt,
   FaChartArea,
+  FaFacebook,
   FaGoogle,
   FaHeart,
   FaHouseDamage,
@@ -94,13 +96,23 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
   }, [time]);
 
   ////Category String start
+
   let categoryString = category.join(", ");
   if (categoryString.length > 35) {
     // Truncate the string to 19 characters and add '...'
     categoryString = categoryString.substring(0, 25) + "...";
   }
-
   ///Category String end
+
+  // Location String Start
+  // console.log("Location: ", location);
+  let locationString = "";
+  if (location.length > 25) {
+    locationString = location.slice(0, 25) + "...";
+  } else {
+    locationString = location;
+  }
+  // Location String end
 
   // Convert the rent to Bangladeshi Taka style start
   const formattedRent = rent.toLocaleString("en-US");
@@ -286,16 +298,16 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
   // console.log("myPostRent",myPostRent);
 
   return (
-    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[450px] md:h-[520px] bg-purple-400 ">
+    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[410px] md:h-[480px] ">
       {/* Image Box Start */}
       <div className="relative">
         <Link
           to={`/rentdetail/${post_id}`}
-          className="w-full h-[200px] md:h-[250px]  rounded-md"
+          className="w-full h-[200px] md:h-[250px] rounded-m"
         >
           <img
             onClick={() => goinDetail(post_id)}
-            className="w-full h-[200px] md:h-[250px]  rounded-md"
+            className="w-full h-[190px] md:h-[250px] rounded-tl-md rounded-tr-md "
             src={`data:image/png;base64,${image1}`}
             alt=""
           />
@@ -303,7 +315,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
 
         {/* For Saved Start */}
         {savedRent && (
-          <div className="absolute top-5 right-[60px] ">
+          <div className="absolute top-4 right-[60px] ">
             <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
               <Favorite onClick={handleUnSave} className="text-white" />
             </p>
@@ -313,7 +325,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
 
         {/* Save UnSave  Start */}
         {forRent && (
-          <div className="absolute top-5 right-[60px] ">
+          <div className="absolute top-2 right-[60px] ">
             <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
               {save == true ? (
                 <Favorite onClick={handleUnSave} className="text-white" />
@@ -331,7 +343,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
 
         {/* For Delete Start */}
         {myPostRent && (
-          <div className="absolute top-5 right-[60px] ">
+          <div className="absolute top-2 right-[60px] ">
             <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
               <FaTrash onClick={handleDelte} className="text-red-700 " />
             </p>
@@ -339,7 +351,8 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
         )}
         {/* For Delete End */}
 
-        <div className="absolute top-5 right-5">
+        {/* Share Icon start */}
+        <div className="absolute top-2 right-4">
           <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
             <FiShare2
               onClick={() => RentPostShare(post_id)}
@@ -347,7 +360,9 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
             />
           </p>
         </div>
+        {/* Share Icon end */}
 
+        {/* Layer Icon Start */}
         <div className="absolute bottom-2 right-4">
           <p className="py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full ">
             <span className="text-white">{total_image} </span>{" "}
@@ -355,15 +370,17 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
           </p>
         </div>
       </div>
+      {/* Layer Icon end */}
+
       {/* Image Box End */}
 
       {/* Family Taka Location Start */}
-      <div className="py-5 px-4  h-[130px] ">
+      <div className="py-1 md:py-1 px-4  h-[110px] md:h-[125px] ">
         <p className="roboto text-2xl  prText ">{categoryString}</p>
         {{ rent } ? (
-          <p className="text-4xl font-bold text-black opacity-80 flex items-center gap-1">
+          <p className="text-4xl  text-black opacity-60 flex items-center gap-1">
             {" "}
-            <span className="text-3xl"> ৳</span>
+            <span className="text-4xl"> ৳</span>
             {formattedRent}{" "}
           </p>
         ) : (
@@ -371,38 +388,40 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
         )}
         <p className="flex gap-2 items-center my-2 prText">
           <FiMapPin />
-          <span className="">{location}</span>
+
+          <span className="truncate">{location}</span>
         </p>
       </div>
       {/* Family Taka Location Start */}
 
       <div className=" h-[45px]  ">{iconDiv}</div>
 
-      <div className="h-[1px] w-full bg-black opacity-10"> </div>
+      <div className="h-[2px] w-full bg-black opacity-10"> </div>
 
-      <div className="py-5 px-2 flex gap-2 justify-around ">
+      {/* Contact Part start */}
+      <div className="py-5 px-2 flex gap-2 justify-around h-[60px] md:h-[60px]  ">
         <div className="flex gap-2 items-center">
           <p className="text-black opacity-80">{timeAgo} </p>
         </div>
         <div className="flex items-center justify-center gap-2">
           <button
             onClick={() => handlePhoneCall(phone)}
-            className="w-[35px] h-[35px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold"
+            className="w-[50px] h-[50px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold"
           >
             {/* <FaPhoneAlt /> */}
-            <Call />
+            <Call className="cardContactIconSize" />
           </button>
           <button
             onClick={() => handleSendSMS(phone)}
-            className="w-[35px] h-[35px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold"
+            className="w-[50px] h-[50px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold"
           >
-            <img className="w-[20px]" src={SmsIcon} alt="" />{" "}
+            <img className="w-[30px]" src={SmsIcon} alt="" />{" "}
           </button>
           <button
             onClick={() => handleWhatsAppCall(wapp)}
-            className="w-[35px] h-[35px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl"
+            className="w-[50px] h-[50px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl"
           >
-            <WhatsApp />
+            <WhatsApp className="cardContactIconSize" />
           </button>
         </div>
       </div>

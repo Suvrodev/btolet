@@ -387,7 +387,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
     //   </div>-------------
     // </div>
 
-    <div className="flex flex-col  border  rounded-md  w-full h-[520px] mx-auto p-0  overflow-hidden bg-white">
+    <div className="flex flex-col  border  rounded-md  w-full h-[375px]  md:h-[510px] mx-auto p-0  overflow-hidden bg-white">
       {/* Image Box Start */}
       {/* <ReactLogo /> */}
       <div className="relative bg-cover bg-center ">
@@ -400,7 +400,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
               onClick={() => {
                 goinDetail(pid, geolat, geolon);
               }}
-              className="w-full h-[200px] md:h-[240px] rounded-md  object-cover object-center"
+              className="w-full h-[150px] md:h-[240px] rounded-md  object-cover object-center"
               src={`data:image/png;base64,${image1}`}
               // src={checkImage}
               alt=""
@@ -449,6 +449,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
         )}
         {/* For Delete End */}
 
+        {/* Share Icon start */}
         <div className="absolute top-5 right-5 ">
           <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
             <FiShare2
@@ -457,7 +458,9 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
             />
           </p>
         </div>
+        {/* Share Icon end */}
 
+        {/* Layer Icon Start */}
         <div className="absolute bottom-2 right-10">
           <p className="py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full ">
             <span className="text-white">{total_image}</span>{" "}
@@ -465,9 +468,11 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
           </p>
         </div>
       </div>
+      {/* Layer Icon end */}
       {/* Image Box End */}
 
-      <div className="py-5 px-4  h-[150px] bg-purple-500">
+      {/* Family Taka Location Start */}
+      <div className="py-1 md:py-5 px-4  h-[110px] md:h-[150px]  ">
         <p className="roboto  text-xl text-black prText">{category}</p>
         {price != 0 ? (
           <p className="text-4xl font-bold text-black opacity-80">
@@ -481,49 +486,48 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
         )}
         <p className="flex gap-2 items-center my-2 prText">
           <FiMapPin />
-          <span>{location}</span>
+          <span className="truncate">{location}</span>
         </p>
       </div>
+      {/* Family Taka Location end */}
 
-      <div className="h-[100px] text-black opacity-60 bg-blue-400 ">
+      <div className="h-[40px] text-black opacity-60  ">
         {category == "Flat" || category == "House" ? (
-          <div className="bg-pink-600 h-full">
-            <div className="p-5 flex gap-3">
-              <div className="flex items-center  gap-2 roboto">
+          <div className="p-5 flex items-center gap-3 h-full ">
+            <div className="flex items-center  gap-2 roboto">
+              <div className="flex items-center gap-2">
+                <BedSvgIcon />
+                {bed}
+              </div>
+            </div>
+            <div className="flex items-center  gap-2">
+              <div className="flex items-center gap-2 ">
+                {" "}
+                <BathSvgIcon />
+                {bath}
+              </div>
+            </div>
+            <div className="flex items-center  gap-2">
+              {size ? (
                 <div className="flex items-center gap-2">
-                  <BedSvgIcon />
-                  {bed}
+                  <AreaSvgIcon />
+                  {size} ft<sup>2</sup>
                 </div>
-              </div>
-              <div className="flex items-center  gap-2">
-                <div className="flex items-center gap-2 ">
-                  {" "}
-                  <BathSvgIcon />
-                  {bath}
-                </div>
-              </div>
-              <div className="flex items-center  gap-2">
-                {size ? (
-                  <div className="flex items-center gap-2">
-                    <AreaSvgIcon />
-                    {size} ft<sup>2</sup>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    {/* <img
+              ) : (
+                <div className="flex items-center gap-2">
+                  {/* <img
                       className=" w-[10px] h-[10px] md:w-[30px]  md:h-[30px] opacity-40"
                       src={kitchenIcon}
                       alt=""
                     />{" "} */}
-                    <KitchenSvgIcon />
-                    {kitchen}{" "}
-                  </div>
-                )}
-              </div>
+                  <KitchenSvgIcon />
+                  {kitchen}{" "}
+                </div>
+              )}
             </div>
           </div>
         ) : (
-          <div className="flex gap-2 p-4 text-[22px] h-full bg-orange-500">
+          <div className="flex items-center gap-2 px-4 text-[22px] h-full pb-2">
             <p>{measurement}</p>
             <p className="">{area}</p>
           </div>
@@ -533,14 +537,13 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
       <div className="h-[1px] w-full customBorder"> </div>
 
       {/* Contact Button start */}
-
-      <div className="py-5 px-2 flex gap-2 justify-around h-[100px] bg-red-600">
-        <div className="flex gap-2 items-center text-black opacity-60">
+      <div className="py-5 px-4 flex items-center gap-2 justify-between h-[70px] ">
+        <div className="flex gap-2 items-center text-black opacity-60 ">
           <img className="w-[40px] h-[40px] rounded-full " src={image} alt="" />
           <p>{timeAgo} </p>
         </div>
 
-        <div className="flex items-center justify-center gap-2 overflow-hidden">
+        <div className="flex items-center justify-center gap-2 overflow-hidden ">
           <div
             onClick={() => handlePhoneCall(phone)}
             className="w-[35px] h-[35px] bg-[#F36150] rounded-xl flex items-center justify-center text-white font-bold overflow-visible"
