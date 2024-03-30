@@ -126,16 +126,16 @@ const FilterDataProvider = ({ children }) => {
     }
   }, [rentPageNumber, byFilterRent]);
 
-  useEffect(() => {
-    if (rents.length > 0 && searchingRent) {
-      const interval = setInterval(() => {
-        setRentPageNumber((prevPageNumber) => prevPageNumber + 1);
-      }, 3000);
+  // useEffect(() => {
+  //   if (rents.length > 0 && searchingRent) {
+  //     const interval = setInterval(() => {
+  //       setRentPageNumber((prevPageNumber) => prevPageNumber + 1);
+  //     }, 3000);
 
-      // Clean up the interval to prevent memory leaks
-      return () => clearInterval(interval);
-    }
-  }, [rents]);
+  //     // Clean up the interval to prevent memory leaks
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [rents]);
 
   /***
    * Rent Retrive data end
@@ -161,6 +161,8 @@ const FilterDataProvider = ({ children }) => {
     setSelectedCategoriesBuySort,
 
     /////
+    searchingRent,
+    setSearchingRent,
     searchingBuy,
     buys,
     setBuys,

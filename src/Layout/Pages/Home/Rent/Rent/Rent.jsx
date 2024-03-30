@@ -39,11 +39,37 @@ const Rent = () => {
     selectedRentCategory,
     rents,
     setRents,
+    searchingRent,
+    rentPageNumber,
+    setRentPageNumber,
   } = useContext(FilterDataContext);
 
   const [closeFilterRent, setCloseFilterRent] = useState(false);
-
   const closeButtonRef = useRef("");
+  const loadingRef = useRef(null);
+
+  ////Ovserver start
+  useEffect(() => {
+    const observer = new IntersectionObserver((items) => {
+      let output = items[0].isIntersecting;
+      // console.log({ output });
+      if (output && searchingRent) {
+        setRentPageNumber((prevPageNumber) => prevPageNumber + 1);
+      }
+    });
+    if (loadingRef.current) {
+      observer.observe(loadingRef.current);
+    }
+    return () => {
+      if (loadingRef.current) {
+        observer.unobserve(loadingRef.current);
+      }
+    };
+  }, [searchingRent]);
+  console.log("Searching Rent: ", searchingRent);
+  console.log("Rent Page Number: ", rentPageNumber);
+
+  ////Ovserver end
 
   ///Post Count
   // const [postCount, setPostCount] = useState("0");
@@ -136,17 +162,9 @@ const Rent = () => {
         ) : (
           <p>Nothing to Show</p>
         )}
-
-        {/* POST bUTTON */}
-        {/* <Link to={'/rentpost'}> <p className='postButtonrd absolute bottom-[50px] left-[50%] translate(-50%, -50%) '> <span className='postButtonrdwht flex items-center'> <AddOutlined/> post</span> </p> </Link> */}
-
-        {/* <div style={{ position: 'fixed', bottom: '50px', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                  <Link to='/rentpost' className='postButtonrd'>
-                      <p className='postButtonrdwht flex items-center'>
-                          <AddOutlined/> post
-                      </p>
-                  </Link>
-             </div> */}
+      </div>
+      <div ref={loadingRef} className="text-center">
+        <span className="loading loading-spinner text-warning"></span>
       </div>
     </div>
   );

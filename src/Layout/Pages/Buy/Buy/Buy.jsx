@@ -68,20 +68,20 @@ const Buy = () => {
   ////Ovserver end
 
   ////Post Count
-  const [postCount, setPostCount] = useState("");
-  useEffect(() => {
-    if (location_1 && location_2) {
-      fetch(
-        `${baseUrl}/pro/postcount/area?location1=${location_1}&location2=${location_2}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.postCount) {
-            setPostCount(data?.postCount);
-          }
-        });
-    }
-  }, [location_1, location_2]);
+  // const [postCount, setPostCount] = useState("");
+  // useEffect(() => {
+  //   if (location_1 && location_2) {
+  //     fetch(
+  //       `${baseUrl}/pro/postcount/area?location1=${location_1}&location2=${location_2}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data?.postCount) {
+  //           setPostCount(data?.postCount);
+  //         }
+  //       });
+  //   }
+  // }, [location_1, location_2]);
   ///Area End
 
   /**
@@ -167,8 +167,7 @@ const Buy = () => {
         )}
       </div>
 
-      <div ref={loadingRef}>
-        {/* <p>Loading</p> */}
+      <div ref={loadingRef} className="text-center">
         <span className="loading loading-spinner text-warning"></span>
       </div>
     </div>
