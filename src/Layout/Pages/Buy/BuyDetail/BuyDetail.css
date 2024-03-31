@@ -81,7 +81,11 @@
     justify-content: center;
     align-items: center; */
 }
-
+.truncateLine {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 @media screen and (max-width:576px) {
     
 }

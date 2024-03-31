@@ -54,6 +54,7 @@ const Banner = () => {
     <div className={`Banner  ${showImages.length == 0 ? "sklLoading" : ""} `}>
       <BannerSwipperComponent
         images={showImages}
+        rnd={true}
         className=""
       ></BannerSwipperComponent>
     </div>

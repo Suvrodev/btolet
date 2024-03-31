@@ -26,7 +26,7 @@ const BuyDetailsLandData = ({ b, num, area }) => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4 w-[125px] p-5 ">
+    <div className="flex flex-col items-center gap-4 w-[100px] md:w-[125px] p-5 ">
       <div className="w-[60px] h-[60px] bg-[#edf0ef] rounded-full flex items-center justify-center p-3">
         <img className="w-[30px]" src={Image} alt="" />
       </div>
