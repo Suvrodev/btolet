@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./BlackOpacity.css";
 import "./RentCard.css";
 
+import btoletLogo from "../../../../../assets/Logo/logo.png";
+
 import {
   FaBath,
   FaBed,
@@ -40,8 +42,10 @@ import SmsIcon from "../../../../../assets/icons/home/sms_white.svg";
 import whatsappIcon from "../../../../../assets/icons/home/wapp.svg";
 import kitchenIcon from "../../../../../assets/icons/tolet/kitchen.svg";
 import {
+  AspectRatioOutlined,
   Blender,
   Call,
+  CountertopsOutlined,
   Favorite,
   FavoriteBorderOutlined,
   Kitchen,
@@ -184,13 +188,15 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
           </div>
           {roomsize ? (
             <div className="flex items-center gap-2">
-              <AreaSvgIcon className="bg-green-400 " />
+              {/* <AreaSvgIcon className="bg-green-400 " /> */}
+              <AspectRatioOutlined />
               {roomsize} ft<sup>2</sup>
             </div>
           ) : (
             <div className="flex items-center gap-2  ">
               {/* <KitchenSvgIcon /> */}
-              <Blender />
+              {/* <Blender /> */}
+              <CountertopsOutlined />
               {kitchen}{" "}
             </div>
           )}
@@ -298,7 +304,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
   // console.log("myPostRent",myPostRent);
 
   return (
-    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[410px] md:h-[480px] ">
+    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[400px] md:h-[480px] ">
       {/* Image Box Start */}
       <div className="relative">
         <Link
@@ -375,13 +381,14 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
       {/* Image Box End */}
 
       {/* Family Taka Location Start */}
-      <div className="py-1 md:py-1 px-4  h-[110px] md:h-[125px] ">
-        <p className="roboto text-2xl  prText ">{categoryString}</p>
+      <div className="py-3 md:py-2 px-4  h-[110px] md:h-[115px]  flex flex-col gap-0 ">
+        <p className="roboto text-2xl  prText -mb-1 md:mb-0 ">
+          {categoryString}
+        </p>
         {{ rent } ? (
-          <p className="text-4xl  text-black opacity-60 flex items-center gap-1">
-            {" "}
-            <span className="text-4xl"> ৳</span>
-            {formattedRent}{" "}
+          <p className="  text-black opacity-60 flex items-center gap-1 -mb-1 md:mb-0">
+            <span className="text-3xl"> ৳</span>
+            <span className="text-3xl">{formattedRent}</span>
           </p>
         ) : (
           <span className="text-xl font-bold">Price on Call</span>
@@ -399,27 +406,32 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
       <div className="h-[2px] w-full bg-black opacity-10"> </div>
 
       {/* Contact Part start */}
-      <div className="py-5 px-2 flex gap-2 justify-around h-[60px] md:h-[60px]  ">
-        <div className="flex gap-2 items-center">
-          <p className="text-black opacity-80">{timeAgo} </p>
+      <div className="py-5 px-2 flex gap-2 justify-around items-center h-[50px] md:h-[60px]  ">
+        <img
+          src={btoletLogo}
+          className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] rounded-full"
+          alt=""
+        />
+        <div className="flex gap-2 items-center left-2 relative">
+          <p className="text-black opacity-70">{timeAgo} </p>
         </div>
         <div className="flex items-center justify-center gap-2">
           <button
             onClick={() => handlePhoneCall(phone)}
-            className="w-[50px] h-[50px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold"
+            className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold"
           >
             {/* <FaPhoneAlt /> */}
             <Call className="cardContactIconSize" />
           </button>
           <button
             onClick={() => handleSendSMS(phone)}
-            className="w-[50px] h-[50px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold"
+            className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold"
           >
-            <img className="w-[30px]" src={SmsIcon} alt="" />{" "}
+            <img className="w-[20px] md:w-[30px]" src={SmsIcon} alt="" />{" "}
           </button>
           <button
             onClick={() => handleWhatsAppCall(wapp)}
-            className="w-[50px] h-[50px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl"
+            className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl"
           >
             <WhatsApp className="cardContactIconSize" />
           </button>

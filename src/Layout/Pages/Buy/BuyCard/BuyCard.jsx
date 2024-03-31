@@ -28,6 +28,7 @@ import CallIcon from "../../../../assets/icons/home/call.svg";
 import SmsIcon from "../../../../assets/icons/home/sms_white.svg";
 import whatsappIcon from "../../../../assets/icons/home/wapp.svg";
 import {
+  AspectRatioOutlined,
   Call,
   Favorite,
   FavoriteBorderOutlined,
@@ -206,188 +207,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    // <div className=" flex flex-col  border  rounded-md  w-full h-[520px] mx-auto p-0  overflow-hidden bg-orange-400">
-    //   {/* Image Box Start */}
-    //   <div className="relative bg-cover bg-center ">
-    //     {image1 ? (
-    //       <Link
-    //         to={`/buydetail/${pid}`}
-    //         className="w-full h-[200px] md:h-[250px] rounded-md"
-    //       >
-    //         <img
-    //           onClick={() => {
-    //             goinDetail(pid, geolat, geolon);
-    //           }}
-    //           className="w-full h-[200px] md:h-[240px] rounded-md  object-cover object-center"
-    //           src={`data:image/png;base64,${image1}`}
-    //           // src={checkImage}
-    //           alt=""
-    //         />
-    //       </Link>
-    //     ) : (
-    //       <div className="w-full h-[200px] md:h-[250px] rounded-md flex items-center justify-center text-4xl text-green-500">
-    //         <h1>Will Set Image</h1>
-    //       </div>
-    //     )}
-
-    //     {/* For Saved Start */}
-    //     {savedBuy && (
-    //       <div className="absolute top-5 right-[60px] ">
-    //         <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
-    //           <Favorite onClick={handleUnSave} className="text-white" />:
-    //         </p>
-    //       </div>
-    //     )}
-    //     {/* For Saved End */}
-
-    //     {/* Save UnSave  Start */}
-    //     {forBuy && (
-    //       <div className="absolute top-5 right-[60px] ">
-    //         <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
-    //           {save == true ? (
-    //             <Favorite onClick={handleUnSave} className="text-white" />
-    //           ) : (
-    //             <FavoriteBorderOutlined
-    //               onClick={handleSave}
-    //               className="text-white"
-    //             />
-    //           )}
-    //         </p>
-    //       </div>
-    //     )}
-    //     {/* Save UnSave  End */}
-
-    //     {/* For Delete Start */}
-    //     {myPostBuy && (
-    //       <div className="absolute top-5 right-[60px] ">
-    //         <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
-    //           <FaTrash onClick={handleDelte} className="text-red-700 " />
-    //         </p>
-    //       </div>
-    //     )}
-    //     {/* For Delete End */}
-
-    //     <div className="absolute top-5 right-5 ">
-    //       <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
-    //         <FiShare2
-    //           onClick={() => buyPostshare(pid)}
-    //           className="text-white"
-    //         />
-    //       </p>
-    //     </div>
-
-    //     <div className="absolute bottom-2 right-10">
-    //       <p className="py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full ">
-    //         <span className="text-white">{total_image}</span>{" "}
-    //         <FiLayers className="text-white" />
-    //       </p>
-    //     </div>
-    //   </div>
-    //   {/* Image Box End */}
-
-    //   <div className="py-5 px-4  h-[120px] ">
-    //     <p className="roboto  text-xl text-black prText">{category}</p>
-    //     {price != 0 ? (
-    //       <p className="text-4xl font-bold text-black opacity-80">
-    //         {" "}
-    //         ৳ {formattePrice}{" "}
-    //       </p>
-    //     ) : (
-    //       <span className="text-xl font-bold text-black opacity-80">
-    //         Price on Call
-    //       </span>
-    //     )}
-    //     <p className="flex gap-2 items-center my-2 prText">
-    //       <FiMapPin />
-    //       <span>{location}</span>
-    //     </p>
-    //   </div>
-
-    //   <div className="h-[50px] text-black opacity-60 ">
-    //     {category == "Flat" || category == "House" ? (
-    //       <div>
-    //         <div className="p-5 flex gap-3">
-    //           <div className="flex items-center  gap-2 roboto">
-    //             <div className="flex items-center gap-2">
-    //               <img className="w-[35px] opacity-40" src={bedIcon} alt="" />{" "}
-    //               {bed}
-    //             </div>
-    //           </div>
-    //           <div className="flex items-center  gap-2">
-    //             <div className="flex items-center gap-2 ">
-    //               {" "}
-    //               <img
-    //                 className="w-[30px] opacity-40 mb-[2px]"
-    //                 src={bathIcon}
-    //                 alt=""
-    //               />{" "}
-    //               {bath}
-    //             </div>
-    //           </div>
-    //           <div className="flex items-center  gap-2">
-    //             {size ? (
-    //               <div className="flex items-center gap-2">
-    //                 <img
-    //                   className="w-[30px] opacity-40"
-    //                   src={areaIcon}
-    //                   alt=""
-    //                 />{" "}
-    //                 {size} ft<sup>2</sup>
-    //               </div>
-    //             ) : (
-    //               <div className="flex items-center gap-2">
-    //                 <img
-    //                   className="w-[30px] opacity-40"
-    //                   src={kitchenIcon}
-    //                   alt=""
-    //                 />{" "}
-    //                 {kitchen}{" "}
-    //               </div>
-    //             )}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     ) : (
-    //       <div className="flex gap-2 p-4 text-[22px]">
-    //         <p>{measurement}</p>
-    //         <p className="">{area}</p>
-    //       </div>
-    //     )}
-    //   </div>
-
-    //   <div className="h-[1px] w-full customBorder"> </div>
-
-    //   <div className="py-5 px-2 flex gap-2 justify-around h-full bg-green-400">
-    //     <div className="flex gap-2 items-center text-black opacity-60">
-    //       <img className="w-[40px] h-[40px] rounded-full " src={image} alt="" />
-    //       <p>{timeAgo} </p>
-    //     </div>
-    //     <div className="flex items-center justify-center gap-2">
-    //       <button
-    //         onClick={() => handlePhoneCall(phone)}
-    //         className="w-[35px] h-[35px] bg-[#F36150] rounded-xl flex items-center justify-center text-white font-bold"
-    //       >
-    //         {" "}
-    //         <FaPhoneAlt />{" "}
-    //       </button>
-    //       <button
-    //         onClick={() => handleSendSMS(phone)}
-    //         className="w-[35px] h-[35px] bg-[#2196F5] rounded-xl flex items-center justify-center text-white font-bold"
-    //       >
-    //         {" "}
-    //         <img className="w-[20px]" src={SmsIcon} alt="" />{" "}
-    //       </button>
-    //       <button
-    //         onClick={() => handleWhatsAppCall(wapp)}
-    //         className="w-[35px] h-[35px] bg-[#25D569] rounded-xl flex items-center justify-center text-white text-xl"
-    //       >
-    //         <img className="w-[30px]" src={whatsappIcon} alt="" />
-    //       </button>
-    //     </div>
-    //   </div>-------------
-    // </div>
-
-    <div className="flex flex-col  border  rounded-md  w-full h-[375px]  md:h-[510px] mx-auto p-0  overflow-hidden bg-white">
+    <div className="flex flex-col  border  rounded-md  w-full h-[355px]  md:h-[485px] mx-auto p-0  overflow-hidden bg-white">
       {/* Image Box Start */}
       {/* <ReactLogo /> */}
       <div className="relative bg-cover bg-center ">
@@ -414,7 +234,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
 
         {/* For Saved Start */}
         {savedBuy && (
-          <div className="absolute top-5 right-[60px] ">
+          <div className="absolute top-4 right-[60px] ">
             <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
               <Favorite onClick={handleUnSave} className="text-white" />:
             </p>
@@ -424,7 +244,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
 
         {/* Save UnSave  Start */}
         {forBuy && (
-          <div className="absolute top-5 right-[60px] ">
+          <div className="absolute top-3 right-[55px] ">
             <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
               {save == true ? (
                 <Favorite onClick={handleUnSave} className="text-white" />
@@ -441,7 +261,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
 
         {/* For Delete Start */}
         {myPostBuy && (
-          <div className="absolute top-5 right-[60px] ">
+          <div className="absolute top-3 right-[50px] ">
             <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
               <FaTrash onClick={handleDelte} className="text-red-700 " />
             </p>
@@ -450,7 +270,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
         {/* For Delete End */}
 
         {/* Share Icon start */}
-        <div className="absolute top-5 right-5 ">
+        <div className="absolute top-3 right-4 ">
           <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
             <FiShare2
               onClick={() => buyPostshare(pid)}
@@ -461,7 +281,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
         {/* Share Icon end */}
 
         {/* Layer Icon Start */}
-        <div className="absolute bottom-2 right-10">
+        <div className="absolute bottom-2 right-4">
           <p className="py-[2px] px-4 BlkOpct flex items-center justify-center gap-2 rounded-full ">
             <span className="text-white">{total_image}</span>{" "}
             <FiLayers className="text-white" />
@@ -472,17 +292,12 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
       {/* Image Box End */}
 
       {/* Family Taka Location Start */}
-      <div className="py-1 md:py-5 px-4  h-[110px] md:h-[150px]  ">
-        <p className="roboto  text-xl text-black prText">{category}</p>
+      <div className="py-1 md:py-5 px-4  h-[110px] md:h-[130px]   ">
+        <p className="roboto text-xl text-black prText">{category}</p>
         {price != 0 ? (
-          <p className="text-4xl font-bold text-black opacity-80">
-            {" "}
-            ৳ {formattePrice}{" "}
-          </p>
+          <p className="text-2xl  text-black opacity-60"> ৳ {formattePrice} </p>
         ) : (
-          <span className="text-xl font-bold text-black opacity-80">
-            Price on Call
-          </span>
+          <span className="text-xl text-black opacity-60">Price on Call</span>
         )}
         <p className="flex gap-2 items-center my-2 prText">
           <FiMapPin />
@@ -510,7 +325,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
             <div className="flex items-center  gap-2">
               {size ? (
                 <div className="flex items-center gap-2">
-                  <AreaSvgIcon />
+                  <AspectRatioOutlined />
                   {size} ft<sup>2</sup>
                 </div>
               ) : (
@@ -537,39 +352,35 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
       <div className="h-[1px] w-full customBorder"> </div>
 
       {/* Contact Button start */}
-      <div className="py-5 px-4 flex items-center gap-2 justify-between h-[70px] ">
-        <div className="flex gap-2 items-center text-black opacity-60 ">
-          <img className="w-[40px] h-[40px] rounded-full " src={image} alt="" />
-          <p>{timeAgo} </p>
-        </div>
-
+      <div className="py-5 px-4 flex items-center gap-2 justify-between h-[50px] md:h-[70px]  ">
+        <img
+          className="w-[40px] md:w-[50px] h-[40px] md:h-[50px] rounded-full "
+          src={image}
+          alt=""
+        />
+        <p className="opacity-70 relative left-2">{timeAgo} </p>
         <div className="flex items-center justify-center gap-2 overflow-hidden ">
-          <div
+          <button
             onClick={() => handlePhoneCall(phone)}
-            className="w-[35px] h-[35px] bg-[#F36150] rounded-xl flex items-center justify-center text-white font-bold overflow-visible"
+            className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#F36150] rounded-xl flex items-center justify-center text-white font-bold overflow-visible"
           >
-            {/* Call Icon */}
-            {/* <FaPhoneAlt className="" />{" "} */}
-            {/* <img className="w-[20px]" src={CallIcon} alt="" />{" "} */}
-            {/* <CallSvgIcon /> */}
-            {/* <PhoneOutlined /> */}
-            <Call />
-          </div>
+            <Call className="cardContactIconSize" />
+          </button>
 
           <button
             onClick={() => handleSendSMS(phone)}
-            className="w-[35px] h-[35px] bg-[#2196F5] rounded-xl flex items-center justify-center text-white font-bold"
+            className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#2196F5] rounded-xl flex items-center justify-center text-white font-bold"
           >
             {" "}
-            <img className="w-[20px]" src={SmsIcon} alt="" />{" "}
+            <img className="w-[20px] md:w-[30px]" src={SmsIcon} alt="" />{" "}
           </button>
 
           <button
             onClick={() => handleWhatsAppCall(wapp)}
-            className="w-[35px] h-[35px] bg-[#25D569] rounded-xl flex items-center justify-center text-white text-xl"
+            className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#25D569] rounded-xl flex items-center justify-center text-white text-xl"
           >
             {/* <WhatsappSvgIcon /> */}
-            <WhatsApp />
+            <WhatsApp className="cardContactIconSize" />
           </button>
         </div>
       </div>
