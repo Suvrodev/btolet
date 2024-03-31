@@ -336,12 +336,15 @@ const BuyDetail = () => {
         {/* Left Div start */}
         <div className="w-full detailParentLeftdiv">
           <div className="flex flex-col md:flex-row gap-1 w-full h-[500px] ">
+            {/* Slider Image For Desktop Start */}
             <div className="w-full md:w-[60%] h-full rounded-md p-2 md:p-0 ">
               <BannerSwipperComponent
                 images={imagesForSlider}
               ></BannerSwipperComponent>
             </div>
+            {/* Slider Image For Desktop End */}
 
+            {/* Floor Plan Image And Map for Desktop Start */}
             <div className="hidden md:flex w-full md:w-[40%] h-full  flex-col bg-green-600 ">
               {floor_plan && (
                 <div className="relative h-[50%] bg-red-500 z-10 phaseImageParent">
@@ -368,13 +371,15 @@ const BuyDetail = () => {
                 <BuyMap geolat={geolat} geolon={geolon}></BuyMap>
               </div>
             </div>
+            {/* Floor Plan Image And Map for Desktop End */}
           </div>
 
+          {/* Take And Contact For Desktop Start */}
           <div className="my-4 flex justify-between rounded-md">
-            <div className="text-3xl robot font-bold text-black opacity-80">
+            <div className="text-3xl robot  text-black opacity-80">
               {price ? (
-                <span className="font-bold ">
-                  Take : <span className="">{formattedRent}</span>{" "}
+                <span className=" ">
+                  BDT <span className="">{formattedRent}</span>{" "}
                 </span>
               ) : (
                 "Price On Call"
@@ -383,14 +388,13 @@ const BuyDetail = () => {
 
             <div className="hidden md:flex gap-4 items-center">
               <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
-              <FiShare2 onClick={() => buyPostshare(id)} />
             </div>
           </div>
-
-          {/* <TkAndShare phone={phone} wapp={wapp} price={price}></TkAndShare> */}
+          {/* Slider Image For Desktop End */}
 
           <div className="w-full h-[1px] bg-black opacity-20 my-4"></div>
 
+          {/* Location Remaining Days and Share for Desktop start */}
           <div className="flex justify-between items-center prText">
             <div className="my-4 flex items-center gap-4">
               <div className="w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 ">
@@ -398,11 +402,14 @@ const BuyDetail = () => {
               </div>
               <p className="text-xl font-bold">{location}</p>
             </div>
-            <div className="font-bold text-xl">{timeAgo}</div>
+            <div className="hidden md:flex gap-4 items-center">
+              <div className=" text-xl">{timeAgo}</div>
+              <FiShare2 onClick={() => buyPostshare(id)} />
+            </div>
           </div>
+          {/* Location Remaining Days and Share for Desktop end */}
 
           {/* Land Type for Mobile Device start */}
-
           <div className="md:hidden">
             <div className="flex flex-wrap gap-1 my-4 w-full">
               {land_type.map((lt, idx) => (
@@ -419,14 +426,14 @@ const BuyDetail = () => {
               ))}
             </div>
           </div>
-
           {/* Land Type for Mobile Device end */}
 
-          {/* my-4 border-2 p-5 rounded-md grid grid-cols-6 gap-6 place-items-center */}
-          <div className="flex  gap-20">
-            <div className="w-full md:w-[50%]">
+          {/* Box Amenities Land Type Start */}
+          <div className="flex  gap-20 ">
+            {/* Box For Desktop And Mobile Device start */}
+            <div className="w-full md:w-[70%]">
               {category === "House" || category === "Flat" ? (
-                <div className=" border-2  grid grid-cols-4 md:grid-cols-6 p-5 ">
+                <div className=" border-2  grid grid-cols-4 md:grid-cols-4 gap-4 p-5 ">
                   {bedBathImportant.map((b, idx) => (
                     <BuyDetailsHomeData
                       key={idx}
@@ -448,10 +455,13 @@ const BuyDetail = () => {
                 </div>
               )}
             </div>
+            {/* Box For Desktop And Mobile Device end */}
 
-            <div className="hidden md:flex w-[50%]  p-5  flex-col gap-4">
-              <div className="prText">
+            {/* Amnenities and Land Type for Desktop start */}
+            <div className="hidden md:flex w-[30%]    flex-col gap-4">
+              <div className={`prText ${amenities.length > 0 ? "" : "hidden"}`}>
                 <h1 className="text-xl font-bold mb-5">Amenities: </h1>
+
                 <div className="grid grid-cols-2">
                   {amenities.map((a, idx) => (
                     <div key={idx} className="flex items-center gap-2">
@@ -465,7 +475,7 @@ const BuyDetail = () => {
               </div>
               <div className={land_type.length < 1 ? "hidden" : "prText"}>
                 <h1 className="font-bold">Land Type:</h1>
-                <div className="flex gap-4 my-4">
+                <div className="flex flex-wrap gap-4 my-4">
                   {land_type.map((lt, idx) => (
                     <p
                       key={idx}
@@ -482,10 +492,12 @@ const BuyDetail = () => {
               </div>
             </div>
           </div>
+          {/* Location Remain Days and Share for Desktop end */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-40 my-10   prText ">
+          {/* Details and Youtube video for Desktop and Mobile Start */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-40 mb-10   prText ">
             <div className="w-full md:w-[30%] peText">
-              <h1 className="text-xl font-bold my-4">Details: </h1>
+              <h1 className="text-xl font-bold mb-2">Details: </h1>
               {name && (
                 <div className="w-[350px] grid grid-cols-2 mb-3">
                   <div className="flex items-start gap-1">
@@ -500,17 +512,17 @@ const BuyDetail = () => {
               <div className="w-[350px] grid grid-cols-2 mb-3 ">
                 <div className="flex items-start gap-1">
                   <DomainOutlined />
-                  <p>Type</p>
+                  <p className="text-xl">Type</p>
                 </div>
-                <p>{category}</p>
+                <p className="text-xl">{category}</p>
               </div>
               {procondition && (
                 <div className="w-[350px] grid grid-cols-2 mb-3">
                   <div className="flex items-start gap-1">
                     <ConstructionOutlined />
-                    <p>condition</p>
+                    <p className="text-xl">condition</p>
                   </div>
-                  <p>{procondition}</p>
+                  <p className="text-xl">{procondition}</p>
                 </div>
               )}
 
@@ -518,9 +530,9 @@ const BuyDetail = () => {
                 <div className="w-[350px] grid grid-cols-2 mb-3">
                   <div className="flex items-start gap-1">
                     <AccessTimeOutlined />
-                    <p>Available from</p>
+                    <p className="text-xl">Available from</p>
                   </div>
-                  <p>{myDate}</p>
+                  <p className="text-xl">{myDate}</p>
                 </div>
               )}
 
@@ -528,9 +540,9 @@ const BuyDetail = () => {
                 <div className="w-[350px] grid grid-cols-2">
                   <div className="flex items-start gap-1">
                     <ShareLocationOutlined />
-                    <p>Short Address</p>
+                    <p className="text-xl">Short Address</p>
                   </div>
-                  <p>{shortaddress}</p>
+                  <p className="text-xl">{shortaddress}</p>
                 </div>
               )}
 
@@ -538,9 +550,9 @@ const BuyDetail = () => {
                 <div className="w-[350px] grid grid-cols-2">
                   <div className="flex items-center gap-1">
                     <PermIdentityOutlined />
-                    <p>Posted By</p>
+                    <p className="text-xl">Posted By</p>
                   </div>
-                  <p>{ownertype}</p>
+                  <p className="text-xl">{ownertype}</p>
                 </div>
               )}
             </div>
@@ -564,6 +576,7 @@ const BuyDetail = () => {
               )}
             </div>
           </div>
+          {/* Details and Youtube Video for Desktop and Mobile end */}
 
           {/* Floor Plan for Mobile Device start */}
           <div className="md:hidden">
@@ -624,7 +637,7 @@ const BuyDetail = () => {
         </div>
         {/* Left Div End */}
 
-        {/* More Post */}
+        {/* Right Div for Desktop Start Start */}
 
         {/* More post for desktop screent start */}
         <div className="w-full px-4 detailParentRightdiv hidden md:block">
@@ -636,7 +649,9 @@ const BuyDetail = () => {
           </div>
         </div>
         {/* More Post for desktop screen end */}
+        {/* Right Div for Desktop Start End */}
 
+        {/* Right Div for Mobile Start Start */}
         {/* For Mobile Device start */}
         <div className="w-full detailParentRightdiv overflow-x-auto md:hidden">
           <div className="flex flex-nowrap md:overflow-x-auto">
@@ -652,6 +667,7 @@ const BuyDetail = () => {
           </div>
         </div>
         {/* For Mobile Device start */}
+        {/* Right Div for Mobile Start End */}
 
         {/* More Post End */}
       </div>

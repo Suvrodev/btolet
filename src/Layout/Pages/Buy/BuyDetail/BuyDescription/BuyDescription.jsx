@@ -11,14 +11,16 @@ const BuyDescription = ({ description, post_id }) => {
           <FiMenu className="text-[#8595A9] opacity-50" />{" "}
           <span className="ml-4">Description</span>
         </h1>
-        <p>id: {post_id}</p>
+        {/* <p>id: {post_id}</p> */}
       </div>
       <p
-        className={`bg-[#E6E8FF] p-5 rounded-md text-[20px] ${
+        className={`bg-[#E6E8FF] p-5 rounded-md text-[20px] leading-10 ${
           post_id ? "" : "sklLoading"
         }`}
       >
-        {description ? description : "A"}
+        <span className="opacity-70">
+          {description ? description : "No Description"}
+        </span>
       </p>
     </div>
   );

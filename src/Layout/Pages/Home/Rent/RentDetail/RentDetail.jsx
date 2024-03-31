@@ -380,27 +380,31 @@ const RentDetail = () => {
       iconDiv = <div className="p-5 h-[45px] "> Shop </div>;
     } else {
       iconDiv = (
-        <div className="flex gap-5 items-center p-5 h-[45px]  text-[30px] my-4 ">
-          <div className="flex items-center gap-2">
-            <img className="w-[40px] opacity-40" src={bedIcon} alt="" /> {bath}
+        <div className="flex gap-6 items-center p-5 h-[45px]  text-[30px] my-4 opacity-80">
+          <div className="flex items-center gap-3">
+            <img className="w-[40px] opacity-60" src={bedIcon} alt="" />
+            <p className="opacity-70">{bath}</p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <img
-              className="w-[40px] opacity-40  mb-[2px]"
+              className="w-[40px] opacity-60  mb-[2px]"
               src={bathIcon}
               alt=""
             />{" "}
-            {bed}
+            <span className="opacity-70">{bed}</span>
           </div>
           {roomsize ? (
-            <div className="flex items-center gap-2">
-              <img className="w-[40px] opacity-40" src={areaIcon} alt="" />{" "}
-              {roomsize} ft<sup>2</sup>
+            <div className="flex items-center gap-3">
+              <img className="w-[40px] opacity-60" src={areaIcon} alt="" />{" "}
+              <p className="opacity-70">
+                {" "}
+                {roomsize} ft<sup>2</sup>
+              </p>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
-              <img className="w-[40px] opacity-40" src={kitchenIcon} alt="" />{" "}
-              {kitchen}{" "}
+            <div className="flex items-center gap-3">
+              <img className="w-[34px] opacity-60" src={kitchenIcon} alt="" />{" "}
+              <p className="opacity-70">{kitchen} </p>
             </div>
           )}
           {/* <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div> */}
@@ -457,11 +461,11 @@ const RentDetail = () => {
           {/* <TkAndShare price={price}></TkAndShare> */}
           <div className="my-4 flex justify-between rounded-md ">
             <div
-              className={`text-3xl robot font-bold text-black opacity-80 ${
+              className={`text-4xl robot  text-black opacity-60 ${
                 post_id ? "" : "sklLoading w-6/12"
               }`}
             >
-              {post_id && <p>৳ {formattedRent}</p>}
+              {post_id && <p className="">৳ {formattedRent}</p>}
             </div>
             <div
               className={`hidden md:block ${
@@ -483,7 +487,7 @@ const RentDetail = () => {
               {post_id && <div>{iconDiv}</div>}
             </div>
             <span
-              className={`font-bold text-xl prText hidden md:block ${
+              className={` text-xl prText hidden md:block ${
                 post_id ? "" : "sklLoading"
               }`}
             >
@@ -505,7 +509,7 @@ const RentDetail = () => {
                   alt=""
                 />
               </div>
-              <p className="text-[18px] md:text-[26px] font-bold text-black opacity-70">
+              <p className="text-[18px] md:text-[26px]  text-black opacity-70">
                 {location}
               </p>
             </div>
@@ -519,12 +523,12 @@ const RentDetail = () => {
           <div className="h-[30px] w-full bg-[#DEDEE0]"></div>
 
           <section className={`m-5 md:m-0 `}>
-            <div className="flex justify-between prText">
+            <div className="flex justify-between items-center prText ">
               <h1 className="text-xl my-4">Details</h1>
               <p>id: {id} </p>
             </div>
             <div
-              className={`customBorder w-full md:w-[650px] p-5 rounded-md ${
+              className={`customBorder w-full md:w-[750px] p-5 rounded-md  ${
                 post_id ? "" : "sklLoading"
               }`}
             >
@@ -534,7 +538,7 @@ const RentDetail = () => {
             </div>
           </section>
 
-          <div className="h-[1px] w-full  my-[25px]  customBorder "></div>
+          {/* <div className="h-[1px] w-full  my-[25px]  customBorder "></div> */}
 
           <div className="m-5 md:m-0">
             <BuyDescription
@@ -560,7 +564,7 @@ const RentDetail = () => {
 
         {/* For Desktop Device start */}
         <div className="w-full  detailParentRightdiv  hidden md:block">
-          <div className="flex flex-no-wrap overflow-x-scroll md:flex-col ">
+          <div className="flex flex-no-wrap overflow-x-scroll md:flex-col gap-5 ">
             {moreRentPost &&
               moreRentPost.map((r, idx) => (
                 <div
