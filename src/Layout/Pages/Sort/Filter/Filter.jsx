@@ -14,8 +14,14 @@ import axios from "axios";
 import { Cancel, CancelOutlined } from "@mui/icons-material";
 
 const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
-  const { baseUrl, lattitude, longitude, doubleLocation, selectedFacilities } =
-    useContext(AuthContext);
+  const {
+    baseUrl,
+    lattitude,
+    longitude,
+    doubleLocation,
+    selectedFacilities,
+    setSelectedFacilities,
+  } = useContext(AuthContext);
   const {
     selectedBathrooms,
     setSelectedBathrooms,
@@ -30,6 +36,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     setByFilterRent,
     setRentPageNumber,
     setRents,
+    setSelectedRentCategory,
   } = useContext(FilterDataContext);
 
   const [propertyNumber, setPropertyNumber] = useState("");
@@ -104,11 +111,17 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
   };
 
   const handleRentClearSort = () => {
-    setCloseFilterRent(true);
-    setRentPageNumber(1);
-    setByFilterRent(false);
-    setRents([]);
+    // setCloseFilterRent(true);
+    // setRentPageNumber(1);
+    // setByFilterRent(false);
+    // setRents([]);
     // window.location.reload();
+    setMaxPrice(10000000);
+    setMinPrice(0);
+    setSelectedBedrooms([]);
+    setSelectedBathrooms([]);
+    setSelectedFacilities([]);
+    setSelectedRentCategory([]);
   };
 
   let upperPrice = "";
