@@ -23,6 +23,8 @@ import ImageZoom from "../Layout/Pages/UserResponsibility/Check/ImageZoom/ImageZ
 import CheckSvg from "../Layout/Pages/UserResponsibility/Check/SVG/CheckSvg/CheckSvg";
 import Skeleton from "../Layout/Pages/UserResponsibility/Check/Skeleton/skeleton";
 import NewShort from "../Layout/Pages/Sort/NewShort/NewShort/NewShort";
+import CheckDownUPLayout from "../Layout/Pages/UserResponsibility/Check/CheckDownUPLayout/CheckDownUPLayout";
+import Modal from "../Layout/Pages/Home/Rent/Rent/Modal/Modal";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +115,14 @@ const router = createBrowserRouter([
       {
         path: "/ns",
         element: <NewShort></NewShort>,
+      },
+      {
+        path: "/bt",
+        element: <CheckDownUPLayout />,
+      },
+      {
+        path: "/mdl",
+        element: <Modal></Modal>,
       },
     ],
   },

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import "./Facilities.css";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 import { FaCheckCircle, FaPlus } from "react-icons/fa";
 
@@ -77,21 +78,20 @@ const Facilities = ({ fromFilter }) => {
 
   return (
     <div>
-      <div className="flex flex-wrap  w-full gap-1">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-10  w-full md:w-[550px] ">
         {facilities.map((facility, index) => (
-          <div key={index} className="flex items-center  p-2 rounded-md">
-            <button
-              onClick={() => handleButtonClick(facility)}
-              className={`flex items-center btn btn-outline btn-sm ${
-                selectedFacilities.includes(facility)
-                  ? "border-blue-600 text-blue-600 border-2"
-                  : ""
-              } `}
-            >
-              {facilitiesIcons[index]}
-              <span className="ml-2">{facility}</span>
-            </button>
-          </div>
+          <button
+            key={index}
+            onClick={() => handleButtonClick(facility)}
+            className={`flex items-center btn btn-outline btn-sm text-[12px] br  ${
+              selectedFacilities.includes(facility)
+                ? "border-blue-600 text-blue-600 border-2"
+                : ""
+            } `}
+          >
+            {facilitiesIcons[index]}
+            <span className="ml-">{facility}</span>
+          </button>
         ))}
       </div>
     </div>

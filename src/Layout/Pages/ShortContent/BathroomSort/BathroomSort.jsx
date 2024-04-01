@@ -22,25 +22,24 @@ const BathroomSort = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-5">
         {bathrooms.map((bathroom, index) => (
-          <div key={index} className="flex items-center p-2 rounded-md">
-            <button
-              onClick={() => handleButtonClick(bathroom)}
-              className={`flex items-center  btn btn-outline btn-sm ${
-                selectedBathrooms.includes(bathroom)
-                  ? "border-blue-600 border-2"
-                  : ""
-              } `}
-            >
-              {selectedBathrooms.includes(bathroom) ? (
-                <FaCheckCircle className="text-blue-500" />
-              ) : (
-                <FaPlus />
-              )}
-              <span className="ml-2">{bathroom}</span>
-            </button>
-          </div>
+          <button
+            key={index}
+            onClick={() => handleButtonClick(bathroom)}
+            className={`flex items-center  btn btn-sm btn-outline h-[40px] w-[75px] text-[16px] ${
+              selectedBathrooms.includes(bathroom)
+                ? "border-blue-600 border-2"
+                : ""
+            } `}
+          >
+            {selectedBathrooms.includes(bathroom) ? (
+              <FaCheckCircle className="text-blue-500" />
+            ) : (
+              <FaPlus />
+            )}
+            <span className="ml-0">{bathroom}</span>
+          </button>
         ))}
       </div>
     </div>

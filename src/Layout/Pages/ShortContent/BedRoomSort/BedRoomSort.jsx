@@ -18,26 +18,26 @@ const BedRoomSort = () => {
   // console.log("Selected Bedroom: ", selectedBedrooms);
   return (
     <div>
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-5">
         {bedrooms.map((bedroom, index) => (
-          <div key={index} className="flex items-center  p-2 rounded-md">
-            <button
-              onClick={() => handleButtonClick(bedroom)}
-              className={`flex items-center btn btn-sm btn-outline ${
-                selectedBedrooms.includes(bedroom)
-                  ? "border-blue-600 border-2"
-                  : ""
-              } `}
-              // style={{ backgroundColor: selectedRentCategory.includes(rentCategory) ? 'green' : 'transparent', border: 'none', cursor: 'pointer' }}
-            >
-              {selectedBedrooms.includes(bedroom) ? (
-                <FaCheckCircle className="text-blue-500" />
-              ) : (
-                <FaPlus />
-              )}
-              <span className="ml-2">{bedroom}</span>
-            </button>
-          </div>
+          // <div key={index} className="flex items-center  p-0 md:p-2 rounded-md">
+          <button
+            onClick={() => handleButtonClick(bedroom)}
+            className={`flex items-center  btn btn-sm btn-outline h-[40px] w-[75px] text-[16px] ${
+              selectedBedrooms.includes(bedroom)
+                ? "border-blue-600 border-2"
+                : ""
+            } `}
+            // style={{ backgroundColor: selectedRentCategory.includes(rentCategory) ? 'green' : 'transparent', border: 'none', cursor: 'pointer' }}
+          >
+            {selectedBedrooms.includes(bedroom) ? (
+              <FaCheckCircle className="text-blue-500" />
+            ) : (
+              <FaPlus />
+            )}
+            <span className="ml-0">{bedroom}</span>
+          </button>
+          // </div>
         ))}
       </div>
     </div>

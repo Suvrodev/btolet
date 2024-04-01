@@ -1,0 +1,11 @@
+.filterGrid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-gap: 10px; /* Gap between grid items */
+}
+
+@media only screen and (max-width: 750px) {
+    .filterGrid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}

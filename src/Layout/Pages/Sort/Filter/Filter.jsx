@@ -11,6 +11,7 @@ import { AuthContext } from "../../../../Providers/AuthProvider";
 import { FilterDataContext } from "../../../../Providers/FilterDataProvider";
 import CategoryContentSort from "../../ShortContent/CategoryContentSort/CategoryContentSort";
 import axios from "axios";
+import { Cancel, CancelOutlined } from "@mui/icons-material";
 
 const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
   const { baseUrl, lattitude, longitude, doubleLocation, selectedFacilities } =
@@ -110,96 +111,151 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     // window.location.reload();
   };
 
+  let upperPrice = "";
+  if (minPrice == 0 && maxPrice == 10000000) {
+    upperPrice = <span>Any Price</span>;
+  } else if (maxPrice < 10000000) {
+    upperPrice = (
+      <span>
+        BDT {minPrice} to {maxPrice}/month
+      </span>
+    );
+  } else if (maxPrice == 10000000) {
+    upperPrice = (
+      <span>
+        BDT {minPrice} to {maxPrice} +/month
+      </span>
+    );
+  }
+
   return (
-    <div>
-      <div className=" p-5 flex flex-col justify-center rounded-md">
-        <p className="bg-yellow-600 w-full md:w-6/12 text-center font-bold text-xl text-white mx-auto rounded-md mb-20 p-2">
-          BDT {minPrice} to {maxPrice} +/month
-        </p>
-        <div className="  mb-10 p-5">
-          <ReactSlider
-            className="horizontal-slider"
-            thumbClassName="example-thumb"
-            trackClassName="example-track"
-            defaultValue={[0, 10000000]}
-            max={10000000}
-            min={0}
-            ariaLabel={["Lower thumb", "Upper thumb"]}
-            ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
-            renderThumb={(props, state) => (
-              <div {...props}>{state.valueNow}</div>
-            )}
-            pearling
-            minDistance={5}
-            value={[minPrice, maxPrice]}
-            onChange={handleSliderChange}
-          />
-        </div>
-      </div>
-      <div className="flex flex-col gap-5 w-full  md:w-[80%] mx-auto justify-center ">
-        <div className="flex flex-col md:flex-row gap-5 items-center w-full ">
-          <div className=" w-full">
-            <p>Min</p>
-            <input
-              type="number"
-              name=""
-              id=""
-              className="input input-bordered w-full  border-red-500 bg-gray-500"
-              value={minPrice}
-              onChange={handleMinInputChange}
-            />
+    <div className=" ">
+      <div className="p-[40px]">
+        <div className="  flex flex-col justify-center rounded-md">
+          <div className="flex flex-col md:flex-row md:gap-20">
+            <div></div>
+            <p className="bg-[#FF9800] w-full md:w-6/12 text-center font-bold text-xl text-white mx-auto rounded-full mb-10 p-2 mt-20">
+              {/* {minPrice == 0 && maxPrice == 10000000 ? (
+                <span>Any Price</span>
+              ) : (
+                <span>
+                  BDT {minPrice} to {maxPrice}/month
+                </span>
+              )} */}
+              {upperPrice}
+            </p>
           </div>
-          <div className="w-full">
-            <p>Max</p>
-            <input
-              type="number"
-              name=""
-              id=""
-              className="input input-bordered w-full border-red-500 bg-gray-500"
-              value={maxPrice}
-              onChange={handleMaxInputChange}
-            />
+          {/* Slider And Price Start */}
+          <div className="  flex flex-col md:flex-row md:gap-20 ">
+            <h1 className="font-bold mb-10 md:mb-0 text-[#2E2D36]">Price</h1>
+            <div className=" flex flex-col   w-full">
+              {/* Only Slider Start */}
+              <div className="  ">
+                <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName="example-thumb"
+                  trackClassName="example-track"
+                  defaultValue={[0, 10000000]}
+                  max={10000000}
+                  min={0}
+                  ariaLabel={["Lower thumb", "Upper thumb"]}
+                  ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
+                  renderThumb={(props, state) => (
+                    <div {...props}>{state.valueNow}</div>
+                  )}
+                  pearling
+                  minDistance={5}
+                  value={[minPrice, maxPrice]}
+                  onChange={handleSliderChange}
+                />
+              </div>
+              {/* Only Slider End */}
+
+              {/* Price Write Start */}
+              <div className="flex flex-col md:flex-row gap-5 w-full  justify-center mt-10 md:px-10">
+                {/* <div className="flex flex-col md:flex-row gap-5 items-center w-full "> */}
+                <div className=" w-full bg-white rounded-lg p-5">
+                  <p className="prText">Min Price</p>
+                  <input
+                    type="number"
+                    name=""
+                    id=""
+                    className="bg-white outline-none border-1 dag"
+                    value={minPrice}
+                    onChange={handleMinInputChange}
+                  />
+                </div>
+                <div className="w-full bg-white rounded-lg p-5">
+                  <p className="prText">Max Price</p>
+                  <input
+                    type="number"
+                    name=""
+                    id=""
+                    className="bg-white outline-none border-1 dag"
+                    value={maxPrice}
+                    onChange={handleMaxInputChange}
+                  />
+                  {/* </div> */}
+                </div>
+              </div>
+              {/* Price Write End */}
+            </div>
+          </div>
+          {/* Slider And Price Start */}
+        </div>
+
+        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
+          <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
+            Category
+          </h1>
+          <div className=" w-full md:w-[80%]">
+            <CategoryContentSort></CategoryContentSort>
+          </div>
+        </div>
+
+        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+          <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
+            Bedrooms
+          </h1>
+          <div className=" w-full md:w-[80%]">
+            <BedRoomSort></BedRoomSort>
+          </div>
+        </div>
+
+        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+          <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
+            Bathrooms
+          </h1>
+          <div className="w-full md:w-[80%]">
+            <BathroomSort></BathroomSort>
+          </div>
+        </div>
+
+        {/* Facilities */}
+        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+          <h1 className="font-bold text-[#2E2D36] w-full md:w-[20%]">
+            Facilities
+          </h1>
+          <div className="w-full md:w-[80%]">
+            <Facilities fromFilter={true}></Facilities>
           </div>
         </div>
       </div>
 
-      <div className="mt-5">
-        <h1>Category: </h1>
-        <CategoryContentSort></CategoryContentSort>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* BedRoom Start */}
-        <div>
-          <h1>Bedroom:</h1>
-          <BedRoomSort></BedRoomSort>
-        </div>
-
-        {/* Bathroom short */}
-        <div>
-          <h1>Bathroom</h1>
-          <BathroomSort></BathroomSort>
-        </div>
-      </div>
-
-      {/* Facilities */}
-      <div className="">
-        <h1>Facilities:</h1>
-        <Facilities fromFilter={true}></Facilities>
-      </div>
-
-      <div className="flex gap-4 w-full md:w-4/12 mx-auto flex-col-reverse md:flex-row justify-center">
-        <button onClick={handleRentClearSort} className="btn btn-warning">
-          Clear
+      <div className="filterFooter ">
+        <button
+          onClick={handleRentClearSort}
+          className="btn bg-[#FCECEE] border-0 text-[#DF495D] hover:bg-[#DF495D] hover:text-white"
+        >
+          Clear All Filter <CancelOutlined />
         </button>
-        <button onClick={handleRentSort} className="btn btn-primary ">
+        <button
+          onClick={handleRentSort}
+          className="btn bg-[#FF9800] border-0 hover:bg-[#FF9800] text-white "
+        >
           Show Properties {propertyNumber} Properties{" "}
         </button>
       </div>
-
-      {/* <form method="dialog">
-         <button className='btn'>Check</button>
-       </form> */}
     </div>
   );
 };

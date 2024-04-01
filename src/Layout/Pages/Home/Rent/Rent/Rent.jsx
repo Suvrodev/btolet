@@ -103,28 +103,68 @@ const Rent = () => {
     <div className="my-4">
       {/* Modal start */}
       <div>
-        {/* You can open the modal using document.getElementById('ID').showModal() method */}
-        {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
-        <dialog id="filterModal_1" className=" modal md:modal  ">
-          <div className="modal-box w-full md:w-11/12 max-w-full bg-white">
+        <dialog id="filterModal_1" className="modal">
+          <div className="modal-box w-full md:w-6/12 h-full max-w-full absolute bottom-0 max-h-[80%] md:max-h-full bg-[#F3F4F6] p-0 ">
+            <form method="dialog" className="sticky top-0 left-0 w-full z-10">
+              <div className="FilterUp flex justify-between items-center p-2  ">
+                <h1 className="ml-2 ">Filter</h1>
+                <button className="" ref={closeButtonRef}>
+                  ✕
+                </button>
+              </div>
+            </form>
+            <div>
+              <Filter
+                closeFilterRent={closeFilterRent}
+                setCloseFilterRent={setCloseFilterRent}
+              ></Filter>
+            </div>
+          </div>
+        </dialog>
+
+        {/* <dialog id="filterModal_1" className="modal md:modal ">
+          <div className="modal-box w-full md:w-6/12 h-full max-w-full bg-[#F3F4F6] p-0 m-0 mainBox">
+            <div className=" w-full top-0  z-10 startSticky">
+              <div className="modal-action p-0 formDiv ">
+                <form method="dialog mainForm ">
+                  <div className="FilterUp flex justify-between items-center p-2  ">
+                    <h1 className="ml-2 ">Filterttt</h1>
+                    <button className="" ref={closeButtonRef}>
+                      ✕
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div className="">
+              <Filter
+                closeFilterRent={closeFilterRent}
+                setCloseFilterRent={setCloseFilterRent}
+              />
+            </div>
+          </div>
+        </dialog> */}
+
+        {/* <dialog id="filterModal_1" className=" modal md:modal    ">
+          <div className="modal-box w-full md:w-6/12 h-full max-w-full bg-[#F3F4F6] p-0 sizeAdjust overflow-auto ">
             <Filter
               closeFilterRent={closeFilterRent}
               setCloseFilterRent={setCloseFilterRent}
             ></Filter>
-            {/* <CheckFilterSize></CheckFilterSize> */}
-            <div className="modal-action">
+
+            <div className="modal-action ">
               <form method="dialog">
-                {/* if there is a button, it will close the modal */}
-                <button
-                  className="btn btn-sm btn-circle btn-error absolute right-2 top-2"
-                  ref={closeButtonRef}
-                >
-                  ✕
-                </button>
+                <div className="FilterUp  ">
+                  <h1 className="ml-2">Filter</h1>
+                  <button className="" ref={closeButtonRef}>
+                    ✕
+                  </button>
+                </div>
               </form>
             </div>
           </div>
-        </dialog>
+        </dialog> */}
       </div>
       {/* Modal end */}
 

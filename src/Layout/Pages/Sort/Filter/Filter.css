@@ -20,33 +20,43 @@
 }
 
 .horizontal-slider .example-thumb{
-    top: 1;
-    width: 80px;
-    height: 48px;
+    top: 5;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     line-height: 38px;
-    font-size: 0.9em;
+    font-size: 0;
     text-align: center;
-    background-color: black;
+    background-color: white;
     color: white;
     cursor: pointer;
     border: 5px solid #5280E6;
     box-sizing: border-box;
-    margin-top: -50px;
+    margin-top: -10px;
+    
+}
+
+.filterFooter{
+   
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    position: sticky;
+    bottom: 0;
+    
+}
+.dag{
+    border-bottom: 1px solid gray;
 }
 
 @media screen and (max-width: 576px) {
-    .horizontal-slider .example-thumb{
-        top: 1;
-        width: 80px;
-        height: 48px;
-        line-height: 38px;
-        font-size: 0.9em;
-        text-align: center;
-        background-color: black;
-        color: white;
-        cursor: pointer;
-        border: 5px solid #5280E6;
-        box-sizing: border-box;
-        margin-top: -70px;
+    .filterFooter{
+        display: flex;
+        flex-direction: column-reverse;
+       
     }
 }
