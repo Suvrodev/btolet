@@ -197,7 +197,7 @@ const Header = () => {
             ) : (
               // <Link to='/login'><button className=" py-2 px-5 hover:border-2 transition duration-700 ease-in-out"><span className='flex items-center gap-1 text-black opacity-75'> <FiUser /> Sign in</span></button></Link>
               <Link to="/login">
-                <button className="py-2 px-5 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-700 ease-in-out">
+                <button className="py-2 px-5 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-1000 ease-in-out">
                   <span className="flex items-center gap-1 text-black opacity-75">
                     <FiUser /> Sign in
                   </span>
@@ -215,10 +215,8 @@ const Header = () => {
           <FaBars onClick={handleLeftNav} />
           {/* Which Will do After Click Bar start */}
           <div
-            className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition duration-1000 ease-in-out
-             ${
-               leftNav ? "-left-7 duration-1000 ease-in-out" : "left-[500px] "
-             }`}
+            className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition-all duration-700 ease-in-out
+             ${leftNav ? "-left-7 " : "-left-[500px] "}`}
           >
             <div className="bg-[#03A9F5] p-2 text-white">
               <div className="mb-10 ">
