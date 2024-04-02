@@ -77,7 +77,9 @@ const RentCategoryNewSort = ({
     <div className=" z-10 ">
       <div className="relative">
         <button
-          className="btn bg-white border-0 shadow-md text-black hover:bg-white "
+          className={`btn bg-white border-0 shadow-md text-black hover:bg-[#7B53C1] hover:text-white ${
+            rentCategoryClose ? "bg-[#7B53C1] text-white" : ""
+          } `}
           onClick={handleShowRentCategory}
         >
           Category(Rent)
