@@ -39,10 +39,15 @@
     padding:20px 30px;
     box-shadow: 2px 1px 25px #E4E4E8;
 }
-.overfollowScroll{
-    overflow-y: auto !important;
-    padding-right: 00px !important; 
-    box-sizing: content-box !important;
+.overfollowParent{
+   overflow: hidden;
   
+}
+.tung{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 10px; 
+    box-sizing: content-box;
 }
 
