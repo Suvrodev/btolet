@@ -146,11 +146,13 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     <div className=" ">
       <div className="p-[40px]">
         <div className="  flex flex-col justify-center rounded-md">
-          <div className="flex flex-col md:flex-row md:gap-20">
-            <div></div>
-            <p className="bg-[#FF9800] w-full md:w-6/12 text-center font-bold text-xl text-white mx-auto rounded-full mb-10 p-2 mt-20">
-              {upperPrice}
-            </p>
+          <div className="flex flex-col md:flex-row md:gap-0">
+            <div className="w-[20%]"></div>
+            <div className="w-full md:w-[80%]">
+              <p className="bg-[#FF9800] w-full md:w-10/12  text-center font-bold text-sm md:text-xl text-white mx-auto rounded-full mb-10 p-2 mt-20">
+                {upperPrice}
+              </p>
+            </div>
           </div>
           {/* Slider And Price Start */}
           <div className="  flex flex-col md:flex-row gap-5 md:gap-0  w-full   ">
@@ -184,23 +186,26 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
               <div className="flex flex-col md:flex-row gap-5 w-full  justify-center mt-10 ">
                 {/* <div className="flex flex-col md:flex-row gap-5 items-center w-full "> */}
                 <div className=" w-full bg-white rounded-lg p-5">
-                  <p className="prText">Min Price</p>
+                  <p className="prText font-bold">Min Price</p>
                   <input
                     type="number"
                     name=""
                     id=""
-                    className="bg-white outline-none border-1 dag numberInputUpDown"
+                    className="bg-white outline-none border-1 dag numberInputUpDown opacity-70"
                     value={minPrice}
                     onChange={handleMinInputChange}
                   />
                 </div>
+                <div className="hidden w-[60px] md:flex justify-center items-center ">
+                  <p className=" w-full h-[1px] bg-black opacity-50"></p>
+                </div>
                 <div className="w-full bg-white rounded-lg p-5">
-                  <p className="prText">Max Price</p>
+                  <p className="prText font-bold">Max Price</p>
                   <input
                     type="number"
                     name=""
                     id=""
-                    className="bg-white outline-none border-1 dag numberInputUpDown"
+                    className="bg-white outline-none border-1 dag numberInputUpDown opacity-70"
                     value={maxPrice}
                     onChange={handleMaxInputChange}
                   />
@@ -213,7 +218,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           {/* Slider And Price Start */}
         </div>
 
-        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
+        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Category
           </h1>
@@ -222,7 +227,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           </div>
         </div>
 
-        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Bedrooms
           </h1>
@@ -231,7 +236,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           </div>
         </div>
 
-        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Bathrooms
           </h1>
@@ -241,7 +246,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
         </div>
 
         {/* Facilities */}
-        <div className="mt-10  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
           <h1 className="font-bold text-[#2E2D36] w-full md:w-[20%]">
             Facilities
           </h1>
@@ -251,7 +256,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
         </div>
       </div>
 
-      <div className="filterFooter ">
+      <div className="filterFooter px-10 md:px-0 bg-green-300 ">
         <button
           onClick={handleRentClearSort}
           className="btn bg-[#FCECEE] border-0 text-[#DF495D] hover:bg-[#DF495D] hover:text-white"
@@ -262,7 +267,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           onClick={handleRentSort}
           className="btn bg-[#FF9800] border-0 hover:bg-[#FF9800] text-white "
         >
-          Show Properties {propertyNumber} Properties{" "}
+          Show {propertyNumber} Properties{" "}
         </button>
       </div>
     </div>

@@ -18,13 +18,13 @@ const BedRoomSort = () => {
   // console.log("Selected Bedroom: ", selectedBedrooms);
   return (
     <div>
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-3">
         {bedrooms.map((bedroom, index) => (
           // <div key={index} className="flex items-center  p-0 md:p-2 rounded-md">
           <button
             key={index}
             onClick={() => handleButtonClick(bedroom)}
-            className={` h-[40px] w-[70px] flex justify-center items-center  gap-2 border-2  rounded-[10px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] ${
+            className={` shadow-sm  h-[55px] w-[75px] flex justify-center items-center  gap-2 border-2  rounded-[5px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] ${
               selectedBedrooms.includes(bedroom)
                 ? "border-blue-600 border-2"
                 : ""
@@ -34,7 +34,8 @@ const BedRoomSort = () => {
             {selectedBedrooms.includes(bedroom) ? (
               <FaCheckCircle className="text-blue-500" />
             ) : (
-              <FaPlus className="text-[#2E2D36] opacity-70" />
+              // <FaPlus className="text-[#2E2D36] opacity-70" />
+              <></>
             )}
             <span className="ml-0">{bedroom}</span>
           </button>

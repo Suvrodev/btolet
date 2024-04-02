@@ -9,6 +9,7 @@ import {
   FiAlertCircle,
   FiEdit,
   FiHeart,
+  FiHome,
   FiPhoneCall,
   FiRadio,
   FiSearch,
@@ -16,6 +17,7 @@ import {
 } from "react-icons/fi";
 import BedNewShort from "../../Sort/NewShort/BedNewShort/BedNewShort";
 import NewShort from "../../Sort/NewShort/NewShort/NewShort";
+import { Clear, HomeWorkOutlined, Tune } from "@mui/icons-material";
 
 const Header = () => {
   const {
@@ -37,7 +39,12 @@ const Header = () => {
   };
 
   const handleLeftNav = () => {
-    setLeftNav(!leftNav);
+    setLeftNav(true);
+  };
+
+  const handleCloseLeftNav = () => {
+    // console.log("Close Left Nav: ", leftNav);
+    setLeftNav(false);
   };
 
   // console.log("Left Nav: ",leftNav);
@@ -204,16 +211,18 @@ const Header = () => {
       {/* For Mobile Device */}
 
       <div className="w-full  h-[75px] border-4 p-5 flex items-center justify-between fixed top-0 z-10 bg-white md:hidden   ">
-        <div onClick={handleLeftNav} className=" relative">
-          <FaBars />
-
+        <div className=" relative ">
+          <FaBars onClick={handleLeftNav} />
+          {/* Which Will do After Click Bar start */}
           <div
-            className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition duration-700 ease-in-out
-             ${leftNav ? "-left-6 duration-700" : "left-[500px] hidden"}`}
+            className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition duration-1000 ease-in-out
+             ${
+               leftNav ? "-left-7 duration-1000 ease-in-out" : "left-[500px] "
+             }`}
           >
-            <div className="bg-blue-400 p-5 text-white">
-              <div className="mb-10">
-                <FaReply />
+            <div className="bg-[#03A9F5] p-2 text-white">
+              <div className="mb-10 ">
+                <Clear onClick={handleCloseLeftNav} />
               </div>
               <div className="mb-5">
                 {currentUser && (
@@ -221,27 +230,111 @@ const Header = () => {
                     <img
                       src={currentUser?.image}
                       alt=""
-                      className="w-[50px] h-[50px] rounded-full"
+                      className="w-[75px] h-[75px] rounded-full"
                     />
-                    <h1>{currentUser?.name}</h1>
+                    <h1 className="mt-2">
+                      {currentUser?.name} ({currentUser?.uid})
+                    </h1>
                     <h1>{currentUser?.email}</h1>
                   </div>
                 )}
               </div>
             </div>
             <div className="flex flex-col gap-4 p-5 prText">
-              <Link to="/home">Rent</Link>
-              <Link to="/buy">Buy</Link>
-              <Link to="updateprofile">Profile</Link>
-              <Link to="/savedpost">Saved</Link>
-              <Link to="/mypost">My Post</Link>
-              <Link to="">FeedBack</Link>
+              <Link
+                to="/home"
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiHome />
+                </span>
+                <span>Rent</span>
+              </Link>
+              <Link
+                to="/buy"
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <HomeWorkOutlined />
+                </span>
+                <span>Buy</span>
+              </Link>
+              <Link
+                to="/updateprofile"
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiUser />
+                </span>
+                <span> Profile</span>
+              </Link>
+              <Link
+                to="/savedpost"
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiHeart />
+                </span>
+                <span>Saved</span>
+              </Link>
+              <Link
+                to="/mypost"
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiEdit />
+                </span>
+                <span>My Post</span>
+              </Link>
+              <Link
+                to=""
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiRadio />
+                </span>
+                <span>FeedBack</span>
+              </Link>
               <p className="h-[1px] mt-4 mb-2 customBorder"></p>
-              <Link to="">Terms And Condition</Link>
-              <Link to="">Contuct</Link>
-              <Link to="">About US</Link>
+              <Link
+                to=""
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiSearch />
+                </span>
+                <span>Terms And Condition</span>
+              </Link>
+              <Link
+                to=""
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiPhoneCall />
+                </span>
+                <span>Contact</span>
+              </Link>
+              <Link
+                to=""
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiAlertCircle />
+                </span>
+                <span>About US</span>
+              </Link>
             </div>
           </div>
+          {/* Which Will do After Click Bar end */}
         </div>
         <div>
           <img className="w-[50px] h-[50px]" src={headerLogo} alt="" />

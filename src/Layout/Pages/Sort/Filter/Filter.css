@@ -40,11 +40,11 @@
    
     width: 100%;
     background-color: white;
-    padding: 15px;
+    padding: 20px 0;
     margin-top: 20px;
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content:  space-around;
     position: sticky;
     bottom: 0;
     
@@ -61,7 +61,7 @@
   margin: 0; 
 }
 .numberInputUpDown {
-  -moz-appearance: textfield; /* Firefox */
+  -moz-appearance: textfield; 
 }
 
 
@@ -69,6 +69,7 @@
     .filterFooter{
         display: flex;
         flex-direction: column-reverse;
+        padding: 20px;
        
     }
 }

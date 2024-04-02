@@ -78,12 +78,12 @@ const Facilities = ({ fromFilter }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-10  w-full md:w-[550px] ">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-5  w-full md:w-[550px] ">
         {facilities.map((facility, index) => (
           <button
             key={index}
             onClick={() => handleButtonClick(facility)}
-            className={`h-[40px] w-[130px] md:w-[150px]   flex items-center justify-center border-2 rounded-[15px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] gap-2 br  ${
+            className={`shadow-sm   h-[50px] w-[130px] md:w-[180px]   flex items-center justify-center border-2 rounded-[15px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] gap-2 br  ${
               selectedFacilities.includes(facility)
                 ? "border-blue-600 text-blue-600 border-2"
                 : ""
