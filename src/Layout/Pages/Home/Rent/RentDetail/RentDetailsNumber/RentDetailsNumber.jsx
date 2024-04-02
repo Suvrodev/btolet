@@ -30,19 +30,32 @@ const RentDetailsNumber = ({ ad }) => {
 
   return (
     <div className="w-full flex items-start mb-3">
-      <div className="w-[30%]  flex items-center gap-2">
+      <div className="w-[50%] md:w-[30%]  flex items-center gap-2 ">
         <span className="prText">{ad?.iconName}</span>
-        <h1 className="prText text-xl"> {ad?.itemName} </h1>
+        <h1 className="prText text-[12px] md:text-xl"> {ad?.itemName} </h1>
       </div>
-      <div className="w-[70%]">
+      <div className="w-[50%] md:w-[70%] ">
         {ad?.itemName == "Facilities" && (
-          <p className=" text-green-500 text-xl">{itemNumbers}</p>
+          <p className=" text-green-500 text-[12px] md:text-xl">
+            {itemNumbers}
+          </p>
         )}
         {ad?.itemName == "Rent From" && (
-          <p className=" text-black text-xl opacity-70">{myDate}</p>
+          <p className=" text-black text-[12px] md:text-xl opacity-70">
+            {myDate}
+          </p>
         )}
-        {ad?.itemName !== "Facilities" && ad?.itemName !== "Rent From" ? (
-          <p className="text-black text-xl opacity-70 ">{itemNumbers}</p>
+        {ad?.itemName == "Property Type" && (
+          <p className=" text-black text-[12px] md:text-xl font-bold opacity-70">
+            {itemNumbers}
+          </p>
+        )}
+        {ad?.itemName !== "Facilities" &&
+        ad?.itemName !== "Rent From" &&
+        ad?.itemName !== "Property Type" ? (
+          <p className="text-black text-[12px] md:text-xl opacity-70 ">
+            {itemNumbers}
+          </p>
         ) : (
           <p className="text-black"></p>
         )}

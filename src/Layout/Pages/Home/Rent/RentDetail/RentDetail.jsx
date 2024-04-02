@@ -49,6 +49,8 @@ import kitchenIcon from "../../../../../assets/icons/tolet/kitchen.svg";
 import calculateTimeAgo from "../../../../../Function/TimeAgo";
 
 import BannerSwipperComponent from "../../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent";
+import trunCateWord from "../../../../../Function/TrunCate";
+import { FiShare2 } from "react-icons/fi";
 
 const RentDetail = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -348,7 +350,8 @@ const RentDetail = () => {
       iconDiv = (
         <div className="flex items-center gap-2 p-5 h-[45px] ">
           {" "}
-          <img className="w-[30px]" src={bikeIcon} alt="" /> Bike Garage
+          <img className="w-[24px] md:w-[30px]" src={bikeIcon} alt="" /> Bike
+          Garage
         </div>
       );
       console.log("Garage Type: ", garagetype);
@@ -357,7 +360,8 @@ const RentDetail = () => {
       iconDiv = (
         <div className="flex items-center gap-2 p-5 h-[45px] ">
           {" "}
-          <img className="w-[30px]" src={carIcon} alt="" /> Car Garage{" "}
+          <img className="w-[24px] md:w-[30px]" src={carIcon} alt="" /> Car
+          Garage{" "}
         </div>
       );
       console.log("Garage Type: ", garagetype);
@@ -366,7 +370,8 @@ const RentDetail = () => {
       iconDiv = (
         <div className="flex items-center gap-2 p-5 h-[45px] ">
           {" "}
-          <img className="w-[30px]" src={garageIcon} alt="" /> Garage{" "}
+          <img className="w-[24px] md:w-[30px]" src={garageIcon} alt="" />{" "}
+          Garage{" "}
         </div>
       );
       console.log("Garage Type: ", garagetype);
@@ -380,22 +385,30 @@ const RentDetail = () => {
       iconDiv = <div className="p-5 h-[45px] "> Shop </div>;
     } else {
       iconDiv = (
-        <div className="flex gap-6 items-center p-5 h-[45px]  text-[30px] my-4 opacity-80">
+        <div className="flex gap-6 items-center p-5 h-[45px] text-[12px] md:text-[30px] font-bold md:font-normal opacity-80">
           <div className="flex items-center gap-3">
-            <img className="w-[40px] opacity-60" src={bedIcon} alt="" />
-            <p className="opacity-70">{bath}</p>
+            <img
+              className="w-[28px] md:w-[40px] opacity-60"
+              src={bedIcon}
+              alt=""
+            />
+            <p className="opacity-70">{bed} Beds</p>
           </div>
           <div className="flex items-center gap-3">
             <img
-              className="w-[40px] opacity-60  mb-[2px]"
+              className="w-[28px] md:w-[40px] opacity-60  mb-[2px]"
               src={bathIcon}
               alt=""
             />{" "}
-            <span className="opacity-70">{bed}</span>
+            <span className="opacity-70">{bed} Baths</span>
           </div>
           {roomsize ? (
-            <div className="flex items-center gap-3">
-              <img className="w-[40px] opacity-60" src={areaIcon} alt="" />{" "}
+            <div className="flex items-center gap-1 md:gap-3">
+              <img
+                className="w-[28px] md:w-[40px] opacity-60"
+                src={areaIcon}
+                alt=""
+              />{" "}
               <p className="opacity-70">
                 {" "}
                 {roomsize} ft<sup>2</sup>
@@ -403,8 +416,12 @@ const RentDetail = () => {
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <img className="w-[34px] opacity-60" src={kitchenIcon} alt="" />{" "}
-              <p className="opacity-70">{kitchen} </p>
+              <img
+                className="w-[26px] md:w-[34px] opacity-60"
+                src={kitchenIcon}
+                alt=""
+              />{" "}
+              <p className="opacity-70">{kitchen} kitchens </p>
             </div>
           )}
           {/* <div className='flex items-center gap-2'><img className='w-[40px] opacity-40' src={areaIcon} alt="" /> {roomsize} ft<sup>2</sup></div> */}
@@ -421,7 +438,7 @@ const RentDetail = () => {
   // }
 
   return (
-    <div className={`mt-10  `}>
+    <div className={`mt-10 md:m-0 `}>
       <div className="md:hidden">
         <footer className="footer">
           <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
@@ -431,9 +448,11 @@ const RentDetail = () => {
       <div className="detailParent">
         {/* Left Div start */}
         <div className="w-full detailParentLeftdiv">
-          <div className="flex flex-col md:flex-row gap-1 w-full h-[500px] ">
+          {/* Image Map Start */}
+          <div className="flex flex-col md:flex-row gap-1 w-full h-[260px] md:h-[500px] ">
+            {/* Slider Image For Desktop and Mobile Start */}
             <div
-              className={`w-full md:w-[60%] h-full rounded-md p-2 md:p-0 ${
+              className={`w-full md:w-[60%] h-full rounded-md p-0 md:p-0 ${
                 imagesForSlider.length == 0 ? "sklLoading" : ""
               } `}
             >
@@ -441,6 +460,9 @@ const RentDetail = () => {
                 images={imagesForSlider}
               ></BannerSwipperComponent>
             </div>
+            {/* Slider Image For Desktop and Mobile end */}
+
+            {/*  Map for Desktop Start */}
             <div className="hidden md:flex w-[40%] h-full  flex-col bg-green-600 rounded-xl">
               <div
                 className={`h-full w-[80%] md:w-full mx-auto rounded-xl bg-yellow-300 ${
@@ -456,12 +478,14 @@ const RentDetail = () => {
                 )}
               </div>
             </div>
+            {/*  Map for Desktop Start */}
           </div>
+          {/* Image Map end */}
 
-          {/* <TkAndShare price={price}></TkAndShare> */}
-          <div className="my-4 flex justify-between rounded-md ">
+          {/* Take for all And Contact For Desktop Start */}
+          <div className="my-4 flex justify-between items-center rounded-md px-4 md:px-0">
             <div
-              className={`text-4xl robot  text-black opacity-60 ${
+              className={`text-2xl md:text-3xl robot  text-black opacity-60 ${
                 post_id ? "" : "sklLoading w-6/12"
               }`}
             >
@@ -477,70 +501,68 @@ const RentDetail = () => {
               )}
             </div>
           </div>
-          {/* <TkAndShare price={price}></TkAndShare> */}
+          {/* Take for all And Contact For Desktop end */}
 
+          {/* Bed Bath Icon Start */}
+          <div>{iconDiv}</div>
+          {/* Bed Bath Icon End */}
+
+          {/* div for 1 line */}
           <div className="w-full h-[1px] bg-black opacity-20 my-4"></div>
 
-          <div className="flex justify-between items-center">
-            <div className={`w-full md:w-[80%] ${post_id ? "" : "sklLoading"}`}>
-              {" "}
-              {post_id && <div>{iconDiv}</div>}
-            </div>
-            <span
-              className={` text-xl prText hidden md:block ${
-                post_id ? "" : "sklLoading"
-              }`}
-            >
-              {post_id && <p>{timeAgo}</p>}
-            </span>
-          </div>
-
-          {/* Location and Time Ago start */}
+          {/* Location Remaining Days and Share for Desktop start */}
           <div
-            className={`flex justify-between items-center ${
-              post_id ? "" : "sklLoading"
-            } `}
+            className={`flex justify-between items-center prText w-full md:w-full  `}
           >
+            {/* Location Image and Location start */}
             <div className="my-4 flex items-center gap-4 ">
               <div className="w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 flex items-center justify-center ">
                 <img
-                  className="w-[50px] h-[50px]"
+                  className="w-[25px] h-[25px] md:h-full md:w-full rounded-full"
                   src={locationColorImage}
                   alt=""
                 />
               </div>
-              <p className="text-[18px] md:text-[26px]  text-black opacity-70">
+              <p className="hidden md:block text-lg font-bold truncate">
                 {location}
               </p>
+              <p className="md:hidden text-sm  ">
+                {trunCateWord(location, 25)}
+              </p>
             </div>
+            {/* Location Image and Location end */}
 
-            <span className="font-bold text-xl prText md:hidden ">
-              {timeAgo}
-            </span>
+            {/* Time Ago start */}
+            <div className="flex gap-4 justify-start md:justify-end items-center w-[23%]   ">
+              <div className=" text-sm md:text-xl">{timeAgo}</div>
+              <FiShare2
+                onClick={() => buyPostshare(id)}
+                className="hidden md:block"
+              />
+            </div>
+            {/* Time Ago End */}
           </div>
-          {/* Location and Time Ago end */}
+          {/* Location Remaining Days and Share for Desktop end */}
 
           <div className="h-[30px] w-full bg-[#DEDEE0]"></div>
 
-          <section className={`m-5 md:m-0 `}>
+          {/* Details Start */}
+          <section className={`px-3 md:px-0  `}>
             <div className="flex justify-between items-center prText ">
               <h1 className="text-xl my-4">Details</h1>
               <p>id: {id} </p>
             </div>
-            <div
-              className={`customBorder w-full md:w-[750px] p-5 rounded-md  ${
-                post_id ? "" : "sklLoading"
-              }`}
-            >
+            <div className={`  w-full md:w-[750px] p-0 rounded-md`}>
               {allDetails.map((ad, idx) => (
                 <RentDetailsNumber key={idx} ad={ad}></RentDetailsNumber>
               ))}
             </div>
           </section>
+          {/* Details End */}
 
           {/* <div className="h-[1px] w-full  my-[25px]  customBorder "></div> */}
 
-          <div className="m-5 md:m-0">
+          <div className="px-3 md:p-0 ">
             <BuyDescription
               description={description}
               post_id={post_id}
@@ -548,7 +570,7 @@ const RentDetail = () => {
           </div>
 
           {/* Map For Mobile start */}
-          <div className="md:hidden h-[250px] w-full px-2 rounded-xl ">
+          <div className="md:hidden h-[150px] w-full px-3 rounded-xl ">
             <h1>In Map: </h1>
             <BuyMap
               geolat={geolat}

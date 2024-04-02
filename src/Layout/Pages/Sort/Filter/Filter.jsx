@@ -256,7 +256,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
         </div>
       </div>
 
-      <div className="filterFooter px-10 md:px-0 bg-green-300 ">
+      <div className="filterFooter  ">
         <button
           onClick={handleRentClearSort}
           className="btn bg-[#FCECEE] border-0 text-[#DF495D] hover:bg-[#DF495D] hover:text-white"

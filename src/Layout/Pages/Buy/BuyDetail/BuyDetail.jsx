@@ -337,17 +337,18 @@ const BuyDetail = () => {
       <div className="detailParent">
         {/* Left Div start */}
         <div className="w-full detailParentLeftdiv">
+          {/* Image Map Start */}
           <div className="flex flex-col md:flex-row gap-1 w-full h-[260px] md:h-[500px] ">
-            {/* Slider Image For Desktop Start */}
+            {/* Slider Image For Desktop and Mobile Start */}
             <div className="w-full md:w-[60%] h-full  p-0 md:p-0  ">
               <BannerSwipperComponent
                 images={imagesForSlider}
               ></BannerSwipperComponent>
             </div>
-            {/* Slider Image For Desktop End */}
+            {/* Slider Image For Desktop and Mobile End */}
 
             {/* Floor Plan Image And Map for Desktop Start */}
-            <div className="hidden md:flex w-full md:w-[40%] h-full  flex-col bg-green-600 ">
+            <div className="hidden md:flex w-full md:w-[40%] h-full  flex-col ">
               {floor_plan && (
                 <div className="relative h-[50%] bg-red-500 z-10 phaseImageParent">
                   {floor_plan ? (
@@ -375,10 +376,11 @@ const BuyDetail = () => {
             </div>
             {/* Floor Plan Image And Map for Desktop End */}
           </div>
+          {/* Image Map end */}
 
-          {/* Take And Contact For Desktop Start */}
+          {/* Take for all And Contact For Desktop Start */}
           <div className="my-4 flex justify-between items-center rounded-md px-4 md:px-0">
-            <div className="text-3xl robot  text-black opacity-60">
+            <div className="text-2xl md:text-3xl robot  text-black opacity-60">
               {price ? (
                 <span className=" ">
                   BDT <span className="">{formattedRent}</span>{" "}
@@ -396,7 +398,7 @@ const BuyDetail = () => {
               <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
             </div>
           </div>
-          {/* Slider Image For Desktop End */}
+          {/* Take for all And Contact For Desktop end */}
 
           {/* div for 1 line */}
           <div className="w-[95%] md:w-full mx-auto h-[1px] bg-black opacity-20 my-4"></div>
@@ -405,7 +407,7 @@ const BuyDetail = () => {
           <div className="flex justify-between items-center prText w-full md:w-full   ">
             {/* Location Image and Location start */}
             <div className="my-4 flex items-center gap-2  w-[77%] px-4 md:px-0  ">
-              <div className="w-[50px] h-[50px] md:w-[50px] md:h-[50px] flex items-center justify-center border-2 rounded-full p-2 border-blue-500 ">
+              <div className="w-[50px] h-[50px] md:w-[50px] md:h-[50px]  border-2 rounded-full p-2  border-blue-500 flex items-center justify-center  ">
                 <img
                   className="w-[25px] h-[25px] md:h-full md:w-full rounded-full"
                   src={locationColorImage}
@@ -418,20 +420,19 @@ const BuyDetail = () => {
 
               <p className="md:hidden text-sm  ">
                 {trunCateWord(location, 25)}
-                {/* {location} */}
               </p>
             </div>
             {/* Location Image and Location end */}
 
             {/* Time Ago start */}
-            <div className="flex gap-4 justify-start items-center w-[23%]   ">
+            <div className="flex gap-4 justify-start md:justify-end items-center w-[23%]   ">
               <div className=" text-sm md:text-xl">{timeAgo}</div>
               <FiShare2
                 onClick={() => buyPostshare(id)}
                 className="hidden md:block"
               />
             </div>
-            {/* Location Image and Location End */}
+            {/* Time Ago End */}
           </div>
           {/* Location Remaining Days and Share for Desktop end */}
 
