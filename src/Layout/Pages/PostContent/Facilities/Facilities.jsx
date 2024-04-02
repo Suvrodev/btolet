@@ -83,14 +83,14 @@ const Facilities = ({ fromFilter }) => {
           <button
             key={index}
             onClick={() => handleButtonClick(facility)}
-            className={`flex items-center btn btn-outline btn-sm text-[12px] br  ${
+            className={`h-[40px] w-[130px] md:w-[150px]   flex items-center justify-center border-2 rounded-[15px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] gap-2 br  ${
               selectedFacilities.includes(facility)
                 ? "border-blue-600 text-blue-600 border-2"
                 : ""
             } `}
           >
             {facilitiesIcons[index]}
-            <span className="ml-">{facility}</span>
+            <span className="ml-0">{facility}</span>
           </button>
         ))}
       </div>
