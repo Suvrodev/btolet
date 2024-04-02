@@ -78,7 +78,7 @@ const Facilities = ({ fromFilter }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-5  w-full md:w-[550px] ">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-5  w-full md:w-[550px] bg-yellow-400">
         {facilities.map((facility, index) => (
           <button
             key={index}
