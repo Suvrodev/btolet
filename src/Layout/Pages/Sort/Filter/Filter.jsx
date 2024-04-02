@@ -12,6 +12,7 @@ import { FilterDataContext } from "../../../../Providers/FilterDataProvider";
 import CategoryContentSort from "../../ShortContent/CategoryContentSort/CategoryContentSort";
 import axios from "axios";
 import { Cancel, CancelOutlined } from "@mui/icons-material";
+import Amenities from "../../PostContent/Amenities/Amenities";
 
 const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
   const {

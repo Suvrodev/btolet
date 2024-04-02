@@ -22,12 +22,12 @@ const BathroomSort = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-5">
+      <div className="flex flex-wrap gap-1">
         {bathrooms.map((bathroom, index) => (
           <button
             key={index}
             onClick={() => handleButtonClick(bathroom)}
-            className={`flex items-center  btn btn-sm btn-outline h-[40px] w-[75px] text-[16px] ${
+            className={`h-[40px] w-[70px] flex justify-center items-center  gap-2 border-2  rounded-[10px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] ${
               selectedBathrooms.includes(bathroom)
                 ? "border-blue-600 border-2"
                 : ""
@@ -36,7 +36,7 @@ const BathroomSort = () => {
             {selectedBathrooms.includes(bathroom) ? (
               <FaCheckCircle className="text-blue-500" />
             ) : (
-              <FaPlus />
+              <FaPlus className="text-[#2E2D36] opacity-70" />
             )}
             <span className="ml-0">{bathroom}</span>
           </button>

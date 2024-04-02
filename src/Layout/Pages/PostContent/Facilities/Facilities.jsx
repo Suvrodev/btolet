@@ -89,7 +89,7 @@ const Facilities = ({ fromFilter }) => {
                 : ""
             } `}
           >
-            {facilitiesIcons[index]}
+            <span className="opacity-70"> {facilitiesIcons[index]}</span>
             <span className="ml-0">{facility}</span>
           </button>
         ))}
