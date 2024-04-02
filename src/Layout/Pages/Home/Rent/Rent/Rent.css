@@ -41,29 +41,8 @@
 }
 .overfollowScroll{
     overflow-y: auto !important;
-    padding-right: 10px !important; 
+    padding-right: 00px !important; 
     box-sizing: content-box !important;
   
 }
-.sizeAdjust{
-    padding: 0px !important ;
-}
 
-
-.mainBox{
-    background-color: purple !important;
-    position: relative !important;
-}
-.startSticky {
-    background-color: teal !important;
-    position: sticky;
-    top: 0;
-    left: 0; 
-    width: 100%; 
-}
-.formDiv{
-    background-color: yellow !important;
-}
-.mainForm{
-    background-color: red !important;
-}

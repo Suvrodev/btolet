@@ -193,7 +193,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                     type="number"
                     name=""
                     id=""
-                    className="bg-white outline-none border-1 dag"
+                    className="bg-white outline-none border-1 dag numberInputUpDown"
                     value={minPrice}
                     onChange={handleMinInputChange}
                   />
@@ -204,7 +204,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                     type="number"
                     name=""
                     id=""
-                    className="bg-white outline-none border-1 dag"
+                    className="bg-white outline-none border-1 dag numberInputUpDown"
                     value={maxPrice}
                     onChange={handleMaxInputChange}
                   />

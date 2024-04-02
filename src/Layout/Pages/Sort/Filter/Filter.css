@@ -53,6 +53,18 @@
     border-bottom: 1px solid gray;
 }
 
+
+
+.numberInputUpDown::-webkit-inner-spin-button, 
+.numberInputUpDown::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.numberInputUpDown {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+
 @media screen and (max-width: 576px) {
     .filterFooter{
         display: flex;
