@@ -149,20 +149,15 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           <div className="flex flex-col md:flex-row md:gap-20">
             <div></div>
             <p className="bg-[#FF9800] w-full md:w-6/12 text-center font-bold text-xl text-white mx-auto rounded-full mb-10 p-2 mt-20">
-              {/* {minPrice == 0 && maxPrice == 10000000 ? (
-                <span>Any Price</span>
-              ) : (
-                <span>
-                  BDT {minPrice} to {maxPrice}/month
-                </span>
-              )} */}
               {upperPrice}
             </p>
           </div>
           {/* Slider And Price Start */}
-          <div className="  flex flex-col md:flex-row md:gap-20 ">
-            <h1 className="font-bold mb-10 md:mb-0 text-[#2E2D36]">Price</h1>
-            <div className=" flex flex-col   w-full">
+          <div className="  flex flex-col md:flex-row gap-5 md:gap-0  w-full   ">
+            <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
+              Price
+            </h1>
+            <div className=" w-full md:w-[80%] flex flex-col   ">
               {/* Only Slider Start */}
               <div className="  ">
                 <ReactSlider
@@ -186,7 +181,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
               {/* Only Slider End */}
 
               {/* Price Write Start */}
-              <div className="flex flex-col md:flex-row gap-5 w-full  justify-center mt-10 md:px-10">
+              <div className="flex flex-col md:flex-row gap-5 w-full  justify-center mt-10 ">
                 {/* <div className="flex flex-col md:flex-row gap-5 items-center w-full "> */}
                 <div className=" w-full bg-white rounded-lg p-5">
                   <p className="prText">Min Price</p>
