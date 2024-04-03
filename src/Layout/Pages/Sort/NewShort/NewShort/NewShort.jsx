@@ -6,6 +6,8 @@ import RentCategoryNewSort from "../RentCategoryNewSort/RentCategoryNewSort";
 import BuyCategoryNewSort from "../BuyCategoryNewSort/BuyCategoryNewSort";
 import { useLocation } from "react-router-dom";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
+import FilterNewSort from "../FilterNewSort/FilterNewSort";
+import FilterNewSortBuy from "../FilterNewSortBuy/FilterNewSortBuy";
 
 const NewShort = () => {
   const {
@@ -185,6 +187,16 @@ const NewShort = () => {
             buyCategoryClose={buyCategoryClose}
             setBuyCategoryClose={setBuyCategoryClose}
           ></BuyCategoryNewSort>
+        </div>
+      )}
+
+      {home ? (
+        <div className="z-10">
+          <FilterNewSort />
+        </div>
+      ) : (
+        <div className="z-10">
+          <FilterNewSortBuy />
         </div>
       )}
     </div>
