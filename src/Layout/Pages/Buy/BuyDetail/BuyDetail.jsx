@@ -36,6 +36,7 @@ import ImageZoom from "../../UserResponsibility/Check/ImageZoom/ImageZoom";
 import convertDate from "../../../../Function/DateConvert";
 import buyPostshare from "../../../../Function/BuyPostShare";
 import trunCateWord from "../../../../Function/TrunCate";
+import numberToWord from "../../../../Function/ToCrore";
 
 const BuyDetail = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -112,6 +113,13 @@ const BuyDetail = () => {
   } = allData;
 
   // Convert the rent to Bangladeshi Taka style start
+
+  let buyCrorePrice;
+  if (price) {
+    buyCrorePrice = numberToWord(price);
+  }
+  console.log("Buy Crore Price", buyCrorePrice);
+  // const x = numberToWord(price ? price : 0);
   const formattedRent = price?.toLocaleString("en-US");
   // Convert the rent to Bangladeshi Taka style end
 
@@ -383,7 +391,8 @@ const BuyDetail = () => {
             <div className="text-2xl md:text-3xl robot  text-black opacity-60">
               {price ? (
                 <span className=" ">
-                  BDT <span className="">{formattedRent}</span>{" "}
+                  {buyCrorePrice}
+                  <span> BDT</span>
                 </span>
               ) : (
                 "Price On Call"

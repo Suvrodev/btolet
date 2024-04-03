@@ -56,6 +56,7 @@ import BathSvgIcon from "../../SharedPage/SVGCode/BathSvgIcon";
 import BedSvgIcon from "../../SharedPage/SVGCode/BedSvgIcon";
 import CallSvgIcon from "../../SharedPage/SVGCode/CallSvgIcon";
 import WhatsappSvgIcon from "../../SharedPage/SVGCode/WhatsappSvgIcon";
+import numberToWord from "../../../../Function/ToCrore";
 
 const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
   const {
@@ -94,7 +95,11 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
   }, [time]);
 
   // Convert the rent to Bangladeshi Taka style start
-  const formattePrice = price.toLocaleString("en-US");
+  // const formattePrice = price.toLocaleString("en-US");
+  let buyCrorePrice;
+  if (price) {
+    buyCrorePrice = numberToWord(price);
+  }
   // const formattePrice = "Ammount";
   // Convert the rent to Bangladeshi Taka style end
 
@@ -295,7 +300,10 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
       <div className="py-1 md:py-5 px-4  h-[110px] md:h-[130px]   ">
         <p className="roboto text-xl text-black prText">{category}</p>
         {price != 0 ? (
-          <p className="text-2xl  text-black opacity-60"> ৳ {formattePrice} </p>
+          <p className="text-2xl  text-black opacity-60">
+            {" "}
+            {buyCrorePrice} BDT{" "}
+          </p>
         ) : (
           <span className="text-xl text-black opacity-60">Price on Call</span>
         )}
