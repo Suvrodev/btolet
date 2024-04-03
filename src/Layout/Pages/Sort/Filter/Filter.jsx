@@ -144,8 +144,11 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
 
   return (
     <div className=" ">
-      <div className="p-[40px]">
-        <div className="  flex flex-col justify-center rounded-md">
+      {/* Upper Part without Bottom Button Start */}
+      <div className="p-[10px] md:p-[20px]">
+        {/* Hole Price Start */}
+        <div className="  flex flex-col justify-center rounded-md ">
+          {/* Price in Orrange Color Start */}
           <div className="flex flex-col md:flex-row md:gap-0">
             <div className="w-[20%]"></div>
             <div className="w-full md:w-[80%]">
@@ -154,6 +157,8 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
               </p>
             </div>
           </div>
+          {/* Price in Orrange Color end */}
+
           {/* Slider And Price Start */}
           <div className="  flex flex-col md:flex-row gap-5 md:gap-0  w-full   ">
             <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
@@ -209,14 +214,14 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                     value={maxPrice}
                     onChange={handleMaxInputChange}
                   />
-                  {/* </div> */}
                 </div>
               </div>
               {/* Price Write End */}
             </div>
           </div>
-          {/* Slider And Price Start */}
+          {/* Slider And Price End */}
         </div>
+        {/* Hole Price end */}
 
         <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
@@ -255,6 +260,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           </div>
         </div>
       </div>
+      {/* Upper Part without Bottom Button end */}
 
       <div className="filterFooter  ">
         <button

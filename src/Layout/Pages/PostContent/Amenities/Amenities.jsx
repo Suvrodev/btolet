@@ -117,13 +117,13 @@ const Amenities = ({ small, big, forSort }) => {
   ];
 
   return (
-    <div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-10  w-full md:w-[550px]">
+    <div className="w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3  gap-y-5  w-full">
         {amenities.map((amenity, index) => (
           <div key={index} className="flex items-center  p-2 rounded-md">
             <button
               onClick={() => handleButtonClick(amenity)}
-              className={`h-[40px] w-[130px] md:w-[150px]   flex items-center justify-center border-2 rounded-[15px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] gap-2 br   ${
+              className={`shadow-sm   h-[50px] w-[130px] md:w-[200px]   flex items-center justify-center border-2 rounded-[15px] bg-white text-[12px] md:text-[12px] text-[#2E2D36] gap-2 br   ${
                 selectedAmenities.includes(amenity)
                   ? "border-2 text-blue-600 border-blue-600"
                   : ""

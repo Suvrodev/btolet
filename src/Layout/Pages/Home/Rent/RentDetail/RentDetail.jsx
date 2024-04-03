@@ -527,7 +527,7 @@ const RentDetail = () => {
                 {location}
               </p>
               <p className="md:hidden text-sm  ">
-                {trunCateWord(location, 25)}
+                {trunCateWord(location ? location : "", 25)}
               </p>
             </div>
             {/* Location Image and Location end */}

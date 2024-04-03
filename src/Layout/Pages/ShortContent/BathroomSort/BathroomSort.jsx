@@ -22,7 +22,7 @@ const BathroomSort = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 ">
         {bathrooms.map((bathroom, index) => (
           <button
             key={index}

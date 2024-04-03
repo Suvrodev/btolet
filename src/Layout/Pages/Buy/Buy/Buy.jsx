@@ -103,24 +103,21 @@ const Buy = () => {
     <div>
       {/* Modal start */}
       <div>
-        {/* You can open the modal using document.getElementById('ID').showModal() method */}
-        {/* <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button> */}
-        <dialog id="filterModal_2" className="modal-middle md:modal  ">
-          <div className="modal-box w-11/12 max-w-full bg-white">
-            <BuyFilter
-              closeFilterBuy={closeFilterBuy}
-              setCloseFilterBuy={setCloseFilterBuy}
-            ></BuyFilter>
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button, it will close the modal */}
-                <button
-                  className="btn btn-sm btn-circle btn-error absolute right-2 top-2"
-                  ref={closeButtonRef}
-                >
+        <dialog id="filterModal_2" className="modal mainDialog  ">
+          <div className="modal-box w-full md:w-5/12 h-full max-w-full max-h-[80%] md:max-h-full absolute bottom-0  bg-[#F3F4F6] p-0 overfollowParent ">
+            <form method="dialog" className="sticky top-0 left-0 w-full z-10">
+              <div className="FilterUp flex justify-between items-center p-2  ">
+                <h1 className="ml-2 ">Filters</h1>
+                <button className="" ref={closeButtonRef}>
                   ✕
                 </button>
-              </form>
+              </div>
+            </form>
+            <div>
+              <BuyFilter
+                closeFilterBuy={closeFilterBuy}
+                setCloseFilterBuy={setCloseFilterBuy}
+              ></BuyFilter>
             </div>
           </div>
         </dialog>
