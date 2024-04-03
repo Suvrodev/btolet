@@ -29,10 +29,12 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     selectedRentCategory,
     selectedBedrooms,
     setSelectedBedrooms,
-    minPrice,
-    setMinPrice,
-    maxPrice,
-    setMaxPrice,
+    minPriceRent,
+    setMinPriceRent,
+    maxPriceRent,
+    setMaxPriceRent,
+    MAX_PRICE_RENT,
+    MAX_PRICE_BUY,
     byFilterRent,
     setByFilterRent,
     setRentPageNumber,
@@ -43,29 +45,29 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
   const [propertyNumber, setPropertyNumber] = useState("");
 
   const handleSliderChange = (value) => {
-    setMinPrice(value[0]);
-    setMaxPrice(value[1]);
+    setMinPriceRent(value[0]);
+    setMaxPriceRent(value[1]);
   };
 
   const handleMinInputChange = (event) => {
     const value = parseInt(event.target.value);
-    if (minPrice > maxPrice) {
+    if (minPriceRent > maxPriceRent) {
       alert("Min will not more than max price");
       return;
     }
-    setMinPrice(value);
+    setMinPriceRent(value);
   };
 
   const handleMaxInputChange = (event) => {
     const value = parseInt(event.target.value);
-    setMaxPrice(value);
+    setMaxPriceRent(value);
   };
 
   const filterBody = {
     geolat: lattitude,
     geolon: longitude,
-    rentmin: minPrice,
-    rentmax: maxPrice,
+    rentmin: minPriceRent,
+    rentmax: maxPriceRent,
     page: 1,
     category: selectedRentCategory,
     fasalitis: selectedFacilities,
@@ -84,8 +86,8 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     });
   }, [
     doubleLocation,
-    minPrice,
-    maxPrice,
+    minPriceRent,
+    maxPriceRent,
     selectedRentCategory,
     selectedBedrooms,
     selectedBathrooms,
@@ -94,8 +96,8 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
 
   const handleRentSort = () => {
     console.log("Rent Sort");
-    console.log("Min Range: ", minPrice);
-    console.log("Max Price: ", maxPrice);
+    console.log("Min Range: ", minPriceRent);
+    console.log("Max Price: ", maxPriceRent);
     console.log("Category: ", selectedRentCategory);
     console.log("Double Location: ", doubleLocation);
     console.log("Bedroom: ", selectedBedrooms);
@@ -117,8 +119,8 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
     // setByFilterRent(false);
     // setRents([]);
     // window.location.reload();
-    setMaxPrice(10000000);
-    setMinPrice(0);
+    setMaxPriceRent(MAX_PRICE_RENT);
+    setMinPriceRent(0);
     setSelectedBedrooms([]);
     setSelectedBathrooms([]);
     setSelectedFacilities([]);
@@ -126,18 +128,18 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
   };
 
   let upperPrice = "";
-  if (minPrice == 0 && maxPrice == 10000000) {
+  if (minPriceRent == 0 && maxPriceRent == MAX_PRICE_RENT) {
     upperPrice = <span>Any Price</span>;
-  } else if (maxPrice < 10000000) {
+  } else if (maxPriceRent < MAX_PRICE_RENT) {
     upperPrice = (
       <span>
-        BDT {minPrice} to {maxPrice}/month
+        BDT {minPriceRent} to {maxPriceRent}/month
       </span>
     );
-  } else if (maxPrice == 10000000) {
+  } else if (minPriceRent > 0 && maxPriceRent == MAX_PRICE_RENT) {
     upperPrice = (
       <span>
-        BDT {minPrice} to {maxPrice} +/month
+        BDT {minPriceRent} to {maxPriceRent} +/month
       </span>
     );
   }
@@ -171,8 +173,8 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                   className="horizontal-slider"
                   thumbClassName="example-thumb"
                   trackClassName="example-track"
-                  defaultValue={[0, 10000000]}
-                  max={10000000}
+                  defaultValue={[0, MAX_PRICE_RENT]}
+                  max={MAX_PRICE_RENT}
                   min={0}
                   ariaLabel={["Lower thumb", "Upper thumb"]}
                   ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
@@ -181,7 +183,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                   )}
                   pearling
                   minDistance={5}
-                  value={[minPrice, maxPrice]}
+                  value={[minPriceRent, maxPriceRent]}
                   onChange={handleSliderChange}
                 />
               </div>
@@ -197,7 +199,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                     name=""
                     id=""
                     className="bg-white outline-none border-1 dag numberInputUpDown opacity-70"
-                    value={minPrice}
+                    value={minPriceRent}
                     onChange={handleMinInputChange}
                   />
                 </div>
@@ -211,7 +213,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                     name=""
                     id=""
                     className="bg-white outline-none border-1 dag numberInputUpDown opacity-70"
-                    value={maxPrice}
+                    value={maxPriceRent}
                     onChange={handleMaxInputChange}
                   />
                 </div>

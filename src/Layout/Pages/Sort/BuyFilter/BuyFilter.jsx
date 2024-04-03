@@ -36,6 +36,7 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
     setByFilter,
     setPageNumber,
     setBuys,
+    MAX_PRICE_BUY,
   } = useContext(FilterDataContext);
 
   const [propertyNumber, setPropertyNumber] = useState("");
@@ -109,7 +110,7 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
     // setByFilter(false);
     // setPageNumber(1);
     // setBuys([]);
-    setMaxPrice(10000000);
+    setMaxPrice(MAX_PRICE_BUY);
     setMinPrice(0);
     setSelectedBedrooms([]);
     setSelectedBathrooms([]);
@@ -118,15 +119,15 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
   };
 
   let upperPrice = "";
-  if (minPrice == 0 && maxPrice == 10000000) {
+  if (minPrice == 0 && maxPrice == MAX_PRICE_BUY) {
     upperPrice = <span>Any Price</span>;
-  } else if (maxPrice < 10000000) {
+  } else if (maxPrice < MAX_PRICE_BUY) {
     upperPrice = (
       <span>
         BDT {minPrice} to {maxPrice}/month
       </span>
     );
-  } else if (maxPrice == 10000000) {
+  } else if (maxPrice == MAX_PRICE_BUY) {
     upperPrice = (
       <span>
         BDT {minPrice} to {maxPrice} +/month
@@ -163,8 +164,8 @@ const BuyFilter = ({ closeFilterBuy, setCloseFilterBuy }) => {
                   className="horizontal-slider"
                   thumbClassName="example-thumb"
                   trackClassName="example-track"
-                  defaultValue={[0, 10000000]}
-                  max={10000000}
+                  defaultValue={[0, MAX_PRICE_BUY]}
+                  max={MAX_PRICE_BUY}
                   min={0}
                   ariaLabel={["Lower thumb", "Upper thumb"]}
                   ariaValuetext={(state) => `Thumb value ${state.valueNow}`}

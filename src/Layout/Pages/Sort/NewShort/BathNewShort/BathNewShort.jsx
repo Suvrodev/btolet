@@ -1,5 +1,6 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import React, { useContext, useState } from "react";
+import "./BathNewShort.css";
 import { useLocation } from "react-router-dom";
 import { FilterDataContext } from "../../../../../Providers/FilterDataProvider";
 
@@ -82,7 +83,7 @@ const BathNewShort = ({
       <div className="relative">
         <button
           className={`btn bg-white border-0 shadow-md text-black hover:bg-[#7B53C1] hover:text-white ${
-            bathClose ? "bg-[#7B53C1] text-white" : ""
+            bathClose ? "bgp" : ""
           } `}
           onClick={handleShowBath}
         >

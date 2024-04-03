@@ -8,12 +8,15 @@ const PriceNewShort = ({
   handleShowPrice,
   priceClose,
   setPriceClose,
+  MAX_PRICE_RENT,
+  MAX_PRICE_BUY,
 }) => {
   const bedNumbers = [5000, 10000, 15000, 20000, 25000];
 
   const {
     maxPrice,
     setMaxPrice,
+    setMaxPriceRent,
     setByFilterRent,
     setByFilter,
     setRentPageNumber,
@@ -38,14 +41,14 @@ const PriceNewShort = ({
 
   // console.log("Max Price: ", maxPrice);
 
+  ////For Sorting
+  const browserLocation = useLocation();
+  const location = browserLocation?.pathname;
+
   ////Clear Button Work
   const clearPrice = () => {
     setMaxPrice(100000);
   };
-
-  ////For Sorting
-  const browserLocation = useLocation();
-  const location = browserLocation?.pathname;
 
   const handlePriceSort = () => {
     setPriceClose(true);

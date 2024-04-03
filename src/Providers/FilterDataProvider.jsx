@@ -15,6 +15,12 @@ const FilterDataProvider = ({ children }) => {
   const [byFilter, setByFilter] = useState(false);
   const [byFilterRent, setByFilterRent] = useState(false);
 
+  const MAX_PRICE_RENT = 50000;
+  const MAX_PRICE_BUY = 10000000;
+
+  const [minPriceRent, setMinPriceRent] = useState(0);
+  const [maxPriceRent, setMaxPriceRent] = useState(50000);
+
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(10000000);
 
@@ -46,8 +52,8 @@ const FilterDataProvider = ({ children }) => {
   const rentFilterBody = {
     geolat: lattitude,
     geolon: longitude,
-    rentmin: minPrice,
-    rentmax: maxPrice,
+    rentmin: minPriceRent,
+    rentmax: maxPriceRent,
     page: 1,
     category: selectedRentCategory,
     fasalitis: selectedFacilities,
@@ -169,6 +175,12 @@ const FilterDataProvider = ({ children }) => {
     setMinPrice,
     maxPrice,
     setMaxPrice,
+    minPriceRent,
+    setMinPriceRent,
+    maxPriceRent,
+    setMaxPriceRent,
+    MAX_PRICE_RENT,
+    MAX_PRICE_BUY,
     ////Property
     selectedCategoriesBuySort,
     setSelectedCategoriesBuySort,
