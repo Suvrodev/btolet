@@ -337,7 +337,7 @@ const BuyDetail = () => {
   return (
     <div className="mt-10 m-0 md:m-0">
       <div className="md:hidden">
-        <footer className="footer">
+        <footer className="contactFooter">
           <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
         </footer>
       </div>
@@ -587,7 +587,7 @@ const BuyDetail = () => {
                     <ShareLocationOutlined />
                     <p className="text-[14px] md:text-xl ">Short Address</p>
                   </div>
-                  <p className="w-[60%] text-[10px] md:text-xl ">
+                  <p className="w-[60%] text-[12px] md:text-xl ">
                     {shortaddress}
                   </p>
                 </div>
@@ -701,7 +701,7 @@ const BuyDetail = () => {
         {/* Right Div for Mobile Start Start */}
         {/* For Mobile Device start */}
 
-        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden ">
+        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden px-3 ">
           <div className="flex gap-8 flex-nowrap md:overflow-x-auto">
             {moreBuyPost &&
               moreBuyPost.map((buy, idx) => (

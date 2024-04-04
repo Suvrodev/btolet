@@ -439,10 +439,10 @@ const RentDetail = () => {
 
   return (
     <div className={`mt-10 md:m-0 `}>
-      <div className="md:hidden">
-        <footer className="footer">
+      <div className="md:hidden ">
+        <div className="contactFooter ">
           <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
-        </footer>
+        </div>
       </div>
 
       <div className="detailParent">
@@ -515,7 +515,7 @@ const RentDetail = () => {
             className={`flex justify-between items-center prText w-full md:w-full  `}
           >
             {/* Location Image and Location start */}
-            <div className="my-4 flex items-center gap-4 ">
+            <div className="my-4 flex items-center gap-4 px-3 md:px-0 ">
               <div className="w-[50px] h-[50px] border-2 rounded-full p-2 border-blue-500 flex items-center justify-center ">
                 <img
                   className="w-[25px] h-[25px] md:h-full md:w-full rounded-full"
@@ -601,7 +601,7 @@ const RentDetail = () => {
         {/* For Desktop Device end */}
 
         {/* For Mobile Device start */}
-        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden h-[500px] mb-20  ">
+        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden h-[500px] mb-20 px-3  ">
           <div className="flex flex-nowrap md:overflow-x-auto">
             {moreRentPost &&
               moreRentPost.map((r, idx) => (

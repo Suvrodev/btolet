@@ -334,7 +334,7 @@ const Header = () => {
           </div>
           {/* Which Will do After Click Bar end */}
         </div>
-        <div>
+        <div className="">
           <img className="w-[50px] h-[50px]" src={headerLogo} alt="" />
         </div>
         <div>

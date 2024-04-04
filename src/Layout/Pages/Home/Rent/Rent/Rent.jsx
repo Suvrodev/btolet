@@ -103,7 +103,7 @@ const Rent = () => {
     <div className="my-4">
       {/* Modal start */}
       <div>
-        <dialog id="filterModal_1" className="modal mainDialog ">
+        <dialog id="filterModal_11" className="modal mainDialog ">
           <div className="modal-box w-full md:w-5/12 h-full max-w-full max-h-[80%] md:max-h-full absolute bottom-0  bg-[#F3F4F6] p-0 overfollowParent   ">
             <form method="dialog" className="sticky top-0 left-0 w-full z-10">
               <div className="FilterUp flex justify-between items-center p-2  ">
@@ -186,7 +186,7 @@ const Rent = () => {
 
         <button
           className="btn btn-outline"
-          onClick={() => document.getElementById("filterModal_1").showModal()}
+          onClick={() => document.getElementById("filterModal_11").showModal()}
         >
           <FiSliders />
           Filter <FiChevronDown />
