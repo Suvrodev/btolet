@@ -56,6 +56,7 @@ const Banner = () => {
         images={showImages}
         rnd={true}
         className=""
+        autoscroll={true}
       ></BannerSwipperComponent>
     </div>
   );

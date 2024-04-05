@@ -25,6 +25,8 @@ import Skeleton from "../Layout/Pages/UserResponsibility/Check/Skeleton/skeleton
 import NewShort from "../Layout/Pages/Sort/NewShort/NewShort/NewShort";
 import CheckDownUPLayout from "../Layout/Pages/UserResponsibility/Check/CheckDownUPLayout/CheckDownUPLayout";
 import Modal from "../Layout/Pages/Home/Rent/Rent/Modal/Modal";
+import RentCardSkl from "../Layout/Pages/Home/Rent/Rent/RentCardSKL/RentCardSkl";
+import FullImage from "../Layout/Pages/SharedPage/FullImage/FullImage";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: "/mdl",
         element: <Modal></Modal>,
+      },
+      {
+        path: "/fullimage",
+        element: <FullImage />,
       },
     ],
   },

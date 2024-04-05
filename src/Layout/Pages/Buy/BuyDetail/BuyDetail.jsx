@@ -351,6 +351,8 @@ const BuyDetail = () => {
             <div className="w-full md:w-[60%] h-full  p-0 md:p-0  ">
               <BannerSwipperComponent
                 images={imagesForSlider}
+                fullImage={true}
+                autoscroll={true}
               ></BannerSwipperComponent>
             </div>
             {/* Slider Image For Desktop and Mobile End */}

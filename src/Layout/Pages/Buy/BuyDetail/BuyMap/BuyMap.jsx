@@ -50,7 +50,6 @@ const BuyMap = ({ geolat, geolon }) => {
     const mapUrl = `https://www.google.com/maps?q=${center.lat},${center.lng}`;
     window.open(mapUrl, "_blank");
   };
-  console.log("Loding::::::::::::::::: ", loading);
 
   return (
     <div className="w-full h-full rounded-xl bg-yellow-400 overflow-hidden md:overflow-hidden relative">

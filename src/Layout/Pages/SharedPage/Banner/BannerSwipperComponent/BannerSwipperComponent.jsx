@@ -1,26 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const BannerSwipperComponent = ({ images, rnd }) => {
-  // const [currentIndex, setCurrentIndex] = useState(0);
+const BannerSwipperComponent = ({ images, rnd, fullImage, autoscroll }) => {
+  // console.log("Images(Banner Swipper Component) ", images);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 3000);
-
-  //   return () => clearInterval(interval);
-  // }, [images.length, currentIndex]);
-
-  //After Code
   const [currentIndex, setCurrentIndex] = useState(0);
   const startX = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change the interval time as needed
+    if (autoscroll) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000); // Change the interval time as needed
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
   }, [images.length, currentIndex]); // Reset interval when currentIndex changes
 
   const handleStart = (e) => {
@@ -50,42 +45,17 @@ const BannerSwipperComponent = ({ images, rnd }) => {
     startX.current = null;
   };
 
+  /***
+   * Go Full Image Start
+   */
+
+  const handleGoFullImage = () => {
+    if (fullImage) {
+      navigate("/fullimage", { state: { fullImageData: images } });
+    }
+  };
+
   return (
-    //   <div className='relative w-full h-full overflow-hidden'>
-    //   {images.map((image, index) => (
-    //     <div
-    //       key={index}
-    //       style={{
-    //         position: 'absolute',
-    //         top: '0',
-    //         left: `${index * 100}%`,
-    //         width: '100%',
-    //         height: '100%',
-    //         transition: 'transform 0.5s ease',
-    //         transform: `translateX(-${currentIndex * 100}%)`,
-    //       }}
-    //       className=''
-    //     >
-    //       <img
-    //         src={`data:image/jpeg;base64,${image}`}
-    //         alt={`Image ${index}`}
-    //         style={{ width: '100%', height: '100%', }}
-    //         className='rounded-xl h-full'
-    //       />
-    //     </div>
-    //   ))}
-
-    //       <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 rounded-xl'>
-
-    //         {images.map((_, index) => (
-    //         <p
-    //             key={index}
-    //             className={`w-[10px] h-[10px] bg-white rounded-full transition-width duration-500 ease-in-out ${currentIndex === index ? 'w-[35px]' : 'w-[10px]'} `}
-    //         ></p>
-    //         ))}
-    //       </div>
-    // </div>
-
     <div
       className="relative w-full h-full overflow-hidden"
       onMouseDown={handleStart}
@@ -110,6 +80,7 @@ const BannerSwipperComponent = ({ images, rnd }) => {
           }}
         >
           <img
+            onClick={handleGoFullImage}
             src={`data:image/jpeg;base64,${image}`}
             alt={`Image ${index}`}
             style={{ width: "100%", height: "100%" }}
@@ -117,6 +88,7 @@ const BannerSwipperComponent = ({ images, rnd }) => {
           />
         </div>
       ))}
+
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 rounded-xl">
         {images.map((_, index) => (
           <p

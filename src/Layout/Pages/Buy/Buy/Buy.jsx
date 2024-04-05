@@ -10,6 +10,7 @@ import axios from "axios";
 import { FiChevronDown, FiSliders } from "react-icons/fi";
 import Marque from "../../SharedPage/Marque/Marque";
 import Banner from "../../SharedPage/Banner/Banner";
+import RentCardSkl from "../../Home/Rent/Rent/RentCardSKL/RentCardSkl";
 
 const Buy = () => {
   const {
@@ -161,7 +162,12 @@ const Buy = () => {
             ))}
           </div>
         ) : (
-          <p>Nothig to Show</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <RentCardSkl />
+            <RentCardSkl />
+            <RentCardSkl />
+            <RentCardSkl />
+          </div>
         )}
       </div>
 

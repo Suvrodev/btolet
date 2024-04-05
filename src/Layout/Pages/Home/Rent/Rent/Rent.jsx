@@ -17,6 +17,7 @@ import axios from "axios";
 import { FiChevronDown, FiSliders } from "react-icons/fi";
 import { AddOutlined } from "@mui/icons-material";
 import CheckFilterSize from "../../../Sort/CheckFilterSize/CheckFilterSize";
+import RentCardSkl from "./RentCardSKL/RentCardSkl";
 
 const Rent = () => {
   const {
@@ -201,9 +202,15 @@ const Rent = () => {
             ))}
           </div>
         ) : (
-          <p>Nothing to Show</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <RentCardSkl />
+            <RentCardSkl />
+            <RentCardSkl />
+            <RentCardSkl />
+          </div>
         )}
       </div>
+
       <div ref={loadingRef} className="text-center">
         <span className="loading loading-spinner text-warning"></span>
       </div>

@@ -64,7 +64,7 @@ const RentDetail = () => {
       .then((data) => setAllData(data));
   }, [id]);
 
-  console.log("Basa: ", allData);
+  // console.log("Basa: ", allData);
 
   const {
     uid,
@@ -354,7 +354,7 @@ const RentDetail = () => {
           Garage
         </div>
       );
-      console.log("Garage Type: ", garagetype);
+      // console.log("Garage Type: ", garagetype);
     }
     if (garagetype == "Car") {
       iconDiv = (
@@ -364,7 +364,7 @@ const RentDetail = () => {
           Garage{" "}
         </div>
       );
-      console.log("Garage Type: ", garagetype);
+      // console.log("Garage Type: ", garagetype);
     }
     if (garagetype == "Garage") {
       iconDiv = (
@@ -374,10 +374,10 @@ const RentDetail = () => {
           Garage{" "}
         </div>
       );
-      console.log("Garage Type: ", garagetype);
+      // console.log("Garage Type: ", garagetype);
     }
   } else {
-    console.log("Post id: ", post_id, " Only Garage: No");
+    // console.log("Post id: ", post_id, " Only Garage: No");
     if (category?.includes("Office")) {
       iconDiv = <div className="p-5 h-[45px]  "> Office</div>;
     }
@@ -458,6 +458,8 @@ const RentDetail = () => {
             >
               <BannerSwipperComponent
                 images={imagesForSlider}
+                fullImage={true}
+                autoscroll={true}
               ></BannerSwipperComponent>
             </div>
             {/* Slider Image For Desktop and Mobile end */}
