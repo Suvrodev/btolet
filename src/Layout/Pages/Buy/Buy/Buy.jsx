@@ -163,10 +163,13 @@ const Buy = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {/* <RentCardSkl />
             <RentCardSkl />
             <RentCardSkl />
-            <RentCardSkl />
-            <RentCardSkl />
+            <RentCardSkl /> */}
+            <div className="w-full text-center">
+              <span className="loading loading-spinner text-warning"></span>
+            </div>
           </div>
         )}
       </div>
