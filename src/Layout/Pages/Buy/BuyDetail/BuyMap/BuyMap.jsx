@@ -35,17 +35,6 @@ const BuyMap = ({ geolat, geolon }) => {
     fetchData();
   }, [geolat, geolon]);
 
-  const [mapCenter, setMapCenter] = useState({
-    lat: center?.lat,
-    lng: center.lon,
-  });
-  const [mapZoom, setMapZoom] = useState(16);
-  const handleMapChange = ({ center, zoom }) => {
-    setMapCenter(center);
-    setMapZoom(zoom);
-    console.log("Centerrrrrrrrrrrrrrrrrrrrrrrrr: ", center);
-  };
-
   const handleGoGoogleMap = () => {
     const mapUrl = `https://www.google.com/maps?q=${center.lat},${center.lng}`;
     window.open(mapUrl, "_blank");

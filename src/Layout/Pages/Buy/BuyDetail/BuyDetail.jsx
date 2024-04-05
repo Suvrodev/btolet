@@ -37,6 +37,7 @@ import convertDate from "../../../../Function/DateConvert";
 import buyPostshare from "../../../../Function/BuyPostShare";
 import trunCateWord from "../../../../Function/TrunCate";
 import numberToWord from "../../../../Function/ToCrore";
+import RentDetailSkl from "../../Home/Rent/RentDetail/RentDetailSKL/RentDetailSkl";
 
 const BuyDetail = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -245,26 +246,6 @@ const BuyDetail = () => {
 
   ///Map Start
 
-  let defaultProps = {
-    center: {
-      lat: 0,
-      lng: 0,
-    },
-    zoom: 11,
-  };
-
-  if (geolat) {
-    defaultProps = {
-      center: {
-        lat: parseFloat(geolat),
-        lng: parseFloat(geolon),
-      },
-      zoom: 11,
-    };
-  } else {
-    return <span className="loading loading-spinner text-error"></span>;
-  }
-
   ///Map End
 
   ///////Important feature start
@@ -327,10 +308,8 @@ const BuyDetail = () => {
   ///////Important feature end
 
   //Loading Start
-  if (!allData) {
-    if (!defaultProps) {
-      return <span className="loading loading-spinner text-error"></span>;
-    }
+  if (!pid) {
+    return <RentDetailSkl />;
   }
   //Loading End
 
@@ -482,7 +461,11 @@ const BuyDetail = () => {
                   ))}
                 </div>
               ) : (
-                <div className="border-2  grid grid-cols-3  ">
+                <div
+                  className={`border-2  grid ${
+                    roadSizeSotangso.length == 3 ? "grid-cols-3" : "grid-cols-2"
+                  }   `}
+                >
                   {roadSizeSotangso.map((b, idx) => (
                     <BuyDetailsLandData
                       key={idx}

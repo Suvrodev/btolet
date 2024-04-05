@@ -51,6 +51,7 @@ import calculateTimeAgo from "../../../../../Function/TimeAgo";
 import BannerSwipperComponent from "../../../SharedPage/Banner/BannerSwipperComponent/BannerSwipperComponent";
 import trunCateWord from "../../../../../Function/TrunCate";
 import { FiShare2 } from "react-icons/fi";
+import RentDetailSkl from "./RentDetailSKL/RentDetailSkl";
 
 const RentDetail = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -431,11 +432,9 @@ const RentDetail = () => {
   }
   //////Kelma End
 
-  // if (!allData) {
-  //   if (!defaultProps) {
-  //     return <span className="loading loading-spinner text-error"></span>;
-  //   }
-  // }
+  if (!post_id) {
+    return <RentDetailSkl />;
+  }
 
   return (
     <div className={`mt-10 md:m-0 `}>
@@ -616,7 +615,7 @@ const RentDetail = () => {
               ))}
           </div>
         </div>
-        {/* For Mobile Device start */}
+        {/* For Mobile Device end */}
 
         {/* More Post End */}
       </div>
