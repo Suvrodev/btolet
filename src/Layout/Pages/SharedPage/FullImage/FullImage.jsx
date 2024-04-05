@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BannerSwipperComponent from "../Banner/BannerSwipperComponent/BannerSwipperComponent";
+import { KeyboardBackspaceOutlined } from "@mui/icons-material";
 
 const FullImage = () => {
   const location = useLocation();
@@ -14,53 +15,26 @@ const FullImage = () => {
   if (imageNumber) {
     console.log("Image Number: ", imageNumber);
   }
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const startX = useRef(null);
-  // const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 3000);
-
-  //   return () => clearInterval(interval);
-  // }, [images.length, currentIndex]);
-
-  // const handleStart = (e) => {
-  //   startX.current = e.clientX || e.touches[0].clientX;
-  // };
-
-  // const handleMove = (e) => {
-  //   if (startX.current === null) return;
-
-  //   const x = e.clientX || e.touches[0].clientX;
-  //   const deltaX = x - startX.current;
-
-  //   if (deltaX > 50) {
-  //     // Swipe right
-  //     setCurrentIndex((prevIndex) =>
-  //       prevIndex === 0 ? images.length - 1 : prevIndex - 1
-  //     );
-  //     startX.current = null;
-  //   } else if (deltaX < -50) {
-  //     // Swipe left
-  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //     startX.current = null;
-  //   }
-  // };
-
-  // const handleEnd = () => {
-  //   startX.current = null;
-  // };
+  const handleGoBack = () => {
+    window.history.back();
+  };
 
   return (
-    <div className="w-full h-[100vh] bg-purple-500  ">
+    <div className="w-full h-[100vh] bg-purple-500 relative ">
       {images && (
         <BannerSwipperComponent
           images={images}
           imageNumber={imageNumber}
         ></BannerSwipperComponent>
       )}
+
+      <button
+        onClick={handleGoBack}
+        className="w-[50px] h-[50px] absolute left-6 md:left-10 top-20 md:top-10  bg-white rounded-full flex items-center justify-center"
+      >
+        <KeyboardBackspaceOutlined />
+      </button>
       {/* <div className=" mt-[72px] md:mt-0 w-full h-full  overflow-hidden bg-yellow-300 ">
         {images?.map((image, index) => (
           <div
