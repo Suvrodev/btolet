@@ -5,9 +5,14 @@ import BannerSwipperComponent from "../Banner/BannerSwipperComponent/BannerSwipp
 const FullImage = () => {
   const location = useLocation();
   const images = location?.state?.fullImageData;
+  const imageNumber = location?.state?.imageNumber;
 
   if (images) {
-    console.log("Images (Full Image) ", images[0]);
+    // console.log("Images (Full Image) ", images[0]);
+  }
+
+  if (imageNumber) {
+    console.log("Image Number: ", imageNumber);
   }
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const startX = useRef(null);
@@ -51,7 +56,10 @@ const FullImage = () => {
   return (
     <div className="w-full h-[100vh] bg-purple-500  ">
       {images && (
-        <BannerSwipperComponent images={images}></BannerSwipperComponent>
+        <BannerSwipperComponent
+          images={images}
+          imageNumber={imageNumber}
+        ></BannerSwipperComponent>
       )}
       {/* <div className=" mt-[72px] md:mt-0 w-full h-full  overflow-hidden bg-yellow-300 ">
         {images?.map((image, index) => (

@@ -1,10 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const BannerSwipperComponent = ({ images, rnd, fullImage, autoscroll }) => {
+const BannerSwipperComponent = ({
+  images,
+  rnd,
+  fullImage,
+  autoscroll,
+  imageNumber,
+}) => {
   // console.log("Images(Banner Swipper Component) ", images);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(
+    imageNumber ? imageNumber : 0
+  );
   const startX = useRef(null);
   const navigate = useNavigate();
 
@@ -51,7 +59,9 @@ const BannerSwipperComponent = ({ images, rnd, fullImage, autoscroll }) => {
 
   const handleGoFullImage = () => {
     if (fullImage) {
-      navigate("/fullimage", { state: { fullImageData: images } });
+      navigate("/fullimage", {
+        state: { fullImageData: images, imageNumber: currentIndex },
+      });
     }
   };
 
