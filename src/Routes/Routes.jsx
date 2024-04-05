@@ -27,6 +27,7 @@ import CheckDownUPLayout from "../Layout/Pages/UserResponsibility/Check/CheckDow
 import Modal from "../Layout/Pages/Home/Rent/Rent/Modal/Modal";
 import RentCardSkl from "../Layout/Pages/Home/Rent/Rent/RentCardSKL/RentCardSkl";
 import FullImage from "../Layout/Pages/SharedPage/FullImage/FullImage";
+import RentDetailSkl from "../Layout/Pages/Home/Rent/RentDetail/RentDetailSKL/RentDetailSkl";
 
 const router = createBrowserRouter([
   {
@@ -129,6 +130,10 @@ const router = createBrowserRouter([
       {
         path: "/fullimage",
         element: <FullImage />,
+      },
+      {
+        path: "/rdskl",
+        element: <RentDetailSkl />,
       },
     ],
   },
