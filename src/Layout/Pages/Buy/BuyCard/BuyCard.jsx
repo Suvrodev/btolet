@@ -209,7 +209,35 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
   // console.log('forBuy',forBuy);
   // console.log("myPostBuy",myPostBuy);
 
-  const [imageLoaded, setImageLoaded] = useState(false);
+  /***
+   * Check Contact start
+   */
+  const checkPhoneCall = (phone) => {
+    if (currentUser) {
+      handlePhoneCall(phone);
+    } else {
+      document.getElementById("id_login_modal").showModal();
+    }
+  };
+
+  const checkWpCall = (phone) => {
+    if (currentUser) {
+      handleWhatsAppCall(phone);
+    } else {
+      document.getElementById("id_login_modal").showModal();
+    }
+  };
+
+  const checkSms = (phone) => {
+    if (currentUser) {
+      handleSendSMS(phone);
+    } else {
+      document.getElementById("id_login_modal").showModal();
+    }
+  };
+  /***
+   * Check Contact end
+   */
 
   return (
     <div className="flex flex-col  border  rounded-md  w-full h-[355px]  md:h-[485px] mx-auto p-0  overflow-hidden bg-white">
@@ -369,14 +397,14 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
         <p className="opacity-70 relative left-2">{timeAgo} </p>
         <div className="flex items-center justify-center gap-2 overflow-hidden ">
           <button
-            onClick={() => handlePhoneCall(phone)}
+            onClick={() => checkPhoneCall(phone)}
             className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#F36150] rounded-xl flex items-center justify-center text-white font-bold overflow-visible"
           >
             <Call className="cardContactIconSize" />
           </button>
 
           <button
-            onClick={() => handleSendSMS(phone)}
+            onClick={() => checkSms(phone)}
             className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#2196F5] rounded-xl flex items-center justify-center text-white font-bold"
           >
             {" "}
@@ -384,7 +412,7 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
           </button>
 
           <button
-            onClick={() => handleWhatsAppCall(wapp)}
+            onClick={() => checkWpCall(wapp)}
             className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#25D569] rounded-xl flex items-center justify-center text-white text-xl"
           >
             {/* <WhatsappSvgIcon /> */}

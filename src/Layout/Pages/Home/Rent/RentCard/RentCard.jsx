@@ -299,9 +299,35 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
   };
   ////Save And Unsave and Delete end
 
-  // console.log("savedRent: ",savedRent);
-  // console.log('forRent',forRent);
-  // console.log("myPostRent",myPostRent);
+  /***
+   * Check Contact start
+   */
+  const checkPhoneCall = (phone) => {
+    if (currentUser) {
+      handlePhoneCall(phone);
+    } else {
+      document.getElementById("id_login_modal").showModal();
+    }
+  };
+
+  const checkWpCall = (phone) => {
+    if (currentUser) {
+      handleWhatsAppCall(phone);
+    } else {
+      document.getElementById("id_login_modal").showModal();
+    }
+  };
+
+  const checkSms = (phone) => {
+    if (currentUser) {
+      handleSendSMS(phone);
+    } else {
+      document.getElementById("id_login_modal").showModal();
+    }
+  };
+  /***
+   * Check Contact end
+   */
 
   return (
     <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[400px] md:h-[480px] ">
@@ -417,20 +443,20 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
         </div>
         <div className="flex items-center justify-center gap-2">
           <button
-            onClick={() => handlePhoneCall(phone)}
+            onClick={() => checkPhoneCall(phone)}
             className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#F36150] rounded-lg flex items-center justify-center text-white font-bold"
           >
             {/* <FaPhoneAlt /> */}
             <Call className="cardContactIconSize" />
           </button>
           <button
-            onClick={() => handleSendSMS(phone)}
+            onClick={() => checkSms(phone)}
             className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#2196F5] rounded-lg flex items-center justify-center text-white font-bold"
           >
             <img className="w-[20px] md:w-[30px]" src={SmsIcon} alt="" />{" "}
           </button>
           <button
-            onClick={() => handleWhatsAppCall(wapp)}
+            onClick={() => checkWpCall(wapp)}
             className="w-[35px] md:w-[50px] h-[35px] md:h-[50px] bg-[#25D569] rounded-lg flex items-center justify-center text-white text-xl"
           >
             <WhatsApp className="cardContactIconSize" />

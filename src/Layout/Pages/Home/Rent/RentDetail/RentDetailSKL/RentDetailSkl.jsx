@@ -56,7 +56,7 @@ const RentDetailSkl = () => {
           {/* Take for all And Contact For Desktop end */}
 
           {/* Bed Bath Icon Start */}
-          <div>Icon Div</div>
+          {/* <div>Icon Div</div> */}
           {/* Bed Bath Icon End */}
 
           {/* div for 1 line */}
