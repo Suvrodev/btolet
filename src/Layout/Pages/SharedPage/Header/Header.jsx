@@ -17,7 +17,12 @@ import {
 } from "react-icons/fi";
 import BedNewShort from "../../Sort/NewShort/BedNewShort/BedNewShort";
 import NewShort from "../../Sort/NewShort/NewShort/NewShort";
-import { Clear, HomeWorkOutlined, Tune } from "@mui/icons-material";
+import {
+  Clear,
+  HomeWorkOutlined,
+  LogoutOutlined,
+  Tune,
+} from "@mui/icons-material";
 
 const Header = () => {
   const {
@@ -330,6 +335,12 @@ const Header = () => {
                 </span>
                 <span>About US</span>
               </Link>
+              {currentUser && (
+                <div className="flex items-center gap-2" onClick={handleLogout}>
+                  <LogoutOutlined />
+                  <p>Logout</p>
+                </div>
+              )}
             </div>
           </div>
           {/* Which Will do After Click Bar end */}
