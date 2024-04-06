@@ -554,7 +554,7 @@ const RentDetail = () => {
           </div>
           {/* Location Remaining Days and Share for Desktop end */}
 
-          <div className="h-[30px] w-full bg-[#DEDEE0]"></div>
+          <div className="h-[18px] md:h-[30px] w-full bg-[#DEDEE0]"></div>
 
           {/* Details Start */}
           <section className={`px-3 md:px-0  `}>

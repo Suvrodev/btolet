@@ -2,8 +2,10 @@ import React from "react";
 import Rent from "../Rent/Rent/Rent";
 import Marque from "../../SharedPage/Marque/Marque";
 import Banner from "../../SharedPage/Banner/Banner";
+import useTitle from "../../../../Function/Hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
   return (
     <div className="p-3 md:p-0">
       {/* <Marque></Marque>
