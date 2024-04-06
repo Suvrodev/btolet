@@ -52,6 +52,8 @@ import BannerSwipperComponent from "../../../SharedPage/Banner/BannerSwipperComp
 import trunCateWord from "../../../../../Function/TrunCate";
 import { FiShare2 } from "react-icons/fi";
 import RentDetailSkl from "./RentDetailSKL/RentDetailSkl";
+import WaterMark from "../../../SharedPage/SVGCode/WaterMark";
+import waterMarkImage from "../../../../../assets/Image/WaterMark.png";
 
 const RentDetail = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -451,7 +453,7 @@ const RentDetail = () => {
           <div className="flex flex-col md:flex-row gap-1 w-full h-[260px] md:h-[500px] ">
             {/* Slider Image For Desktop and Mobile Start */}
             <div
-              className={`w-full md:w-[60%] h-full rounded-md p-0 md:p-0 ${
+              className={`w-full md:w-[60%] h-full rounded-md p-0 md:p-0 relative ${
                 imagesForSlider.length == 0 ? "sklLoading" : ""
               } `}
             >
@@ -460,6 +462,13 @@ const RentDetail = () => {
                 fullImage={true}
                 autoscroll={true}
               ></BannerSwipperComponent>
+              <div className="absolute bottom-0 right-0 md:bottom-10 md:right-10 ">
+                <img
+                  className="w-[120px] md:w-[150px] opacity-60"
+                  src={waterMarkImage}
+                  alt=""
+                />
+              </div>
             </div>
             {/* Slider Image For Desktop and Mobile end */}
 

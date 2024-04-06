@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BannerSwipperComponent from "../Banner/BannerSwipperComponent/BannerSwipperComponent";
 import { KeyboardBackspaceOutlined } from "@mui/icons-material";
+import waterMarkImage from "../../../../assets/Image/WaterMark.png";
 
 const FullImage = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const FullImage = () => {
   };
 
   return (
-    <div className="w-full h-[100vh] bg-purple-500 relative ">
+    <div className="w-full h-[98vh] md:h-[100vh] bg-purple-500 relative ">
       {images && (
         <BannerSwipperComponent
           images={images}
@@ -35,40 +36,13 @@ const FullImage = () => {
       >
         <KeyboardBackspaceOutlined />
       </button>
-      {/* <div className=" mt-[72px] md:mt-0 w-full h-full  overflow-hidden bg-yellow-300 ">
-        {images?.map((image, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              top: "0",
-              left: `${index * 100}%`,
-              width: "100%",
-              height: "100%",
-              transition: "transform 0.5s ease",
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
-          >
-            <img
-              src={`data:image/jpeg;base64,${image}`}
-              alt={`Image ${index}`}
-              style={{ width: "100%", height: "100%" }}
-              className={` h-full  `}
-            />
-          </div>
-        ))}
-
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 rounded-xl">
-          {images.map((_, index) => (
-            <p
-              key={index}
-              className={`w-[10px] h-[10px] bg-white rounded-full transition-width duration-500 ease-in-out ${
-                currentIndex === index ? "w-[35px]" : "w-[10px]"
-              } `}
-            ></p>
-          ))}
-        </div>
-      </div> */}
+      <div className="absolute bottom-0 right-0 md:bottom-10 md:right-10 ">
+        <img
+          className="w-[120px] md:w-[150px] opacity-60"
+          src={waterMarkImage}
+          alt=""
+        />
+      </div>
     </div>
   );
 };

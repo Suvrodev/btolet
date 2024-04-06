@@ -38,6 +38,7 @@ import buyPostshare from "../../../../Function/BuyPostShare";
 import trunCateWord from "../../../../Function/TrunCate";
 import numberToWord from "../../../../Function/ToCrore";
 import RentDetailSkl from "../../Home/Rent/RentDetail/RentDetailSKL/RentDetailSkl";
+import waterMarkImage from "../../../../assets/Image/WaterMark.png";
 
 const BuyDetail = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -327,12 +328,19 @@ const BuyDetail = () => {
           {/* Image Map Start */}
           <div className="flex flex-col md:flex-row gap-1 w-full h-[260px] md:h-[500px] ">
             {/* Slider Image For Desktop and Mobile Start */}
-            <div className="w-full md:w-[60%] h-full  p-0 md:p-0  ">
+            <div className="w-full md:w-[60%] h-full  p-0 md:p-0 relative ">
               <BannerSwipperComponent
                 images={imagesForSlider}
                 fullImage={true}
                 autoscroll={true}
               ></BannerSwipperComponent>
+              <div className="absolute bottom-0 right-0 md:bottom-10 md:right-10 ">
+                <img
+                  className="w-[120px] md:w-[150px] opacity-60"
+                  src={waterMarkImage}
+                  alt=""
+                />
+              </div>
             </div>
             {/* Slider Image For Desktop and Mobile End */}
 
