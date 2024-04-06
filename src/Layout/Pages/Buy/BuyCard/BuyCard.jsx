@@ -239,9 +239,9 @@ const BuyCard = ({ buy, forBuy, savedBuy, handleRefresh, myPostBuy }) => {
 
         {/* For Saved Start */}
         {savedBuy && (
-          <div className="absolute top-4 right-[60px] ">
+          <div className="absolute top-3 right-[55px] ">
             <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
-              <Favorite onClick={handleUnSave} className="text-white" />:
+              <Favorite onClick={handleUnSave} className="text-white" />
             </p>
           </div>
         )}

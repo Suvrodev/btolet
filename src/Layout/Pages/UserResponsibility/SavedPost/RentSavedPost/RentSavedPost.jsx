@@ -27,8 +27,7 @@ const RentSavedPost = () => {
   }, [uId, refress]);
 
   return (
-    <div>
-      <h1>My Saved Post (RENT)</h1>
+    <div className="mt-10">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {savedPost.map((rent, idx) => (
           <RentCard
@@ -38,6 +37,9 @@ const RentSavedPost = () => {
             handleRefresh={handleRefresh}
           ></RentCard>
         ))}
+      </div>
+      <div className="text-center">
+        <p>Loading</p>
       </div>
     </div>
   );

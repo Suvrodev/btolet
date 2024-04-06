@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import "./Modal.css";
 import Filter from "../../../../Sort/Filter/Filter";
 import ModalHelp from "./ModalHelp";
+import ModalComponent from "./ModalComponent";
 
 const Modal = () => {
   return (
-    <div className="flex items-center justify-center ">
-      <div className=" ovf">
-        <div className="ovfContent ">
-          <ModalHelp />
-        </div>
-        <div className="w-full bg-green-400 py-2 text-center sticky bottom-0 ">
-          <button className="btn btn-primary text-white">Its Bottom</button>
-        </div>
+    <div className="flex items-center justify-center gap-5 ">
+      <div>
+        <dialog id="my_modal_3" className="modal">
+          <ModalComponent />
+        </dialog>
+      </div>
+
+      <div>
+        <button
+          className="btn btn-primary text-white"
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          Click Button
+        </button>
       </div>
     </div>
   );

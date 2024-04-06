@@ -11,16 +11,16 @@ const SavedPost = () => {
 
   return (
     <div>
-      <div className="tabs  font-bold my-10  mt-20 md:mt-0 ">
+      <div className="tabs  my-10  mt-20 md:mt-0 ">
         <Tabs defaultIndex={0} onSelect={(index) => console.log(index)}>
           <TabList className="tab">
             <Tab>Rent</Tab>
             <Tab>Buy</Tab>
           </TabList>
-          <TabPanel className="tab">
+          <TabPanel className="">
             <RentSavedPost></RentSavedPost>
           </TabPanel>
-          <TabPanel className="tab">
+          <TabPanel className="">
             <BuySavedPost></BuySavedPost>
           </TabPanel>
         </Tabs>

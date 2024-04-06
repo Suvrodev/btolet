@@ -61,11 +61,11 @@ const Login = () => {
 
   return (
     <div>
-      <div className="flex flex-col-reverse md:flex-row h-[100%] bg-transparent md:bg-green-600  rounded-xl border-2 gap-10 md:gap-0 mt-20 ">
-        <div className="w-full md:w-[70%] h-full bg-red-500 rounded-xl">
+      <div className="flex   h-[175px]">
+        {/* <div className="w-full md:w-[70%] h-full bg-red-500 rounded-xl">
           <img className="h-[100%] rounded-xl" src={seaImage} alt="" />
-        </div>
-        <div className="w-full md:w-[30%]  bg-yellow-500 flex items-center justify-center">
+        </div> */}
+        <div className="w-full    flex items-center justify-center">
           <GoogleLogin
             onSuccess={(credentialResponse) => {
               // console.log(credentialResponse);

@@ -23,6 +23,7 @@ import {
   LogoutOutlined,
   Tune,
 } from "@mui/icons-material";
+import LoginModalComponent from "../../UserResponsibility/Login/LoginModalComponent/LoginModalComponent";
 
 const Header = () => {
   const {
@@ -93,6 +94,10 @@ const Header = () => {
 
   return (
     <div>
+      <dialog id="id_login_modal" className="modal">
+        <LoginModalComponent />
+      </dialog>
+
       <div className="  border-[1px] border-r-0 border-l-0">
         <div className="hidden max-w-[100rem] mx-auto w-full h-[75px] py-5 md:flex items-center justify-end ">
           <div className="w-[70%] flex justify-start items-center gap-10">
@@ -201,13 +206,18 @@ const Header = () => {
               </div>
             ) : (
               // <Link to='/login'><button className=" py-2 px-5 hover:border-2 transition duration-700 ease-in-out"><span className='flex items-center gap-1 text-black opacity-75'> <FiUser /> Sign in</span></button></Link>
-              <Link to="/login">
-                <button className="py-2 px-5 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-1000 ease-in-out">
+              <div to="/login">
+                <button
+                  className="py-2 px-5 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-1000 ease-in-out"
+                  onClick={() =>
+                    document.getElementById("id_login_modal").showModal()
+                  }
+                >
                   <span className="flex items-center gap-1 text-black opacity-75">
                     <FiUser /> Sign in
                   </span>
                 </button>
-              </Link>
+              </div>
             )}
           </div>
         </div>
@@ -215,8 +225,8 @@ const Header = () => {
 
       {/* For Mobile Device */}
 
-      <div className="w-full  h-[75px] border-4 p-5 flex items-center justify-between fixed top-0 z-10 bg-white md:hidden   ">
-        <div className=" relative ">
+      <div className="w-full  h-[75px] border-4 p-5  flex items-center justify-between fixed top-0 z-20 bg-white md:hidden   ">
+        <div className=" relative w-[25%]  ">
           <FaBars onClick={handleLeftNav} />
           {/* Which Will do After Click Bar start */}
           <div
@@ -345,10 +355,10 @@ const Header = () => {
           </div>
           {/* Which Will do After Click Bar end */}
         </div>
-        <div className="">
-          <img className="w-[50px] h-[50px]" src={headerLogo} alt="" />
+        <div className="w-[50%]  flex justify-center ">
+          <img className="w-[40px] h-[40px]" src={headerLogo} alt="" />
         </div>
-        <div>
+        <div className=" w-[25%] flex justify-end">
           {currentUser ? (
             <div className="relative">
               <img
@@ -358,11 +368,18 @@ const Header = () => {
               />
             </div>
           ) : (
-            <Link to="/login">
-              <button className="btn btn-outline btn-accent text-xl font-bold">
-                Login
+            <div className="">
+              <button
+                className="py-2 px-0 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-1000 ease-in-out"
+                onClick={() =>
+                  document.getElementById("id_login_modal").showModal()
+                }
+              >
+                <span className="flex items-center gap-1 text-black opacity-75 text-[14px]">
+                  <FiUser /> Sign in
+                </span>
               </button>
-            </Link>
+            </div>
           )}
         </div>
       </div>
