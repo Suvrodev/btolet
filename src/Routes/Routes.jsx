@@ -28,6 +28,7 @@ import Modal from "../Layout/Pages/Home/Rent/Rent/Modal/Modal";
 import RentCardSkl from "../Layout/Pages/Home/Rent/Rent/RentCardSKL/RentCardSkl";
 import FullImage from "../Layout/Pages/SharedPage/FullImage/FullImage";
 import RentDetailSkl from "../Layout/Pages/Home/Rent/RentDetail/RentDetailSKL/RentDetailSkl";
+import Rent from "../Layout/Pages/Home/Rent/Rent/Rent";
 
 const router = createBrowserRouter([
   {
@@ -46,9 +47,13 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
+      // {
+      //   path: "/buy",
+      //   element: <Buy></Buy>,
+      // },
       {
-        path: "/buy",
-        element: <Buy></Buy>,
+        path: "/rent",
+        element: <Rent></Rent>,
       },
       // {
       //   path: '/buypost',

@@ -105,7 +105,7 @@ const FilterDataProvider = ({ children }) => {
    * Buy Data retrive start
    */
 
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
   const [buys, setBuys] = useState([]);
   const [searchingBuy, setSearchingBuy] = useState(true);
 

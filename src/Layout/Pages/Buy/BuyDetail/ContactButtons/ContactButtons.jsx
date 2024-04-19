@@ -41,9 +41,9 @@ const ContactButtons = ({ phone, wapp }) => {
 
   return (
     <div>
-      <dialog id="id_login_modal" className="modal">
+      {/* <dialog id="id_login_modal" className="modal">
         <LoginModalComponent />
-      </dialog>
+      </dialog> */}
 
       <div className="w-full flex items-center justify-between gap-0 md:gap-2">
         <button

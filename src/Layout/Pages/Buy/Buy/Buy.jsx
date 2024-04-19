@@ -156,7 +156,7 @@ const Buy = () => {
 
       <div className="">
         {buys?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-4  md:gap-x-6 gap-y-6 gap-x-0 mx-5 overflow-auto ">
+          <div className="grid grid-cols-1 md:grid-cols-4  md:gap-x-6 gap-y-6 gap-x-0  overflow-auto ">
             {buys.map((buy, idx) => (
               <BuyCard key={idx} buy={buy} forBuy={"forBuy"}></BuyCard>
             ))}

@@ -16,7 +16,7 @@ const Main = () => {
   let loc = useLocation();
   let location = loc?.pathname;
 
-  if (location == "/home" || location == "/buy") {
+  if (location == "/home" || location == "/rent") {
     show = true;
   } else {
     show = false;

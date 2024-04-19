@@ -114,18 +114,18 @@ const Header = () => {
                 }
                 to="/home"
               >
-                Rent
+                Buy
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "text-blue-600 upLine" : "text-gray-500"
                 }
-                to="/buy"
+                to="/rent"
               >
-                Buy
+                Rent
               </NavLink>
               <div>
-                {(location === "/home" || location === "/buy") && (
+                {(location === "/home" || location === "/rent") && (
                   <NewShort></NewShort>
                 )}
               </div>
@@ -260,20 +260,22 @@ const Header = () => {
                 onClick={handleCloseLeftNav}
               >
                 <span>
-                  <FiHome />
-                </span>
-                <span>Rent</span>
-              </Link>
-              <Link
-                to="/buy"
-                className="flex items-center gap-2"
-                onClick={handleCloseLeftNav}
-              >
-                <span>
                   <HomeWorkOutlined />
                 </span>
                 <span>Buy</span>
               </Link>
+
+              <Link
+                to="/rent"
+                className="flex items-center gap-2"
+                onClick={handleCloseLeftNav}
+              >
+                <span>
+                  <FiHome />
+                </span>
+                <span>Rent</span>
+              </Link>
+
               <Link
                 to="/updateprofile"
                 className="flex items-center gap-2"
