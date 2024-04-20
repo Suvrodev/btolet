@@ -29,6 +29,8 @@ import RentCardSkl from "../Layout/Pages/Home/Rent/Rent/RentCardSKL/RentCardSkl"
 import FullImage from "../Layout/Pages/SharedPage/FullImage/FullImage";
 import RentDetailSkl from "../Layout/Pages/Home/Rent/RentDetail/RentDetailSKL/RentDetailSkl";
 import Rent from "../Layout/Pages/Home/Rent/Rent/Rent";
+import AboutUs from "../Layout/Pages/Home/OwnerIdentity/AboutUs/AboutUs";
+import TermsAndConditions from "../Layout/Pages/Home/OwnerIdentity/TermsAndConditions/TermsAndConditions";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
       {
         path: "rentdetail/:id",
         element: <RentDetail></RentDetail>,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/termsandconditions",
+        element: <TermsAndConditions></TermsAndConditions>,
       },
       {
         path: "/check",

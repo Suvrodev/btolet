@@ -1,0 +1,15 @@
+.termsText{
+    line-height: 24px;
+}
+.termsSpace{
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 576px) {
+    .termsText{
+        line-height: 20px;
+    }
+    .termsSpace{
+        margin-top: 20px;
+    }
+}

@@ -174,7 +174,7 @@ const Header = () => {
                       </span>
                     </Link>
                     <p className="h-[1px] customBorder mt-2 mb-2"></p>
-                    <Link to="">
+                    <Link to="/termsandconditions">
                       <span className="flex items-center gap-2">
                         {" "}
                         <FiSearch />
@@ -188,7 +188,7 @@ const Header = () => {
                         Contact us
                       </span>
                     </Link>
-                    <Link to="">
+                    <Link to="/aboutus">
                       <span className="flex items-center gap-2">
                         {" "}
                         <FiAlertCircle />
@@ -318,7 +318,7 @@ const Header = () => {
               </Link>
               <p className="h-[1px] mt-4 mb-2 customBorder"></p>
               <Link
-                to=""
+                to="/termsandconditions"
                 className="flex items-center gap-2"
                 onClick={handleCloseLeftNav}
               >
@@ -338,7 +338,7 @@ const Header = () => {
                 <span>Contact</span>
               </Link>
               <Link
-                to=""
+                to="/aboutus"
                 className="flex items-center gap-2"
                 onClick={handleCloseLeftNav}
               >
