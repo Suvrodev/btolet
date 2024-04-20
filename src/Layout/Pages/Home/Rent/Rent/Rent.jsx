@@ -105,7 +105,7 @@ const Rent = () => {
       {/* Modal start */}
       <div>
         <dialog id="filterModal_11" className="modal mainDialog ">
-          <div className="modal-box w-full md:w-5/12 h-full max-w-full max-h-[80%] md:max-h-full absolute bottom-0  bg-[#F3F4F6] p-0 overfollowParent   ">
+          <div className="modal-box w-full md:w-5/12 h-full max-w-full max-h-[100%] md:max-h-full absolute bottom-0  bg-[#F3F4F6] p-0 overfollowParent   ">
             <form method="dialog" className="sticky top-0 left-0 w-full z-10">
               <div className="FilterUp flex justify-between items-center p-2  ">
                 <h1 className="ml-2 ">Filters</h1>

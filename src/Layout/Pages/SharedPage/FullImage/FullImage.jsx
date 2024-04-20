@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import "./FullImage.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import BannerSwipperComponent from "../Banner/BannerSwipperComponent/BannerSwipperComponent";
-import { KeyboardBackspaceOutlined } from "@mui/icons-material";
+import {
+  ChevronLeftOutlined,
+  KeyboardBackspaceOutlined,
+} from "@mui/icons-material";
 import waterMarkImage from "../../../../assets/Image/WaterMark.png";
 
 const FullImage = () => {
@@ -32,9 +36,10 @@ const FullImage = () => {
 
       <button
         onClick={handleGoBack}
-        className="w-[50px] h-[50px] absolute left-6 md:left-10 top-20 md:top-10  bg-white rounded-full flex items-center justify-center"
+        className=" absolute left-0 md:left-10 top-20 md:top-10  rounded-full flex items-center justify-center"
       >
-        <KeyboardBackspaceOutlined />
+        {/* <KeyboardBackspaceOutlined /> */}
+        <ChevronLeftOutlined className="text-white goBack" />
       </button>
       <div className="absolute bottom-0 right-0 md:bottom-10 md:right-10 ">
         <img

@@ -1,41 +1,3 @@
-.horizontal-slider{
-    margin: 0 auto 0 auto;
-    width: 100%;
-    /* max-width: 500px; */
-    height: 20px;
-    background-color: #D8E7FE;
-    border-radius: 10px;
-}
-.horizontal-slider .example-track{
-    top: -1px;
-    height: 20px;
-    border-radius: 10px;
-
-}
-.horizontal-slider .example-track-0{
-   background-color: #D8E7FE;
-}
-.horizontal-slider .example-track-1{
-    background-color: #5280E6;
-}
-
-.horizontal-slider .example-thumb{
-    top: 5;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    line-height: 38px;
-    font-size: 0;
-    text-align: center;
-    background-color: white;
-    color: white;
-    cursor: pointer;
-    border: 5px solid #5280E6;
-    box-sizing: border-box;
-    margin-top: -10px;
-    
-}
-
 .filterFooter{
    
     width: 100%;
@@ -65,7 +27,62 @@
 }
 
 
+.horizontal-slider{
+    margin: 0 auto 0 auto;
+    width: 100%;
+    /* max-width: 500px; */
+    height: 10px;
+    background-color: #D8E7FE;
+    border-radius: 10px;
+}
+.horizontal-slider .example-track{
+    top: -1px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+/*Range Background Color */
+.horizontal-slider .example-track-0{
+   background-color: #D8E7FE;
+}
+
+/* Range Blue Color */
+.horizontal-slider .example-track-1{
+    background-color: #5280E6;
+}
+
+.horizontal-slider .example-thumb{
+    top: 5;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 38px;
+    font-size: 0;
+    text-align: center;
+    background-color: white;
+    color: white;
+    cursor: pointer;
+    border: 5px solid #5280E6;
+    box-sizing: border-box;
+    margin-top: -10px;
+    
+}
+
+
+
 @media screen and (max-width: 576px) {
+
+
+    .horizontal-slider .example-track{
+        height: 15px;
+    }
+    .horizontal-slider .example-thumb{
+        width: 30px;
+        height: 30px;
+    }
+
+
+
     .filterFooter{
         display: flex;
         flex-direction: column-reverse;

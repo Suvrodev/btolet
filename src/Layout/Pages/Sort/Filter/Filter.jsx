@@ -190,15 +190,15 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
               {/* Only Slider End */}
 
               {/* Price Write Start */}
-              <div className="flex flex-col md:flex-row gap-5 w-full  justify-center mt-10 ">
+              <div className="flex flex-row gap-5 w-full  justify-center mt-10  ">
                 {/* <div className="flex flex-col md:flex-row gap-5 items-center w-full "> */}
-                <div className=" w-full bg-white rounded-lg p-5">
+                <div className=" w-[50%] md:w-full bg-white rounded-lg p-5">
                   <p className="prText font-bold">Min Price</p>
                   <input
                     type="number"
                     name=""
                     id=""
-                    className="bg-white outline-none border-1 dag numberInputUpDown opacity-70"
+                    className="bg-white outline-none border-1 dag numberInputUpDown opacity-70 w-full"
                     value={minPriceRent}
                     onChange={handleMinInputChange}
                   />
@@ -206,13 +206,13 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
                 <div className="hidden w-[60px] md:flex justify-center items-center ">
                   <p className=" w-full h-[1px] bg-black opacity-50"></p>
                 </div>
-                <div className="w-full bg-white rounded-lg p-5">
+                <div className="w-[50%] md:w-full bg-white rounded-lg p-5">
                   <p className="prText font-bold">Max Price</p>
                   <input
                     type="number"
                     name=""
                     id=""
-                    className="bg-white outline-none border-1 dag numberInputUpDown opacity-70"
+                    className="bg-white outline-none border-1 dag numberInputUpDown opacity-70 w-full"
                     value={maxPriceRent}
                     onChange={handleMaxInputChange}
                   />
@@ -225,7 +225,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
         </div>
         {/* Hole Price end */}
 
-        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
+        <div className="mt-4 md:mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Category
           </h1>
