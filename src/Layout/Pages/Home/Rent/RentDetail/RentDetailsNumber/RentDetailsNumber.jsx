@@ -46,7 +46,7 @@ const RentDetailsNumber = ({ ad }) => {
           </p>
         )}
         {ad?.itemName == "Property Type" && (
-          <p className=" text-black text-[12px] md:text-xl font-bold opacity-70">
+          <p className=" text-black text-[12px] md:text-xl  opacity-70">
             {itemNumbers}
           </p>
         )}

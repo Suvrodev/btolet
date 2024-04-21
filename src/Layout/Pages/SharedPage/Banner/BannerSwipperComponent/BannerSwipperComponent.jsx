@@ -7,6 +7,7 @@ const BannerSwipperComponent = ({
   fullImage,
   autoscroll,
   imageNumber,
+  makeBlur,
 }) => {
   // console.log("Images(Banner Swipper Component) ", images);
 
@@ -88,13 +89,24 @@ const BannerSwipperComponent = ({
             transition: "transform 0.5s ease",
             transform: `translateX(-${currentIndex * 100}%)`,
           }}
+          className="flex items-center justify-center"
         >
           <img
             onClick={handleGoFullImage}
             src={`data:image/jpeg;base64,${image}`}
             alt={`Image ${index}`}
-            style={{ width: "100%", height: "100%" }}
-            className={` h-full ${rnd ? "rounded-xl" : ""} `}
+            className={`w-full h-full   ${rnd ? "rounded-xl" : ""} ${
+              makeBlur ? "filter blur-lg " : ""
+            } `}
+          />
+
+          <img
+            onClick={handleGoFullImage}
+            src={`data:image/jpeg;base64,${image}`}
+            alt={`Image ${index}`}
+            className={`absolute w-auto h-auto   ${rnd ? "rounded-xl" : ""} ${
+              makeBlur ? "" : "hidden"
+            }`}
           />
         </div>
       ))}

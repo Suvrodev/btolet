@@ -694,7 +694,7 @@ const BuyDetail = () => {
         {/* Right Div for Mobile Start Start */}
         {/* For Mobile Device start */}
 
-        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden px-3 ">
+        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden mb-[70px] px-3 ">
           <div className="flex gap-8 flex-nowrap md:overflow-x-auto">
             {moreBuyPost &&
               moreBuyPost.map((buy, idx) => (

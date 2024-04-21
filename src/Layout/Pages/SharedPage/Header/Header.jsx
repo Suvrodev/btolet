@@ -92,6 +92,11 @@ const Header = () => {
     </div>
   );
 
+  const contactUsCall = () => {
+    const whatsappUrl = `https://wa.me/8801518748081`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div>
       <dialog id="id_login_modal" className="modal">
@@ -181,13 +186,13 @@ const Header = () => {
                         Terms And Condition
                       </span>
                     </Link>
-                    <Link to="">
+                    <span onClick={contactUsCall}>
                       <span className="flex items-center gap-2">
                         {" "}
                         <FiPhoneCall />
                         Contact us
                       </span>
-                    </Link>
+                    </span>
                     <Link to="/aboutus">
                       <span className="flex items-center gap-2">
                         {" "}
@@ -327,16 +332,19 @@ const Header = () => {
                 </span>
                 <span>Terms And Condition</span>
               </Link>
-              <Link
+              <span
                 to=""
                 className="flex items-center gap-2"
-                onClick={handleCloseLeftNav}
+                onClick={() => {
+                  handleCloseLeftNav();
+                  contactUsCall();
+                }}
               >
                 <span>
                   <FiPhoneCall />
                 </span>
                 <span>Contact</span>
-              </Link>
+              </span>
               <Link
                 to="/aboutus"
                 className="flex items-center gap-2"

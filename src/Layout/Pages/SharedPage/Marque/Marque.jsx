@@ -24,7 +24,7 @@ const Marque = () => {
 
   return (
     <div
-      className={`bg-[#e9e8e8] p-2 rounded-md mt-24 md:mt-2 mb-4 mx-4 md:mx-0 max-w-[100rem] ${
+      className={`bg-[#e9e8e8] p-2 rounded-md mt-[90px] md:mt-2 mb-4 mx-4 md:mx-0 max-w-[100rem] ${
         marqueText ? "" : "sklLoading"
       }`}
     >

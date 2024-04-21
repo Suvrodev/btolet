@@ -31,6 +31,7 @@ const FullImage = () => {
         <BannerSwipperComponent
           images={images}
           imageNumber={imageNumber}
+          makeBlur={true}
         ></BannerSwipperComponent>
       )}
 

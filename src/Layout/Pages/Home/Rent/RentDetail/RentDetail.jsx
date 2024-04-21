@@ -388,8 +388,8 @@ const RentDetail = () => {
       iconDiv = <div className="p-5 h-[45px] "> Shop </div>;
     } else {
       iconDiv = (
-        <div className="flex gap-6 items-center p-5 h-[45px] text-[12px] md:text-[30px] font-bold md:font-normal opacity-80">
-          <div className="flex items-center gap-3">
+        <div className="flex gap-6 items-center p-5 h-[45px] text-[14px] md:text-[30px] font-bold md:font-normal opacity-80">
+          <div className="flex items-center gap-1 md:gap-3">
             <img
               className="w-[28px] md:w-[40px] opacity-60"
               src={bedIcon}
@@ -397,9 +397,9 @@ const RentDetail = () => {
             />
             <p className="opacity-70">{bed} Beds</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 md:gap-3">
             <img
-              className="w-[28px] md:w-[40px] opacity-60  mb-[2px]"
+              className="w-[28px]  md:w-[40px] h-[24px] md:h-auto opacity-60  mb-[2px]"
               src={bathIcon}
               alt=""
             />{" "}
@@ -408,7 +408,7 @@ const RentDetail = () => {
           {roomsize ? (
             <div className="flex items-center gap-1 md:gap-3">
               <img
-                className="w-[28px] md:w-[40px] opacity-60"
+                className="w-[28px] md:w-[40px] h-[21px] md:h-auto opacity-60"
                 src={areaIcon}
                 alt=""
               />{" "}
@@ -418,9 +418,9 @@ const RentDetail = () => {
               </p>
             </div>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 md:gap-3">
               <img
-                className="w-[26px] md:w-[34px] opacity-60"
+                className="w-[26px] md:w-[34px] h-[20px] md:h-auto opacity-60"
                 src={kitchenIcon}
                 alt=""
               />{" "}
