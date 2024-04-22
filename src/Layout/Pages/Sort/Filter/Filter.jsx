@@ -225,7 +225,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
         </div>
         {/* Hole Price end */}
 
-        <div className="mt-4 md:mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
+        <div className="mt-2 md:mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full ">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Category
           </h1>
@@ -234,7 +234,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           </div>
         </div>
 
-        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+        <div className="mt-2 md:mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Bedrooms
           </h1>
@@ -243,7 +243,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
           </div>
         </div>
 
-        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+        <div className="mt-2 md:mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
           <h1 className="font-bold text-[#2E2D36]  w-full md:w-[20%]">
             Bathrooms
           </h1>
@@ -253,7 +253,7 @@ const Filter = ({ closeFilterRent, setCloseFilterRent }) => {
         </div>
 
         {/* Facilities */}
-        <div className="mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
+        <div className="mt-2 md:mt-16  flex flex-col md:flex-row gap-5 md:gap-0  w-full">
           <h1 className="font-bold text-[#2E2D36] w-full md:w-[20%]">
             Facilities
           </h1>

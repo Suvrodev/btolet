@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import "./Check.css";
-
-import Image from "../../../../assets/Image/Suvrodev.jpg";
-
-import { FiHeart } from "react-icons/fi";
-
-const Checki = () => {
+const Toogle = () => {
   const [showBuy, setShowBuy] = useState(true);
   const handleToogle = () => {
     setShowBuy(!showBuy);
   };
   console.log("Buy: ", showBuy);
+
   return (
     <div className="text-black">
       <div className="relative w-[120px] cursor-pointer" onClick={handleToogle}>
@@ -41,4 +36,4 @@ const Checki = () => {
   );
 };
 
-export default Checki;
+export default Toogle;
