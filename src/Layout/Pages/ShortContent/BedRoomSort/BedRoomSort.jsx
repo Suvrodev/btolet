@@ -24,7 +24,7 @@ const BedRoomSort = () => {
           <button
             key={index}
             onClick={() => handleButtonClick(bedroom)}
-            className={` shadow-sm  h-[55px] w-[75px] flex justify-center items-center  gap-2 border-2  rounded-[5px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] ${
+            className={` shadow-sm h-[40px] md:h-[55px] w-[50px] md:w-[75px] flex justify-center items-center  gap-2 border-2  rounded-[5px] bg-white text-[12px] md:text-[16px] text-[#2E2D36] ${
               selectedBedrooms.includes(bedroom)
                 ? "border-blue-600 border-2"
                 : ""

@@ -469,6 +469,8 @@ const RentDetail = () => {
                   alt=""
                 />
               </div>
+              <div className="absolute top-10 right-20">Save</div>
+              <div className="absolute top-10 right-6">Share</div>
             </div>
             {/* Slider Image For Desktop and Mobile end */}
 
