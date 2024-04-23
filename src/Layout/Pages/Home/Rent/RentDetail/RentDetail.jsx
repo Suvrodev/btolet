@@ -28,6 +28,8 @@ import {
   CottageOutlined,
   DiningOutlined,
   DomainOutlined,
+  Favorite,
+  FavoriteBorderOutlined,
   HomeOutlined,
   KitchenOutlined,
   MonetizationOnOutlined,
@@ -54,9 +56,16 @@ import { FiShare2 } from "react-icons/fi";
 import RentDetailSkl from "./RentDetailSKL/RentDetailSkl";
 import WaterMark from "../../../SharedPage/SVGCode/WaterMark";
 import waterMarkImage from "../../../../../assets/Image/WaterMark.png";
+import RentPostShare from "../../../../../Function/RentPostShare";
 
 const RentDetail = () => {
-  const { baseUrl } = useContext(AuthContext);
+  const {
+    uId,
+    successfullMessage,
+    baseUrl,
+    currentUser,
+    unSuccessFullMessage,
+  } = useContext(AuthContext);
   const { id } = useParams();
   console.log("Comming id:", id);
 
@@ -340,10 +349,70 @@ const RentDetail = () => {
     });
   }
 
-  //    console.log(" Important: ",bedBathImportant);
   ///Bed Bath end
 
-  // console.log("Fasalities Type: ",typeof(fasalitis));
+  /**
+   * Save UnSave start
+   */
+  const saveInfo = {
+    uid: uId,
+    pid: post_id,
+    status: true,
+  };
+
+  const unSaveInfo = {
+    uid: uId,
+    pid: post_id,
+    status: false,
+  };
+
+  const [save, setSave] = useState(false);
+  const handleSave = () => {
+    // console.log("Blue chilo Save korbo");
+
+    if (currentUser) {
+      fetch(`${baseUrl}/tolet/save/post`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            successfullMessage("Saved Successfully");
+          }
+        });
+      setSave(!save);
+    } else {
+      unSuccessFullMessage("At First Log in");
+    }
+  };
+
+  const handleUnSave = () => {
+    // console.log("Red Chilo UnSave korbo");
+    if (uId) {
+      fetch(`${baseUrl}/tolet/save/post`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(unSaveInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            successfullMessage("UnSaved Successfully");
+            handleRefresh();
+          }
+        });
+    }
+    setSave(!save);
+  };
+  /**
+   * Save UnSave End
+   */
 
   //////Kelma Start
   let iconDiv;
@@ -469,8 +538,27 @@ const RentDetail = () => {
                   alt=""
                 />
               </div>
-              <div className="absolute top-10 right-20">Save</div>
-              <div className="absolute top-10 right-6">Share</div>
+              <div className="absolute top-6 right-20">
+                <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
+                  {save == true ? (
+                    <Favorite onClick={handleUnSave} className="text-white" />
+                  ) : (
+                    // <FaRegHeart  onClick={handleSave} className='text-blue-600 '/>
+                    <FavoriteBorderOutlined
+                      onClick={handleSave}
+                      className="text-white"
+                    />
+                  )}
+                </p>
+              </div>
+              <div className="absolute top-6 right-10">
+                <p className="w-[30px] h-[30px] BlkOpct  flex items-center justify-center rounded-full">
+                  <FiShare2
+                    onClick={() => RentPostShare(post_id)}
+                    className="text-white"
+                  />
+                </p>
+              </div>
             </div>
             {/* Slider Image For Desktop and Mobile end */}
 
