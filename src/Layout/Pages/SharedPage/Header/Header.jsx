@@ -171,7 +171,7 @@ const Header = () => {
                         <FiEdit /> My Post
                       </span>
                     </Link>
-                    <Link to="">
+                    <Link to="/feedback">
                       <span className="flex items-center gap-2">
                         {" "}
                         <FiRadio />
@@ -312,7 +312,7 @@ const Header = () => {
                 <span>My Post</span>
               </Link>
               <Link
-                to=""
+                to="/feedback"
                 className="flex items-center gap-2"
                 onClick={handleCloseLeftNav}
               >

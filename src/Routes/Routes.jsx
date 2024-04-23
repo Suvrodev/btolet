@@ -31,6 +31,8 @@ import RentDetailSkl from "../Layout/Pages/Home/Rent/RentDetail/RentDetailSKL/Re
 import Rent from "../Layout/Pages/Home/Rent/Rent/Rent";
 import AboutUs from "../Layout/Pages/Home/OwnerIdentity/AboutUs/AboutUs";
 import TermsAndConditions from "../Layout/Pages/Home/OwnerIdentity/TermsAndConditions/TermsAndConditions";
+import { Feedback } from "@mui/icons-material";
+import FeedBack from "../Layout/Pages/Home/OwnerIdentity/FeedBack/FeedBack";
 
 const router = createBrowserRouter([
   {
@@ -66,10 +68,14 @@ const router = createBrowserRouter([
         path: "/buydetail/:id",
         element: <BuyDetail></BuyDetail>,
       },
-      // {
-      //   path: '/rentpost',
-      //   element: <PrivateRoute><RentPost></RentPost></PrivateRoute>
-      // },
+      {
+        path: "/rentpost",
+        element: (
+          <PrivateRoute>
+            <RentPost></RentPost>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "rentdetail/:id",
         element: <RentDetail></RentDetail>,
@@ -81,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "/termsandconditions",
         element: <TermsAndConditions></TermsAndConditions>,
+      },
+      {
+        path: "/feedback",
+        element: <FeedBack></FeedBack>,
       },
       {
         path: "/check",

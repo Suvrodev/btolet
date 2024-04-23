@@ -25,6 +25,8 @@ import {
   CheckOutlined,
   ConstructionOutlined,
   DomainOutlined,
+  Favorite,
+  FavoriteBorderOutlined,
   HomeOutlined,
   PermIdentityOutlined,
   ShareLocationOutlined,
@@ -41,7 +43,13 @@ import RentDetailSkl from "../../Home/Rent/RentDetail/RentDetailSKL/RentDetailSk
 import waterMarkImage from "../../../../assets/Image/WaterMark.png";
 
 const BuyDetail = () => {
-  const { baseUrl } = useContext(AuthContext);
+  const {
+    uId,
+    successfullMessage,
+    baseUrl,
+    currentUser,
+    unSuccessFullMessage,
+  } = useContext(AuthContext);
   const { id } = useParams();
   console.log("Comming id: ", id);
   const currentLocation = useLocation(); // Get the location object
@@ -308,6 +316,70 @@ const BuyDetail = () => {
 
   ///////Important feature end
 
+  /***
+   * Save and Unsave start
+   */
+  const saveInfo = {
+    uid: uId,
+    pid: pid,
+    status: true,
+  };
+
+  const unSaveInfo = {
+    uid: uId,
+    pid: pid,
+    status: false,
+  };
+
+  const [save, setSave] = useState(false);
+  const handleSave = () => {
+    console.log("Blue chilo Save korbo");
+
+    if (currentUser) {
+      fetch(`${baseUrl}/pro/save/post`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            successfullMessage("Saved Successfully");
+          }
+        });
+      setSave(!save);
+    } else {
+      unSuccessFullMessage("At First Log in");
+    }
+  };
+
+  const handleUnSave = () => {
+    console.log("Red Chilo UnSave korbo");
+    if (uId) {
+      fetch(`${baseUrl}/pro/save/post`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(unSaveInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            successfullMessage("UnSaved Successfully");
+            handleRefresh();
+          }
+        });
+    }
+    setSave(!save);
+  };
+
+  /**
+   * Save and Unsave end
+   */
+
   //Loading Start
   if (!pid) {
     return <RentDetailSkl />;
@@ -340,6 +412,27 @@ const BuyDetail = () => {
                   src={waterMarkImage}
                   alt=""
                 />
+              </div>
+
+              <div className="absolute top-6 right-20">
+                <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
+                  {save == true ? (
+                    <Favorite onClick={handleUnSave} className="text-white" />
+                  ) : (
+                    <FavoriteBorderOutlined
+                      onClick={handleSave}
+                      className="text-white"
+                    />
+                  )}
+                </p>
+              </div>
+              <div className="absolute top-6 right-10">
+                <p className="w-[30px] h-[30px] BlkOpct flex items-center justify-center rounded-full">
+                  <FiShare2
+                    onClick={() => buyPostshare(pid)}
+                    className="text-white"
+                  />
+                </p>
               </div>
             </div>
             {/* Slider Image For Desktop and Mobile End */}
