@@ -18,33 +18,24 @@ const Toogle = () => {
   }, [location]);
   // /Toogle Show Hide end
 
-  //Current Location start
-  const [currentLocation, setCurrentLocation] = useState(true);
+  const [toogleButton, setToogleButton] = useState(true);
   useEffect(() => {
     if (location == "/home") {
-      setCurrentLocation(true);
+      setToogleButton(true);
     }
     if (location == "/rent") {
-      setCurrentLocation(false);
+      setToogleButton(false);
     }
   }, [location]);
-  console.log("Current Location: ", currentLocation);
-  //Current Location end
 
-  const [showBuy, setShowBuy] = useState(currentLocation);
   const handleToogle = () => {
-    setShowBuy(!showBuy);
-  };
-  console.log("Buy: ", showBuy);
-
-  useEffect(() => {
     if (location == "/home") {
       navigate("/rent");
     }
     if (location == "/rent") {
-      navigate("/");
+      navigate("/home");
     }
-  }, [showBuy]);
+  };
 
   return (
     <div className={`text-black ${showToogle ? "" : "hidden"}`}>
@@ -52,20 +43,20 @@ const Toogle = () => {
         <h1 className=" bg-[#B2B2B2] w-[90px] h-[45px] rounded-3xl"></h1>
         <p
           className={`bg-blue-500 w-[45px] h-[45px] rounded-full absolute top-0  z-10 ${
-            showBuy ? "left-0" : "left-[47px]"
+            toogleButton ? "left-0" : "left-[47px]"
           }`}
         ></p>
 
         <h1
           className={`absolute transform  top-1/2 right-4 -translate-y-1/2 ${
-            showBuy ? "" : "hidden"
+            toogleButton ? "" : "hidden"
           }`}
         >
           Buy
         </h1>
         <h1
           className={`absolute transform top-1/2 left-2 -translate-y-1/2  ${
-            showBuy ? "hidden" : ""
+            toogleButton ? "hidden" : ""
           }`}
         >
           Rent
