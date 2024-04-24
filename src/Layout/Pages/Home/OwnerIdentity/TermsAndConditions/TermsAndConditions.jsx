@@ -1,9 +1,11 @@
 import React from "react";
 import "./TermsAndConditions.css";
+import GoToTop from "../../../../../Function/GoToTop";
 
 const TermsAndConditions = () => {
   return (
     <div className="mt-20 md:mt-0 p-5 md:p-0 ">
+      <GoToTop />
       <h1 className="font-bold text-xl mb-10 opacity-70 text-center">
         Terms & Conditions
       </h1>

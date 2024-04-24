@@ -1,10 +1,12 @@
 import { NearMeOutlined } from "@mui/icons-material";
 import React from "react";
 import FeedBackImage from "./FeedBackImage/FeedBackImage";
+import GoToTop from "../../../../../Function/GoToTop";
 
 const FeedBack = () => {
   return (
     <div>
+      <GoToTop />
       <div>
         <h1>
           Feedback wanted! Enhance our website? Suggestions for extra features?

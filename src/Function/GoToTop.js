@@ -1,8 +1,8 @@
-import { useEffect } from "react"
+import React,{ useEffect } from "react"
 
 const GoToTop=()=>{
     useEffect(()=>{
-        window.screenTop(0,0)
+        window.scrollTo(0,0)
     },[])
     return null;
 }

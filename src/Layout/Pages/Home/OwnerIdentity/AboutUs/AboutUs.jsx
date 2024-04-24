@@ -1,9 +1,11 @@
 import React from "react";
 import "./AboutUs.css";
+import GoToTop from "../../../../../Function/GoToTop";
 
 const AboutUs = () => {
   return (
     <div className="mt-20 md:mt-0 p-5 md:p-0 ">
+      <GoToTop />
       <h1 className="font-bold text-xl mb-14 opacity-70">About Btolet.com</h1>
 
       <div className="text-[10px] md:text-[16px] opacity-60">

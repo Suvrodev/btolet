@@ -4,11 +4,13 @@ import Marque from "../../SharedPage/Marque/Marque";
 import Banner from "../../SharedPage/Banner/Banner";
 import useTitle from "../../../../Function/Hooks/useTitle";
 import Buy from "../../Buy/Buy/Buy";
+import GoToTop from "../../../../Function/GoToTop";
 
 const Home = () => {
   useTitle("Home");
   return (
     <div className="">
+      <GoToTop />
       {/* <Marque></Marque>
             <div className='h-full md:h-[360px] flex flex-col md:flex-row gap-2 items-center justify-start mx-4 md:mx-0'>
                 <div className='w-full md:w-[60%] h-[360px]'>

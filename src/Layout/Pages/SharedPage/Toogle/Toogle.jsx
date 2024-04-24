@@ -7,6 +7,7 @@ const Toogle = () => {
 
   const navigate = useNavigate("");
 
+  //Toogle Show Hide start
   const [showToogle, setShowToogle] = useState(false);
   useEffect(() => {
     if (location == "/home" || location == "/rent") {
@@ -15,18 +16,33 @@ const Toogle = () => {
       setShowToogle(false);
     }
   }, [location]);
+  // /Toogle Show Hide end
 
-  const [showBuy, setShowBuy] = useState(true);
+  //Current Location start
+  const [currentLocation, setCurrentLocation] = useState(true);
+  useEffect(() => {
+    if (location == "/home") {
+      setCurrentLocation(true);
+    }
+    if (location == "/rent") {
+      setCurrentLocation(false);
+    }
+  }, [location]);
+  console.log("Current Location: ", currentLocation);
+  //Current Location end
+
+  const [showBuy, setShowBuy] = useState(currentLocation);
   const handleToogle = () => {
     setShowBuy(!showBuy);
   };
   console.log("Buy: ", showBuy);
 
   useEffect(() => {
-    if (showBuy) {
-      navigate("/");
-    } else {
+    if (location == "/home") {
       navigate("/rent");
+    }
+    if (location == "/rent") {
+      navigate("/");
     }
   }, [showBuy]);
 

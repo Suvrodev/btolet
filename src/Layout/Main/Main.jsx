@@ -7,6 +7,7 @@ import "./Main.css";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Marque from "../Pages/SharedPage/Marque/Marque";
 import Banner from "../Pages/SharedPage/Banner/Banner";
+import GoToTop from "../../Function/GoToTop";
 
 const Main = () => {
   const { profileBox, setProfileBox, leftNav, setLeftNav } =
@@ -33,6 +34,7 @@ const Main = () => {
 
   return (
     <div className="roboto  ">
+      {/* <GoToTop /> */}
       <Header></Header>
 
       <div className={`max-w-[100rem] mx-auto ${show ? "" : "hidden"} `}>

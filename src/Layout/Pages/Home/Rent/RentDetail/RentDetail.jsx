@@ -57,6 +57,7 @@ import RentDetailSkl from "./RentDetailSKL/RentDetailSkl";
 import WaterMark from "../../../SharedPage/SVGCode/WaterMark";
 import waterMarkImage from "../../../../../assets/Image/WaterMark.png";
 import RentPostShare from "../../../../../Function/RentPostShare";
+import GoToTop from "../../../../../Function/GoToTop";
 
 const RentDetail = () => {
   const {
@@ -506,9 +507,13 @@ const RentDetail = () => {
   if (!post_id) {
     return <RentDetailSkl />;
   }
-
+  const handlecheckTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className={`mt-10 md:m-0 `}>
+      <GoToTop />
+
       <div className="md:hidden ">
         <div className="contactFooter ">
           <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
@@ -701,11 +706,12 @@ const RentDetail = () => {
         {/* For Desktop Device end */}
 
         {/* For Mobile Device start */}
-        <div className="w-full detailParentRightdiv overflow-x-auto md:hidden h-[500px] mb-20 px-3  ">
+        <div className="w-full detailParentRightdiv overflow-x-auto  md:hidden h-[500px] mb-20 px-3  ">
           <div className="flex flex-nowrap md:overflow-x-auto">
             {moreRentPost &&
               moreRentPost.map((r, idx) => (
                 <div
+                  onClick={handlecheckTop}
                   key={idx}
                   className="w-10/12 md:w-screen  flex-none md:flex-grow-0 md:flex-shrink-0"
                 >

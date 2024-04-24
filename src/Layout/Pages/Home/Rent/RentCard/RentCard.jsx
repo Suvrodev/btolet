@@ -60,6 +60,7 @@ import BedSvgIcon from "../../../SharedPage/SVGCode/BedSvgIcon";
 import BathSvgIcon from "../../../SharedPage/SVGCode/BathSvgIcon";
 import AreaSvgIcon from "../../../SharedPage/SVGCode/AreaSvgIcon";
 import KitchenSvgIcon from "../../../SharedPage/SVGCode/KitchenSvgIcon";
+import GoToTop from "../../../../../Function/GoToTop";
 // import KitchenSvgIcon from "../../../../../assets/icons/property/kitchen_.png";
 
 const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
@@ -331,6 +332,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
 
   return (
     <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[400px] md:h-[480px] ">
+      {/* <GoToTop /> */}
       {/* Image Box Start */}
       <div className="relative">
         <Link

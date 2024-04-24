@@ -41,6 +41,7 @@ import trunCateWord from "../../../../Function/TrunCate";
 import numberToWord from "../../../../Function/ToCrore";
 import RentDetailSkl from "../../Home/Rent/RentDetail/RentDetailSKL/RentDetailSkl";
 import waterMarkImage from "../../../../assets/Image/WaterMark.png";
+import GoToTop from "../../../../Function/GoToTop";
 
 const BuyDetail = () => {
   const {
@@ -386,8 +387,13 @@ const BuyDetail = () => {
   }
   //Loading End
 
+  const handlecheckTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="mt-10 m-0 md:m-0">
+      <GoToTop />
       <div className="md:hidden">
         <footer className="contactFooter">
           <ContactButtons phone={phone} wapp={wapp}></ContactButtons>
@@ -792,6 +798,7 @@ const BuyDetail = () => {
             {moreBuyPost &&
               moreBuyPost.map((buy, idx) => (
                 <div
+                  onClick={handlecheckTop}
                   key={idx}
                   className="w-10/12 md:w-screen  flex-none md:flex-grow-0 md:flex-shrink-0"
                 >
