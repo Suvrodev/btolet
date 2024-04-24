@@ -24,6 +24,8 @@ import {
   Tune,
 } from "@mui/icons-material";
 import LoginModalComponent from "../../UserResponsibility/Login/LoginModalComponent/LoginModalComponent";
+import { ToggleButton } from "@mui/material";
+import Toogle from "../Toogle/Toogle";
 
 const Header = () => {
   const {
@@ -365,32 +367,39 @@ const Header = () => {
           </div>
           {/* Which Will do After Click Bar end */}
         </div>
-        <div className="w-[50%]  flex justify-center ">
+
+        {/* <div className="w-[50%]  flex justify-center ">
           <img className="w-[40px] h-[40px]" src={headerLogo} alt="" />
-        </div>
-        <div className=" w-[25%] flex justify-end">
-          {currentUser ? (
-            <div className="relative">
-              <img
-                className="w-[45px] h-[45px] rounded-full"
-                src={currentUser?.image}
-                alt=""
-              />
+        </div> */}
+
+        <div className="  flex justify-end items-center">
+          <div className="flex gap-1 ">
+            <div>
+              <Toogle />
             </div>
-          ) : (
-            <div className="">
-              <button
-                className="py-2 px-0 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-1000 ease-in-out"
-                onClick={() =>
-                  document.getElementById("id_login_modal").showModal()
-                }
-              >
-                <span className="flex items-center gap-1 text-black opacity-75 text-[14px]">
-                  <FiUser /> Sign in
-                </span>
-              </button>
-            </div>
-          )}
+            {currentUser ? (
+              <div className="relative">
+                <img
+                  className="w-[45px] h-[45px] rounded-full"
+                  src={currentUser?.image}
+                  alt=""
+                />
+              </div>
+            ) : (
+              <div className="">
+                <button
+                  className="py-2 px-0 border border-transparent hover:border-[#e9e8e8] rounded-lg transition duration-1000 ease-in-out"
+                  onClick={() =>
+                    document.getElementById("id_login_modal").showModal()
+                  }
+                >
+                  <span className="flex items-center gap-1 text-black opacity-75 text-[14px]">
+                    <FiUser /> Sign in
+                  </span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
