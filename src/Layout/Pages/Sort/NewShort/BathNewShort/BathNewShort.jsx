@@ -53,15 +53,15 @@ const BathNewShort = ({
     setBathClose(true);
     handleShowBath();
     if (location === "/home") {
+      setByFilter(true);
+      setBathDep(!bathDep);
+      setPageNumber(1);
+    } else {
       console.log("byFilterrrrrrrrrrrRent: ", byFilterRent);
 
       setByFilterRent(true);
       setBathDep(!bathDep);
       setRentPageNumber(1);
-    } else {
-      setByFilter(true);
-      setBathDep(!bathDep);
-      setPageNumber(1);
     }
   };
 

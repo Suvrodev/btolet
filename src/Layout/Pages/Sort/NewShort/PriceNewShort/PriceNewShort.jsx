@@ -54,13 +54,13 @@ const PriceNewShort = ({
     setPriceClose(true);
     handleShowPrice();
     if (location === "/home") {
-      setByFilterRent(true);
-      setPriceDep(!priceDep);
-      setRentPageNumber(1);
-    } else {
       setByFilter(true);
       setPriceDep(!priceDep);
       setPageNumber(1);
+    } else {
+      setByFilterRent(true);
+      setPriceDep(!priceDep);
+      setRentPageNumber(1);
     }
   };
 

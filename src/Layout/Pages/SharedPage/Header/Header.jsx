@@ -75,7 +75,7 @@ const Header = () => {
           className={({ isActive }) =>
             isActive ? "text-blue-600 rb_rg font-extrabold " : "rb_rg"
           }
-          to="/blue"
+          to="/"
         >
           Home
         </NavLink>
@@ -85,7 +85,7 @@ const Header = () => {
           className={({ isActive }) =>
             isActive ? "text-blue-600 rb_rg font-extrabold " : "rb_rg"
           }
-          to="/buy"
+          to="/"
         >
           Buy
         </NavLink>

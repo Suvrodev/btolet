@@ -172,15 +172,6 @@ const NewShort = () => {
 
       {home ? (
         <div className="z-10">
-          <RentCategoryNewSort
-            showRentCategory={showRentCategory}
-            handleShowRentCategory={handleShowRentCategory}
-            rentCategoryClose={rentCategoryClose}
-            setRentCategoryClose={setRentCategoryClose}
-          ></RentCategoryNewSort>
-        </div>
-      ) : (
-        <div className="z-10">
           <BuyCategoryNewSort
             showBuyCategory={showBuyCategory}
             handleShowBuyCategory={handleShowBuyCategory}
@@ -188,15 +179,24 @@ const NewShort = () => {
             setBuyCategoryClose={setBuyCategoryClose}
           ></BuyCategoryNewSort>
         </div>
+      ) : (
+        <div className="z-10">
+          <RentCategoryNewSort
+            showRentCategory={showRentCategory}
+            handleShowRentCategory={handleShowRentCategory}
+            rentCategoryClose={rentCategoryClose}
+            setRentCategoryClose={setRentCategoryClose}
+          ></RentCategoryNewSort>
+        </div>
       )}
 
       {home ? (
         <div className="z-10">
-          <FilterNewSort />
+          <FilterNewSortBuy />
         </div>
       ) : (
         <div className="z-10">
-          <FilterNewSortBuy />
+          <FilterNewSort />
         </div>
       )}
     </div>

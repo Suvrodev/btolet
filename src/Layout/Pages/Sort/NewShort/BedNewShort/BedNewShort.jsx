@@ -47,13 +47,13 @@ const BedNewShort = ({ handleShowBed, showBed, bedClose, setBedClose }) => {
     setBedClose(true);
     handleShowBed();
     if (location === "/home") {
-      setByFilterRent(true);
-      setBedDep(!bedDep);
-      setRentPageNumber(1);
-    } else {
       setByFilter(true);
       setBedDep(!bedDep);
       setPageNumber(1);
+    } else {
+      setByFilterRent(true);
+      setBedDep(!bedDep);
+      setRentPageNumber(1);
     }
   };
 
