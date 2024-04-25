@@ -331,7 +331,7 @@ const RentCard = ({ r, forRent, savedRent, handleRefresh, myPostRent }) => {
    */
 
   return (
-    <div className="flex flex-col relative border  rounded-md m-2 md:m-0   h-[400px] md:h-[480px] ">
+    <div className="flex flex-col relative border  rounded-md    h-[400px] md:h-[480px] ">
       {/* <GoToTop /> */}
       {/* Image Box Start */}
       <div className="relative">

@@ -102,7 +102,7 @@ const Rent = () => {
   }, [byFilterRent, closeFilterRent]);
 
   return (
-    <div className="my-4">
+    <div className="">
       <GoToTop />
       {/* Modal start */}
       <div>
@@ -196,7 +196,7 @@ const Rent = () => {
         </button>
       </div>
 
-      <div className="relative">
+      <div className="relative px-3 md:px-0 ">
         {rents.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {rents.map((rent, idx) => (

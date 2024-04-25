@@ -156,7 +156,7 @@ const Buy = () => {
         {/* <Link to={'/buypost'}> <button className='btn btn-success'>Post</button> </Link> */}
       </div>
 
-      <div className="">
+      <div className="px-3 md:px-0">
         {buys?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-4  md:gap-x-6 gap-y-6 gap-x-0  overflow-auto ">
             {buys.map((buy, idx) => (

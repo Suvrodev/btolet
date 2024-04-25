@@ -13,7 +13,6 @@ const FeedBack = () => {
   };
 
   const [selectedImages, setSelectedImages] = useState([]);
-  console.log("Selected Image: ", selectedImages);
 
   const handleFeedBack = () => {
     console.log("Feedback Button: ", inputText);
