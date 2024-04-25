@@ -18,6 +18,7 @@ import { FiChevronDown, FiSliders } from "react-icons/fi";
 import { AddOutlined } from "@mui/icons-material";
 import CheckFilterSize from "../../../Sort/CheckFilterSize/CheckFilterSize";
 import RentCardSkl from "./RentCardSKL/RentCardSkl";
+import GoToTop from "../../../../../Function/GoToTop";
 
 const Rent = () => {
   const {
@@ -102,6 +103,7 @@ const Rent = () => {
 
   return (
     <div className="my-4">
+      <GoToTop />
       {/* Modal start */}
       <div>
         <dialog id="filterModal_11" className="modal mainDialog ">
@@ -203,13 +205,10 @@ const Rent = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* <RentCardSkl />
             <RentCardSkl />
             <RentCardSkl />
-            <RentCardSkl /> */}
-            <div className="w-full text-center">
-              <span className="loading loading-spinner text-warning"></span>
-            </div>
+            <RentCardSkl />
+            <RentCardSkl />
           </div>
         )}
       </div>

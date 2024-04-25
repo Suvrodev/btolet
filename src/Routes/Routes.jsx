@@ -33,6 +33,7 @@ import AboutUs from "../Layout/Pages/Home/OwnerIdentity/AboutUs/AboutUs";
 import TermsAndConditions from "../Layout/Pages/Home/OwnerIdentity/TermsAndConditions/TermsAndConditions";
 import { Feedback } from "@mui/icons-material";
 import FeedBack from "../Layout/Pages/Home/OwnerIdentity/FeedBack/FeedBack";
+import CheckCoockies from "../Layout/Pages/UserResponsibility/Check/CheckCoockies/CheckCoockies";
 
 const router = createBrowserRouter([
   {
@@ -159,6 +160,10 @@ const router = createBrowserRouter([
       {
         path: "/rdskl",
         element: <RentDetailSkl />,
+      },
+      {
+        path: "/cc",
+        element: <CheckCoockies></CheckCoockies>,
       },
     ],
   },

@@ -237,7 +237,7 @@ const Header = () => {
           <FaBars onClick={handleLeftNav} />
           {/* Which Will do After Click Bar start */}
           <div
-            className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition-all duration-700 ease-in-out
+            className={`bg-white w-[300px] h-[100vh]  border-2 absolute  rounded-md z-10 -top-8 transition-all duration-700 ease-in-out z-20
              ${leftNav ? "-left-7 " : "-left-[500px] "}`}
           >
             <div className="bg-[#03A9F5] p-2 text-white">
