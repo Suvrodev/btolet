@@ -1,0 +1,15 @@
+.feedbackText{
+    line-height: 24px;
+}
+.feedbackSpace{
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 576px) {
+    .feedbackText{
+        line-height: 20px;
+    }
+    .feedbackSpace{
+        margin-top: 20px;
+    }
+}
