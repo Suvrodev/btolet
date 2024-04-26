@@ -4,6 +4,7 @@ import ObserverCard from "../ObserverCard/ObserverCard";
 import GoToTop from "../../../../../../../Function/GoToTop";
 
 import { useInView } from "react-intersection-observer";
+import RentCardSkl from "../../../../Rent/Rent/RentCardSKL/RentCardSkl";
 
 const Observer = () => {
   const {
@@ -14,10 +15,13 @@ const Observer = () => {
     selectedFacilities,
   } = useContext(AuthContext);
 
-  const [prevPageNumber, setPrevPageNumber] = useState(0);
-  const [pageNumber, setPageNumber] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [prevPageNumber, setPrevPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [buys, setBuys] = useState([]);
   const [dep, setDep] = useState(true);
+  const [allDataget, setAllDataGet] = useState(false);
+
   useEffect(() => {
     fetch(
       `${baseUrl}/pro/postlist?page=${pageNumber}&geolat=${lattitude}&geolon=${longitude}`
@@ -27,8 +31,12 @@ const Observer = () => {
         if (pageNumber > prevPageNumber) {
           const newData = [...buys, ...data];
           setBuys(newData);
+          if (data.length === 0) {
+            setAllDataGet(true);
+          }
         } else {
           setBuys(data);
+          setLoading(false);
         }
       });
     setPrevPageNumber(pageNumber);
@@ -38,8 +46,8 @@ const Observer = () => {
     setDep(!dep);
   };
 
+  //Observer start
   const { ref, inView, entry } = useInView({
-    /* Optional options */
     threshold: 0,
   });
   useEffect(() => {
@@ -47,9 +55,21 @@ const Observer = () => {
       setPageNumber(pageNumber + 1);
     }
   }, [inView]);
+  //Observer end
 
   console.log("In View: ", inView);
   console.log("Page Number: ", pageNumber);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <RentCardSkl />
+        <RentCardSkl />
+        <RentCardSkl />
+        <RentCardSkl />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-blue-400">
@@ -73,7 +93,12 @@ const Observer = () => {
           ))}
         </div>
         <div>
-          <h1 className="text-center font-bold text-2xl" ref={ref}>
+          <h1
+            className={`text-center font-bold text-2xl ${
+              buys.length > 0 ? "" : "hidden"
+            }  ${allDataget ? "hidden" : ""}`}
+            ref={ref}
+          >
             Loading
           </h1>
         </div>
