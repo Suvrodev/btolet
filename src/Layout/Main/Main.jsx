@@ -34,6 +34,7 @@ const Main = () => {
 
   return (
     <div className="roboto  ">
+      <GoToTop />
       {/* <GoToTop /> */}
       <Header></Header>
 

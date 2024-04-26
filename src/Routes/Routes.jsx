@@ -34,6 +34,7 @@ import TermsAndConditions from "../Layout/Pages/Home/OwnerIdentity/TermsAndCondi
 import { Feedback } from "@mui/icons-material";
 import FeedBack from "../Layout/Pages/Home/OwnerIdentity/FeedBack/FeedBack";
 import CheckCoockies from "../Layout/Pages/UserResponsibility/Check/CheckCoockies/CheckCoockies";
+import Observer from "../Layout/Pages/Home/OwnerIdentity/DeveloperCheck/Observer/Observer/Observer";
 
 const router = createBrowserRouter([
   {
@@ -164,6 +165,10 @@ const router = createBrowserRouter([
       {
         path: "/cc",
         element: <CheckCoockies></CheckCoockies>,
+      },
+      {
+        path: "/osv",
+        element: <Observer></Observer>,
       },
     ],
   },
